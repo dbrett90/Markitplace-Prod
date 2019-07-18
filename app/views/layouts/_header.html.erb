@@ -1,0 +1,14 @@
+<header class="navbar navbar-expand-lg navbar-light sticky-top navbar-fixed-top">
+    <div class="container">
+        <nav>
+            <img src='assets/mK.png' id="nameBrand">
+            <%= link_to "Markitplace", root_path, id: "logo", class: "navbar-brand" %>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item active n-homepage nav-link"><%= link_to "Home",   root_path %></li>
+                <li class="nav-item active n-our-team nav-link"><%= link_to "Our Team",  our_team_path %></li>
+                <li class="nav-item active n-contact-us nav-link"><%= link_to "Contact", contact_path %></li>
+                <li><%= link_to "Log In", '#' %></li>
+            </ul>
+        </nav>
+    </div>
+</header>
