@@ -1,3 +1,23 @@
 <% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
-<p>This will be a signup page for new users.</p>
+<h1 style= "text-align: center">Sign up</h1>
+
+<div class="row justify-content-center">
+  <div class="col-offset-6">
+    <%= form_for(@user, url: signup_path) do |f| %>
+        <%= render 'shared/error_messages' %>
+        <%= f.label :name %> <br>
+        <%= f.text_field :name, class: 'form-control' %><br>
+
+        <%= f.label :email %><br>
+        <%= f.email_field :email, class: 'form-control' %><br>
+
+        <%= f.label :password %><br>
+        <%= f.password_field :password, class: 'form-control' %><br>
+
+        <%= f.label :password_confirmation, "Confirmation" %><br>
+        <%= f.password_field :password_confirmation, class: 'form-control' %><br>
+
+        <%= f.submit "Create my account", class: "btn btn-primary" %><br>
+    <% end %>
+  </div>
+</div>
