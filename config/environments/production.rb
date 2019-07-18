@@ -26,6 +26,7 @@ Rails.application.configure do
   config.serve_static_assets = false
   config.assets.compress = true
   config.assets.digest = true
+  config.force_ssl = true
 
 
   # Compress JavaScripts and CSS.

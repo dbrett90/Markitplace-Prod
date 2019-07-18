@@ -22,4 +22,6 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: markitplace_production
+  username: markitplace
+  password: <%= ENV['MARKITPLACE_DATABASE_PASSWORD'] %>
