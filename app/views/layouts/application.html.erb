@@ -2,8 +2,7 @@
 <html>
   <head>
     <title><%= full_title(yield(:title)) %></title>
-    <link rel="icon" type="image/png" href="assets/fav30X30.png" sizes="30x30">
-    <link rel="icon" type="image/png" href="assets/fav20X20.png" sizes="20x20">
+    <%= favicon_link_tag asset_path('fav30X30.png'), :rel => 'icon', :type =>  'image/png' %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <%= csrf_meta_tags %>
