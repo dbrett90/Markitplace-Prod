@@ -63,6 +63,11 @@ li:hover {
   width: 15%;
   height: 15%;
 }
+
+.ml-auto .dropdown-menu {
+  left: auto !important;
+  right: 0px;
+}
 /* ***************** */
 /* ****HOME PAGE**** */
 /* ***************** */
