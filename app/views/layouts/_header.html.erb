@@ -14,10 +14,10 @@
                             Account
                             </a>
                             <ul class="dropdown-menu">
-                                <li class="nav-item><%= link_to "Profile", current_user, class: "nav-color" %></li>
-                                <li class="nav-item><%= link_to "Settings", edit_user_path(current_user), class: "nav-color" %></li>
+                                <li class="nav-item"><%= link_to "Profile", current_user, class: "nav-color" %></li>
+                                <li class="nav-item"><%= link_to "Settings", edit_user_path(current_user), class: "nav-color" %></li>
                                 <li class="dropdown-divider"></li>
-                                <li class="nav-item><%= link_to "Log out", logout_path, method: :delete, class: "nav-color" %></li>
+                                <li class="nav-item"><%= link_to "Log out", logout_path, method: :delete, class: "nav-color" %></li>
                             </ul>
                         </li>
                 <% else %>
