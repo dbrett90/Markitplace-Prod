@@ -8,14 +8,16 @@
                 <li class="nav-item active n-our-team"><%= link_to "Our Team",  our_team_path, class: "nav-color" %></li>
                 <li class="nav-item active n-contact-us"><%= link_to "Contact", contact_path, class: "nav-color" %></li>
                 <% if logged_in? %>
-                    <li class="nav-item active nav-color dropdown-toggle btn btn-outline-success data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account
-                        <div class="dropdown-menu">
-                            <%= link_to "Profile", current_user, class: "nav-color" %><br>
-                            <%= link_to "Settings", edit_user_path(current_user), class: "nav-color" %>
-                            <div class="dropdown-divider"></div>
-                            <%= link_to "Log out", logout_path, method: :delete, class: "nav-color" %>
-                        </div>
-                    </li>
+                    <div class="dropdown">
+                        <li class="nav-item active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <%= link_to "Account", '#', class: "nav-color dropdown-toggle btn btn-outline-success"%>
+                        <ul class="dropdown-menu">
+                            <li = "nav-item><%= link_to "Profile", current_user, class: "nav-color" %></li>
+                            <li = "nav-item><%= link_to "Settings", edit_user_path(current_user), class: "nav-color" %></li>
+                            <li class="dropdown-divider"></li>
+                            <li = "nav-item><%= link_to "Log out", logout_path, method: :delete, class: "nav-color" %></li>
+                        </ul>
+                        </li>
+                    </div>
 
                 <% else %>
                     <li class="nav-item active n-homepage"><%= link_to "Log in", login_path, class: "nav-color" %></li>
