@@ -8,13 +8,12 @@
                 <li class="nav-item active n-our-team"><%= link_to "Our Team",  our_team_path, class: "nav-color" %></li>
                 <li class="nav-item active n-contact-us"><%= link_to "Contact", contact_path, class: "nav-color" %></li>
                 <% if logged_in? %>
-                    <li class="btn-group nav-item active">
+                    <li class="nav-item active">
                         <button type="button" class="btn btn-outline-success dropdown-toggle nav-color" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Account
                         </button>
                         <div class="dropdown-menu">
                             <%= link_to "Profile", current_user, class: "nav-color" %>
-                            <%= link_to "Settings", edit_user_path(current_user), class: "nav-color" %>
                             <%= link_to "Settings", edit_user_path(current_user), class: "nav-color" %>
                             <div class="dropdown-divider"></div>
                             <%= link_to "Log out", logout_path, method: :delete, class: "nav-color" %>
