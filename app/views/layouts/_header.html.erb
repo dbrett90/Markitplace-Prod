@@ -8,8 +8,8 @@
                 <li class="nav-item active n-our-team"><%= link_to "Our Team",  our_team_path, class: "nav-color" %></li>
                 <li class="nav-item active n-contact-us"><%= link_to "Contact", contact_path, class: "nav-color" %></li>
                 <% if logged_in? %>
-                    <li class="btn-group nav-item">
-                        <button type="button" class="btn btn-outline-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <li class="btn-group nav-item active">
+                        <button type="button" class="btn btn-outline-success dropdown-toggle nav-color" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Account
                         </button>
                         <div class="dropdown-menu">
