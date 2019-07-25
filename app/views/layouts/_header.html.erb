@@ -4,11 +4,11 @@
             <ul class = "navbar-nav mr-auto">
                 <%= image_tag("mK.png", id:"nameBrand") %>
                 <li class="nav-item active"><%= link_to "Markitplace", root_path, id: "logo", class: "navbar-brand" %></li>
-            </ul><br>
-            <ul class="navbar-nav ml-auto">
                 <li class="nav-item active n-homepage"><%= link_to "Home",   root_path, class: "nav-color" %></li>
                 <li class="nav-item active n-our-team"><%= link_to "Our Team",  our_team_path, class: "nav-color" %></li>
                 <li class="nav-item active n-contact-us"><%= link_to "Contact", contact_path, class: "nav-color" %></li>
+            </ul>
+            <ul class="navbar-nav">
                 <% if logged_in? %>
                     <li class= "dropdown">
                         <a href="#" class="dropdown-toggle nav-color" data-toggle="dropdown">
