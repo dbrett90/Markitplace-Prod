@@ -50,7 +50,14 @@ li:hover {
   outline: none !important;
   box-shadow: none;
 }
-// <b class="caret"></b>
+
+.dropdown-menu>li>.nav-color{
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  color: green;
+}
+
 
 #nameBrand {
   width: 4%;
