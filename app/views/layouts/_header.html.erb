@@ -4,7 +4,7 @@
             <%= image_tag("mK.png", id: "nameBrand") %>
             <%= link_to "Markitplace", root_path, id: "logo", class: "navbar-brand" %>
             <ul class="nav navbar-nav navbar-right">
-                <li class="nav-item active n-homepage"><%= link_to "Home",   root_path, class: "nav-link" %></li>
+                <li class="nav-item active n-homepage"><%= link_to "Home",   root_path, class: "nav-color" %></li>
                 <li class="nav-item active n-our-team nav-link"><%= link_to "Our Team",  our_team_path %></li>
                 <li class="nav-item active n-contact-us nav-link"><%= link_to "Contact", contact_path %></li>
                 <% if logged_in? %>
