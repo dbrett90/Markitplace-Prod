@@ -5,24 +5,24 @@
             <%= link_to "Markitplace", root_path, id: "logo", class: "navbar-brand" %>
             <ul class="nav navbar-nav navbar-right">
                 <li class="nav-item active n-homepage"><%= link_to "Home",   root_path, class: "nav-color" %></li>
-                <li class="nav-item active n-our-team nav-link"><%= link_to "Our Team",  our_team_path %></li>
-                <li class="nav-item active n-contact-us nav-link"><%= link_to "Contact", contact_path %></li>
+                <li class="nav-item active n-our-team nav-link"><%= link_to "Our Team",  our_team_path, class: "nav-color" %></li>
+                <li class="nav-item active n-contact-us nav-link"><%= link_to "Contact", contact_path, class: "nav-color" %></li>
                 <% if logged_in? %>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle nav-item nav-link " data-toggle="dropdown">
+                        <a href="#" class="dropdown-toggle nav-color" data-toggle="dropdown">
                         Account
                         </a>
                         <ul class="dropdown-menu">
-                        <li class="nav-item active n-homepage nav-link"><%= link_to "Profile", current_user %></li>
-                        <li class="nav-item active n-homepage nav-link"><%= link_to "Settings", edit_user_path(current_user) %></li>
+                        <li class="nav-item active n-homepage nav-link"><%= link_to "Profile", current_user, class: "nav-color" %></li>
+                        <li class="nav-item active n-homepage nav-link"><%= link_to "Settings", edit_user_path(current_user), class: "nav-color" %></li>
                         <li class="divider"></li>
                         <li class="nav-item active n-homepage nav-link">
-                            <%= link_to "Log out", logout_path, method: :delete %>
+                            <%= link_to "Log out", logout_path, method: :delete, class: "nav-color" %>
                         </li>
                         </ul>
                     </li>
                     <% else %>
-                    <li class="nav-item active n-homepage nav-link"><%= link_to "Log in", login_path %></li>
+                    <li class="nav-item active n-homepage nav-link"><%= link_to "Log in", login_path, class: "nav-color" %></li>
                 <% end %>
             </ul>
         </nav>
