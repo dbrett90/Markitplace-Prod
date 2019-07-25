@@ -8,8 +8,8 @@
                 <li class="nav-item active n-our-team"><%= link_to "Our Team",  our_team_path, class: "nav-color" %></li>
                 <li class="nav-item active n-contact-us"><%= link_to "Contact", contact_path, class: "nav-color" %></li>
                 <% if logged_in? %>
-                    <div class="btn-group nav-item" style= "inline-block">
-                        <button type="button" class="btn btn-outline-success dropdown-toggle" style = "color:white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <li class="btn-group nav-item">
+                        <button type="button" class="btn btn-outline-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Account
                         </button>
                         <div class="dropdown-menu">
@@ -19,7 +19,7 @@
                             <div class="dropdown-divider"></div>
                             <%= link_to "Log out", logout_path, method: :delete, class: "nav-color" %>
                         </div>
-                    </div>
+                    </li>
 
                 <% else %>
                     <li class="nav-item active n-homepage"><%= link_to "Log in", login_path, class: "nav-color" %></li>
