@@ -1,0 +1,183 @@
+
+
+/* NAVBAR INFO */
+
+.navbar {
+    -webkit-box-shadow: 0 8px 6px -6px #999;
+    -moz-box-shadow: 0 8px 6px -6px #999;
+    box-shadow: 0 8px 6px -6px #999;
+    background: white;
+}
+
+.hide-page{
+  display: none;
+}
+
+/* .navbar-brand{
+  background-color: #579229;
+}
+.navbar-light .navbar-brand {
+  color: white;
+} */
+
+.btn-outline-success.navButtons{
+  font-size: 12px;
+  font-weight: bold;
+  border-width: 2px;
+  border-radius: 0;
+  letter-spacing: 1.5px;
+}
+
+.btn-outline-success.jumbo-button, .btn-success.jumbo-button {
+  font-size: 20px;
+  font-weight: bold;
+  border-width: 2px;
+  border-radius: 0;
+  letter-spacing: 1.5px;
+}
+
+
+.nav-color {
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  color: green;
+}
+
+li:hover {
+  outline: none !important;
+  box-shadow: none;
+}
+
+.dropdown-menu>li>.nav-color{
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  color: green;
+}
+
+
+#nameBrand {
+  width: 15%;
+  height: 15%;
+}
+
+
+/* ***************** */
+/* ****HOME PAGE**** */
+/* ***************** */
+.shadow-underscore{
+  /* text-shadow: 1px 1px 1px #999; */
+}
+
+
+.subtext-gray{
+  color: #8c8c8c
+}
+
+#jumbo-textbox{
+  display: block;
+}
+
+.jumbo-maintext{
+  font-size:35px;
+  font-weight: 3.0px;
+}
+.jumbo-subtext{
+  font-size: 20px;
+  font-weight: 1.5px;
+}
+
+
+
+#our-process{
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+#outline{
+  -webkit-text-stroke: 1px black;
+}
+
+/* .box-opaque{
+  opacity: 0.6;
+  filter: alpha(opacity=60); /* For IE8 and earlier
+} */
+
+/* ***************** */
+/* ****OUR TEAM**** */
+/* ***************** */
+
+
+.text-overlay{
+  color: #449900;
+  font-size: 80px;
+  text-align: center;
+  /* -webkit-text-stroke: 1px white; */
+}
+
+.img-rounded{
+  border-radius: 50%;
+}
+
+.border-shadow{
+  box-shadow: 0 0 8px #999;
+}
+
+.subtext-about{
+  font-size: 12px;
+}
+
+.headshot-border{
+  border: 1px solid #449900;
+}
+
+/* ***************** */
+/* CONTACT US PAGE */
+/* ***************** */
+.form-block{
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+
+.lets-chat-title{
+  font-size: 30px;
+  font-weight: 400;
+  padding-bottom: 10px;
+}
+
+.lets-chat{
+  color: #595959;
+  font-size:18px;
+  font-weight: 100;
+  padding-bottom: 10px;
+}
+
+.emphasis{
+  font-weight: bold;
+  /* letter-spacing: 1.5px; */
+}
+
+
+/* ***************** */
+/* ****FOOTERS**** */
+/* ***************** */
+.fa-facebook-square{
+  color: black;
+}
+
+.fa-twitter-square{
+  color:black;
+}
+
+.fa-instagram{
+  color: black;
+  size: 2.0em;
+}
+
+/* GET RID OF ANNOYING OUTLINES */
+.btn:focus,.btn:active {
+   outline: none !important;
+   box-shadow: none;
+}
