@@ -1,28 +1,17 @@
-<nav class="navbar navbar-expand-lg navbar-light sticky-top">
-    <%= image_tag("mK.png", id:"nameBrand") %>
-    <li class="nav-item active"><%= link_to "Markitplace", root_path, class: "navbar-brand" %></li>
-    <div class="collapse navbar-collapse wholeBar" id="navbarSupportedContent">
-            <ul class = "navbar-nav mr-auto">
-                <li class="nav-item active n-homepage"><%= link_to "Home",   root_path, class: "nav-color" %><span class="sr-only">(current)</span></li>
-                <li class="nav-item active n-our-team"><%= link_to "Our Team",  our_team_path, class: "nav-color" %><span class="sr-only">(current)</span></li>
-                <li class="nav-item active n-contact-us"><%= link_to "Contact", contact_path, class: "nav-color" %><span class="sr-only">(current)</span></li>
-            </ul>
-            <ul class="navbar-nav">
-                <% if logged_in? %>
-                    <li class= "dropdown">
-                        <a href="#" class="dropdown-toggle nav-color" data-toggle="dropdown">
-                        Account
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="nav-item"><%= link_to "Profile", current_user, class: "nav-color" %></li>
-                            <li class="nav-item"><%= link_to "Settings", edit_user_path(current_user), class: "nav-color" %></li>
-                            <li class="dropdown-divider"></li>
-                            <li class="nav-item"><%= link_to "Log out", logout_path, method: :delete, class: "nav-color" %></li>
-                        </ul>
-                    </li>
-                <% else %>
-                    <li class="nav-item active n-homepage"><%= link_to "Log in", login_path, class: "nav-color" %></li>
-                <% end %>
-            </ul>
+<ul class="navbar-nav">
+<% if logged_in? %>
+    <li class= "nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown black-color" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to "Profile", current_user, class: "dropdown-item" %>
+            <%= link_to "Settings", edit_user_path(current_user), class: "dropdown-item" %>
+            <div class="dropdown-divider"></div>
+            <%= link_to "Log out", logout_path, method: :delete, class: "dropdown-item" %>
         </div>
-    </nav>
+    </li>
+<% else %>
+    <li class="nav-item active n-homepage"><%= link_to "Log in", login_path, class: "nav-link" %></li>
+<% end %>
+</ul>
+</div>
+</nav>
