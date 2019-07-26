@@ -44,8 +44,14 @@
   font-weight: bold;
   font-size: 14px;
   letter-spacing: 1.5px;
-  color: green;
 }
+
+.drop-link{
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+}
+
 
 li:hover {
   outline: none !important;
