@@ -52,6 +52,10 @@
   letter-spacing: 1.5px;
 }
 
+#black-color{
+    color:black;
+}
+
 
 li:hover {
   outline: none !important;

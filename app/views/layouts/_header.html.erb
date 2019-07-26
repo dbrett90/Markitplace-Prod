@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light sticky-top" id="mainNavbar">
     <%= image_tag("mK.png", id:"nameBrand") %>
     <%= link_to "Markitplace", root_path, class: "navbar-brand nav-item active" %>
-    <div class="collapse navbar-collapse wholeBar" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class = "navbar-nav mr-auto">
                 <li class="nav-item active n-homepage"><%= link_to "Home",   root_path, class: "nav-color nav-link" %><span class="sr-only">(current)</span></li>
                 <li class="nav-item active n-our-team"><%= link_to "Our Team",  our_team_path, class: "nav-color nav-link" %><span class="sr-only">(current)</span></li>
@@ -10,12 +10,12 @@
             <ul class="navbar-nav">
                 <% if logged_in? %>
                     <li class= "nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
+                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown black-color" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <%= link_to "Profile", current_user, class: "drop-link dropdown-item" %>
-                            <%= link_to "Settings", edit_user_path(current_user), class: "drop-link dropdown-item" %>
+                            <%= link_to "Profile", current_user, class: "dropdown-item" %>
+                            <%= link_to "Settings", edit_user_path(current_user), class: "dropdown-item" %>
                             <div class="dropdown-divider"></div>
-                            <%= link_to "Log out", logout_path, method: :delete, class: "drop-link dropdown-item" %>
+                            <%= link_to "Log out", logout_path, method: :delete, class: "dropdown-item" %>
                         </div>
                     </li>
                 <% else %>
