@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light sticky-top" id="mainNavbar">
+<nav class="navbar navbar-expand-lg navbar-light sticky-top">
     <%= image_tag("mK.png", id:"nameBrand") %>
-    <%= link_to "Markitplace", root_path, class: "navbar-brand nav-item active" %>
+    <li class="nav-item active"><%= link_to "Markitplace", root_path, class: "navbar-brand" %></li>
     <div class="collapse navbar-collapse wholeBar" id="navbarSupportedContent">
             <ul class = "navbar-nav mr-auto">
                 <li class="nav-item active n-homepage"><%= link_to "Home",   root_path, class: "nav-color" %><span class="sr-only">(current)</span></li>
