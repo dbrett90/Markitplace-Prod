@@ -64,7 +64,9 @@
                 <%= image_tag("enjoy.png", class: "img-fluid") %>
               </div>
               <div class="col-12 text-center pt-3">
-                <button type="button" class="btn btn-success jumbo-button">GET STARTED</button>
+                <% if !logged_in? %>
+                  <%= link_to "GET STARTED!", signup_path, class: "btn btn-success jumbo-button" %>
+                <% end %>
               </div>
             </div>
         </div>
