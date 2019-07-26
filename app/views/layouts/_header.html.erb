@@ -3,9 +3,9 @@
     <%= link_to "Markitplace", root_path, class: "navbar-brand nav-item active" %>
     <div class="collapse navbar-collapse wholeBar" id="navbarSupportedContent">
             <ul class = "navbar-nav mr-auto">
-                <li class="active n-homepage"><%= link_to "Home",   root_path, class: "nav-color" %><span class="sr-only">(current)</span></li>
-                <li class="active n-our-team"><%= link_to "Our Team",  our_team_path, class: "nav-color" %><span class="sr-only">(current)</span></li>
-                <li class="active n-contact-us"><%= link_to "Contact", contact_path, class: "nav-color" %><span class="sr-only">(current)</span></li>
+                <li class="nav-item active n-homepage"><%= link_to "Home",   root_path, class: "nav-color nav-link" %><span class="sr-only">(current)</span></li>
+                <li class="nav-item active n-our-team"><%= link_to "Our Team",  our_team_path, class: "nav-color nav-link" %><span class="sr-only">(current)</span></li>
+                <li class="nav-item active n-contact-us"><%= link_to "Contact", contact_path, class: "nav-color nav-link" %><span class="sr-only">(current)</span></li>
             </ul>
             <ul class="navbar-nav">
                 <% if logged_in? %>
