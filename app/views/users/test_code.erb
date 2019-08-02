@@ -3,3 +3,27 @@
         #   <%= gravatar_for @user %>
         #   <a href="http://gravatar.com/emails" target="_blank">Change</a>
 # </div>
+
+
+# FROM SESSIONS-->NEW
+# <h1 style= "text-align: center">Log in</h1>
+
+# <div class="row justify-content-center">
+#   <div class="col-md-6 col-md-offset-3">
+#     <%= form_for(:session, url: login_path) do |f| %>
+#       <%= f.email_field :email, class: 'form-control', placeholder: "Email" %><br>
+
+#       <%= link_to "(forgot password)", new_password_reset_path %><br>
+#       <%= f.password_field :password, class: 'form-control', placeholder: "Password" %><br>
+
+#       <%= f.label :remember_me, class: "checkbox inline" do %>
+#         <%= f.check_box :remember_me %>
+#         <span>Remember Me</span>
+#       <% end %><br>
+
+#       <%= f.submit "Log in", class: "btn btn-primary btn-block" %><br>
+#     <% end %>
+
+#     <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+#   </div>
+</div>
