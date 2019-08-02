@@ -4,6 +4,10 @@
   -webkit-box-shadow: none !important;
 }
 
+.form-control:focus{
+  border: 1px solid #5cb85c;
+}
+
 .btn-sizing{
   -moz-box-sizing: content-box; /* or `border-box` */
   -webkit-box-sizing: content-box;
