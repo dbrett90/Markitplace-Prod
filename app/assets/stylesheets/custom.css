@@ -2,6 +2,12 @@
   outline: 1px solid black;
 }
 
+.btn-sizing{
+  -moz-box-sizing: content-box; /* or `border-box` */
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
 
 /* NAVBAR INFO */
 .pad-left{
