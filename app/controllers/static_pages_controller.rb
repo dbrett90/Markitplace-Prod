@@ -8,8 +8,8 @@ class StaticPagesController < ApplicationController
   def contact
     user_email = params[:contact_email]
     user_name = params[:contact_name]
-    user_how = params[:optional-info-1]
-    user_msg = params[:optional-info-2]
+    user_how = params[:contact_how]
+    user_msg = params[:contact_help]
     UserMailer.contact_support(user_name, user_email, user_how, user_msg).deliver_now
   end
 end
