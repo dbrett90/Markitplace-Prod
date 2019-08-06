@@ -15,13 +15,20 @@
   <div class="row">
     <div class="col-8">
       <div class="form-block">
-        <%= form_tag '/contact' do%>
-          Name : </br><%= text_field_tag 'contact_name',  class:"form-control", placeholder:"Enter your Name", ''%></br>
-          Email : </br><%= text_field_tag 'contact_email',  class:"form-control", placeholder:"Enter your email", ''%></br>
-          How Did you Hear about Markitplace? :<%= text_area_tag 'contact_how',  class:"form-control", ''%></br>
-          How can we help you today? :<%= text_area_tag 'contact_help',  class:"form-control",  ''%></br>
-          <%= submit_tag "submit", class: "btn btn-success jumbo-button mt-2", :value => "submit" %>
-        <%end%>
+        <form>
+          <div class="text-block pb-3">
+            Please fill out the form below with how we can help you today and a support specialist will contact you shorty. Thank you!
+          </div>
+          <label for="name" class="field-label emphasis">Name</label>
+          <input type="text" class="form-control" name="contact_name" placeholder="Enter your Name">
+          <label for="email" class="field-label emphasis">Email</label>
+          <input type="email" class="form-control" name="contact_email" placeholder="Enter your email">
+          <label for="how-did-you-hear" class="field-label emphasis">How did you hear about Markitplace?</label>
+          <textarea id="optional-info-how-did-you-hear" name="contact_how" maxlength="5000" class="form-control"></textarea>
+          <label for="how-can-we-help" class="field-label emphasis">How can we help you?</label>
+          <textarea id="optional-how-can-we-help" name="contact_help" maxlength="5000" class="form-control"></textarea>
+          <button type="submit" class="btn btn-success jumbo-button mt-2">Submit</button>
+        </form>
       </div>
     </div>
     <div class="col-4">

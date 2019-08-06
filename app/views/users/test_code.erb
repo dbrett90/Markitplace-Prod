@@ -43,3 +43,12 @@
 #           <textarea id="optional-how-can-we-help" name="contact_help" maxlength="5000" class="form-control"></textarea>
 #           <button type="submit" class="btn btn-success jumbo-button mt-2">Submit</button>
 #         </form>
+
+
+<%= form_tag '/contact' do%>
+        Name : </br><%= text_field_tag 'contact_name',  class:"form-control", placeholder:"Enter your Name", ''%></br>
+        Email : </br><%= text_field_tag 'contact_email',  class:"form-control", placeholder:"Enter your email", ''%></br>
+        How Did you Hear about Markitplace? :<%= text_area_tag 'contact_how',  class:"form-control", ''%></br>
+        How can we help you today? :<%= text_area_tag 'contact_help',  class:"form-control",  ''%></br>
+        <%= submit_tag "submit", class: "btn btn-success jumbo-button mt-2", :value => "submit" %>
+      <%end%>
