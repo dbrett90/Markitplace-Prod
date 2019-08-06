@@ -15,4 +15,8 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.password_reset(user)
   end
 
+  def contact_support
+    UserMailer.contact_support
+  end
+
 end

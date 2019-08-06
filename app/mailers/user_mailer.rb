@@ -19,4 +19,12 @@ class UserMailer < ApplicationMailer
     @user = user
     mail to: user.email, subject: "Markitplace Account Password Reset"
   end
+
+  #This is specifically for contacting support
+  def contact_support(user_name, user_email, user_how, user_msg)
+    @user_name = user_name
+    @user_how = user_how 
+    @user_msg = user_msg
+    mail to: "danbrett107@gmail.com", subject: "Markitplace Support Required", from: user_email
+  end
 end

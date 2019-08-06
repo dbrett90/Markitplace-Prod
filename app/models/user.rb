@@ -45,6 +45,11 @@ class User < ApplicationRecord
         UserMailer.account_activation(self).deliver_now
     end
 
+    def send_contact_email
+        UserMailer.contact_support(self).deliver_now
+    end
+
+
     #Reset Password Functions
     def create_reset_digest
         self.reset_token =  User.new_token
