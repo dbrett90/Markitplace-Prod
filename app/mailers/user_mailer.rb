@@ -25,6 +25,6 @@ class UserMailer < ApplicationMailer
     @user_name = user_name
     @user_how = user_how 
     @user_msg = user_msg
-    mail to: "danbrett107@gmail.com", subject: "Markitplace Support Required", from: user_email
+    mail to: "danbrett107@gmail.com", subject: "Markitplace Support Required", from: "test@markitplace.io"
   end
 end
