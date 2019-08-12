@@ -2,6 +2,7 @@ class PasswordResetsController < ApplicationController
   before_action :get_user,   only: [:edit, :update]
   before_action :valid_user, only: [:edit, :update]
   before_action :check_expiration, only: [:edit, :update]    # Case (1) - an expired password reset
+
   def new
   end
 
@@ -22,7 +23,7 @@ class PasswordResetsController < ApplicationController
   end
 
   def update
-    if params[:user][:password].empty?                  # Case (3) - A failed update (which initially looks “successful”) due to an empty password and confirmation
+    if params[:user][:password].empty?                  # Case (3) - A failed update (which initially looks “successful”) due to an empty password and confirmation. Make sure program catches this
       @user.errors.add(:password, "can't be empty")
       render 'edit'
     elsif @user.update_attributes(user_params)          # Case (4) - a Successful Update
@@ -31,7 +32,7 @@ class PasswordResetsController < ApplicationController
       flash[:success] = "Password has been reset."
       redirect_to @user
     else
-      render 'edit'                                     # Case (2) - Failed Update due to invalid Password
+      render 'edit'                                     # Case (2) - Failed Update due to invalid Password. NOTE: MUST UPDATE THE REGEX FOR THIS FOR MORE STRINGENT PASSWORD REQUIREMENTS
     end
   end
 
