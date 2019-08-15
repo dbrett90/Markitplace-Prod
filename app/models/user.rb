@@ -4,10 +4,10 @@ class User < ApplicationRecord
     before_create :create_activation_digest
     validates :name, presence: true, length: { maximum: 50 }
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
-    # VALID_EMAIL_REGEX=[/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\W]).{8,}$/]
+    VALID_PASSWORD_REGEX=/((?:(?=.*[a-z])(?=.*[A-Z])(?=.*\W)))/x            #[/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\W]).{8,}$/]
     validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
     has_secure_password
-    validates :password, presence: true, length: { minimum: 8 }, allow_nil: true
+    validates :password, presence: true, length: { minimum: 8 }, format: { with: VALID_PASSWORD_REGEX }, allow_nil: true
 
     #Authentication Helper Methods
     def User.digest(string)
