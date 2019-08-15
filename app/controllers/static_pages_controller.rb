@@ -13,5 +13,4 @@ class StaticPagesController < ApplicationController
     redirect_to contact_url
     flash[:success] = "Your message has been received. We will be in contact shortly."
   end
-
 end
