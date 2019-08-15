@@ -1,8 +1,8 @@
 <%= form_for(@user) do |f| %>
     <%= render 'shared/error_messages' %>
-    <p>Please note that your password be eight charcters long and must 
+    <p class="subtext-gray pb-1" style="font-size:8px">Your password be eight charcters long and must 
     contain at least one uppercase character,
-    one lowercase character & a symbol </p>
+    one lowercase character & a symbol. </p>
 
     <%= f.text_field :name, class: 'form-control', placeholder: "Name" %><br>
 
