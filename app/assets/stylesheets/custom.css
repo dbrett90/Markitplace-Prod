@@ -20,9 +20,9 @@
     padding-left: 10px;
 }
 
-a.nav-link:hover{
-  color:green;
-  transition: color 1s;
+.nav-link:hover {
+  color:green !important;
+  transition: 0.5s;
 }
 
 .navbar {
