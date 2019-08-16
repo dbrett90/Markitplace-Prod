@@ -20,6 +20,11 @@
     padding-left: 10px;
 }
 
+.nav-item:hover{
+  color:green;
+  transition: color 1s;
+}
+
 .navbar {
     -webkit-box-shadow: 0 8px 6px -6px #999;
     -moz-box-shadow: 0 8px 6px -6px #999;
