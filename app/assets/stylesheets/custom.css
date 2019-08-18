@@ -91,8 +91,14 @@ li:hover {
 
 
 #nameBrand {
-  width: 4%;
-  height: 4%;
+  width: 100%;
+  height: 100%;
+  padding-right: 0px;
+}
+#mainNavbar > a:nth-child(1){
+  margin-right: 0px;
+  padding-right: 0px;
+  width: 60px;
 }
 
 
