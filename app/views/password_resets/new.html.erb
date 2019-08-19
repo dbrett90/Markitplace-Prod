@@ -1,13 +1,20 @@
 <% provide(:title, "Password Reset") %>
-<h1>Password Reset</h1>
+<div class='container'>
+  <div class="row topspace-lg justify-content-center">
+    <div class= "col-12">
+      <h1 style= "text-align: center">Password Reset</h1>
+    </div>
+    <div class="card col-md-6 col-md-offset-3">
+      <div class="card-body placeholder">
+        <%= form_for(:password_reset, url: password_resets_path) do |f| %>
+          <%= f.label :email, class: 'field-label emphasis' do %>
+            <span class = 'field-label emphasis'> Email </span><br>
+          <% end %><br>
+          <%= f.email_field :email, class: 'form-control', placeholder: "Email" %><br>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(:password_reset, url: password_resets_path) do |f| %>
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
-
-      <%= f.submit "Submit", class: "btn btn-primary" %>
-    <% end %>
+          <%= f.submit "Submit", class: "btn btn-success btn-block" %>
+        <% end %>
+      </div>
+    </div>  
   </div>
 </div>
