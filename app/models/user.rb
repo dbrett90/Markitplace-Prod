@@ -4,7 +4,7 @@ class User < ApplicationRecord
     before_create :create_activation_digest
     validates :name, presence: true, length: { maximum: 50 }
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
-    VALID_PASSWORD_REGEX=/((?:(?=.*[a-z])(?=.*[A-Z])(?=.*\W)))/x            #[/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\W]).{8,}$/]
+    VALID_PASSWORD_REGEX=/((?:(?=.*[a-z])(?=.*[A-Z])(?=.*\W)))/x 
     validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
     has_secure_password
     validates :password, presence: true, length: { minimum: 8 }, format: { with: VALID_PASSWORD_REGEX }, allow_nil: true
@@ -54,7 +54,7 @@ class User < ApplicationRecord
     #Reset Password Functions
     def create_reset_digest
         self.reset_token =  User.new_token
-        #update_columns(reset_digest: User.digest(reset_token), reset_sent_at: Time.zone.now )
+        # update_columns(reset_digest: User.digest(reset_token), reset_sent_at: Time.zone.now)
         update_attribute(:reset_digest,  User.digest(reset_token))
         update_attribute(:reset_sent_at, Time.zone.now)
     end
