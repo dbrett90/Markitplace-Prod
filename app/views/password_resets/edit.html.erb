@@ -11,13 +11,17 @@
 
           <%= hidden_field_tag :email, @user.email %>
 
-          <%= f.label :password %>
+          <%= f.label :password, class: 'field-label emphasis' do %>
+            <span class = 'field-label emphasis'> Password </span><br>
+          <% end %><br>
           <%= f.password_field :password, class: 'form-control' %>
 
-          <%= f.label :password_confirmation, "Confirmation" %>
+          <%= f.label :password_confirmation, class: 'field-label emphasis' do %>
+            <span class = 'field-label emphasis'> Password Confirmation </span><br>
+          <% end %><br>
           <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-          <%= f.submit "Update password", class: "btn btn-primary" %>
+          <%= f.submit "Update password", class: "btn btn-success btn-block" %>
         <% end %>
       </div>
     </div>  
