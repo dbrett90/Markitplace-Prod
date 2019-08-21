@@ -64,7 +64,11 @@
   font-weight: bold;
   font-size: 14px;
   letter-spacing: 1.5px;
-  outline: none !important;
+}
+
+/* GET RID OF REALLY ANNOYING OUTLINE AROUND LINKS */
+.dropdown-item:active {
+  background-color:white;
 }
 
 .dropdown-item{
