@@ -19,6 +19,8 @@ gem 'jquery-rails', '4.3.1'
 gem 'will_paginate',           '3.1.6'
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'bootstrap-sass',          '3.3.7'
+#Specifically for creating pretty activation/reset emails
+gem 'bootstrap-email'
 # gem 'bootstrap', '~> 4.3.1'
 gem "font-awesome-rails"
 gem 'faker',                   '1.7.3'
