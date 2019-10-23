@@ -11,7 +11,7 @@ The Partner is located Here:<br>
 <%= @partner_cuisine%>
 </p>
 <p>The customer response regarding posting to the site:<br>
-<% if @partner_post_offerings==0 %>
+<% if @partner_post_offerings==1 %>
     <%= "yes" %>
 <% else %>
     <%= "no" %>
@@ -25,7 +25,7 @@ The Partner is located Here:<br>
 <% end %>
 </p><br>
 <p>The customer response regarding brand management:<br>
-<% if @partner_brand_management==0 %>
+<% if @partner_brand_management.to_int==0 %>
     <%= "yes" %>
 <% else %>
     <%= "no" %>
