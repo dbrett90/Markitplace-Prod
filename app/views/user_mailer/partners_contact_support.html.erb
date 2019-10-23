@@ -1,5 +1,6 @@
 <h1>Markitplace</h1>
-
+<% @yes = "yes" %>
+<% @no = "no" %>
 <p>Hi Support Staff, <%= @partner_name %> is interested in your services.</p>
 
 <p>
@@ -12,9 +13,9 @@ The Partner is located Here:<br>
 </p>
 <p>The customer's response regarding posting to the site:<br>
 <% if @partner_post_offerings==1 %>
-    They want to post to the platform!
+    <%= @yes %>
 <% else %>
-    They don't want to post
+    <%= @no %>
 <% end>
 </p><br>
 <p>The customer's response regarding Analytics:<br>
