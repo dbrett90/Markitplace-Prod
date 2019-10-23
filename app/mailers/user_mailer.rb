@@ -37,4 +37,5 @@ class UserMailer < ApplicationMailer
     @partner_analytics_reports=partner_analytics_reports
     @partner_brand_management=partner_brand_management
     mail to: "danbrett107@gmail.com", subject: "PARTNER INTEREST REQUEST", from: partner_email
+  end
 end
