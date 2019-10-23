@@ -11,16 +11,24 @@ The Partner is located Here:<br>
 <%= @partner_cuisine%>
 </p>
 <p>The customer response regarding posting to the site:<br>
-<% if @partner_post_offerings==1 %>
+<% if @partner_post_offerings==0 %>
     <%= "yes" %>
 <% else %>
     <%= "no" %>
 <% end %>
 </p><br>
 <p>The customer response regarding Analytics:<br>
-<%= @partner_analytics_reports %>
+<% if @partner_analytics_reports==0 %>
+    <%= "yes" %>
+<% else %>
+    <%= "no" %>
+<% end %>
 </p><br>
-<p>The customer's response regarding brand management:<br>
-<%= @partner_brand_management %>
-</p>
+<p>The customer response regarding brand management:<br>
+<% if @partner_brand_management==0 %>
+    <%= "yes" %>
+<% else %>
+    <%= "no" %>
+<% end %>
+</p><br>
 
