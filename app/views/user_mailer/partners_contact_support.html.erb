@@ -25,10 +25,12 @@ The Partner is located Here:<br>
 <% end %>
 </p><br>
 <p>The customer response regarding brand management:<br>
-<% if @partner_brand_management.to_i==0 %>
+<% if @partner_brand_management.to_i==1 %>
     <%= "yes" %>
+    <%= @partner_brand_management %>
 <% else %>
     <%= "no" %>
+    <%= @partner_brand_management %>
 <% end %>
 </p><br>
 
