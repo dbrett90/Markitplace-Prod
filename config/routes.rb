@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/contact', to: 'static_pages#contact'
   post '/contact', to: 'static_pages#create'
   get '/partner-information', to: 'static_pages#partners'
+  post '/partner-information', to: 'static_pages#partners_create'
   get  '/signup',  to: 'users#new'
   post '/signup',  to: 'users#create'
   get    '/login',   to: 'sessions#new'

@@ -16,4 +16,8 @@ class StaticPagesController < ApplicationController
     redirect_to contact_url
     flash[:success] = "Your message has been received. We will be in contact shortly."
   end
+
+  def partners_create
+    UserMailer.partners_contact_support(params[:partners][:partner_name], params[:partners][:partner_email], params[:partners][:partner_location], params[:partners][:partner_food_type],params[:partners][:partner_post_offering],params[:partners][:partner_analytics],params[:partners][:partner_brand_management])
+  end
 end
