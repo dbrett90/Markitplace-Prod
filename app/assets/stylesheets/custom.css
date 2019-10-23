@@ -8,6 +8,23 @@
   border: 1px solid #5cb85c;
 }
 
+input[type=checkbox]
+{
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(1); /* IE */
+  -moz-transform: scale(1); /* FF */
+  -webkit-transform: scale(1); /* Safari and Chrome */
+  -o-transform: scale(1); /* Opera */
+  transform: scale(1);
+}
+
+/* Might want to wrap a span around your checkbox text */
+.checkboxtext
+{
+  /* Checkbox text */
+  display: inline;
+}
+
 .btn-sizing{
   -moz-box-sizing: content-box; /* or `border-box` */
   -webkit-box-sizing: content-box;
