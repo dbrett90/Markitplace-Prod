@@ -11,7 +11,11 @@ The Partner is located Here:<br>
 <%= @partner_cuisine%>
 </p>
 <p>The customer's response regarding posting to the site:<br>
-<%= @partner_post_offerings %>
+<% if @partner_post_offerings==1 %>
+    They want to post to the platform!
+<% else %>
+    They don't want to post
+<% end>
 </p><br>
 <p>The customer's response regarding Analytics:<br>
 <%= @partner_analytics_reports %>
