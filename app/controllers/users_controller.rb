@@ -52,9 +52,12 @@ class UsersController < ApplicationController
   end
 
   def business_or_customer_create
-    @select_output = params[:business_or_customer][:business_or_customer_select]
-    flash[:success] = @select_output
-    redirect_to partner_information_url
+    select_output = params[:business_or_customer][:business_or_customer_select]
+    if select_output == "Purchase Meal Kits"
+      redirect_to signup_url
+    else
+      redirect_to signup_secure_url
+    end
   end
 
   private

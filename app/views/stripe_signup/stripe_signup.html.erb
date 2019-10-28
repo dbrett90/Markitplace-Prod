@@ -1,0 +1,17 @@
+#stripe_token = ca_FX0EKPNDzWlcxcjjUNnxNAhUa0cjuVBI'
+<% provide(:title, "Business or Customer") %>
+<div class='container'>
+  <div class="row topspace-lg justify-content-center">
+    <div class= "col-12">
+      <h1 style = "text-align:center">Sign up - Securely Link Information</h1>
+    </div>
+    <div class="card col-md-6 col-md-offset-3">
+      <div class="card-body placeholder">
+      <p class="subtext-gray pb-1" style="font-size:14px">Please click the button
+      below to start the partner sign-up process</p><br>
+      <%= link_to "Partner Secure Sign Up", "https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_FX0EKPNDzWlcxcjjUNnxNAhUa0cjuVBI&scope=read_write", class: "btn btn-outline-success jumbo-button" %>
+      
+      </div>
+    </div>
+   </div>
+</div>

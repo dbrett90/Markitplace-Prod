@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post '/partner-information', to: 'static_pages#partners_create'
   get '/signup-info', to: 'users#business_or_customer'
   post '/signup-info', to: 'users#business_or_customer_create'
+  get '/signup-secure', to: 'stripe_signup#stripe_signup'
   get  '/signup',  to: 'users#new'
   post '/signup',  to: 'users#create'
   get    '/login',   to: 'sessions#new'
