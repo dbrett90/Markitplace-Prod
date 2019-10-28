@@ -25,6 +25,10 @@ input[type=checkbox]
   display: inline;
 }
 
+.dropdown-style{
+  appearance: none;
+}
+
 .btn-sizing{
   -moz-box-sizing: content-box; /* or `border-box` */
   -webkit-box-sizing: content-box;

@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   post '/contact', to: 'static_pages#create'
   get '/partner-information', to: 'static_pages#partners'
   post '/partner-information', to: 'static_pages#partners_create'
+  get '/signup-info', to: 'users#business_or_customer'
+  post '/signup-info', to: 'users#business_or_customer_create'
   get  '/signup',  to: 'users#new'
   post '/signup',  to: 'users#create'
   get    '/login',   to: 'sessions#new'

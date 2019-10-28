@@ -47,6 +47,15 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  #This is to determine the type of user when first creating
+  def business_or_customer
+  end
+
+  def business_or_customer_create
+    #@select_output = params[:business_or_customer][:business_or_customer_select]
+    redirect_to partner_information_url
+  end
+
   private
 
   def user_params
