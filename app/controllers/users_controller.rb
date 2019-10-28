@@ -52,7 +52,8 @@ class UsersController < ApplicationController
   end
 
   def business_or_customer_create
-    #@select_output = params[:business_or_customer][:business_or_customer_select]
+    @select_output = params[:business_or_customer][:business_or_customer_select]
+    flash[:success] = @select_output
     redirect_to partner_information_url
   end
 
