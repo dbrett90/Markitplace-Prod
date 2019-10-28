@@ -56,7 +56,7 @@ class UsersController < ApplicationController
     if select_output == "Purchase Meal Kits"
       redirect_to signup_url
     else
-      redirect_to signup_secure_url
+      redirect_to "https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_FX0EKPNDzWlcxcjjUNnxNAhUa0cjuVBI&scope=read_write"
     end
   end
 
