@@ -58,7 +58,8 @@ class UsersController < ApplicationController
     #affect the output of this controller. Binary Value
     if select_output == "Purchase Meal Kits"
       redirect_to signup_url
-      flash[:success] = Stripe.api_key
+      # For some reason the stripe.api_key is not going through. Need to debug
+      # flash[:success] = Stripe.api_key
     else
       redirect_to "https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_FX0EKPNDzWlcxcjjUNnxNAhUa0cjuVBI&scope=read_write"
       #Attempting to retrieve customer info from controller
