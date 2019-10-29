@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_29_012949) do
+ActiveRecord::Schema.define(version: 2019_10_29_194114) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(version: 2019_07_29_012949) do
     t.datetime "activated_at"
     t.string "reset_digest"
     t.datetime "reset_sent_at"
+    t.string "stripe_id"
+    t.string "stripe_subscription_id"
+    t.string "card_last4"
+    t.integer "card_exp_month"
+    t.integer "card_exp_year"
+    t.string "card_type"
+    t.boolean "subscribed"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

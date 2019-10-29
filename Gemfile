@@ -63,6 +63,13 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+#Added Gems
+gem 'devise'
+gem 'bulma-rails'
+gem 'sidekiq'
+gem 'stripe'
+gem 'simple_form'
+
 group :test do
   gem 'rails-controller-testing', '1.0.2'
   gem 'minitest',                 '5.11.3'
