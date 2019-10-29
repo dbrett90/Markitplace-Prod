@@ -61,12 +61,12 @@ class UsersController < ApplicationController
     else
       redirect_to "https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_FX0EKPNDzWlcxcjjUNnxNAhUa0cjuVBI&scope=read_write"
       #Attempting to retrieve customer info from controller
-      response = Stripe::OAuth.token({
-        grant_type: 'authorization_code',
-        code: 'ca_FX0EKPNDzWlcxcjjUNnxNAhUa0cjuVBI'
-      })
-      connected_account_id = response.stripe_user_id
-      flash[:success] = connected_account_id
+      # response = Stripe::OAuth.token({
+      #   grant_type: 'authorization_code',
+      #   code: 'ca_FX0EKPNDzWlcxcjjUNnxNAhUa0cjuVBI'
+      # })
+      # connected_account_id = response.stripe_user_id
+      # flash[:success] = connected_account_id
     end
   end
 
