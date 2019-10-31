@@ -53,23 +53,23 @@ class UsersController < ApplicationController
 
   def business_or_customer_create
     select_output = params[:business_or_customer][:business_or_customer_select]
-    # Stripe.api_key = Rails.application.credentials.test.stripe_secret_key
+    Stripe.api_key = Rails.application.credentials.stripe_api_key
     #Make sure the "Purchase Meal Kits" is not changed in the view as it will
     #affect the output of this controller. Binary Value
     if select_output == "Purchase Meal Kits"
       redirect_to signup_url
       # For some reason the stripe.api_key is not going through. Need to debug
-      # flash[:success] = Stripe.api_key
+      #flash[:success] = Stripe.api_key
     else
       redirect_to "https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_FX0EKPNDzWlcxcjjUNnxNAhUa0cjuVBI&scope=read_write"
       #Attempting to retrieve customer info from controller
-      # Stripe.api_key = Rails.application.credentials.stripe_secret_key
-      # response = Stripe::OAuth.token({
-      #   grant_type: 'authorization_code',
-      #   code: 'ca_FX0EKPNDzWlcxcjjUNnxNAhUa0cjuVBI'
-      # })
-      # connected_account_id = response.stripe_user_id
-      # flash[:success] = connected_account_id
+      #Note that we're also going to store plan_id in in credentials folder
+      response = Stripe::OAuth.token({
+        grant_type: 'authorization_code',
+        code: 'ca_FX0EKPNDzWlcxcjjUNnxNAhUa0cjuVBI'
+      })
+      connected_account_id = response.stripe_user_id
+      flash[:success] = connected_account_id
     end
   end
 
