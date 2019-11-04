@@ -62,13 +62,9 @@ class UsersController < ApplicationController
       flash[:success] = Stripe.api_key
     else
       redirect_to "https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_FX0EKPNDzWlcxcjjUNnxNAhUa0cjuVBI&scope=read_write"
-      # stripe_auth_code = params[:code]
-      # response = Stripe::OAuth.token({
-      #   grant_type: 'authorization_code',
-      #   code: stripe_auth_code
-      # })
-      # connected_account_id = response.stripe_user_id
-      # flash[:success] = stripe_auth_code
+      #Make a call for a post request
+      stripe_callback(Stripe.api_key)
+      flash[:success] = "Function Call made successfully"
     end
   end
 
