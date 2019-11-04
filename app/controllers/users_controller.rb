@@ -66,7 +66,8 @@ class UsersController < ApplicationController
       # flash[:success] = request.params
       #stripe_callback(Stripe.api_key)
     end
-    flash[:success] = request.original_url
+    #orignial_url will just give you the base url
+    flash[:success] = request.referrer
   end
 
   private
