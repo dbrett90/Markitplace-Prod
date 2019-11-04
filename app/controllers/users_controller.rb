@@ -73,14 +73,14 @@ class UsersController < ApplicationController
   def stripe_callback(api_key)
       #Attempting to retrieve customer info from stripe after they connect
       #Note that we're also going to store plan_id in in credentials folder
-      stripe_auth_code = params[:code]
+      stripe_auth_code = params[:authenticity_token]
 
       response = Stripe::OAuth.token({
         grant_type: 'authorization_code',
         code: stripe_auth_code
       })
       connected_account_id = response.stripe_user_id
-      flash[:success] = stripe_auth_code
+      flash[:success] = connected_account_id
   end
 
   def user_params
