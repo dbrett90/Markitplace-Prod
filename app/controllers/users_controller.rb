@@ -53,14 +53,14 @@ class UsersController < ApplicationController
 
   def business_or_customer_create
     select_output = params[:business_or_customer][:business_or_customer_select]
+    Stripe.api_key = Rails.application.credentials.stripe_api_key
     #Make sure the "Purchase Meal Kits" is not changed in the view as it will
     #affect the output of this controller. Binary Value
     if select_output == "Purchase Meal Kits"
       redirect_to signup_url
       # For some reason the stripe.api_key is not going through. Need to debug
-      #flash[:success] = Stripe.api_key
+      flash[:success] = Stripe.api_key
     else
-      Stripe.api_key = Rails.application.credentials.stripe_api_key
       redirect_to "https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_FX0EKPNDzWlcxcjjUNnxNAhUa0cjuVBI&scope=read_write"
       stripe_auth_code = params[:code]
       response = Stripe::OAuth.token({
