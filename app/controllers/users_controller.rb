@@ -62,7 +62,7 @@ class UsersController < ApplicationController
       #flash[:success] = Stripe.api_key
     else
       redirect_to "https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_FX0EKPNDzWlcxcjjUNnxNAhUa0cjuVBI&scope=read_write"
-      code = params[:redirect_uri]
+      code = params[:code]
       flash[:success] = code
       #Attempting to retrieve customer info from stripe after they connect
       #Note that we're also going to store plan_id in in credentials folder
