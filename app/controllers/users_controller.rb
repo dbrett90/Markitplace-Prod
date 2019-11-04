@@ -66,7 +66,7 @@ class UsersController < ApplicationController
       # flash[:success] = request.params
       #stripe_callback(Stripe.api_key)
     end
-    flash[:success] = request.params
+    flash[:success] = request.original_url
   end
 
   private
