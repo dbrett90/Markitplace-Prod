@@ -53,7 +53,7 @@ class UsersController < ApplicationController
 
   def business_or_customer_create
     select_output = params[:business_or_customer][:business_or_customer_select]
-    Stripe.api_key = Rails.application.credentials.development.stripe_api_key
+    Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
     #Make sure the "Purchase Meal Kits" is not changed in the view as it will
     #affect the output of this controller. Binary Value
     if select_output == "Purchase Meal Kits"
