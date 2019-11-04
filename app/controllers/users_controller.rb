@@ -63,8 +63,8 @@ class UsersController < ApplicationController
     else
       redirect_to "https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_FX0EKPNDzWlcxcjjUNnxNAhUa0cjuVBI&scope=read_write"
       #Make a call for a post request
-      #stripe_callback(Stripe.api_key)
-      flash[:success] = params
+      stripe_callback(Stripe.api_key)
+      # flash[:success] = params
     end
   end
 
