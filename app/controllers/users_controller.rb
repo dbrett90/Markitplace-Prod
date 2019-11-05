@@ -69,7 +69,7 @@ class UsersController < ApplicationController
     #orignial_url will just give you the base url
     flash[:danger] = request.query_string
     flash[:success] = request.url
-    flash[:notice] = request.get?
+    flash[:notice] = request.post?
   end
 
   private
