@@ -1,6 +1,8 @@
 class StaticPagesController < ApplicationController
   def home
-    flash[:success] = params
+    Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
+    auth_code = params[:code]
+    stripe_callback(stripe.api_key, auth_code)
   end
 
   def our_team
@@ -23,4 +25,18 @@ class StaticPagesController < ApplicationController
     redirect_to partner_information_url
     flash[:success] = "Your message has been received. We will be in contact shortly."
   end
+end
+
+private
+
+def stripe_callback(api_key, code)
+  #Attempting to retrieve customer info from stripe after they connect
+  #Note that we're also going to store plan_id in in credentials folder
+
+  response = Stripe::OAuth.token({
+    grant_type: 'authorization_code',
+    code: code
+  })
+  connected_account_id = response.stripe_user_id
+  flash[:success] = connected_account_id
 end
