@@ -63,13 +63,11 @@ class UsersController < ApplicationController
     else
       redirect_to "https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_FX0EKPNDzWlcxcjjUNnxNAhUa0cjuVBI&scope=read_write"
       #Make a call for a post request
-      # flash[:success] = request.params
+      # Note nothing good for path_params, query_params or request_params
       #stripe_callback(Stripe.api_key)
     end
     #orignial_url will just give you the base url
-    flash[:success] = request.path_parameters
-    flash[:danger] = request.query_parameters
-    flash[:notice] = request.request_parameters
+    flash[:success] = request.headers["code"]
   end
 
   private
