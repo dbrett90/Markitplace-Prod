@@ -67,7 +67,9 @@ class UsersController < ApplicationController
       #stripe_callback(Stripe.api_key)
     end
     #orignial_url will just give you the base url
-    flash[:success] = request.path_parameters + request.query_parameters + request.request parameters
+    flash[:success] = request.path_parameters
+    flash[:danger] = request.query_parameters
+    flash[:notice] = request.request_parameters
   end
 
   private
