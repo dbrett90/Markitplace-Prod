@@ -65,7 +65,7 @@ class UsersController < ApplicationController
       #Make a call for a post request
       # Note nothing good for path_params, query_params or request_params
       #stripe_callback(Stripe.api_key)
-      flash[:danger] = request.query_parameters
+      flash[:danger] = request.query_string
     end
     #orignial_url will just give you the base url
     flash[:success] = request.query_parameters
