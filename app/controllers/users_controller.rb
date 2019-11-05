@@ -67,8 +67,8 @@ class UsersController < ApplicationController
   def grab_stripe_details
     Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
     auth_code = params[:code]
-    render 'static_pages/home'
     flash[:success] = Stripe.api_key
+    render 'static_pages/home'
     # auth_code = params[:code]
     # response = Stripe::OAuth.token({
     #   grant_type: 'authorization_code',
