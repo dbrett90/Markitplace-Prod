@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'password_resets/edit'
   get 'sessions/new'
   root 'static_pages#home'
-  get '/home-signup-successful', to: 'stripe_signup#new'
+  get '/home-signup-successful', to: 'stripe_connect_user#new'
   get '/our-team', to: 'static_pages#our_team'
   get '/contact', to: 'static_pages#contact'
   post '/contact', to: 'static_pages#create'
