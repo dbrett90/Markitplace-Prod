@@ -58,17 +58,17 @@ class UsersController < ApplicationController
     if select_output == "Purchase Meal Kits"
       redirect_to signup_url
       # For some reason the stripe.api_key is not going through. Need to debug
-      flash[:success] = Stripe.api_key
+      # flash[:success] = Stripe.api_key
     else
       redirect_to "https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_FX0EKPNDzWlcxcjjUNnxNAhUa0cjuVBI&scope=read_write"
     end
   end
 
   def grab_stripe_details
-    # Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
-    flash[:success] = params[:code]
-    flash[:danger] = params
+    Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
+    auth_code = params[:code]
     render 'static_pages/home'
+    flash[:success] = Stripe.api_key
     # auth_code = params[:code]
     # response = Stripe::OAuth.token({
     #   grant_type: 'authorization_code',
