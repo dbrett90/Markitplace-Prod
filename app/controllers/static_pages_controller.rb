@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
+    flash[:success] = params
   end
 
   def our_team
