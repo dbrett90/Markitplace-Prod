@@ -53,7 +53,6 @@ class UsersController < ApplicationController
 
   def business_or_customer_create
     select_output = params[:business_or_customer][:business_or_customer_select]
-    Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
     #Make sure the "Purchase Meal Kits" is not changed in the view as it will
     #affect the output of this controller. Binary Value
     if select_output == "Purchase Meal Kits"
@@ -65,8 +64,20 @@ class UsersController < ApplicationController
     end
   end
 
-  private
+  def grab_stripe_details
+    render 'static_pages/home'
+    Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
+    auth_code = params[:code]
+    response = Stripe::OAuth.token({
+      grant_type: 'authorization_code',
+      code: auth_code
+    })
+    connected_account_id = response.stripe_user_id
+    flash[:success] = connected_account_id
+    flash[:danger] = auth_code
+  end
 
+  private
 
   def user_params
     params.require(:user).permit(:name, :email, :password,

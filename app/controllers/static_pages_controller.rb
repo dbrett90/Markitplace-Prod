@@ -1,8 +1,5 @@
 class StaticPagesController < ApplicationController
   def home
-    Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
-    auth_code = params[:code]
-    stripe_callback(stripe.api_key, auth_code)
   end
 
   def our_team
@@ -27,16 +24,3 @@ class StaticPagesController < ApplicationController
   end
 end
 
-private
-
-def stripe_callback(api_key, code)
-  #Attempting to retrieve customer info from stripe after they connect
-  #Note that we're also going to store plan_id in in credentials folder
-  Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
-  response = Stripe::OAuth.token({
-    grant_type: 'authorization_code',
-    code: code
-  })
-  connected_account_id = response.stripe_user_id
-  flash[:success] = connected_account_id
-end
