@@ -32,7 +32,7 @@ private
 def stripe_callback(api_key, code)
   #Attempting to retrieve customer info from stripe after they connect
   #Note that we're also going to store plan_id in in credentials folder
-
+  Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
   response = Stripe::OAuth.token({
     grant_type: 'authorization_code',
     code: code
