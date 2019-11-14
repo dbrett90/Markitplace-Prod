@@ -12,9 +12,13 @@ class StripeConnectUserController < ApplicationController
         @stripe_connect_user = StripeConnectUser.new(connected_account_id, dummy_email)
         @stripe_connect_user.save
         #Check that you have the connected account ID
-        flash[:success] = connected_account_id
-        flash[:danger] = auth_code
+        #flash[:success] = connected_account_id
+        #flash[:danger] = auth_code
         flash[:notice] = "User has been saved successfully"
         render 'static_pages/home' 
+    end
+
+    def user_params
+      params.require(:stripe_connect_user).permit(:email, :stripe_connect_id)
     end
 end
