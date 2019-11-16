@@ -13,9 +13,10 @@ class StripeConnectUserController < ApplicationController
         @stripe_connect_user.stripe_id = connected_account_id
         @stripe_connect_user.stripe_email = dummy_email 
         @stripe_connect_user.save
-        #Check that you have the connected account ID
-        flash[:notice] = connected_account_id
-        flash[:danger] = auth_code
+        #Check that you have the connected account ID - remove flash statements when
+        #Not needed
+        # flash[:notice] = connected_account_id
+        # flash[:danger] = auth_code
         flash[:success] = "Your stripe account has now been linked!"
         render 'static_pages/home' 
     end

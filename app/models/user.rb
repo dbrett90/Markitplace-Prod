@@ -35,6 +35,11 @@ class User < ApplicationRecord
         update_attribute(:remember_digest, nil)
     end
 
+    #This is a method specific to stripe transaction processing. Check if user has a stripe subscription ID
+    def subscribed?
+        stripe_subscription_id?
+    end
+
 
     #Activation Methods. Refactored code moving 
     #from controller into the model
