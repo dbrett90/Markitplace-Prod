@@ -26,6 +26,6 @@ class StripeConnectUserController < ApplicationController
     private
 
     def user_params
-      params.require(:stripe_connect_user).permit(:email, :stripe_connect_id)
+      params.require(:stripe_connect_user).permit(:stripe_email, :stripe_connect_id)
     end
 end
