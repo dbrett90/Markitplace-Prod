@@ -9,14 +9,20 @@ class StripeConnectUserController < ApplicationController
         })
         dummy_email = "danbrett107@gmail.com"
         connected_account_id = response.stripe_user_id
-        @stripe_connect_user = StripeConnectUser.create(connected_account_id, dummy_email)
+        @stripe_connect_user = StripeConnectUser.new
+        @stripe_connect_user.stripe_id = connected_account_id
+        @stripe_connect_user.stripe_email = dummy_email 
         @stripe_connect_user.save
+        # @stripe_connect_user.save
         #Check that you have the connected account ID
         #flash[:success] = connected_account_id
         #flash[:danger] = auth_code
         flash[:notice] = "User has been saved successfully"
         render 'static_pages/home' 
     end
+
+    #Need to updae the user params field here
+    #Reflect that we want a stripe ID and Stripe Email
     private
 
     def user_params
