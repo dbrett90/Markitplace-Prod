@@ -14,6 +14,7 @@ class StripeConnectUserController < ApplicationController
           returnObject = testCustomer.email
         else
           returnObject = "VALUE IS NULL"
+        end
         @stripe_connect_user = StripeConnectUser.new
         @stripe_connect_user.stripe_id = connected_account_id
         @stripe_connect_user.stripe_email = dummy_email 
