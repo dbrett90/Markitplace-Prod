@@ -9,6 +9,7 @@ class StripeConnectUserController < ApplicationController
         })
         dummy_email = "danbrett107@gmail.com"
         connected_account_id = response.stripe_user_id
+        testCustomer = Stripe::Customer.retrieve(connected_account_id)
         @stripe_connect_user = StripeConnectUser.new
         @stripe_connect_user.stripe_id = connected_account_id
         @stripe_connect_user.stripe_email = dummy_email 
@@ -17,7 +18,8 @@ class StripeConnectUserController < ApplicationController
         #Not needed
         # flash[:notice] = connected_account_id
         # flash[:danger] = auth_code
-        flash[:success] = "Your stripe account has now been linked!"
+        flash[:success] = "Your stripe account has now been linked! An email with instructions has been sent"
+        flash[:danger] = testCustomer.class.to_s
         render 'static_pages/home' 
     end
 
