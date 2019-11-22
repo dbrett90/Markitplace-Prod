@@ -10,7 +10,10 @@ class StripeConnectUserController < ApplicationController
         dummy_email = "danbrett107@gmail.com"
         connected_account_id = response.stripe_user_id
         testCustomer = Stripe::Account.retrieve(connected_account_id)
-        returnObject = testCustomer.email
+        if testCustomer.email?
+          returnObject = testCustomer.email
+        else
+          returnObject = "VALUE IS NULL"
         @stripe_connect_user = StripeConnectUser.new
         @stripe_connect_user.stripe_id = connected_account_id
         @stripe_connect_user.stripe_email = dummy_email 
