@@ -1,5 +1,6 @@
 class StripeSubscriptionsController < ApplicationController
     # Build in the subscriptions functionality to purchase meal kits
+    before_action :logged_in_user, only: [:edit, :update, :destory]
     before_action :authenticate_user!, except: [:new, :create]
 
     def new
