@@ -114,6 +114,10 @@ li:hover {
   color: green;
 }
 
+.dropdown-style{
+  outline: 1px black
+}
+
 
 #nameBrand {
   width: 100%;

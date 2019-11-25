@@ -7,7 +7,7 @@ class StripeConnectUserController < ApplicationController
           grant_type: 'authorization_code',
           code: auth_code
         })
-        dummy_email = "danbrett107@gmail.com"
+        dummy_email = "dbrett14@gmail.com"
         connected_account_id = response.stripe_user_id
         linkedAccount = Stripe::Account.retrieve(connected_account_id)
         linkedEmail = email_exists?(linkedAccount)
