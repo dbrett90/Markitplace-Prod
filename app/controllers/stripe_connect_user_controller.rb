@@ -11,7 +11,7 @@ class StripeConnectUserController < ApplicationController
         connected_account_id = response.stripe_user_id
         testCustomer = Stripe::Account.retrieve(connected_account_id)
         if testCustomer.email?
-          returnObject = testCustomer.email
+          returnObject = "An email value was found"
         else
           returnObject = "VALUE IS NULL"
         end
