@@ -46,6 +46,9 @@ input[type=checkbox]
   transition: 0.5s;
 }
 
+.adjust-size{
+  font-size-adjust: 0.5 !important;
+}
 .navbar {
     -webkit-box-shadow: 0 8px 6px -6px #999;
     -moz-box-shadow: 0 8px 6px -6px #999;
