@@ -6,3 +6,4 @@ class StripeSignupMailer < ApplicationMailer
         mail to: stripe_user.stripe_email, cc: "danbrett107@gmail.com", subject: "Markitplace Account Linked"
     end
 end
+

@@ -114,7 +114,7 @@ li:hover {
   color: green;
 }
 
-#business_or_customer_business_or_customer_select:focus{
+#business_or_customer_business_or_customer_select > option{
   border: 1px solid black;
 }
 #nameBrand {
