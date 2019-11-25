@@ -85,6 +85,7 @@ input[type=checkbox]
   font-weight: bold;
   font-size: 14px;
   letter-spacing: 1.5px;
+  margin-right: 10px;
 }
 
 /* GET RID OF REALLY ANNOYING OUTLINE AROUND LINKS */
@@ -114,6 +115,7 @@ li:hover {
   color: green;
 }
 
+/*Work on this for outlining the dropdown */
 #business_or_customer_business_or_customer_select option{
   border: 1px solid black;
 }
