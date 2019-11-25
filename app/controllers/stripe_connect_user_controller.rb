@@ -9,8 +9,8 @@ class StripeConnectUserController < ApplicationController
         })
         dummy_email = "danbrett107@gmail.com"
         connected_account_id = response.stripe_user_id
-        testCustomer = Stripe::Account.retrieve(connected_account_id)
-        returnObject = email_exists?(testCustomer)
+        linkedAccount = Stripe::Account.retrieve(connected_account_id)
+        linkedEmail = email_exists?(linkedAccount)
         @stripe_connect_user = StripeConnectUser.new
         @stripe_connect_user.stripe_id = connected_account_id
         @stripe_connect_user.stripe_email = dummy_email 
@@ -20,7 +20,8 @@ class StripeConnectUserController < ApplicationController
         # flash[:notice] = connected_account_id
         # flash[:danger] = auth_code
         flash[:success] = "Your stripe account has now been linked! An email with instructions has been sent"
-        flash[:danger] = returnObject
+        #Use this to test that you're pulling the correct email
+        # flash[:danger] = returnObject
         render 'static_pages/home' 
     end
 
@@ -34,7 +35,7 @@ class StripeConnectUserController < ApplicationController
 
     def email_exists?(accountObject)
       if accountObject.email.nil? | accountObject.object.empty?
-        returnObject = "An email value was NOT found"
+        returnObject = "dbrett14@gmail.com"
       else
         accountObject = testCustomer.email
       end
