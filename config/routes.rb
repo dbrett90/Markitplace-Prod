@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
+  get '/mealkits', to: 'stripe_subscriptions#index'
   resources :users
   resources :stripe_connect_users
   resources :stripe_subscriptions
