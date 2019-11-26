@@ -324,7 +324,6 @@ li:hover {
   background-image: -o-linear-gradient(top, #2da285 45%, #227a64 100%);
   background-image: linear-gradient(to bottom, #2da285 45%, #227a64 100%);
   background-repeat: repeat-x;
-  filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ff2da285', endColorstr='#ff227a64', GradientType=0)
 }
 
 .ribbon.green:before,
