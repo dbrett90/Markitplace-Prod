@@ -1,16 +1,13 @@
-<% provide(:title, "Home") %>
-<div class="homepage">
-    <div class="homepage-2019">
-        <section class="jumbotron jumbotron-fluid home-jumbotron">
+<% provide(:title, "Meal Kits") %>
+<div class="producct-homepage">
+    <div class="product-homepage-2019">
+        <section class="jumbotron jumbotron-fluid jumbotron-products">
           <div class="container">
             <div class="row text-left">
               <div class="col-12 col-lg-6 justify-content-center" id="jumbo-textbox">
                 <h1 class="homepage-text shadow-underscore jumbo-maintext">THE RIGHT MEAL KIT AT THE BEST AVAILABLE PRICE</h1>
                 <h3 class ="homepage-text pt-3 pb-3" id ="jumbo-subtext">We partner with prep companies to offer
                 you the greatest variety of kits at the most competitive prices.</h3>
-                <% if !logged_in? %>
-                  <%= link_to "Sign up now!", signup_path, class: "btn btn-outline-success jumbo-button" %>
-                <% end %>
               </div>
             </div>
           </div>
