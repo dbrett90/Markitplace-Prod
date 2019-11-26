@@ -230,6 +230,39 @@ li:hover {
   /* letter-spacing: 1.5px; */
 }
 
+/* ***************** */
+/* ****Products Page**** */
+/* ***************** */
+
+.textOverlay {
+  opacity: 0;
+}
+
+.see-cooking:hover .textOverlay{
+  opacity: 1;
+  transition: .5s ease;
+}
+
+.see-cooking:hover .hover-gray{
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+
+.showText{
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 33%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.showText:hover{
+  -webkit-filter: inherit;
+  filter: inherit;
+}
 
 /* ***************** */
 /* ****FOOTERS**** */
