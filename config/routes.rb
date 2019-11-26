@@ -16,11 +16,11 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-  get '/mealkits', to: 'pricing#index'
+  get '/mealkits', to: 'products#index'
   resources :users
   resources :stripe_connect_users
   resources :stripe_subscriptions
-  resources :pricing, only: [:index]
+  resources :products, only: [:index]
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :contact_emails, only: [:edit]
