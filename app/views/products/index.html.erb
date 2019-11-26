@@ -12,60 +12,19 @@
             </div>
           </div>
         </section>
-        <div class="container" id="our-process">
-          <div class="row pb-3">
-            <div class="col-12 pb-4">
-              <section>
-                <p class="text-center subtext-gray pb-1">
-                  Markitplace works with major meal kit suppliers to provide you the widest array of food options. Our partners then deliver
-                  organic ingredients and recipes so that you can cook delicious meals.
-                </p>
-                <h2 class="text-center" style = "color: #595959">A delicious meal is only a few steps away</h2>
-              </section>
+        <div class="container" id="product-offerings">
+          <div class="row">
+            <div class="col-4">
+            <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text"SAMPLE TEST.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+            </div>
             </div>
           </div>
-            <div class="row pb-3 justify-content-center">
-              <div class="col-md-8">
-                <h3>Choose</h3>
-                <p>
-                    Choose the type of meal you want and see the best offerings available from our partners. By seeing all available
-                    prices you'll get the meal you want for an affordable price. Pick the type of plan you want and your delivery day and
-                    you'll have the ingredients for your meal sent directly to your door.
-                </p>
-              </div>
-              <div class="col-md-4">
-                <%= image_tag("choose.png", class: "img-fluid") %>
-              </div>
-            </div>
-            <div class="row pb-3">
-              <div class="col-md-4">
-                <%= image_tag("unpack.png", class: "img-fluid") %>
-              </div>
-              <div class="col-md-8">
-                <h3>Unpack</h3>
-                <p>
-                    Unpack your box with premium, pre-prepared and certifiably fresh ingredients. Simply follow the included
-                    instructions and you'll have a delicious, home cooked meal fully prepared.
-                </p>
-              </div>
-            </div>
-            <div class = "row pb-3">
-              <div class="col-md-8">
-                <h3>Eat & Enjoy!</h3>
-                <p>
-                    Enjoy restaurant-quality food in the comfort of your home. With new, affordable recipes
-                    every week you'll have access to delicious offerings whenever you want.
-                </p>
-              </div>
-              <div class="col-md-4">
-                <%= image_tag("enjoy.png", class: "img-fluid") %>
-              </div>
-              <div class="col-12 text-center pt-3">
-                <% if !logged_in? %>
-                  <%= link_to "GET STARTED!", signup_path, class: "btn btn-success jumbo-button" %>
-                <% end %>
-              </div>
-            </div>
         </div>
         <section class="jumbotron jumbotron-fluid" id="jumbotron-food">
           <div class="container container-fluid">
