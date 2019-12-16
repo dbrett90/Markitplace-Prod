@@ -28,6 +28,7 @@ class StripeConnectUserController < ApplicationController
       params.require(:stripe_connect_user).permit(:stripe_email, :stripe_connect_id)
     end
 
+    #Will need to update this when pushing to production
     def email_exists?(accountObject)
       if accountObject.email.nil? | accountObject.object.empty?
         returnObject = "dbrett14@gmail.com"

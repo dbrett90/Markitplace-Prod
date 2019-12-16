@@ -20,10 +20,20 @@ Rails.application.routes.draw do
   resources :users
   resources :stripe_connect_users
   #Below routes specifically for product library
+  # resources :products, only: [:index]
+  #little bit of logic to determine where you should go
+  resources :products do
+    member do
+      put "add", to: "products#library"
+      put "remove", to: "products#library"
+    end
+  end
+  #Look into the pricing controller needed here?
+  # Resources pricing, only: [:index]
+  resources :products
+  resources :product_subscription_library, only: [:index] 
   resources :stripe_subscriptions
-  resources :products, only: [:index] 
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :contact_emails, only: [:edit]
-  resources :product_subscription_library, only: [:index]
 end

@@ -1,7 +1,9 @@
 class StripeSubscriptionsController < ApplicationController
     # Build in the subscriptions functionality to purchase meal kits
+    #May want to think about a different layout so user can't leave the page
+    #Get rid of the navbar for example
     before_action :logged_in_user, only: [:edit, :update, :destory]
-    before_action :authenticate_user!, except: [:new, :create]
+    # before_action :authenticate_user!, except: [:new, :create]
 
     def new
         if user_signed_in? && current_user.subscribed?

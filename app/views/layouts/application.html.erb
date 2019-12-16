@@ -9,7 +9,7 @@
     <%= csp_meta_tag %>
     <%= javascript_include_tag 'application', 'https://js.stripe.com/v3/', 'data-turbolinks-track': 'false' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= tag :meta, name: "stripe-key", content: Rails.application.credentials.stripe_publishable_key %>
+    <%= tag :meta, name: "stripe-key", content: Rails.application.credentials.development[:stripe_publishable_key] %>
     <%= render 'layouts/shim' %>
   </head>
 

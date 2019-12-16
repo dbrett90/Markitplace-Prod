@@ -34,8 +34,8 @@ before_action :logged_in_user, except: [:index, :show]
  def create
     #Essentially trying to replicate devise here.
     #Let's confirm that this actually pulls the current user. 
-    current_user = User.find(params[:id])
-    @product = current_user.books.build(product_params)
+    # current_user = User.find(params[:id])
+    @product = current_user.products.build(product_params)
 
    respond_to do |format|
      if @product.save
@@ -85,7 +85,7 @@ before_action :logged_in_user, except: [:index, :show]
         redirect_to root_path, notice: "#{@product.name} was removed from your active subscriptions. you will no longer be charged"
     else
         #type is missing, nothing should happen
-        redirect_to book_path(@product), notice: "Looks like something went wrong! Use the contact form if this continues to cause issues."
+        redirect_to product_path(@product), notice: "Looks like something went wrong! Use the contact form if this continues to cause issues."
  end
 
  private
