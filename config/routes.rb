@@ -19,9 +19,11 @@ Rails.application.routes.draw do
   get '/mealkits', to: 'products#index'
   resources :users
   resources :stripe_connect_users
+  #Below routes specifically for product library
   resources :stripe_subscriptions
-  resources :products, only: [:index]
+  resources :products, only: [:index] 
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :contact_emails, only: [:edit]
+  resources :product_subscription_library, only: [:index]
 end

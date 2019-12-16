@@ -8,6 +8,10 @@ class User < ApplicationRecord
     validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
     has_secure_password
     validates :password, presence: true, length: { minimum: 8 }, format: { with: VALID_PASSWORD_REGEX }, allow_nil: true
+    #Specific to a user's prod_subscription_libray
+    has_many :products, dependent: :destroy
+    has_many :product_subscription_libraries
+    has_many :product_subscription_library_additions, through: :product_subscription_libraries, source: :products
 
     #Authentication Helper Methods
     def User.digest(string)
@@ -46,6 +50,8 @@ class User < ApplicationRecord
     def activate 
         update_columns(activated: true, activated_at: Time.zone.now)
     end
+
+
 
     def send_activation_email
         UserMailer.account_activation(self).deliver_now
