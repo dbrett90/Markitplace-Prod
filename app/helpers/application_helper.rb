@@ -9,7 +9,7 @@ module ApplicationHelper
   end
 
   def current_user_subscribed?
-    logged_in_user? && current_user.subscribed?
+    logged_in? && current_user.subscribed?
   end  
 
   #Check to see if the current user has been assigned admin privileges
