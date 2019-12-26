@@ -30,7 +30,9 @@ class PasswordResetsController < ApplicationController
       log_in @user
       @user.update_attribute(:reset_digest, nil)
       flash[:success] = "Password has been reset."
-      redirect_to @user
+      #Changing this line
+      #redirect_to @user
+      redirect_to root_url
     else
       render 'edit'                                     # Case (2) - Failed Update due to invalid Password. NOTE: MUST UPDATE THE REGEX FOR THIS FOR MORE STRINGENT PASSWORD REQUIREMENTS
     end
