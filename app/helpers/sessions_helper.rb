@@ -13,7 +13,12 @@ module SessionsHelper
               log_in user
               @current_user = user
             end
-          end
+        end
+    end
+
+    #Tweak this function to catch if a user is subscribed... currently not working
+    def user_subscribed?
+      logged_in? && current_user.subscribed == true
     end
 
     #Method returns true if given user is the current one. 

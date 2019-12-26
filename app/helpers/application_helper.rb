@@ -14,7 +14,7 @@ module ApplicationHelper
 
   #Check to see if the current user has been assigned admin privileges
   def admin?
-    logged_in_user? && current_user.admin?
+    logged_in? && current_user.admin?
   end
   
   # def subscribed?
