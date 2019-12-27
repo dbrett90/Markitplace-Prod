@@ -11,7 +11,7 @@ class User < ApplicationRecord
     #Specific to a user's prod_subscription_libray
     has_many :products, dependent: :destroy
     has_many :product_subscription_libraries
-    has_many :product_subscription_library_additions, through: :product_subscription_libraries, source: :products
+    has_many :product_subscription_library_additions, through: :product_subscription_libraries, source: :product
 
     #Authentication Helper Methods
     def User.digest(string)
