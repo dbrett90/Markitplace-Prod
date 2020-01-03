@@ -4,13 +4,16 @@ class ProductsController < ApplicationController
     #books which I don't think we want. Need to make a decision about how much to include
  #Updated to allow users to access a library
  before_action :set_product, only: [:show, :edit, :update, :destroy, :library]
+ before_action :logged_in?, except: [:index, :show]
 #  before_action :authenticate_user!, except: [:index, :show]
 #This is what the Devise action basically does.
-before_action :logged_in_user, except: [:index, :show]
+#before_action :logged_in_user, except: [:index, :show]
 
  # GET /products
  def index
    @products = Product.all
+   #Test that products is an array that you can access
+   flash[:notice] = @products.count
  end
 
  # GET /products/1
@@ -21,7 +24,7 @@ before_action :logged_in_user, except: [:index, :show]
  # GET /products/new
  def new
     #What is te current_user equivalent? See if this works
-    current_user = User.find(params[:id])
+    #current_user = User.find(params[:id])
     @product = current_user.products.build
  end
 
@@ -31,17 +34,18 @@ before_action :logged_in_user, except: [:index, :show]
 
  # POST /products
  # POST /books.json
+#Essentially trying to replicate devise here.
+#Let's confirm that this actually pulls the current user. 
  def create
-    #Essentially trying to replicate devise here.
-    #Let's confirm that this actually pulls the current user. 
-    # current_user = User.find(params[:id])
     @product = current_user.products.build(product_params)
-
    respond_to do |format|
      if @product.save
+       flash[:successful] = "PRODUCT WAS SUCCESSFULLY CREATED"
        format.html { redirect_to @product, notice: 'Product was successfully created.' }
        format.json { render :show, status: :created, location: @product }
      else
+       flash[:danger] = "SOME TYPE OF ISSUE WITH CREATION"
+       flash[:notice] = @product.errors.full_messages
        format.html { render :new }
        format.json { render json: @product.errors, status: :unprocessable_entity }
      end
@@ -86,21 +90,21 @@ before_action :logged_in_user, except: [:index, :show]
     else
         #type is missing, nothing should happen
         redirect_to product_path(@product), notice: "Looks like something went wrong! Use the contact form if this continues to cause issues."
+    end
  end
 
  private
    # Use callbacks to share common setup or constraints between actions.
+   #Grab the current product
    def set_product
-    #Grab the current product
     @product = Product.find(params[:id])
    end
 
    # Never trust parameters from the scary internet, only allow the white list through.
-   def product_params
     #Put something in here about the stripe_id or unnecessary?
     #make sure to review the entire controller
-     params.require(:product).permit(:name, :description, :price, :thumbnail, :user_id)
+   def product_params
+     params.require(:product).permit(:name, :description, :created_at, :updated_at, :product_id, :kit_type, :partner_name, :calories, :protein, :carbs, :fats, :thumbnail)
    end
- end
 end
 

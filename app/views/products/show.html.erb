@@ -1,0 +1,16 @@
+<% provide(:title, 'Show Product') %>
+
+<div class='container'>
+  <div class="row topspace-lg justify-content-center">
+    <div class="card" style="width: 35rem">
+      <h1 style = "text-align:center"> <%=@product.name %> </h1>
+      <%= image_tag @product.thumbnail, class: "card-img-top" %>
+      <div class="card-body text-center">
+        <p><%= @product.description %></p>
+        <% if current_user.admin? %>
+          <%= link_to 'Edit Product', edit_product_path(@product) %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

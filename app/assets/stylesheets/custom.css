@@ -238,6 +238,10 @@ li:hover {
   opacity: 0;
 }
 
+#overwrite-card-text{
+  font-size: 12px;
+}
+
 .see-cooking:hover .textOverlay{
   opacity: 1;
   transition: .5s ease;

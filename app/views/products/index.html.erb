@@ -13,113 +13,27 @@
           </div>
         </section>
         <div class="container" id="product-offerings">
-          <div class="row pb-3 ml-3">
-                <div class="col-4">
-                    <div class="card see-cooking" style="width: 18rem;">
-                        <div class="ribbon-wrapper">
-                            <div class="ribbon green">Keto</div>
-                        </div>
-                        <%= image_tag('mealkit1b.jpg', class:"card-img-top hover-gray") %>
-                        <div class="textOverlay">
-                            <div class="showText">See what&#39;s cooking</div>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Keto Grain & Veggie Bowl</h5>
-                            <h6 class="card-subtitle mb-2 text-muted text-center">Brett&#39;s Best</h6>
-                            <p class="card-text text-center"280 Calories, 43g Protein, 9g Carbs, 8g Fats</p>
-                            <a href="#" class="btn btn-success text-center">Add to Cart</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="card see-cooking" style="width: 18rem;">
-                        <div class="ribbon-wrapper">
-                            <div class="ribbon green">Paleo</div>
-                        </div>
-                        <%= image_tag('plate1b.jpg', class:"card-img-top hover-gray") %>
-                        <div class="card-body">
-                        <div class="textOverlay">
-                            <div class="showText">See what&#39;s cooking</div>
-                        </div>
-                            <h5 class="card-title text-center">Steak, Eggs & Kale</h5>
-                            <h6 class="card-subtitle mb-2 text-muted text-center">Brett&#39;s Best</h6>
-                            <p class="card-text text-center"800 Calories, 100g Protein, 20g Carbs, 15g Fats</p>
-                            <a href="#" class="btn btn-success text-center">Add to Cart</a>
+            <div class="row ml-3">
+                <%  @products.each do |product| %>
+                    <div class="col-4 pb-3">
+                        <div class="card see-cooking" style="width: 18rem;">
+                            <div class="ribbon-wrapper">
+                                <div class="ribbon green"> <%= product.kit_type %> </div>
+                            </div>
+                            <%= image_tag product.thumbnail, class:"card-img-top hover-gray" %>
+                            <div class="textOverlay">
+                                <div class="showText">See what&#39;s cooking</div>
+                            </div>
+                            <div class="card-body text-center">
+                                <h5 class="card-title text-center"> <%= product.name %></h5>
+                                <h6 class="card-subtitle mb-2 text-muted text-center"> <%= product.partner_name %></h6>
+                                <p class="card-text text-center" id="overwrite-card-text"> <%= product.calories %> Calories <%= product.protein %>g Protein, <%= product.carbs %> Carbs, <%=product.fats %>g Fats </p>
+                                <%= link_to "More Info", product_path(product), class:"btn btn-success" %>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-4">
-                    <div class="card see-cooking" style="width: 18rem;">
-                        <div class="ribbon-wrapper">
-                            <div class="ribbon green">Paleo</div>
-                        </div>
-                        <%= image_tag('plate4b.jpg', class:"card-img-top hover-gray") %>
-                        <div class="textOverlay">
-                            <div class="showText">See what&#39;s cooking</div>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Beef and Spinach Tacos</h5>
-                            <h6 class="card-subtitle mb-2 text-muted text-center">Brett&#39;s Best</h6>
-                            <p class="card-text text-center"600 Calories, 31g Protein, 12g Carbs, 12g Fats.</p>
-                            <a href="#" class="btn btn-success text-center">Add to Cart</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row pb-3 ml-3">
-                <div class="col-4">
-                    <div class="card see-cooking" style="width: 18rem;">
-                        <div class="ribbon-wrapper">
-                            <div class="ribbon green">Vegan</div>
-                        </div>
-                        <%= image_tag('plate7b.jpg', class:"card-img-top hover-gray") %>
-                        <div class="textOverlay">
-                            <div class="showText">See what&#39;s cooking</div>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Quinoa and Vegetables</h5>
-                            <h6 class="card-subtitle mb-2 text-muted text-center">Bob&#39;s Barn</h6>
-                            <p class="card-text text-center"280 Calories, 43g Protein, 9g Carbs, 8g Fats.</p>
-                            <a href="#" class="btn btn-success text-center">Add to Cart</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="card see-cooking" style="width: 18rem;">
-                        <div class="ribbon-wrapper">
-                            <div class="ribbon green">Vegan</div>
-                        </div>
-                        <%= image_tag('plate8b.jpg', class:"card-img-top hover-gray") %>
-                        <div class="textOverlay">
-                            <div class="showText">See what&#39;s cooking</div>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Mexican Street Corn</h5>
-                            <h6 class="card-subtitle mb-2 text-muted text-center">Bob&#39;s Barn</h6>
-                            <p class="card-text text-center"280 Calories, 43g Protein, 9g Carbs, 8g Fats.</p>
-                            <a href="#" class="btn btn-success text-center">Add to Cart</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="card see-cooking" style="width: 18rem;">
-                        <div class="ribbon-wrapper">
-                            <div class="ribbon green">Paleo</div>
-                        </div>
-                        <%= image_tag('plate10b.jpg', class:"card-img-top hover-gray") %>
-                        <div class="textOverlay">
-                            <div class="showText">See what&#39;s cooking</div>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Chicken & Avocado</h5>
-                            <h6 class="card-subtitle mb-2 text-muted text-center">Bob&#39;s Barn</h6>
-                            <p class="card-text text-center"280 Calories, 43g Protein, 9g Carbs, 8g Fats.</p>
-                            <a href="#" class="btn btn-success text-center">Add to Cart</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <% end %>
+            <div>
         </div>
     </div>
-  </div>
 </div>
