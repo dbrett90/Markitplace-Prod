@@ -7,8 +7,8 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     #Solely for my benefit to see how many users I have in the database
-    # @users = User.all 
-    # flash[:notice] = "Number of users is:", @users.count
+    @users = User.all 
+    flash[:notice] = "Number of users is:", @users.count
   end
 
   def show
