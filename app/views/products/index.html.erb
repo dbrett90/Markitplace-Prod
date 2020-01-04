@@ -16,8 +16,6 @@
             <div class="row ml-3">
                 <%  @products.each do |product| %>
                     <div class="col-4 pb-3">
-                        <p> SEEING IF THE PRODUCT EXISTS: <%= product.thumbnail.attached? %> </p>
-                        <p> SEEING IF THE PRODUCT URL EXISTS: <%= url_for(product.thumbnail) %> </p>
                         <div class="card see-cooking" style="width: 18rem;">
                             <div class="ribbon-wrapper">
                                 <div class="ribbon green"> <%= product.kit_type %> </div>
