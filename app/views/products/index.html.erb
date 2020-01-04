@@ -20,7 +20,7 @@
                             <div class="ribbon-wrapper">
                                 <div class="ribbon green"> <%= product.kit_type %> </div>
                             </div>
-                            <p> SEEING IS THE PRODUCT EXISTS: <%= product.thumbnail.exists? %> </p>
+                            <p> SEEING IS THE PRODUCT EXISTS: <%= product.thumbnail.attached? %> </p>
                             <%= image_tag product.thumbnail, class:"card-img-top hover-gray" %>
                             <div class="textOverlay">
                                 <div class="showText">See what&#39;s cooking</div>
