@@ -20,6 +20,7 @@
                             <div class="ribbon-wrapper">
                                 <div class="ribbon green"> <%= product.kit_type %> </div>
                             </div>
+                            flash[:notice] = <%= product.thumbnail.exists? %>
                             <%= image_tag product.thumbnail, class:"card-img-top hover-gray" %>
                             <div class="textOverlay">
                                 <div class="showText">See what&#39;s cooking</div>
