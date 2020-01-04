@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
  def index
    @products = Product.all
    #Test that products is an array that you can access
-   flash[:notice] = @products.count
+   flash[:notice] = "Number of Products: ", @products.count
  end
 
  # GET /products/1

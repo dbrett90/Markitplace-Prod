@@ -14,13 +14,13 @@
 #              activated: true,
 #              activated_at: Time.zone.now)
 
-# User.create!(name:  "Daniel Brett",
-#              email: "dbrett13@gmail.com",
-#              password:              "Hello#123!",
-#              password_confirmation: "Hello#123!",
-#              admin: false, 
-#              activated: true,
-#              activated_at: Time.zone.now)
+User.create!(name:  "John Smith",
+             email: "dbrett15@gmail.com",
+             password:              "Hello#123!",
+             password_confirmation: "Hello#123!",
+             admin: false, 
+             activated: true,
+             activated_at: Time.zone.now)
 
 # 99.times do |n|
 #   name  = Faker::Name.name
