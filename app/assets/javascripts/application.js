@@ -13,7 +13,8 @@
 //YOU REMOVED TURBOLINKS BECAUSE OF NAV BAR ISSUES, MAY NEED TO ADD LATER
 //= require rails-ujs
 //= require activestorage
-//= require_tree .
 //= require jquery3
 //= require jquery_ujs
 //= require bootstrap-sprockets
+//= require turbolinks
+//= require_tree .
