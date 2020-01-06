@@ -1,24 +1,27 @@
-function toggleDropdown(element) {
-    var dropdown = new Dropdown(element);
-    dropdown.toggle();
-  }
+// function toggleDropdown(element) {
+//     var dropdown = new Dropdown(element);
+//     dropdown.toggle();
+//   }
   
-  document.addEventListener('turbolinks:load', function() {
-    var dropdown_buttons = document.querySelectorAll('[data-toggle="dropdown"]');
+//   document.addEventListener('turbolinks:load', function() {
+//     var dropdown_buttons = document.querySelectorAll('[data-toggle="dropdown"]');
   
-    dropdown_buttons.forEach(function(element) {
-      element.addEventListener('click', function(event) {
-        event.preventDefault();
+//     dropdown_buttons.forEach(function(element) {
+//       element.addEventListener('click', function(event) {
+//         event.preventDefault();
   
-        toggleDropdown(this);
-      });
-    });
-  });
+//         toggleDropdown(this);
+//       });
+//     });
+//   });
 
-  document.addEventListener('turbolinks:before-visit', function() {
-    var $navbar = $('.navbar-collapse');
+//   document.addEventListener('turbolinks:before-visit', function() {
+//     var $navbar = $('.navbar-collapse');
     
-    if ( $navbar.hasClass('in') ) {
-      $navbar.collapse('hide');
-    }
-  });
+//     if ( $navbar.hasClass('in') ) {
+//       $navbar.collapse('hide');
+//     }
+//   });
+
+// $(document).on "turbolinks:load", ->
+//   $('.dropdown-toggle').dropdown()
