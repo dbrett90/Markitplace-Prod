@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= javascript_include_tag 'application', 'https://js.stripe.com/v3/', 'data-turbolinks-track': 'false' %>
+    <%= javascript_include_tag 'application', 'https://js.stripe.com/v3/', 'data-turbolinks-track': 'false', 'data-turbolinks-eval' => false %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= tag :meta, name: "stripe-key", content: Rails.application.credentials.development[:stripe_publishable_key] %>
     <%= render 'layouts/shim' %>
