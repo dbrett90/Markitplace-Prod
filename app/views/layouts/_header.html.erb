@@ -27,7 +27,7 @@
             <ul class="navbar-nav">
                 <% if logged_in? %>
                     <li class= "nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" style="color:black" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
+                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" style="color:black" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-turbolinks="false">Account</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <% if user_subscribed? %>
                                 <%= link_to "Profile", current_user, class: "dropdown-item nav-link" %>
