@@ -43,6 +43,7 @@ class User < ApplicationRecord
     #Think this might be incorrect
     def is_subscribed?
         subscribed?
+        #May need to change this to reflect the addition of a stripe ID
         #stripe_subscription_id?
     end
 

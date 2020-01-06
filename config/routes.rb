@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   # Resources pricing, only: [:index]
   resources :products
   resources :product_subscription_library, only: [:index] 
-  resources :stripe_subscriptions
+  resources :subscriptions
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :contact_emails, only: [:edit]
