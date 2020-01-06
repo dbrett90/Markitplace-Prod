@@ -42,7 +42,8 @@ class User < ApplicationRecord
     #This is a method specific to stripe transaction processing. Check if user has a stripe subscription ID
     #Think this might be incorrect
     def subscribed?
-        stripe_subscription_id?
+        subscribed?
+        #stripe_subscription_id?
     end
 
 
