@@ -23,5 +23,6 @@
 //     }
 //   });
 
-// $(document).on "turbolinks:load", ->
-//   $('.dropdown-toggle').dropdown()
+$(document).on("turbolinks:load", function() {
+    $('.dropdown-toggle').dropdown()
+});
