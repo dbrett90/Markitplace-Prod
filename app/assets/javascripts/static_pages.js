@@ -14,3 +14,11 @@ function toggleDropdown(element) {
       });
     });
   });
+
+  document.addEventListener('turbolinks:before-visit', function() {
+    var $navbar = $('.navbar-collapse');
+    
+    if ( $navbar.hasClass('in') ) {
+      $navbar.collapse('hide');
+    }
+  });
