@@ -314,7 +314,7 @@ li:hover {
   border-right: 3px solid transparent;
   position: absolute;
   bottom: -3px;
-  z-index: 9999;
+  z-index: 1020;
 }
 
 .ribbon:before {
@@ -331,7 +331,7 @@ li:hover {
   background-image: -o-linear-gradient(top, #2da285 45%, #227a64 100%);
   background-image: linear-gradient(to bottom, #2da285 45%, #227a64 100%);
   background-repeat: repeat-x;
-  z-index: 9999;
+  z-index: 1020;
 }
 
 .ribbon.green:before,
