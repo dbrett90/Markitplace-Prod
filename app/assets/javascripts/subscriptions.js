@@ -1,16 +1,16 @@
 document.addEventListener("turbolinks:load", function() {
-    const publishableKey = document.querySelector("meta[name='stripe-key']").content;
-    const stripe = Stripe(publishableKey);
+    var publishableKey = document.querySelector("meta[name='stripe-key']").content;
+    var stripe = Stripe(publishableKey);
 
     //Establish the elements & Associated Styles
-    const elements = stripe.elements({
+    var elements = stripe.elements({
         fonts: [{
             cssSrc: "https://rsms.me/inter/inter.css"
         }],
         locale: "auto"
     });
 
-    const style = {
+    var style = {
         base: {
             color: "#32325d",
             fontWeight: 500,
@@ -28,12 +28,12 @@ document.addEventListener("turbolinks:load", function() {
         }
     };
 
-    const card = elements.create('card', { style });
+    var card = elements.create('card', { style });
     //Need to check to see if the card exists elsewhere. Add this in at a later date.
     card.mount("#card-element");
 
     card.addEventListener('change', ({error}) => {
-        const displayError = document.getElementById('card-errors');
+        var displayError = document.getElementById('card-errors');
         if (error) {
             displayError.textContent = error.message;
         }
@@ -42,14 +42,14 @@ document.addEventListener("turbolinks:load", function() {
         }
     });
 
-    const form = document.getElementById('payment-form');
+    var form = document.getElementById('payment-form');
     form.addEventListener('submit', async(event) => {
         event.preventDefault();
 
-        const{token, error } = await stripe.createToken(card);
+        var{token, error } = await stripe.createToken(card);
 
         if (error) {
-            const errorElement = document.getElementById('card-errors');
+            var errorElement = document.getElementById('card-errors');
             errorElement.textContent = error.message;
         }
         else{
@@ -57,9 +57,9 @@ document.addEventListener("turbolinks:load", function() {
         }
     });
 
-    const stripeTokenHandler = (token) => {
-        const form = document.getElementById('payment-form');
-        const hiddenInput = document.createElement('input');
+    var stripeTokenHandler = (token) => {
+        var form = document.getElementById('payment-form');
+        var hiddenInput = document.createElement('input');
         hiddenInput.setAttribute('type', 'hidden');
         hiddenInput.setAttribute('name', 'stripeToken');
         hiddenInput.setAttribute('value', token.id);
