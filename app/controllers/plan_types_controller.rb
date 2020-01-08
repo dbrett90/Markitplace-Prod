@@ -28,7 +28,6 @@ class PlanTypesController < ApplicationController
     @plan_types = PlanType.all
     @plan_type = current_user.plan_types.build
     flash[:notice] = "Number of Plans: ", @plan_types.count
-    flash[:danger] = "TEST"
  end
 
  # GET /plans/1/edit
