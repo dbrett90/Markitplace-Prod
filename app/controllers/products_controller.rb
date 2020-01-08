@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
     #books which I don't think we want. Need to make a decision about how much to include
  #Updated to allow users to access a library
  before_action :set_product, only: [:show, :edit, :update, :destroy, :library]
- before_action :logged_in?, except: [:index, :show, :plans]
+ before_action :logged_in?, except: [:index, :show]
 #  before_action :authenticate_user!, except: [:index, :show]
 #This is what the Devise action basically does.
 #before_action :logged_in_user, except: [:index, :show]
@@ -106,7 +106,7 @@ class ProductsController < ApplicationController
     #Put something in here about the stripe_id or unnecessary?
     #make sure to review the entire controller
    def product_params
-     params.require(:product).permit(:name, :description, :created_at, :updated_at, :product_id, :kit_type, :partner_name, :calories, :protein, :carbs, :fats, :thumbnail)
+     params.require(:product).permit(:name, :description, :created_at, :updated_at, :product_id, :kit_type, :partner_name, :calories, :protein, :carbs, :fats, :thumbnail, :user_id)
    end
 end
 
