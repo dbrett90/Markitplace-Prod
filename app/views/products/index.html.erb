@@ -15,27 +15,29 @@
         <div class="container" id="product-offerings">
             <div class="row ml-3">
                 <%  @products.each do |product| %>
-                    <div class="col-4 pb-3">
-                        <div class="card see-cooking" style="width: 18rem;">
-                            <div class="ribbon-wrapper">
-                                <div class="ribbon green"> <%= product.plan_type %> </div>
-                            </div>
-                            <%= image_tag product.thumbnail.variant(resize: "450x450"), class:"card-img-top hover-gray" %>
-                            <div class="textOverlay">
-                                <div class="showText">More Info</div>
-                            </div>
-                            <div class="card-body text-center">
-                                <h5 class="card-title text-center"> <%= product.name %></h5>
-                                <h6 class="card-subtitle mb-2 text-muted text-center"> <%= product.partner_name %></h6>
-                                <p class="card-text text-center" id="overwrite-card-text"> <%= product.calories %> Calories <%= product.protein %>g Protein, <%= product.carbs %> Carbs, <%=product.fats %>g Fats </p>
-                                <% if current_user.is_subscribed? %>
-                                    <%= link_to "More Info", product_path(product), class:"btn btn-success" %>
-                                <% else %>
-                                    <%= link_to "Else Conditional", product_path(product), class:"btn btn-success" %>
-                                <% end %>  
+                    <% if product.name.downcase == @plan_type.name.downcase %>
+                        <div class="col-4 pb-3">
+                            <div class="card see-cooking" style="width: 18rem;">
+                                <div class="ribbon-wrapper">
+                                    <div class="ribbon green"> <%= product.plan_type %> </div>
+                                </div>
+                                <%= image_tag product.thumbnail.variant(resize: "450x450"), class:"card-img-top hover-gray" %>
+                                <div class="textOverlay">
+                                    <div class="showText">More Info</div>
+                                </div>
+                                <div class="card-body text-center">
+                                    <h5 class="card-title text-center"> <%= product.name %></h5>
+                                    <h6 class="card-subtitle mb-2 text-muted text-center"> <%= product.partner_name %></h6>
+                                    <p class="card-text text-center" id="overwrite-card-text"> <%= product.calories %> Calories <%= product.protein %>g Protein, <%= product.carbs %> Carbs, <%=product.fats %>g Fats </p>
+                                    <% if current_user.is_subscribed? %>
+                                        <%= link_to "More Info", product_path(product), class:"btn btn-success" %>
+                                    <% else %>
+                                        <%= link_to "Else Conditional", product_path(product), class:"btn btn-success" %>
+                                    <% end %>  
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    <% end %>
                 <% end %>
             <div>
         </div>
