@@ -17,8 +17,8 @@ class User < ApplicationRecord
 
     #Updated to refelect plan association.. Each user associated with a PLAN
     has_many :plan_types, dependent: :destroy
-    has_many plan_subscription_libraries
-    has_many plan_subscription_library_additions, through: :plan_subscription_libraries, source: :plan_type
+    has_many :plan_subscription_libraries
+    has_many :plan_subscription_library_additions, through: :plan_subscription_libraries, source: :plan_type
 
 
     #Authentication Helper Methods
