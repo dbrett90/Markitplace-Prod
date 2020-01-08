@@ -42,7 +42,7 @@ class PlanTypesController < ApplicationController
      if @plan_type.save
        flash[:successful] = "PLAN TYPE WAS SUCCESSFULLY CREATED"
        format.html { redirect_to @plan_type, notice: 'PLAN TYPE was successfully created.' }
-       format.json { render :show, status: :created, location: @plan_type }
+       format.json { render :index, status: :created, location: @plan_type }
      else
        flash[:danger] = "SOME TYPE OF ISSUE WITH CREATION"
        flash[:notice] = @plan_type.errors.full_messages
