@@ -10,7 +10,7 @@
         <% if current_user.admin? %>
           <%= link_to 'Edit Product', edit_product_path(@product) %>
         <% end %>
-        <%= link_to "Add to Cart", product_path(product), class:"btn btn-success" %>
+        <%= link_to "Add to Cart", product_path(@product), class:"btn btn-success" %>
       </div>
     </div>
   </div>
