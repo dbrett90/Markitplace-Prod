@@ -25,7 +25,6 @@ class PlanTypesController < ApplicationController
  # GET /plans/new
  def new
     #What is te current_user equivalent? See if this works
-    #current_user = User.find(params[:id])
     @plan_type = current_user.plan_types.build
  end
 
