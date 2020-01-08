@@ -106,7 +106,7 @@ class ProductsController < ApplicationController
     #Put something in here about the stripe_id or unnecessary?
     #make sure to review the entire controller
    def product_params
-     params.require(:product).permit(:name, :description, :created_at, :updated_at, :product_id, :kit_type :partner_name, :calories, :protein, :carbs, :fats, :thumbnail)
+     params.require(:product).permit(:name, :description, :created_at, :updated_at, :product_id, :kit_type, :partner_name, :calories, :protein, :carbs, :fats, :thumbnail)
    end
 end
 
