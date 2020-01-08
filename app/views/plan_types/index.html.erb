@@ -1,7 +1,7 @@
-<% provide(:title, "Meal Kits") %>
-<div class="product-homepage">
-    <div class="product-homepage-2019">
-        <section class="jumbotron jumbotron-fluid" id='jumbotron-products'>
+<% provide(:title, "Meal Kits Plans") %>
+<div class="plan-homepage">
+    <div class="plan-homepage-2019">
+        <section class="jumbotron jumbotron-fluid" id='jumbotron-plans'>
           <div class="container">
             <div class="row justify-content-end">
               <div class="col-12 col-lg-5 justify-content-end" id="jumbo-textbox">
@@ -12,22 +12,18 @@
             </div>
           </div>
         </section>
-        <div class="container" id="product-offerings">
+        <div class="container" id="plan-offerings">
             <div class="row ml-3">
-                <%  @products.each do |product| %>
+                <%  @plan_types.each do |plan_type| %>
                     <div class="col-4 pb-3">
                         <div class="card see-cooking" style="width: 18rem;">
-                            <div class="ribbon-wrapper">
-                                <div class="ribbon green"> <%= product.plan_type %> </div>
-                            </div>
                             <%= image_tag product.thumbnail.variant(resize: "450x450"), class:"card-img-top hover-gray" %>
                             <div class="textOverlay">
-                                <div class="showText">More Info</div>
+                                <div class="showText">See what&#39;s cooking</div>
                             </div>
                             <div class="card-body text-center">
-                                <h5 class="card-title text-center"> <%= product.name %></h5>
-                                <h6 class="card-subtitle mb-2 text-muted text-center"> <%= product.partner_name %></h6>
-                                <p class="card-text text-center" id="overwrite-card-text"> <%= product.calories %> Calories <%= product.protein %>g Protein, <%= product.carbs %> Carbs, <%=product.fats %>g Fats </p>
+                                <h5 class="card-title text-center"> <%= plan_type.name %></h5>
+                                <h6 class="card-subtitle mb-2 text-muted text-center"> <%= plan_type.description %></h6>
                                 <% if current_user.is_subscribed? %>
                                     <%= link_to "More Info", product_path(product), class:"btn btn-success" %>
                                 <% else %>

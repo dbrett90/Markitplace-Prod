@@ -8,10 +8,18 @@ class User < ApplicationRecord
     validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
     has_secure_password
     validates :password, presence: true, length: { minimum: 8 }, format: { with: VALID_PASSWORD_REGEX }, allow_nil: true
-    #Specific to a user's prod_subscription_libray
+
+    
+    #Specific to a user's prod_subscription_libray.. May need to remove this shit
     has_many :products, dependent: :destroy
     has_many :product_subscription_libraries
     has_many :product_subscription_library_additions, through: :product_subscription_libraries, source: :product
+
+    #Updated to refelect plan association.. Each user associated with a PLAN
+    has_many :plan_types, dependent: :destroy
+    has_many plan_subscripton_libraries
+    has_many plan_subscription_library_additions, through: :plan_subscription_libraries, source: :plan_type
+
 
     #Authentication Helper Methods
     def User.digest(string)

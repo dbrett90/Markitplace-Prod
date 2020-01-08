@@ -32,6 +32,18 @@ Rails.application.routes.draw do
   # Resources pricing, only: [:index]
   resources :products
   resources :product_subscription_library, only: [:index] 
+
+  ####MEAL KIT PLAN ROUTE SETUP######
+  resources :plan_types do
+    member do
+      put "add", to: "plan_types#library"
+      put "remove", to: "plan_types#library"
+    end
+  end
+  resources :plan_types 
+  resources :plan_subscription_library, only: [:index]
+
+  ######BASIC SETUP ROUTES#######
   resources :subscriptions
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]

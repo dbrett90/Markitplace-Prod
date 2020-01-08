@@ -1,0 +1,18 @@
+<%= form_for(@plan_type) do |f| %>
+    <p class="subtext-gray pb-1" style="font-size:14px">Only admins should be able to
+    access this page. Updating Plan Types </p>
+
+    <%= f.text_field :name, class: 'form-control', placeholder: "Name" %><br>
+
+    <%= f.text_field :description, class: 'form-control', placeholder: "Product Description" %><br>
+
+    <%= f.text_field :stripe_id, class: 'form-control', placeholder: "Stripe ID of Partner" %><br>
+
+    <%= f.label :thumbail do %>
+        <span class = 'field-label emphasis'> PLan Type Image </span><br>
+    <% end %><br>
+    <%= f.file_field :thumbnail, multiple: false %> <br>
+    <br>
+
+    <%= f.submit "Submit", class: "btn btn-success btn-block form-actions" %><br>
+<% end %>

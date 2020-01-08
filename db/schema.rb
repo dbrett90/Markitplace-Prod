@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_02_214002) do
+ActiveRecord::Schema.define(version: 2020_01_08_155523) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 2020_01_02_214002) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "plan_types", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "stripe_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "plan_id"
+  end
+
   create_table "product_subscription_libraries", force: :cascade do |t|
     t.integer "product_id"
     t.integer "user_id"
@@ -43,18 +53,15 @@ ActiveRecord::Schema.define(version: 2020_01_02_214002) do
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "stripe_id"
-    t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "product_id"
-    t.string "kit_type"
+    t.string "plan_type"
     t.string "partner_name"
     t.integer "calories"
     t.integer "protein"
     t.integer "carbs"
     t.integer "fats"
-    t.integer "user_id"
   end
 
   create_table "stripe_connect_users", force: :cascade do |t|
