@@ -25,7 +25,9 @@ class PlanTypesController < ApplicationController
  # GET /plans/new
  def new
     #What is te current_user equivalent? See if this works
+    @plan_types = PlanType.all
     @plan_type = current_user.plan_types.build
+    flash[:notice] = "Number of Plans: ", @plan_types.count
  end
 
  # GET /plans/1/edit
