@@ -41,23 +41,25 @@ class ProductsController < ApplicationController
 #Let's confirm that this actually pulls the current user. 
  def create
     @product = current_user.products.build(product_params)
+    flash[:warning] = @product.plan_type 
     #This is to link each of them together
     @plan_types = PlanType.all
     # flash[:success] = @plan_types.count
-    @plan_types.each do |plan_type|
-      if plan_type.name.downcase == @product.plan_type.downcase
-        # flash[:danger] = "PRODUCT", @product.plan_type
-        # flash[:success] = plan_type.name
-        # @product.plan_types << plan_type
-        flash[:warning] = @product.plan_types.count
-        # plan_type.products << @product
-      end
-    end
+    # @plan_types.each do |plan_type|
+    #   if plan_type.name.downcase == @product.plan_type.downcase
+    #     # flash[:danger] = "PRODUCT", @product.plan_type
+    #     # flash[:success] = plan_type.name
+    #     # @product.plan_types << plan_type
+    #     flash[:warning] = @product.plan_types.count
+    #     # plan_type.products << @product
+    #   end
+    # end
    respond_to do |format|
      if @product.save
        flash[:successful] = "PRODUCT WAS SUCCESSFULLY CREATED"
        format.html { redirect_to @product, notice: 'Product was successfully created.' }
        format.json { render :show, status: :created, location: @product }
+       flash[:warning] = "PRODUCT TYPE", @product.plan_type 
      else
        flash[:danger] = "SOME TYPE OF ISSUE WITH CREATION"
        flash[:notice] = @product.errors.full_messages
