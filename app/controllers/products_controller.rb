@@ -44,16 +44,16 @@ class ProductsController < ApplicationController
     flash[:warning] = @product.plan_type_name
     #This is to link each of them together
     @plan_types = PlanType.all
-    # flash[:success] = @plan_types.count
-    # @plan_types.each do |plan_type|
-    #   if plan_type.name.downcase == @product.plan_type.downcase
-    #     # flash[:danger] = "PRODUCT", @product.plan_type
-    #     # flash[:success] = plan_type.name
-    #     # @product.plan_types << plan_type
-    #     flash[:warning] = @product.plan_types.count
-    #     # plan_type.products << @product
-    #   end
-    # end
+    flash[:success] = @plan_types.count
+    @plan_types.each do |plan_type|
+      if plan_type.name.downcase == @product.plan_type.downcase
+        # flash[:danger] = "PRODUCT", @product.plan_type
+        # flash[:success] = plan_type.name
+        @product.plan_types << plan_type
+        #flash[:warning] = @product.plan_types.count
+        # plan_type.products << @product
+      end
+    end
    respond_to do |format|
      if @product.save
        flash[:successful] = "PRODUCT WAS SUCCESSFULLY CREATED"
@@ -125,7 +125,7 @@ class ProductsController < ApplicationController
     #Put something in here about the stripe_id or unnecessary?
     #make sure to review the entire controller
    def product_params
-     params.require(:product).permit(:name, :description, :created_at, :updated_at, :product_id, :plan_type_name, :partner_name, :calories, :protein, :carbs, :fats, :thumbnail, :user_id)
+     params.require(:product).permit(:name, :description, :created_at, :updated_at, :product_id, :plan_type_name, :partner_name, :calories, :protein, :carbs, :fats, :thumbnail, :user_id, plan_id)
    end
 end
 
