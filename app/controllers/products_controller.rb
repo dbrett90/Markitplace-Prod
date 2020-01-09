@@ -46,7 +46,7 @@ class ProductsController < ApplicationController
     @plan_types = PlanType.all
     flash[:success] = @plan_types.count
     @plan_types.each do |plan_type|
-      if plan_type.name.downcase == @product.plan_type.downcase
+      if plan_type.name.downcase == @product.plan_type_name.downcase
         # flash[:danger] = "PRODUCT", @product.plan_type
         # flash[:success] = plan_type.name
         @product.plan_types << plan_type
