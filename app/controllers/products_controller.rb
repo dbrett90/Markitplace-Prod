@@ -43,10 +43,11 @@ class ProductsController < ApplicationController
     @product = current_user.products.build(product_params)
     #This is to link each of them together
     @plan_types = PlanType.all
+    flash[:success] = @plan_types.count
     @plan_types.each do |plan_type|
       if plan_type.name == @product.plan_type
-        flash[:danger] = "PRODUCT", @product.plan_type
-        flash[:success] = plan_type.name
+        # flash[:danger] = "PRODUCT", @product.plan_type
+        # flash[:success] = plan_type.name
         # @product.plan_types << plan_type
         # plan_type.products << @product
       end
