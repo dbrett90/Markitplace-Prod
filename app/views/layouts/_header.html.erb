@@ -15,13 +15,14 @@
                         <li class= "nav-item dropdown" data-turbolinks="false">
                             <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" style="color:black" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  data-turbolinks="false">Meal Kits</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <%= link_to "View Options", mealkits_path, class: "dropdown-item nav-link" %>
+                                <%= link_to "View Options", plan_types_path, class: "dropdown-item nav-link" %>
+                                <%= link_to "Add Plan", new_plan_type_path, class: "dropdown-item nav-link" %>
                                 <%= link_to "Add Product", new_product_path, class: "dropdown-item nav-link" %> 
                     <% else %>
-                        <li class="nav-item active"><%= link_to "Meal Kits", mealkits_path, class: "nav-color nav-link" %><span class="sr-only">(current)</span></li> 
+                        <li class="nav-item active"><%= link_to "Meal Kits",plan_types_path, class: "nav-color nav-link" %><span class="sr-only">(current)</span></li> 
                     <% end %>
                 <% else %>
-                    <li class="nav-item active"><%= link_to "Meal Kits", mealkits_path, class: "nav-color nav-link" %><span class="sr-only">(current)</span></li> 
+                    <li class="nav-item active"><%= link_to "Meal Kits", plan_types_path, class: "nav-color nav-link" %><span class="sr-only">(current)</span></li> 
                 <% end %>
             </ul>
             <ul class="navbar-nav">
