@@ -44,10 +44,11 @@ class ProductsController < ApplicationController
     #This is to link each of them together
     @plan_types = PlanType.all
     @plan_types.each do |plan_type|
-      if plan_type.name == @product.plan_type.downcase
+      if plan_type.name == @product.plan_type
+        flash[:danger] = "PRODUCT", @product.plan_type
         flash[:success] = plan_type.name
-        @product.plan_types << plan_type
-        plan_type.products << @product
+        # @product.plan_types << plan_type
+        # plan_type.products << @product
       end
     end
    respond_to do |format|
