@@ -11,10 +11,10 @@ class PlanTypesController < ApplicationController
  # GET /plans
  def index
    @plan_types = PlanType.all
-   @products = Product.all
+  #  @products = Product.all
    #Test that products is an array that you can access
    flash[:notice] = "Number of Plans: ", @plan_types.count
-   flash[:danger] = "Number of Products", @products.count
+  #  flash[:danger] = "Number of Products", @products.count
  end
 
  # GET /plans/1
@@ -31,7 +31,9 @@ class PlanTypesController < ApplicationController
  end
 
  def show
-  @products = @plan_type.products
+  # @products = @plan_type.products
+  @products = Product.all
+  flash[:danger] = @plan_type.name
  end
 
 
