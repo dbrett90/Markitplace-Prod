@@ -44,7 +44,7 @@ class ProductsController < ApplicationController
     #This is to link each of them together
     @plan_types.each do |plan_type|
       if plan_type.name.downcase == @product.plan_type.downcase
-        @product << plan_type
+        @product.plan_types << plan_type
         plan_type.products << @product
       end
     end
