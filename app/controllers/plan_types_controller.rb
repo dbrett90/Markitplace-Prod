@@ -48,7 +48,7 @@ class PlanTypesController < ApplicationController
  def create
     @plan_type = current_user.plan_types.build(plan_type_params)
     @products = Product.all 
-    if @products.each do |product|
+    @products.each do |product|
       if product.plan_type_name.downcase == @plan_type.name.downcase 
         product.plan_type = @plan_type 
         @plan_type.products << product
