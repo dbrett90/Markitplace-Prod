@@ -42,6 +42,7 @@ class ProductsController < ApplicationController
  def create
     @product = current_user.products.build(product_params)
     #This is to link each of them together
+    @plan_types = PlanType.all
     @plan_types.each do |plan_type|
       if plan_type.name.downcase == @product.plan_type.downcase
         @product.plan_types << plan_type
