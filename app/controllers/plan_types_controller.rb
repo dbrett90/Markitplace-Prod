@@ -47,6 +47,13 @@ class PlanTypesController < ApplicationController
 #Let's confirm that this actually pulls the current user. 
  def create
     @plan_type = current_user.plan_types.build(plan_type_params)
+    @products = Product.all 
+    if @products.each do |product|
+      if product.plan_type_name.downcase == @plan_type.name.downcase 
+        product.plan_type = @plan_type 
+        @plan_type.products << product
+      end
+    end
    respond_to do |format|
      if @plan_type.save
        flash[:successful] = "PLAN TYPE WAS SUCCESSFULLY CREATED"
