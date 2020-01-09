@@ -45,10 +45,10 @@ class ProductsController < ApplicationController
     @plan_types = PlanType.all
     flash[:success] = @plan_types.count
     @plan_types.each do |plan_type|
-      if plan_type.name == @product.plan_type
+      if plan_type.name.downcase == @product.plan_type
         # flash[:danger] = "PRODUCT", @product.plan_type
         # flash[:success] = plan_type.name
-        # @product.plan_types << plan_type
+        @product.plan_types << plan_type
         # plan_type.products << @product
       end
     end
@@ -122,7 +122,7 @@ class ProductsController < ApplicationController
     #Put something in here about the stripe_id or unnecessary?
     #make sure to review the entire controller
    def product_params
-     params.require(:product).permit(:name, :description, :created_at, :updated_at, :product_id, :kit_type, :partner_name, :calories, :protein, :carbs, :fats, :thumbnail, :user_id, :plan_id)
+     params.require(:product).permit(:name, :description, :created_at, :updated_at, :product_id, :plan_type, :partner_name, :calories, :protein, :carbs, :fats, :thumbnail, :user_id, :plan_id)
    end
 end
 
