@@ -14,6 +14,7 @@ class ProductsController < ApplicationController
  # GET /products
  def index
    @products = Product.all
+   @plan_types = PlanType.all
    #Test that products is an array that you can access
    flash[:notice] = "Number of Products: ", @products.count
  end
@@ -40,6 +41,13 @@ class ProductsController < ApplicationController
 #Let's confirm that this actually pulls the current user. 
  def create
     @product = current_user.products.build(product_params)
+    #This is to link each of them together
+    @plan_types.each do |plan_type|
+      if plan_type.name.downcase == @product.plan_type.downcase
+        @product << plan_type
+        plan_type.products << @product
+      end
+    end
    respond_to do |format|
      if @product.save
        flash[:successful] = "PRODUCT WAS SUCCESSFULLY CREATED"
@@ -102,11 +110,15 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
    end
 
+   def set_plan
+    @plan_type = PlanType.find(params[:id])
+   end
+
    # Never trust parameters from the scary internet, only allow the white list through.
     #Put something in here about the stripe_id or unnecessary?
     #make sure to review the entire controller
    def product_params
-     params.require(:product).permit(:name, :description, :created_at, :updated_at, :product_id, :kit_type, :partner_name, :calories, :protein, :carbs, :fats, :thumbnail, :user_id)
+     params.require(:product).permit(:name, :description, :created_at, :updated_at, :product_id, :kit_type, :partner_name, :calories, :protein, :carbs, :fats, :thumbnail, :user_id, :plan_id)
    end
 end
 

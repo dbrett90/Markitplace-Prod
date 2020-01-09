@@ -11,5 +11,5 @@ class Product < ApplicationRecord
     has_many :added_products, through: :product_subscription_libraries, source: :user
     
     #Linking each product to a plan_type
-    #has_one :plan_type
+    belongs_to :plan_type
 end
