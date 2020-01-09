@@ -31,9 +31,9 @@ class PlanTypesController < ApplicationController
  end
 
  def show
-  # @products = @plan_type.products
-  @products = Product.all
-  flash[:danger] = @plan_type.name
+  @products = @plan_type.products
+  # @products = Product.all
+  # flash[:danger] = @plan_type.name
  end
 
 
