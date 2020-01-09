@@ -50,8 +50,7 @@ class ProductsController < ApplicationController
         # flash[:danger] = "PRODUCT", @product.plan_type
         # flash[:success] = plan_type.name
         @product.plan_type = plan_type
-        #flash[:warning] = @product.plan_types.count
-        # plan_type.products << @product
+        plan_type.products << @product
       end
     end
    respond_to do |format|

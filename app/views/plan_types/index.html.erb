@@ -25,7 +25,7 @@
                                 <h5 class="card-title text-center"> <%= plan_type.name %></h5>
                                 <h6 class="card-subtitle mb-2 text-muted text-center"> <%= plan_type.description %></h6>
                                 <% if current_user.is_subscribed? %>
-                                    <%= link_to "More Info", mealkits_path, class:"btn btn-success" %>
+                                    <%= link_to "More Info", mealkits_path(plan_type.products), class:"btn btn-success" %>
                                 <% else %>
                                     <%= link_to "Else Conditional", mealkits_path, class:"btn btn-success" %>
                                 <% end %>  
