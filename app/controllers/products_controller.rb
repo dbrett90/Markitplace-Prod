@@ -13,8 +13,10 @@ class ProductsController < ApplicationController
 #  end
  # GET /products
  def index
-   @products = Product.all
-   @plan_types = PlanType.all
+  #How to only show the products associated with the plan selected?
+   #@products = Product.all
+   @plan_type = PlanType.find(params[:id])
+   @products = @plan_type.products
    #Test that products is an array that you can access
    flash[:notice] = "Number of Products: ", @products.count
  end
@@ -116,7 +118,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
    end
 
-   def set_plan
+   def current_plan
     @plan_type = PlanType.find(params[:id])
    end
 
