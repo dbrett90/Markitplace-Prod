@@ -53,8 +53,8 @@ class PlanTypesController < ApplicationController
     end
    respond_to do |format|
      if @plan_type.save
-       flash[:successful] = "PLAN TYPE WAS SUCCESSFULLY CREATED"
-       format.html { redirect_to @plan_type, notice: 'PLAN TYPE was successfully created.' }
+       flash[:success] = "PLAN TYPE WAS SUCCESSFULLY CREATED"
+       format.html { redirect_to plan_types_path, notice: 'PLAN TYPE was successfully created.' }
        format.json { render :index, status: :created, location: @plan_type }
      else
        flash[:danger] = "SOME TYPE OF ISSUE WITH CREATION"
