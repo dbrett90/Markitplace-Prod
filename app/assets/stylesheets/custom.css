@@ -275,6 +275,12 @@ TOP WAS 33% */
   -webkit-filter: inherit;
   filter: inherit;
 }
+
+.see-cooking{
+  position: relative;
+}
+
+/* CSS FOR RIBBON ON VARIOUS CARDS */
 .ribbon-wrapper {
   width: 85px;
   height: 88px;
