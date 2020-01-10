@@ -24,7 +24,7 @@
                             <div class="card-body text-center">
                                 <h5 class="card-title text-center"> <%= plan_type.name %></h5>
                                 <h6 class="card-subtitle mb-2 text-muted text-center"> <%= plan_type.description %></h6>
-                                <% if current_user? %>
+                                <% if logged_in? %>
                                     <% if current_user.is_subscribed? %>
                                         <%= link_to "More Info", plan_type_path(plan_type), class:"btn btn-success" %>
                                     <% else %>
