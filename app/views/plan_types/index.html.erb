@@ -19,10 +19,10 @@
                         <div class="card see-cooking" style="width: 18rem;">
                             <%= link_to plan_type_path(plan_type) do %>
                                 <%= image_tag plan_type.thumbnail.variant(resize: "450x450"), class:"card-img-top hover-gray" %>
+                                <div class="textOverlay">
+                                    <div class="showText">See what&#39;s cooking</div>
+                                </div>
                             <% end %>
-                            <div class="textOverlay">
-                                <div class="showText">See what&#39;s cooking</div>
-                            </div>
                             <div class="card-body text-center">
                                 <h5 class="card-title text-center"> <%= plan_type.name %></h5>
                                 <h6 class="card-subtitle mb-2 text-muted text-center"> <%= plan_type.description %></h6>
