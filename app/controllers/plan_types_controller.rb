@@ -70,7 +70,7 @@ class PlanTypesController < ApplicationController
  def update
    respond_to do |format|
      if @plan_type.update(plan_type_params)
-       format.html { redirect_to @plan_type, notice: 'PLAN was successfully updated.' }
+       format.html { redirect_to plan_types_path, notice: 'PLAN was successfully updated.' }
        format.json { render :show, status: :ok, location: @plan_type }
      else
        format.html { render :edit }
