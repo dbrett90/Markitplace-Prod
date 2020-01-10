@@ -13,7 +13,7 @@ class PlanTypesController < ApplicationController
    @plan_types = PlanType.all
   #  @products = Product.all
    #Test that products is an array that you can access
-   flash[:notice] = "Number of Plans: ", @plan_types.count
+  #  flash[:notice] = "Number of Plans: ", @plan_types.count
   #  flash[:danger] = "Number of Products", @products.count
  end
 
