@@ -7,11 +7,11 @@
       <%= image_tag @product.thumbnail, class: "card-img-top" %>
       <div class="card-body text-center">
         <p><%= @product.description %></p>
-        <% if current_user.admin? %>
-          <%= link_to 'Edit Product', edit_product_path(@product), class: "btn btn-warning" %> <br>
-          <%= link_to 'Delete Product', product_path(@product), method: :delete, class: "btn btn-danger" %> <br>
-        <% end %>
         <%= link_to "More Info", product_path(@product), class:"btn btn-success" %>
+        <% if current_user.admin? %>
+          <%= link_to 'Edit Product', edit_product_path(@product), class: "btn btn-warning" %>
+          <%= link_to 'Delete Product', product_path(@product), method: :delete, class: "btn btn-danger" %>
+        <% end %>
       </div>
     </div>
   </div>
