@@ -249,9 +249,16 @@ li:hover {
 }
 
 .see-cooking:hover .hover-gray{
-  -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
+  /* -webkit-filter: grayscale(100%);
+  filter: grayscale(100%); */
+    width:100%;
+    height:100%;
+    position:absolute;
+    background-color:#000;
+    opacity:0.5;
+    border-radius:30px;
 }
+
 
 
 .showText{
