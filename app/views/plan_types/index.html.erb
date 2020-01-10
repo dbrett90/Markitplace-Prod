@@ -30,7 +30,7 @@
                                     <% if current_user.admin? %>
                                         <%= link_to "More Info", plan_type_path(plan_type), class:"btn btn-success" %>
                                         <%= link_to "Edit Plan", edit_plan_type_path(plan_type), class: "btn btn-danger" %>
-                                    <% if current_user.is_subscribed? %>
+                                    <% elsif current_user.is_subscribed? %>
                                         <%= link_to "More Info", plan_type_path(plan_type), class:"btn btn-success" %>
                                     <% else %>
                                         <%= link_to "Else Conditional", plan_type_path(plan_type), class:"btn btn-success" %>
