@@ -18,7 +18,6 @@ class ProductsController < ApplicationController
   #  @plan_type = PlanType.find(params[:id])
   #  @products = @plan_type.products
    #Test that products is an array that you can access
-   flash[:notice] = "Number of Products: ", @products.count
  end
 
  # GET /products/1
@@ -43,10 +42,9 @@ class ProductsController < ApplicationController
 #Let's confirm that this actually pulls the current user. 
  def create
     @product = current_user.products.build(product_params)
-    flash[:warning] = @product.plan_type_name
+    # flash[:warning] = @product.plan_type_name
     #This is to link each of them together
     @plan_types = PlanType.all
-    flash[:success] = @plan_types.count
     @plan_types.each do |plan_type|
       if plan_type.name.downcase == @product.plan_type_name.downcase
         # flash[:danger] = "PRODUCT", @product.plan_type
@@ -57,7 +55,7 @@ class ProductsController < ApplicationController
     end
    respond_to do |format|
      if @product.save
-       flash[:successful] = "PRODUCT WAS SUCCESSFULLY CREATED"
+       flash[:successful] = "PRODUCT WAS SUCCESSFULLY CREATED, PLAN IS:", @product.plan_type_name
        format.html { redirect_to @product, notice: 'Product was successfully created.' }
        format.json { render :show, status: :created, location: @product }
        flash[:warning] = "PRODUCT TYPE", @product.plan_type 
