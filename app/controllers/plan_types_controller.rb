@@ -84,7 +84,7 @@ class PlanTypesController < ApplicationController
  def destroy
    @plan_type.destroy
    respond_to do |format|
-     format.html { redirect_to plan_types_url, notice: 'PLAN was successfully destroyed.' }
+     format.html { redirect_to plan_types_path, success: 'PLAN was successfully destroyed.' }
      format.json { head :no_content }
    end
  end
