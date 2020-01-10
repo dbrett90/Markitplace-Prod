@@ -1,7 +1,7 @@
 class PlanTypesController < ApplicationController
     #Updated to allow users to access a library
  before_action :set_plan_type, only: [:edit, :show, :update, :destroy, :library]
- before_action :logged_in?, except: [:index]
+ before_action :logged_in?, except: [:index, :show]
 #  before_action :authenticate_user!, except: [:index, :show]
 #This is what the Devise action basically does.
 #before_action :logged_in_user, except: [:index, :show]
