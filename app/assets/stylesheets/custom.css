@@ -249,8 +249,8 @@ li:hover {
 }
 
 .see-cooking:hover .hover-gray{
-  -webkit-filter: brightness(15%);
-  filter: brightness(15%);
+  -webkit-filter: brightness(20%);
+  filter: brightness(20%);
     /* width:100%;
     height:100%; */
     /* position:absolute;
@@ -265,7 +265,7 @@ li:hover {
   color: white;
   font-size: 20px;
   position: absolute;
-  top: 33%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
