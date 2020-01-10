@@ -22,10 +22,10 @@
                             </div>
                             <%= link_to product_path(product) do %>
                                 <%= image_tag product.thumbnail.variant(resize: "450x450"), class:"card-img-top hover-gray" %>
+                                <div class="textOverlay">
+                                    <div class="showText">More Info</div>
+                                </div>
                             <% end %>
-                            <div class="textOverlay">
-                                <div class="showText">More Info</div>
-                            </div>
                             <div class="card-body text-center">
                                 <h5 class="card-title text-center"> <%= product.name %></h5>
                                 <h6 class="card-subtitle mb-2 text-muted text-center"> <%= product.partner_name %></h6>
