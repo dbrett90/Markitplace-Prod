@@ -15,7 +15,7 @@
         <div class="container" id="plan-offerings">
             <div class="row ml-3">
                 <%  @plan_types.each do |plan_type| %>
-                    <div class="col-4 pb-3">
+                    <div class="col-5 pb-3">
                         <div class="card see-cooking" style="width: 18rem;">
                             <%= link_to plan_type_path(plan_type) do %>
                                 <%= image_tag plan_type.thumbnail.variant(resize: "450x450"), class:"card-img-top hover-gray" %>
