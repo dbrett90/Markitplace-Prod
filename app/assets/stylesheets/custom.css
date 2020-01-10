@@ -259,15 +259,15 @@ li:hover {
     /* border-radius:30px; */
 }
 
-
-
+/* 
+TOP WAS 33% */
 .showText{
   color: white;
   font-size: 20px;
   position: absolute;
-  top: 50%;
+  top: 30%; 
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -30%);
   text-align: center;
 }
 
