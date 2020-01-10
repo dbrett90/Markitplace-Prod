@@ -1,9 +1,15 @@
-<section class="section">
-  <div class="columns is-centered">
-    <div class="column is-6">
-      <h1 class="title is-3">Editing Plan</h1>
-      <%= render 'plan_type_form', plan_type: @plan_type  %>
+<% provide(:title, 'New Plan') %>
+
+<div class='container'>
+  <div class="row topspace-lg justify-content-center">
+    <div class= "col-12">
+      <h1 style = "text-align:center">New Plan</h1>
+    </div>
+    <div class="card col-md-6 col-md-offset-3">
+      <div class="card-body placeholder">
+        <%= render 'plan_type_form', plan_type: @plan_type %>
+      </div>
     </div>
   </div>
-</section>
-
+</div>
+      

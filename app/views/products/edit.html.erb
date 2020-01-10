@@ -1,9 +1,15 @@
-<section class="section">
-  <div class="columns is-centered">
-    <div class="column is-6">
-      <h1 class="title is-3">Editing Product</h1>
-      <%= render 'product_form', product: @product %>
+<% provide(:title, 'Edit Product') %>
+
+<div class='container'>
+  <div class="row topspace-lg justify-content-center">
+    <div class= "col-12">
+      <h1 style = "text-align:center">Edit Product</h1>
+    </div>
+    <div class="card col-md-6 col-md-offset-3">
+      <div class="card-body placeholder">
+        <%= render 'product_form', product: @product %>
+      </div>
     </div>
   </div>
-</section>
-
+</div>
+      
