@@ -249,8 +249,8 @@ li:hover {
 }
 
 .see-cooking:hover .hover-gray{
-  -webkit-filter: brightness(0%);
-  filter: brightness(0%);
+  -webkit-filter: brightness(15%);
+  filter: brightness(15%);
     /* width:100%;
     height:100%; */
     /* position:absolute;
