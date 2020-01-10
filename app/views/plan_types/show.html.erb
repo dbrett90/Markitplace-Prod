@@ -28,7 +28,7 @@
                                 <h5 class="card-title text-center"> <%= product.name %></h5>
                                 <h6 class="card-subtitle mb-2 text-muted text-center"> <%= product.partner_name %></h6>
                                 <p class="card-text text-center" id="overwrite-card-text"> <%= product.calories %> Calories <%= product.protein %>g Protein, <%= product.carbs %> Carbs, <%=product.fats %>g Fats </p>
-                                <% if logged_in?? %>
+                                <% if logged_in? %>
                                     <%= link_to "More Info", product_path(product), class:"btn btn-success" %>
                                 <% else %>
                                     <%= link_to "Else Conditional", product_path(product), class:"btn btn-success" %>
