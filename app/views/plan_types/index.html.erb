@@ -29,7 +29,8 @@
                                 <% if logged_in? %>
                                     <% if current_user.admin? %>
                                         <%= link_to "More Info", plan_type_path(plan_type), class:"btn btn-success" %>
-                                        <%= link_to "Edit Plan", edit_plan_type_path(plan_type), class: "btn btn-danger" %>
+                                        <%= link_to "Edit Plan", edit_plan_type_path(plan_type), class: "btn btn-warning" %>
+                                        <%= link_to 'Delete Plan', destroy_plan_type_path(plan_type), class: "btn btn-danger" %>
                                     <% elsif current_user.is_subscribed? %>
                                         <%= link_to "More Info", plan_type_path(plan_type), class:"btn btn-success" %>
                                     <% else %>
