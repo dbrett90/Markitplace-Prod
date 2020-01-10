@@ -19,9 +19,6 @@ class PlanTypesController < ApplicationController
 
  # GET /plans/1
  # GET /plans/1.json
-#  def show
-#  end
-
  # GET /plans/new
  def new
     #What is te current_user equivalent? See if this works

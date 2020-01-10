@@ -24,11 +24,15 @@
                             <div class="card-body text-center">
                                 <h5 class="card-title text-center"> <%= plan_type.name %></h5>
                                 <h6 class="card-subtitle mb-2 text-muted text-center"> <%= plan_type.description %></h6>
-                                <% if current_user.is_subscribed? %>
-                                    <%= link_to "More Info", plan_type_path(plan_type), class:"btn btn-success" %>
+                                <% if current_user.exists? %>
+                                    <% if current_user.is_subscribed? %>
+                                        <%= link_to "More Info", plan_type_path(plan_type), class:"btn btn-success" %>
+                                    <% else %>
+                                        <%= link_to "Else Conditional", plan_type_path(plan_type), class:"btn btn-success" %>
+                                    <% end %>
                                 <% else %>
-                                    <%= link_to "Else Conditional", mealkits_path, class:"btn btn-success" %>
-                                <% end %>  
+                                    <%= link_to "More Info - Generic", plan_type_path(plan_type), class:"btn btn-success" %>
+                                <% end %>
                             </div>
                         </div>
                     </div>
