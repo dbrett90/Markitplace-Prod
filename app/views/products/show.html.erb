@@ -9,7 +9,7 @@
         <p><%= @product.description %></p>
         <% if current_user.admin? %>
           <%= link_to 'Edit Product', edit_product_path(@product), class: "btn btn-warning" %> <br>
-          <%= link_to 'Delete Product', destroy_product_path, method: :delete, class: "btn btn-danger" %> <br>
+          <%= link_to 'Delete Product', product_path, method: :delete, class: "btn btn-danger" %> <br>
         <% end %>
         <%= link_to "More Info", product_path(@product), class:"btn btn-success" %>
       </div>
