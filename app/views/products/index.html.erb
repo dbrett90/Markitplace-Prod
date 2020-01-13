@@ -31,7 +31,7 @@
                                 <% if current_user.is_subscribed? %>
                                     <%= link_to "More Info - Test", product_path(product), class:"btn btn-success" %>
                                 <% else %>
-                                    <%= link_to "Else Conditional", product_path(product), class:"btn btn-success" %>
+                                    <%= link_to "Not subscribed", product_path(product), class:"btn btn-success" %>
                                 <% end %>  
                             </div>
                         </div>
