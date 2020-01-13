@@ -2,26 +2,26 @@
     <p class="subtext-gray pb-1" style="font-size:14px">Only admins should be able to
     access this page. </p>
 
-    <%= f.text_field :name, class: 'form-control', placeholder: "Name" %><br>
+    <%= f.text_field :name, class: 'form-control', placeholder: "Name", required: true %><br>
 
-    <%= f.text_field :description, class: 'form-control', placeholder: "Product Description" %><br>
+    <%= f.text_field :description, class: 'form-control', placeholder: "Product Description", required: true %><br>
 
-    <%= f.text_field :plan_type_name, class: 'form-control', placeholder: "Kit Type or Class" %><br>
+    <%= f.text_field :plan_type_name, class: 'form-control', placeholder: "Kit Type or Class", required: true %><br>
 
-    <%= f.text_field :partner_name, class: 'form-control', placeholder: "Partner Name" %><br>
+    <%= f.text_field :partner_name, class: 'form-control', placeholder: "Partner Name", required: true %><br>
 
-    <%= f.number_field :calories, class: 'form-control', placeholder: "Calories" %><br>
+    <%= f.number_field :calories, class: 'form-control', placeholder: "Calories", required: true %><br>
 
-    <%= f.number_field :protein, class: 'form-control', placeholder: "Protein" %><br>
+    <%= f.number_field :protein, class: 'form-control', placeholder: "Protein", required: true %><br>
 
-    <%= f.number_field :carbs, class: 'form-control', placeholder: "Carbs" %><br>
+    <%= f.number_field :carbs, class: 'form-control', placeholder: "Carbs", required: true %><br>
 
-    <%= f.number_field :fats, class: 'form-control', placeholder: "Fats" %><br>
+    <%= f.number_field :fats, class: 'form-control', placeholder: "Fats", required: true %><br>
 
     <%= f.label :thumbail do %>
         <span class = 'field-label emphasis'> Product Image </span><br>
     <% end %><br>
-    <%= f.file_field :thumbnail, multiple: false %> <br>
+    <%= f.file_field :thumbnail, multiple: false, required: true %> <br>
     <br>
 
     <%= f.submit "Submit", class: "btn btn-success btn-block form-actions" %><br>
