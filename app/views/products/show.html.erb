@@ -3,7 +3,7 @@
   <div class = "recipe-header">
     <div class = "row">
       <div class = "col-8 recipe-header-text">
-        <h1>@product.name </h1>
+        <h1><%= @product.name %> </h1>
         <p>This is going to be some sample text until we build headertext into 
         the model</p>
       </div>
@@ -13,11 +13,11 @@
     </div>
   </div>
   <div class = "recipe-intro">
-    @product.thumbnail
+    <%= @product.thumbnail %>
     <ul class="stats">
       <li>
         <div class="stats-item">
-          @product.calories
+          <%= @product.calories %>
         </div>
         <div>
           Calories 
@@ -25,7 +25,7 @@
       </li>
       <li>
         <div class="stats-item">
-          @product.fats
+          <%= @product.fats %>
         </div>
         <div>
           Grams of Fat
@@ -33,7 +33,7 @@
       </li>
       <li>
         <div class="stats-item">
-          @product.carbs
+          <%= @product.carbs %>
         </div>
         <div>
           Carbs
