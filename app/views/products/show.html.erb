@@ -3,18 +3,18 @@
   <section class= "container">
     <div class = "recipe-header pt-2">
       <div class = "row">
-        <div class = "col-8 recipe-header-text">
+        <div class = "col-4 recipe-header-text">
           <h1><%= @product.name %> </h1>
           <p>This is going to be some sample text until we build header text into 
           the model</p>
-        </div>
-        <div class= "col-4 reciper-header-button">
           <%= link_to "START COOKING", new_subscription_path, class:"btn btn-outline-success jumbo-button" %>
+        </div>
+        <div class= "col-8 reciper-header-button">
+          <%= image_tag @product.thumbnail.variant(resize:"450x450") %>
         </div>
       </div>
     </div>
     <div class = "recipe-intro justify-content-center">
-      <%= image_tag @product.thumbnail %>
       <ul class="stats">
         <li>
           <div class="stats-item">
