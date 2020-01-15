@@ -377,7 +377,7 @@ TOP WAS 33% */
 
 /* SHOW PAGE */
 
-.container .recipe-overview{
+.container.recipe-overview{
   margin-left: 20%;
   margin-right: 20%;
 }
