@@ -374,3 +374,10 @@ TOP WAS 33% */
    outline: none !important;
    box-shadow: none;
 }
+
+/* SHOW PAGE */
+.recipe-overview{
+  -moz-box-shadow: 0 0 3px #ccc;
+  -webkit-box-shadow: 0 0 3px #ccc;
+  box-shadow: 0 0 3px #ccc;
+}
