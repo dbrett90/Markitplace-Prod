@@ -1,20 +1,50 @@
 <% provide(:title, 'Show Product') %>
-
-<div class='container'>
-  <div class="row topspace-lg justify-content-center">
-    <div class="card" style="width: 35rem">
-      <h1 style = "text-align:center"> <%=@product.name %> </h1>
-      <%= image_tag @product.thumbnail, class: "card-img-top" %>
-      <div class="card-body text-center">
-        <p><%= @product.description %></p>
-        <%= link_to "More Info", product_path(@product), class:"btn btn-success" %>
-        <% if logged_in? %>
-          <% if current_user.admin? %>
-            <%= link_to 'Edit Product', edit_product_path(@product), class: "btn btn-warning" %>
-            <%= link_to 'Delete Product', product_path(@product), method: :delete, class: "btn btn-danger" %>
-          <% end %>
-        <% end %>
+<section class= "recipe-overview">
+  <div class = "recipe-header">
+    <div class = "row">
+      <div class = "col-8 recipe-header-text">
+        <h1>@product.name </h1>
+        <p>This is going to be some sample text until we build headertext into 
+        the model</p>
+      </div>
+      <div class= "col-4 reciper-header-button">
+        <%= link_to "START COOKING", new_subscription_path, class:"btn btn-outline-success jumbo-button" %>
       </div>
     </div>
   </div>
-</div>
+  <div class = "recipe-intro">
+    @product.thumbnail
+    <ul class="stats">
+      <li>
+        <div class="stats-item">
+          @product.calories
+        </div>
+        <div>
+          Calories 
+        </div>
+      </li>
+      <li>
+        <div class="stats-item">
+          @product.fats
+        </div>
+        <div>
+          Grams of Fat
+        </div>
+      </li>
+      <li>
+        <div class="stats-item">
+          @product.carbs
+        </div>
+        <div>
+          Carbs
+        </div>
+      </li>
+    </ul>
+  </div>
+  <% if logged_in? %>
+    <% if current_user.admin? %>
+      <%= link_to 'Edit Product', edit_product_path(@product), class: "btn btn-warning" %>
+      <%= link_to 'Delete Product', product_path(@product), method: :delete, class: "btn btn-danger" %>
+    <% end %>
+  <% end %>
+</section>
