@@ -384,3 +384,12 @@ TOP WAS 33% */
   box-shadow: 0 0 8px #ccc;
   width: 66%;
 }
+
+.stats-item{
+  font-size: 20px;
+  color: #449900;
+}
+
+.stats-subitem{
+  font-size: 14px;
+}
