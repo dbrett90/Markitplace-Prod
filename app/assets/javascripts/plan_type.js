@@ -1,4 +1,4 @@
-$('.fa-chevron-circle-down').click(function() {
+$('.scroll-down').click(function() {
     var sectionTo = $(this).attr('href');
     $('html, body').animate({
       scrollTop: $(sectionTo).offset().top
