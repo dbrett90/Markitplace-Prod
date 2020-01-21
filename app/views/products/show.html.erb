@@ -8,10 +8,10 @@
           <p>This is going to be some sample text until we build header text into 
           the model</p>
           <% if logged_in? %>
-            <% plan_type_string = @product.plan_type %>
-            <% connection_string = 'Rails application credentials ' + plan_type_string  %>
-            <%= flash[:success] = connection_string.parameterize(separator:".", preserve_case: true) %>
-            <%= link_to 'START COOKING', new_subscription_path(plan: plan_type_string, plan_id: connection_string.parameterize(separator:".", preserve_case: true)), class:"btn btn-outline-success jumbo-button" %>
+            <% plan_type_string = @product.plan_type.to_s %>
+            <% connection_string = ('Rails application credentials ' + plan_type_string).parameterize(separator:".", preserve_case: true)  %>
+            <%= flash[:success] = connection_string %>
+            <%= link_to 'START COOKING', new_subscription_path(plan: plan_type_string, plan_id: connection_string), class:"btn btn-outline-success jumbo-button" %>
           <% else %>
             <%= link_to 'START COOKING', new_user_path, class:"btn btn-outline-success jumbo-button" %>
          <% end %>
