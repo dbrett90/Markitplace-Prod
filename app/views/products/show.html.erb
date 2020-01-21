@@ -10,7 +10,7 @@
           <% if logged_in? %>
             <% plan_type_string = @product.plan_type %>
             <% connection_string = 'Rails application credentials ' + plan_type_string  %>
-            <%= flash[:success] = connection_string.parameterize(separator:".", preserve_case: true)
+            <%= flash[:success] = connection_string.parameterize(separator:".", preserve_case: true) %>
             <%= link_to 'START COOKING', new_subscription_path(plan: plan_type_string, plan_id: connection_string.parameterize(separator:".", preserve_case: true)), class:"btn btn-outline-success jumbo-button" %>
           <% else %>
             <%= link_to 'START COOKING', new_user_path, class:"btn btn-outline-success jumbo-button" %>
