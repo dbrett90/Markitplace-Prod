@@ -9,7 +9,7 @@
           the model</p>
           <% if logged_in? %>
             <% plan_type_string = @product.plan_type.to_s %>
-            flash[:danger] = @product.plan_type
+            <%= flash[:danger] = @product.plan_type %>
             <% connection_string = ('Rails application credentials ' + plan_type_string).parameterize(separator:".", preserve_case: true)  %>
             <%= flash[:success] = connection_string %>
             <%= link_to 'START COOKING', new_subscription_path(plan: plan_type_string, plan_id: connection_string), class:"btn btn-outline-success jumbo-button" %>
