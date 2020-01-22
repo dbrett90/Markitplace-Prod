@@ -7,81 +7,32 @@
           <h1>Chosen plan: <%= params[:plan] %> </h1>
           <%= flash[:success] = params[:plan].class %>
           <p>This is going to be some sample text until we build a decscription for plan checkout</p>
-          <% if logged_in? %>
-            <% plan_name = 'Rails application credentials '+ @product.plan_type_name.downcase %>
-            <% connection_string = plan_name.parameterize(separator:".", preserve_case: true)  %>
-            <%= link_to 'START COOKING', new_subscription_path(plan: @product.plan_type_name.downcase, plan_id: connection_string), class:"btn btn-outline-success jumbo-button" %>
-          <% else %>
-            <%= link_to 'START COOKING', new_user_path, class:"btn btn-outline-success jumbo-button" %>
-         <% end %>
+          <% @plans.each do |plan| %>
+            <% if plan == params[:plan] %>
+              <%= image_tag plan.thumbnail, class:"img-fluid" %>
+            <% end %>
+          <% end %>
         </div>
         <div class= "col-6 reciper-header-button">
-          <%= image_tag @product.thumbnail, class:"img-fluid" %>
+          <%= form_tag subscriptions_path, id: "payment-form" do |form| %>
+
+            <div class="field">
+              <label for="card-element" class="label">Enter credit or debit card</label>
+    
+              <div id="card-element">
+                <!-- A Stripe element will be inserted here !-->
+              </div>
+    
+              <div id="card-errors" role="alert"></div>
+    
+              <%= hidden_field_tag :plan_id, params[:plan_id] %>
+    
+              <button class="button is-fullwidth is-link mt4">Submit</button>
+            </div>
+    
+          <% end %>
         </div>
       </div>
     </div>
-    <div class = "recipe-intro d-flex pt-3">
-      <ul class="stats list-inline mx-auto justify-content-center">
-        <li class="list-inline-item">
-          <div class="stats-item">
-            <%= @product.calories %>
-          </div>
-          <div class="stats-subitem">
-            Calories 
-          </div>
-        </li>
-        <li class="list-inline-item">
-          <div class="stats-item">
-            <%= @product.fats %>
-          </div>
-          <div class="stats-subitem">
-            Grams of Fat
-          </div>
-        </li>
-        <li class="list-inline-item">
-          <div class="stats-item">
-            <%= @product.carbs %>
-          </div>
-          <div class="stats-subitem">
-            Carbs
-          </div>
-        </li>
-      </ul>
-    </div>
   </section>
-</div>
-
-
-
-
-
-
-
-
-<div class="section">
-  <div class="columns is-centered">
-    <div class="column is-6 border pa5">
-      <h1 class="title is-3">Subscribe</h1>
-      <hr />
-      <p>Chosen plan: <strong><%= params[:plan] %>
-      <hr/>
-      <%= form_tag subscriptions_path, id: "payment-form" do |form| %>
-
-        <div class="field">
-          <label for="card-element" class="label">Enter credit or debit card</label>
-
-          <div id="card-element">
-            <!-- A Stripe element will be inserted here !-->
-          </div>
-
-          <div id="card-errors" role="alert"></div>
-
-          <%= hidden_field_tag :plan_id, params[:plan_id] %>
-
-          <button class="button is-fullwidth is-link mt4">Submit</button>
-        </div>
-
-      <% end %>
-    </div>
-  </div>
 </div>
