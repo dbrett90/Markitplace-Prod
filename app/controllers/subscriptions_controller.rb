@@ -1,7 +1,7 @@
 class SubscriptionsController < ApplicationController
     
     def new
-        @plans = Plan.all
+        @plans = PlanType.all
         if logged_in? && current_user.subscribed?
             redirect_to root_path, notice: "You are already subscribed!"
         end
