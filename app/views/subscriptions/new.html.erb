@@ -14,7 +14,7 @@
         </div>
         <div class= "col-6 checkout-header">
           <h1>Shipping Information</h1>
-          <%= form_tag subscriptions_path id: "shipping-information-form" do |f| %>
+          <%= form_for(:payment-and-shipping, url: subscriptions_path), id: "shipping-information-form" do |f| %>
             <div class="shipping-information">
               <%= f.label :recipient_name, class: 'field-label emphasis' do %>
                 <span class = 'field-label emphasis'> Name </span><br>
