@@ -13,9 +13,35 @@
           <% end %>
         </div>
         <div class= "col-6 reciper-header-button">
-          <h1>Shipping Information %> plan </h1>
           <%= form_tag subscriptions_path, id: "payment-form" do |form| %>
-            <h1>Card Information %> plan </h1>
+            <h1>Shipping Information </h1>
+            <div class="shipping-information">
+              <%= f.label :recipient_name, class: 'field-label emphasis' do %>
+                <span class = 'field-label emphasis'> Name </span><br>
+              <% end %><br>
+              <%= f.text_field :recipient_name, class: 'form-control', placeholder: "Name" %><br>
+              <%= f.label :street_address_1, class: 'field-label emphasis' do %>
+                <span class = 'field-label emphasis'> Street Address 1 </span><br>
+              <% end %><br>
+              <%= f.text_field :street_address_1, class: 'form-control', placeholder: "Street Address" %><br>
+              <%= f.label :street_address_2, class: 'field-label emphasis' do %>
+                <span class = 'field-label emphasis'> Street Address (Room/Apt Number) </span><br>
+              <% end %><br>
+              <%= f.text_field :street_address_2, class: 'form-control', placeholder: "Street Address" %><br>
+              <%= f.label :city, class: 'field-label emphasis' do %>
+                <span class = 'field-label emphasis'> City </span><br>
+              <% end %><br>
+              <%= f.text_field :city, class: 'form-control', placeholder: "City" %><br>
+              <%= f.label :state, class: 'field-label emphasis' do %>
+                <span class = 'field-label emphasis'> State </span><br>
+              <% end %><br>
+              <%= f.text_field :state, class: 'form-control', placeholder: "State" %><br>
+              <%= f.label :zipcode, class: 'field-label emphasis' do %>
+                <span class = 'field-label emphasis'> Zipcode </span><br>
+              <% end %><br>
+              <%= f.number :zipcode, class: 'form-control', placeholder: "Zipcode" %><br>
+            </div>
+            <h1>Card Information plan </h1>
             <div class="field card-information">
               <label for="card-element" class="label">Enter credit or debit card</label>
               <div id="card-element">
