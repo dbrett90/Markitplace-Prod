@@ -13,9 +13,9 @@
           <% end %>
         </div>
         <div class= "col-6 checkout-header">
-          <h1>Shipping Information</h1>
           <%= form_for(:payment-and-shipping, url: subscriptions_path), id: "shipping-information-form" do |f| %>
             <div class="shipping-information">
+              <h1>Shipping Information</h1>
               <%= f.label :recipient_name, class: 'field-label emphasis' do %>
                 <span class = 'field-label emphasis'> Name </span><br>
               <% end %><br>
@@ -40,16 +40,13 @@
                 <span class = 'field-label emphasis'> Zipcode </span><br>
               <% end %><br>
               <%= f.number :zipcode, class: 'form-control', placeholder: "Zipcode" %><br>
-              <%= f.submit "Save Shipping Info", class: "btn btn-success jumbo-button mt-2" %><br>
             </div>
-          <% end %>
-          <div class="payment-information">
-            <h1>Card Information</h1>
-            <%= form_tag subscriptions_path, id: "payment-form" do |form| %>
+            <div class="payment-information">
+              <h1>Card Information</h1>
               <div class="field card-information">
                 <label for="card-element" class="label">Enter credit or debit card</label>
                 <div id="card-element">
-                <!-- A Stripe Element will be inserted here. -->
+                  <!-- A Stripe Element will be inserted here. -->
                 </div>
                 <br>
       
@@ -59,9 +56,8 @@
       
                 <button class="btn btn-outline-success mt-1">Submit</button>
               </div>
-      
-            <% end %>
-          </div>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
