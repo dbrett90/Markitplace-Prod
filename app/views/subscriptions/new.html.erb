@@ -12,9 +12,9 @@
             <% end %>
           <% end %>
         </div>
-        <div class= "col-6 reciper-header-button">
-          <%= form_tag subscriptions_path, id: "payment-form" do |form| %>
-            <h1>Shipping Information </h1>
+        <div class= "col-6 checkout-header">
+          <h1>Shipping Information</h1>
+          <%= form_tag subscriptions_path id: "shipping-information-form" do |f| %>
             <div class="shipping-information">
               <%= f.label :recipient_name, class: 'field-label emphasis' do %>
                 <span class = 'field-label emphasis'> Name </span><br>
@@ -41,22 +41,26 @@
               <% end %><br>
               <%= f.number :zipcode, class: 'form-control', placeholder: "Zipcode" %><br>
             </div>
-            <h1>Card Information plan </h1>
-            <div class="field card-information">
-              <label for="card-element" class="label">Enter credit or debit card</label>
-              <div id="card-element">
-                <!-- A Stripe Element will be inserted here. -->
-              </div>
-              <br>
-    
-              <div id="card-errors" role="alert"></div>
-    
-              <%= hidden_field_tag :plan_id, params[:plan_id] %>
-    
-              <button class="btn btn-outline-success mt-1">Submit</button>
-            </div>
-    
           <% end %>
+          <div class="payment-information">
+            <h1>Card Information</h1>
+            <%= form_tag subscriptions_path, id: "payment-form" do |form| %>
+              <div class="field card-information">
+                <label for="card-element" class="label">Enter credit or debit card</label>
+                <div id="card-element">
+                <!-- A Stripe Element will be inserted here. -->
+                </div>
+                <br>
+      
+                <div id="card-errors" role="alert"></div>
+      
+                <%= hidden_field_tag :plan_id, params[:plan_id] %>
+      
+                <button class="btn btn-outline-success mt-1">Submit</button>
+              </div>
+      
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
