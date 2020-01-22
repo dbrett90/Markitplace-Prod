@@ -8,7 +8,7 @@
           <%= flash[:success] = params[:plan].class %>
           <p>This is going to be some sample text until we build a decscription for plan checkout</p>
           <% @plans.each do |plan| %>
-            <% if plan.name == params[:plan] %>
+            <% if plan.name.downcase == params[:plan].downcase %>
               <%= image_tag plan.thumbnail, class:"img-fluid" %>
             <% end %>
           <% end %>
