@@ -4,8 +4,7 @@
     <div class = "subscription-header pt-2">
       <div class = "row">
         <div class = "col-6 my-auto recipe-header-text align-content-center">
-          <h1>Chosen plan: <%= params[:plan] %> </h1>
-          <%= flash[:success] = params[:plan].class %>
+          <h1>Chosen plan: <%= params[:plan] plan %> </h1>
           <p>This is going to be some sample text until we build a decscription for plan checkout</p>
           <% @plans.each do |plan| %>
             <% if plan.name.downcase == params[:plan].downcase %>
@@ -27,7 +26,7 @@
     
               <%= hidden_field_tag :plan_id, params[:plan_id] %>
     
-              <button class="button is-fullwidth is-link mt4">Submit</button>
+              <button class="button is-fullwidth is-link pt-1">Submit</button>
             </div>
     
           <% end %>
