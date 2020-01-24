@@ -6,7 +6,10 @@
         <div class = "col-6 my-auto recipe-header-text align-content-center">
           <h1>Checkout </h1>
           <h2><%= params[:plan] %> plan </h2>
-          <p>This is going to be some sample text until we build a decscription for plan checkout</p>
+          <p>Please note that with this plan you will get access to a week&#39;s worth of 
+          meals. Menus will rotate each week and you have the ability to cancel your subscription
+          at any time. We also welcome user feedback, so please leave a note after you&#39;ve 
+          tried the kit!</p>
           <% @plans.each do |plan| %>
             <% if plan.name.downcase == params[:plan].downcase %>
               <%= image_tag plan.thumbnail, class:"img-fluid" %>
