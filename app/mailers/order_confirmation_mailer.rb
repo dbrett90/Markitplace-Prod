@@ -10,7 +10,7 @@ def customer_confirmation(plan_type, recipient_name, street_address_1, street_ad
     @state = state
     @zipcode = zipcode
     #Remove the CC afterwards.... just for testing purposes. 
-    mail to: "danbrett107@gmail.com":, cc: "dbrett14@gmail.com", subject: "Markitplace Subscription Confirmation"
+    mail to: "danbrett107@gmail.com", cc: "dbrett14@gmail.com", subject: "Markitplace Subscription Confirmation"
 end
 
 def vendor_confirmation(customer_name, customer_email, vendor_email, plan_type, shipping_details)
