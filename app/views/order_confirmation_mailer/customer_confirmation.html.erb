@@ -1,10 +1,12 @@
 <h1>Markitplace</h1>
 
-<p>Thank you for subscribing to the @plan_type plan. This email will serve as your automated
+<p>Hi, <%= @user_name %> Thank you for subscribing to the @plan_type plan. This email will serve as your automated
 email receipt and order confirmation for the subscription. Your order will
 be sent to the following address: <br>
 
-<% @shipping_details.each do |detail| %>
-    <p><%= detail %> </p><br>
-<%end%>
+<p><%= @street_address_1 %> </p><br>
+<p><%= @street_address_2 %> </p><br>
+<p><%= @city %> </p><br>
+<p><%= @state %> </p><br>
+<p><%= @zipcode %> </p><br>
 
