@@ -8,12 +8,8 @@
           <p>This is going to be some sample text until we build header text into 
           the model</p>
           <% if logged_in? %>
-            <% plan_name = 'Rails application credentials '+ @product.plan_type_name.downcase %>
-            <% connection_string = plan_name.parameterize(separator:".", preserve_case: true)  %>
-            <% test_connection = Rails.application.credentials.carnivore %>
-            <%= flash[:danger] = connection_string %>
-            <%= flash[:success] = connection_string.class %>
-            <%= flash[:notice] = test_connection %>
+            <% symbolize = @product.plan_type_name.downcase.to_sym %>
+            <%= flash[:success] = symbolize %>
             <%= link_to 'START COOKING', new_subscription_path(plan: @product.plan_type_name.downcase, plan_id: connection_string), class:"btn btn-outline-success jumbo-button" %>
           <% else %>
             <%= link_to 'START COOKING', new_user_path, class:"btn btn-outline-success jumbo-button" %>
