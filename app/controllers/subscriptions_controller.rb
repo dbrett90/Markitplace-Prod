@@ -49,7 +49,7 @@ class SubscriptionsController < ApplicationController
             current_user.update(options)
         
         #Trigger Flash & The action mailers for confirmation
-        OrderConfirmationMailer.customer_confirmation(current_user, params[:plan], 
+        OrderConfirmationMailer.customer_confirmation(current_user, params[:payment_shipping][:plan], 
             params[:payment_shipping][:recipient_name], params[:payment_shipping][:street_address_1],
             params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
             params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
