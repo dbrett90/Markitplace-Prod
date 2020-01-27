@@ -1,5 +1,5 @@
 class OrderConfirmationMailer < ApplicationMailer
-    def customer_confirmation(plan_type, recipient_name, street_address_1, street_address_2, city, state, zipcode)
+    def customer_confirmation(current_user, plan_type, recipient_name, street_address_1, street_address_2, city, state, zipcode)
         @user_name = current_user.name
         @user_email = current_user.email
         @plan_type = plan_type 
