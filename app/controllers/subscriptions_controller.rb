@@ -19,7 +19,7 @@ class SubscriptionsController < ApplicationController
 
         customer = if current_user.stripe_id.present?
             Stripe::Customer.retrieve(current_user.stripe_id)
-            flash[:danger] = "User already has a stripe ID!"
+            # flash[:danger] = "User already has a stripe ID!"
         else
             Stripe::Customer.create(email: current_user.email, source: token)
             #Save the stripe id to the database
@@ -27,26 +27,26 @@ class SubscriptionsController < ApplicationController
             current_user.card_exp_month = params[:card_exp_month]
             current_user.card_exp_year = params[:card_exp_year]
             current_user.card_type = params[:card_type]
-            flash[:danger] = "Customer Created!"
+            # flash[:danger] = "Customer Created!"
         end
         # current_user.stripe_id = customer.id
-        flash[:success] = customer.class
-        subscription = customer.subscriptions.create(plan: plan.id)
-        options = {
-            stripe_id: customer.id,
-            stripe_subscription_id: subscription.id,
-            subscribed: true
-        }
+        flash[:success] = "Customer Class" + customer.class
+        # subscription = customer.subscriptions.create(plan: plan.id)
+        # options = {
+        #     stripe_id: customer.id,
+        #     stripe_subscription_id: subscription.id,
+        #     subscribed: true
+        # }
 
-        #Doing a merge if card value is updated. Below function will check this
-        options.merge!(
-            card_last4: params[:user][:card_last4],
-            card_exp_month: params[:user][:card_exp_month],
-            card_exp_year: params[:user][:card_exp_year],
-            card_type: params[:user][:card_type]
-            ) if params[:user][:card_last4]
-            current_user.update(options)
-            redirect_to root_path
+        # #Doing a merge if card value is updated. Below function will check this
+        # options.merge!(
+        #     card_last4: params[:user][:card_last4],
+        #     card_exp_month: params[:user][:card_exp_month],
+        #     card_exp_year: params[:user][:card_exp_year],
+        #     card_type: params[:user][:card_type]
+        #     ) if params[:user][:card_last4]
+        #     current_user.update(options)
+        #     redirect_to root_path
 
             #Trigger Flash & The action mailers for confirmation
             #flash[:success] = "Your subscription is now active! Please check your email for a confirmation notice."
