@@ -19,6 +19,7 @@ class SubscriptionsController < ApplicationController
 
         customer = if current_user.stripe_id.present?
             Stripe::Customer.retrieve(current_user.stripe_id)
+            flash[:danger] = "Not going through correct loop!"
         else
             Stripe::Customer.create(email: current_user.email, source: token)
             #Save the stripe id to the database
@@ -29,12 +30,12 @@ class SubscriptionsController < ApplicationController
         end
         # current_user.stripe_id = customer.id
         flash[:success] = customer.class
-        subscription = customer.subscriptions.create(plan: plan.id)
-        options = {
-            stripe_id: customer.id,
-            stripe_subscription_id: subscription.id,
-            subscribed: true
-        }
+        # subscription = customer.subscriptions.create(plan: plan.id)
+        # options = {
+        #     stripe_id: customer.id,
+        #     stripe_subscription_id: subscription.id,
+        #     subscribed: true
+        # }
 
         #Doing a merge if card value is updated. Below function will check this
         options.merge!(
