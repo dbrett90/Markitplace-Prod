@@ -3,7 +3,8 @@ class SubscriptionsController < ApplicationController
     def new
         @plans = PlanType.all
         if logged_in? && current_user.subscribed?
-            redirect_to root_path, notice: "You are already subscribed!"
+             flash[:warning] = "Please note that you are already subscribed to one plan. You can view
+             youre current subscriptions from the navbar"
         end
     end
 
