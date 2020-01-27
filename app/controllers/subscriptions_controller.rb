@@ -28,11 +28,6 @@ class SubscriptionsController < ApplicationController
             })
             # Stripe::Customer.create(description: 'Test Customer')
             #Save the stripe id to the database
-            current_user.card_last4 = params[:card_last4]
-            current_user.card_exp_month = params[:card_exp_month]
-            current_user.card_exp_year = params[:card_exp_year]
-            current_user.card_type = params[:card_type]
-            flash[:danger] = "Customer Created!"
         end
         # current_user.stripe_id = customer.id
         redirect_to root_path
