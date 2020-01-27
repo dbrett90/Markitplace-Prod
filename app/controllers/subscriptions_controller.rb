@@ -28,7 +28,7 @@ class SubscriptionsController < ApplicationController
             current_user.card_type = params[:card_type]
         end
         # current_user.stripe_id = customer.id
-        flash[:success] = customer.id
+        flash[:success] = customer.class
         subscription = customer.subscriptions.create(plan: plan.id)
         options = {
             stripe_id: customer.id,
@@ -47,7 +47,7 @@ class SubscriptionsController < ApplicationController
             redirect_to root_path
 
             #Trigger Flash & The action mailers for confirmation
-            flash[:success] = "Your subscription is now active! Please check your email for a confirmation notice."
+            #flash[:success] = "Your subscription is now active! Please check your email for a confirmation notice."
             OrderConfirmationMailer.customer_confirmation(params[:payment_shipping][:plan], 
             params[:payment_shipping][:recipient_name], params[:payment_shipping][:street_address_1],
             params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
