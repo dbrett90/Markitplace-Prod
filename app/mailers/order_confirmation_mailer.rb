@@ -11,7 +11,7 @@ class OrderConfirmationMailer < ApplicationMailer
         @zipcode = zipcode
         #Remove the CC afterwards.... just for testing purposes. 
         mail to: "danbrett107@gmail.com", cc: "dbrett14@gmail.com", subject: "Markitplace Subscription Confirmation"
-        flash[:warning] = "Confirmation Email has been sent"
+        #flash[:warning] = "Confirmation Email has been sent"
     end
 
     def vendor_confirmation(customer_name, customer_email, vendor_email, plan_type, shipping_details)
