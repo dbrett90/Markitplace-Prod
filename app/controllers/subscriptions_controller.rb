@@ -16,6 +16,7 @@ class SubscriptionsController < ApplicationController
         #Make sure that the credentials file has the appropriate plan_ids
         plan_id = params[:plan_id]
         plan = Stripe::Plan.retrieve(plan_id)
+        flash[:warning] = plan
         token = params[:stripeToken]
         # flash[:warning] = Stripe.api_key
 
@@ -36,8 +37,8 @@ class SubscriptionsController < ApplicationController
             stripe_subscription_id: subscription.id,
             subscribed: true
         }
-        flash[:danger] = subscription.class
-        flash[:success] = subscription
+        # flash[:danger] = subscription.class
+        # flash[:success] = subscription
 
         # #Doing a merge if card value is updated. Below function will check this
         options.merge!(
@@ -55,8 +56,8 @@ class SubscriptionsController < ApplicationController
         #     params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
         redirect_to root_path
         flash[:success] = "Your subscription is now active! Please check your email for a confirmation notice."
-        flash[:warning] = params[:plan]
-        flash[:notice] = params
+        # flash[:warning] = params[:plan]
+        # flash[:notice] = params
 
     end
 
