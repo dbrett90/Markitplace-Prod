@@ -16,13 +16,13 @@ class SubscriptionsController < ApplicationController
         plan_id = params[:plan_id]
         plan = Stripe::Plan.retrieve(plan_id)
         token = params[:stripeToken]
-        flash[:warning] = Stripe.api_key
+        # flash[:warning] = Stripe.api_key
 
         customer = if current_user.stripe_id.present?
             Stripe::Customer.retrieve(current_user.stripe_id)
             # flash[:danger] = "User already has a stripe ID!"
         else
-            Stripe::Customer.create(email: current_user.email, source: token)
+            Stripe::Customer.create(email: current_user.email)
             #Save the stripe id to the database
             current_user.card_last4 = params[:card_last4]
             current_user.card_exp_month = params[:card_exp_month]
