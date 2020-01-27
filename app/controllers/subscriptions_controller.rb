@@ -17,7 +17,7 @@ class SubscriptionsController < ApplicationController
         plan = Stripe::Plan.retrieve(plan_id)
         token = params[:stripeToken]
 
-        customer = if current_user.stripe_id?
+        customer = if current_user.stripe_id.present?
             Stripe::Customer.retrieve(current_user.stripe_id)
         else
             Stripe::Customer.create(email: current_user.email, source: token)
