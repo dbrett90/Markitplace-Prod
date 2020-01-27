@@ -29,14 +29,14 @@ class SubscriptionsController < ApplicationController
             # Stripe::Customer.create(description: 'Test Customer')
             #Save the stripe id to the database
         end
-        flash[:success] = customer
-        flash[:danger] = customer.class
         subscription = customer.subscriptions.create(plan: plan.id)
         options = {
             stripe_id: customer.id,
             stripe_subscription_id: subscription.id,
             subscribed: true
         }
+        flash[:danger] = subscription.class
+        flash[:success] = subscription
 
         # #Doing a merge if card value is updated. Below function will check this
         options.merge!(
