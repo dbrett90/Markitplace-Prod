@@ -27,7 +27,8 @@ class SubscriptionsController < ApplicationController
             current_user.card_exp_year = params[:card_exp_year]
             current_user.card_type = params[:card_type]
         end
-        current_user.stripe_id = customer.id
+        # current_user.stripe_id = customer.id
+        flash[:success] = customer.id
         subscription = customer.subscriptions.create(plan: plan.id)
         options = {
             stripe_id: customer.id,
