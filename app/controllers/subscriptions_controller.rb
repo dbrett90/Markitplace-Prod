@@ -30,6 +30,7 @@ class SubscriptionsController < ApplicationController
             # flash[:danger] = "Customer Created!"
         end
         # current_user.stripe_id = customer.id
+        redirect_to root_path
         flash[:success] = customer.class
         # subscription = customer.subscriptions.create(plan: plan.id)
         # options = {
