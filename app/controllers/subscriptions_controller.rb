@@ -19,7 +19,7 @@ class SubscriptionsController < ApplicationController
 
         customer = if current_user.stripe_id.present?
             Stripe::Customer.retrieve(current_user.stripe_id)
-            flash[:danger] = "Not going through correct loop!"
+            flash[:danger] = "User already has a stripe ID!"
         else
             Stripe::Customer.create(email: current_user.email, source: token)
             #Save the stripe id to the database
@@ -31,21 +31,21 @@ class SubscriptionsController < ApplicationController
         end
         # current_user.stripe_id = customer.id
         flash[:success] = customer.class
-        # subscription = customer.subscriptions.create(plan: plan.id)
-        # options = {
-        #     stripe_id: customer.id,
-        #     stripe_subscription_id: subscription.id,
-        #     subscribed: true
-        # }
+        subscription = customer.subscriptions.create(plan: plan.id)
+        options = {
+            stripe_id: customer.id,
+            stripe_subscription_id: subscription.id,
+            subscribed: true
+        }
 
         #Doing a merge if card value is updated. Below function will check this
-        # options.merge!(
-        #     card_last4: params[:user][:card_last4],
-        #     card_exp_month: params[:user][:card_exp_month],
-        #     card_exp_year: params[:user][:card_exp_year],
-        #     card_type: params[:user][:card_type]
-        #     ) if params[:user][:card_last4]
-        #     current_user.update(options)
+        options.merge!(
+            card_last4: params[:user][:card_last4],
+            card_exp_month: params[:user][:card_exp_month],
+            card_exp_year: params[:user][:card_exp_year],
+            card_type: params[:user][:card_type]
+            ) if params[:user][:card_last4]
+            current_user.update(options)
             redirect_to root_path
 
             #Trigger Flash & The action mailers for confirmation
