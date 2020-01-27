@@ -29,25 +29,24 @@ class SubscriptionsController < ApplicationController
             # Stripe::Customer.create(description: 'Test Customer')
             #Save the stripe id to the database
         end
-        # current_user.stripe_id = customer.id
-        redirect_to root_path
         flash[:success] = customer
-        # subscription = customer.subscriptions.create(plan: plan.id)
-        # options = {
-        #     stripe_id: customer.id,
-        #     stripe_subscription_id: subscription.id,
-        #     subscribed: true
-        # }
+        flash[:danger] = customer.class
+        subscription = customer.subscriptions.create(plan: plan.id)
+        options = {
+            stripe_id: customer.id,
+            stripe_subscription_id: subscription.id,
+            subscribed: true
+        }
 
         # #Doing a merge if card value is updated. Below function will check this
-        # options.merge!(
-        #     card_last4: params[:user][:card_last4],
-        #     card_exp_month: params[:user][:card_exp_month],
-        #     card_exp_year: params[:user][:card_exp_year],
-        #     card_type: params[:user][:card_type]
-        #     ) if params[:user][:card_last4]
-        #     current_user.update(options)
-        #     redirect_to root_path
+        options.merge!(
+            card_last4: params[:user][:card_last4],
+            card_exp_month: params[:user][:card_exp_month],
+            card_exp_year: params[:user][:card_exp_year],
+            card_type: params[:user][:card_type]
+            ) if params[:user][:card_last4]
+            current_user.update(options)
+            redirect_to root_path
 
             #Trigger Flash & The action mailers for confirmation
             #flash[:success] = "Your subscription is now active! Please check your email for a confirmation notice."
