@@ -16,7 +16,7 @@ class SubscriptionsController < ApplicationController
         #Make sure that the credentials file has the appropriate plan_ids
         plan_id = params[:plan_id]
         plan = Stripe::Plan.retrieve(plan_id)
-        flash[:warning] = plan
+        # flash[:warning] = plan
         token = params[:stripeToken]
         # flash[:warning] = Stripe.api_key
 
