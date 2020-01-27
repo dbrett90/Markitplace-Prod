@@ -21,6 +21,12 @@ class SubscriptionsController < ApplicationController
             Stripe::Customer.retrieve(current_user.stripe_id)
         else
             Stripe::Customer.create(email: current_user.email, source: token)
+            #Save the stripe id to the database
+            current_user.stripe_id = Stripe::Customer.retrieve(current_user.stripe_id)
+            current_user.card_last4 = params[:card_last4]
+            current_user.card_exp_month = params[:card_exp_month]
+            current_user.card_exp_year = params[:card_exp_year]
+            current_user.card_type = params[:card_type]
         end
         subscription = customer.subscriptions.create(plan: plan.id)
         options = {
