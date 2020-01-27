@@ -39,6 +39,12 @@ class SubscriptionsController < ApplicationController
         flash[:danger] = subscription.class
         flash[:success] = subscription
 
+        #Trigger Flash & The action mailers for confirmation
+        OrderConfirmationMailer.customer_confirmation(params[:payment_shipping][:plan], 
+            params[:payment_shipping][:recipient_name], params[:payment_shipping][:street_address_1],
+            params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
+            params[:payment_shipping][:state], params[:payment_shipping][:zipcode])
+
         # #Doing a merge if card value is updated. Below function will check this
         options.merge!(
             card_last4: params[:user][:card_last4],
@@ -47,12 +53,6 @@ class SubscriptionsController < ApplicationController
             card_type: params[:user][:card_type]
             ) if params[:user][:card_last4]
             current_user.update(options)
-
-            #Trigger Flash & The action mailers for confirmation
-        OrderConfirmationMailer.customer_confirmation(params[:payment_shipping][:plan], 
-            params[:payment_shipping][:recipient_name], params[:payment_shipping][:street_address_1],
-            params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
-            params[:payment_shipping][:state], params[:payment_shipping][:zipcode])
         redirect_to root_path
         flash[:success] = "Your subscription is now active! Please check your email for a confirmation notice."
 
