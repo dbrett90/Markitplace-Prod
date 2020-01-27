@@ -17,7 +17,7 @@
           <% end %>
         </div>
         <div class= "col-6 checkout-header">
-          <%= form_for(:payment_shipping, url: subscriptions_path, id: "payment-form") do |f| %>
+          <%= form_for(:payment_shipping, url: subscriptions_path) do |f| %>
             <div class="shipping-information">
               <h1>Shipping Information</h1>
               <%= f.label :recipient_name, class: 'field-label emphasis' do %>
@@ -47,7 +47,7 @@
             </div>
             <div class="payment-information">
               <h1>Card Information</h1>
-              <div class="field card-information">
+              <div class="field card-information" id="payment-form">
                 <label for="card-element" class="field-label emphasis">Enter credit or debit card</label>
                 <div id="card-element">
                   <!-- A Stripe Element will be inserted here. -->
