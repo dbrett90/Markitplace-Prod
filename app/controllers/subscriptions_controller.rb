@@ -16,6 +16,7 @@ class SubscriptionsController < ApplicationController
         plan_id = params[:plan_id]
         plan = Stripe::Plan.retrieve(plan_id)
         token = params[:stripeToken]
+        flash[:warning] = token
 
         customer = if current_user.stripe_id.present?
             Stripe::Customer.retrieve(current_user.stripe_id)
@@ -27,7 +28,7 @@ class SubscriptionsController < ApplicationController
             current_user.card_exp_month = params[:card_exp_month]
             current_user.card_exp_year = params[:card_exp_year]
             current_user.card_type = params[:card_type]
-            # flash[:danger] = "Customer Created!"
+            flash[:danger] = "Customer Created!"
         end
         # current_user.stripe_id = customer.id
         redirect_to root_path
