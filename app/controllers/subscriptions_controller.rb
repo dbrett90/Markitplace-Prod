@@ -16,7 +16,7 @@ class SubscriptionsController < ApplicationController
         plan_id = params[:plan_id]
         plan = Stripe::Plan.retrieve(plan_id)
         token = params[:stripeToken]
-        flash[:warning] = token
+        flash[:warning] = Stripe.api_key
 
         customer = if current_user.stripe_id.present?
             Stripe::Customer.retrieve(current_user.stripe_id)
