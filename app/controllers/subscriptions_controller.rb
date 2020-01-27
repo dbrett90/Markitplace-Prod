@@ -4,7 +4,7 @@ class SubscriptionsController < ApplicationController
         @plans = PlanType.all
         if logged_in? && current_user.subscribed?
              flash[:warning] = "Please note that you are already subscribed to one plan. You can view
-             youre current subscriptions from the navbar"
+             your current subscriptions from the navbar"
         end
     end
 
@@ -47,14 +47,15 @@ class SubscriptionsController < ApplicationController
             card_type: params[:user][:card_type]
             ) if params[:user][:card_last4]
             current_user.update(options)
-            redirect_to root_path
 
             #Trigger Flash & The action mailers for confirmation
-            #flash[:success] = "Your subscription is now active! Please check your email for a confirmation notice."
-            # OrderConfirmationMailer.customer_confirmation(params[:payment_shipping][:plan], 
-            # params[:payment_shipping][:recipient_name], params[:payment_shipping][:street_address_1],
-            # params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
-            # params[:payment_shipping][:state], params[:payment_shipping][:zipcode])
+        OrderConfirmationMailer.customer_confirmation(params[:payment_shipping][:plan], 
+            params[:payment_shipping][:recipient_name], params[:payment_shipping][:street_address_1],
+            params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
+            params[:payment_shipping][:state], params[:payment_shipping][:zipcode])
+        redirect_to root_path
+        flash[:success] = "Your subscription is now active! Please check your email for a confirmation notice."
+
     end
 
     def destroy
