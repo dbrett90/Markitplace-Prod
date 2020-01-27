@@ -30,7 +30,7 @@ class SubscriptionsController < ApplicationController
             # flash[:danger] = "Customer Created!"
         end
         # current_user.stripe_id = customer.id
-        flash[:success] = "Customer Class" + customer.class
+        flash[:success] = customer.class
         # subscription = customer.subscriptions.create(plan: plan.id)
         # options = {
         #     stripe_id: customer.id,
