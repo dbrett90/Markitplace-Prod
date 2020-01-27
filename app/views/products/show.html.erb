@@ -10,7 +10,7 @@
           <% if logged_in? %>
             <% symbolize = @product.plan_type_name.downcase.to_sym %>
             <%= flash[:success] = symbolize %>
-            <%= link_to 'START COOKING', new_subscription_path(plan: @product.plan_type_name.downcase, plan_id: Rails.application.credentials.dig(symbolize)), class:"btn btn-outline-success jumbo-button" %>
+            <%= link_to 'START COOKING', new_subscription_path(plan: @product.plan_type_name.downcase, plan_id: Rails.application.credentials.development.dig(symbolize)), class:"btn btn-outline-success jumbo-button" %>
           <% else %>
             <%= link_to 'START COOKING', new_user_path, class:"btn btn-outline-success jumbo-button" %>
          <% end %>
