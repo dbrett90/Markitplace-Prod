@@ -51,7 +51,7 @@ class SubscriptionsController < ApplicationController
             current_user.update(options)
         
         #Let's add subscription value to the Library... will need to make sure dependencies operating correctly.
-        #Computationally this is going to get expensive once the # of plans grows
+        #Computationally this is going to get expensive once the # of plans grows. Look at relation here. 
         subscription_plans = PlanType.all
         subscription_plans.each do |plan_type|
             if plan.nickname.downcase == plan_type.name.downcase
