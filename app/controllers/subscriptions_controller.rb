@@ -53,9 +53,9 @@ class SubscriptionsController < ApplicationController
         #Let's add subscription value to the Library... will need to make sure dependencies operating correctly.
         #Computationally this is going to get expensive once the # of plans grows
         subscription_plans = PlanType.all
-        subscription_plans.each do |sub_plan|
-            if plan.name.downcase == sub_plan.name.downcase
-                current_user.plan_subscription_library_additions << plan
+        subscription_plans.each do |plan_type|
+            if plan.name.downcase == plan_type.name.downcase
+                current_user.plan_subscription_library_additions << plan_type
             end
         end
         flash[:warning] = params
