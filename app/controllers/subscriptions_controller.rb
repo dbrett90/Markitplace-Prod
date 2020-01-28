@@ -9,6 +9,7 @@ class SubscriptionsController < ApplicationController
     end
 
     #Need to add a mailer after an account has been created... ADD THIS IN
+    #But of an ugly controller - might need to change this to make it more concise
     def create
         #Make sure we change this to production when the time comes
         Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
@@ -49,11 +50,25 @@ class SubscriptionsController < ApplicationController
             ) if params[:user][:card_last4]
             current_user.update(options)
         
+        #Let's add subscription value to the Library... will need to make sure dependencies operating correctly.
+        #Computationally this is going to get expensive once the # of plans grows
+        subscription_plans = PlanType.all
+        subscription_plans.each do |plan|
+            if plan.name.downcase == subscription.nickname.downcase
+                current_user.plan_subscription_library_additions << plan
+            end
+        end
+        
         #Trigger Flash & The action mailers for confirmation
         OrderConfirmationMailer.customer_confirmation(current_user, plan.nickname, 
             params[:payment_shipping][:recipient_name], params[:payment_shipping][:street_address_1],
             params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
             params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
+        #Hit the order confirmation and send over to the vendor... need to pull the vendor email
+        #from Stripe, but question becomes how to test for that.
+        #OrderConfirmationMailer.vendor_confirmation(current_user)
+
+        #Redirect back to the root Path and send flash notice
         redirect_to root_path
         flash[:success] = "Your subscription is now active! Please check your email for a confirmation notice."
         # flash[:warning] = params[:plan]

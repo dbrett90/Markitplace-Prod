@@ -92,7 +92,7 @@ class ProductsController < ApplicationController
    end
  end
 
- #Add and remove products from Library for the current user
+ #Might want to rip out this part of the controller - don't need a library method here
  def library
     # current_user = User.find(params[:id])
     type = params[:type]

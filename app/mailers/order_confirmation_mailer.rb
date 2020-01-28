@@ -14,9 +14,11 @@ class OrderConfirmationMailer < ApplicationMailer
         #flash[:warning] = "Confirmation Email has been sent"
     end
 
-    def vendor_confirmation(customer_name, customer_email, vendor_email, plan_type, shipping_details)
-        @customer_name = customer_name
-        @customer_email = customer_email
+    #Where are you pulling the vendor_email from?
+    #Take a look at this tomorrow. Going to need to pull it from Stripe Id for connect
+    def vendor_confirmation(current_user, vendor_email, plan_type, shipping_details)
+        @customer_name = current_user.name
+        @customer_email = current_user.email
         @plan_type = plan_type
         @shipping_details = shipping_details
         mail to: vendor_email, cc: "dbrett14@gmail.com", subject: "customer has placed an order on Markitplace"
