@@ -52,12 +52,12 @@ class SubscriptionsController < ApplicationController
         
         #Let's add subscription value to the Library... will need to make sure dependencies operating correctly.
         #Computationally this is going to get expensive once the # of plans grows
-        # subscription_plans = PlanType.all
-        # subscription_plans.each do |plan|
-        #     if plan.name.downcase == subscription.nickname.downcase
-        #         current_user.plan_subscription_library_additions << plan
-        #     end
-        # end
+        subscription_plans = PlanType.all
+        subscription_plans.each do |sub_plan|
+            if plan.name.downcase == sub_plan.nickname.downcase
+                current_user.plan_subscription_library_additions << plan
+            end
+        end
         flash[:warning] = params
         #Trigger Flash & The action mailers for confirmation
         OrderConfirmationMailer.customer_confirmation(current_user, plan.nickname, 
