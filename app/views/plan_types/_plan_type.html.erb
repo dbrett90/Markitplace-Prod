@@ -10,8 +10,7 @@
                 <% end %>
                 <div class="card-body text-center">
                     <h5 class="card-title text-center"> <%= plan_type.name %></h5>
-                    <h6 class="card-subtitle mb-2 text-muted text-center"> <%= plan_type.partner_name %></h6>
-                    <p class="card-text text-center" id="overwrite-card-text"> <%= plan_type.calories %> Calories <%= plan_type.protein %>g Protein, <%= plan_type.carbs %> Carbs, <%=plan_type.fats %>g Fats </p>
+                    <h6 class="card-subtitle mb-2 text-muted text-center"> <%= plan_type.description %></h6>
                     <% if logged_in? %>
                         <% if current_user.admin? %>
                             <%= link_to "More Info", plan_type_path(plan_type), class:"btn btn-success" %>
@@ -20,10 +19,10 @@
                         <% elsif current_user.is_subscribed? %>
                             <%= link_to "More Info - added Test", plan_type_path(plan_type), class:"btn btn-success" %>
                         <% else %>
-                            <%= link_to "Not Subscribed", plan_type_path(plan_type), class:"btn btn-success" %>
+                            <%= link_to "Else Conditional", plan_type_path(plan_type), class:"btn btn-success" %>
                         <% end %>
                     <% else %>
-                        <%= link_to "More Info - Not LI", plan_type_path(plan_type), class:"btn btn-success" %>
+                        <%= link_to "More Info - Generic", plan_type_path(plan_type), class:"btn btn-success" %>
                     <% end %> 
                 </div>
             </div>
