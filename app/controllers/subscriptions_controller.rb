@@ -54,7 +54,7 @@ class SubscriptionsController < ApplicationController
         #Computationally this is going to get expensive once the # of plans grows
         subscription_plans = PlanType.all
         subscription_plans.each do |plan_type|
-            if plan.name.downcase == plan_type.name.downcase
+            if plan.nickname.downcase == plan_type.name.downcase
                 current_user.plan_subscription_library_additions << plan_type
             end
         end
