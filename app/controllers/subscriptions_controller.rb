@@ -53,11 +53,14 @@ class SubscriptionsController < ApplicationController
         #Let's add subscription value to the Library... will need to make sure dependencies operating correctly.
         #Computationally this is going to get expensive once the # of plans grows. Look at relation here. 
         subscription_plans = PlanType.all
-        subscription_plans.each do |plan_type|
-            if plan.nickname.downcase == plan_type.name.downcase
-                current_user.plan_subscription_library_additions << plan_type
-            end
-        end
+        #Took the function out and put it in the helper value
+        plan_type = find_plan(plan, subscription_plan)
+        current_user.plan_subscription_library_additions << plan_type
+        # subscription_plans.each do |plan_type|
+        #     if plan.nickname.downcase == plan_type.name.downcase
+        #         current_user.plan_subscription_library_additions << plan_type
+        #     end
+        # end
         flash[:warning] = params
         #Trigger Flash & The action mailers for confirmation
         OrderConfirmationMailer.customer_confirmation(current_user, plan.nickname, 
@@ -81,7 +84,8 @@ class SubscriptionsController < ApplicationController
         customer.subscriptions.retrieve(current_user.stripe_subscription_id).delete
         current_user.update(stripe_subscription_id: nil)
         current_user.subscribed = false
+        current_user.subscription_library_additions.delete(@book)
 
-        redirect_to root_path, notice: "Your subscription has been cancelled"
+        redirect_to subscription_library_index_path, notice: "Your subscription has been cancelled"
     end
 end
