@@ -34,7 +34,8 @@ class SubscriptionsController < ApplicationController
         subscription = customer.subscriptions.create(plan: plan.id)
         options = {
             stripe_id: customer.id,
-            stripe_subscription_id: subscription.id,
+            #Gonna need to check this line here
+            stripe_subscription_id << subscription.id,
             subscribed: true
         }
         # flash[:danger] = subscription.class
