@@ -1,5 +1,4 @@
-class SubscriptionsController < ApplicationController
-    
+class SubscriptionsController < ApplicationController    
     def new
         @plans = PlanType.all
         if logged_in? && current_user.subscribed?
@@ -51,16 +50,10 @@ class SubscriptionsController < ApplicationController
             current_user.update(options)
         
         #Let's add subscription value to the Library... will need to make sure dependencies operating correctly.
-        #Computationally this is going to get expensive once the # of plans grows. Look at relation here. 
         subscription_plans = PlanType.all
-        #Took the function out and put it in the helper value
+        #Took the function out and put it in it's own function in private
         plan_type = find_plan(plan, subscription_plans)
         current_user.plan_subscription_library_additions << plan_type
-        # subscription_plans.each do |plan_type|
-        #     if plan.nickname.downcase == plan_type.name.downcase
-        #         current_user.plan_subscription_library_additions << plan_type
-        #     end
-        # end
         flash[:warning] = params
         #Trigger Flash & The action mailers for confirmation
         OrderConfirmationMailer.customer_confirmation(current_user, plan.nickname, 
@@ -81,6 +74,10 @@ class SubscriptionsController < ApplicationController
 
     def destroy
         customer = Stripe::Customer.retrieve(current_user.stripe_id)
+        #Find the current subscription that we're going to delete
+        subscription = customer.subscriptions.retrieve(plan: plan_id)
+
+        #Delete the subscription from stripe and from the user
         customer.subscriptions.retrieve(current_user.stripe_subscription_id).delete
         current_user.update(stripe_subscription_id: nil)
         current_user.subscribed = false

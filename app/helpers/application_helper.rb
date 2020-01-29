@@ -17,13 +17,6 @@ module ApplicationHelper
     logged_in? && current_user.admin?
   end
 
-  def find_plan(stripe_subscription, subscription_plans)
-    subscription_plans.each do |plan_type|
-        if stripe_subscription.nickname.downcase == plan_type.name.downcase
-            return plan_type
-        end
-    end
-  end
   
   # def subscribed?
   #   logged_in_user? && current_user.subscribed?
