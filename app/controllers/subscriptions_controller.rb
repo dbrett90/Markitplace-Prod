@@ -32,10 +32,11 @@ class SubscriptionsController < ApplicationController
             #Save the stripe id to the database
         end
         subscription = customer.subscriptions.create(plan: plan.id)
+        current_user.stripe_subscription_id << subscription.id
         options = {
             stripe_id: customer.id,
             #Gonna need to check this line here
-            stripe_subscription_id << subscription.id,
+            # stripe_subscription_id << subscription.id,
             subscribed: true
         }
         # flash[:danger] = subscription.class
