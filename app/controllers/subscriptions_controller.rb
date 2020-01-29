@@ -56,7 +56,7 @@ class SubscriptionsController < ApplicationController
         #Took the function out and put it in it's own function in private
         plan_type = find_plan(plan, subscription_plans)
         current_user.plan_subscription_library_additions << plan_type
-        flash[:warning] = params
+        # flash[:warning] = params
         #Trigger Flash & The action mailers for confirmation
         OrderConfirmationMailer.customer_confirmation(current_user, plan.nickname, 
             params[:payment_shipping][:recipient_name], params[:payment_shipping][:street_address_1],
