@@ -79,11 +79,15 @@ class SubscriptionsController < ApplicationController
         #Find the current subscription that we're going to delete
         subscription = customer.subscriptions.retrieve(plan: plan_id)
 
-        #Delete the subscription from stripe and from the user
-        customer.subscriptions.retrieve(current_user.stripe_subscription_id).delete
+        #Remove from the user's library additions
+        subscription_plans = PlanType.all
+        plan_type = find_plan(subscription, subscription_plans)
+        current_user.plan_subscription_library_additions.delete(plan_type)
+
+        #Delete the subscription from stripe and from the user... re-examine this first line
+        customer.subscriptions.retrieve(subscription.id).delete
         current_user.update(stripe_subscription_id: nil)
         current_user.subscribed = false
-        current_user.subscription_library_additions.delete(@book)
 
         redirect_to subscription_library_index_path, notice: "Your subscription has been cancelled"
     end
