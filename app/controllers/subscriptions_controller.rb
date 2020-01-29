@@ -78,6 +78,7 @@ class SubscriptionsController < ApplicationController
         Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
         customer = Stripe::Customer.retrieve(current_user.stripe_id)
         #Find the current subscription that we're going to delete
+        plan_id = params[:plan_id]
         subscription = customer.subscriptions.retrieve(plan: plan_id)
 
         #Remove from the user's library additions
