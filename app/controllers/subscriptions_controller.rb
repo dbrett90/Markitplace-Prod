@@ -54,7 +54,7 @@ class SubscriptionsController < ApplicationController
         #Computationally this is going to get expensive once the # of plans grows. Look at relation here. 
         subscription_plans = PlanType.all
         #Took the function out and put it in the helper value
-        plan_type = find_plan(plan, subscription_plan)
+        plan_type = find_plan(plan, subscription_plans)
         current_user.plan_subscription_library_additions << plan_type
         # subscription_plans.each do |plan_type|
         #     if plan.nickname.downcase == plan_type.name.downcase
