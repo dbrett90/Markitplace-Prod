@@ -95,7 +95,7 @@ class SubscriptionsController < ApplicationController
         # current_user.update(stripe_subscription_id: nil)
         # current_user.subscribed = false
 
-        redirect_to subscription_library_index_path, notice: "Your subscription has been cancelled"
+        redirect_to plan_subscription_library_index_path, notice: "Your subscription has been cancelled"
     end
 
     private
