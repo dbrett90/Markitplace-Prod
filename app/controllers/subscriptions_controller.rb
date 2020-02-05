@@ -84,8 +84,8 @@ class SubscriptionsController < ApplicationController
         plan_type = PlanType.find(params[:id])
         plan_type_downcased = plan_type.name.downcase
         flash[:danger] = plan_type_downcased
-        # subscription = customer.subscriptions.retrieve(nickname: plan_type.name.downcase)
-        # flash[:warning] = subscription
+        subscription = customer.subscriptions.retrieve(nickname: plan_type_downcased)
+        flash[:warning] = subscription
 
         #Remove from the user's library additions
         # subscription_plans = PlanType.all
