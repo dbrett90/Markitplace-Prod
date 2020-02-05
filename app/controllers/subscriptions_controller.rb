@@ -85,9 +85,9 @@ class SubscriptionsController < ApplicationController
         # subscription = customer.subscriptions.retrieve(plan: plan_id)
 
         #Remove from the user's library additions
-        subscription_plans = PlanType.all
-        plan_type = find_plan(subscription, subscription_plans)
-        flash[:success] = plan_type
+        # subscription_plans = PlanType.all
+        # plan_type = find_plan(subscription, subscription_plans)
+        # flash[:success] = plan_type
         # current_user.plan_subscription_library_additions.delete(plan_type)
 
         # #Delete the subscription from stripe and from the user... re-examine this first line
