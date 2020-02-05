@@ -83,7 +83,7 @@ class SubscriptionsController < ApplicationController
         #Are we pulling the ID from the params section - doesn't grab anything currently
         plan_type = PlanType.find(params[:id])
         # flash[:warning] = plan_type
-        subscription = customer.subscriptions.retrieve(nickname: plan_type.downcase)
+        subscription = customer.subscriptions.retrieve(nickname: plan_type.name.downcase)
         flash[:warning] = subscription
 
         #Remove from the user's library additions
