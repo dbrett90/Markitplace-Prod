@@ -80,17 +80,20 @@ class SubscriptionsController < ApplicationController
         customer = Stripe::Customer.retrieve(current_user.stripe_id)
         #Find the current subscription that we're going to delete
         plan_id = params[:plan_id]
+        #Are we pulling the ID from the params section
+        flash[:warning] = plan_id
         subscription = customer.subscriptions.retrieve(plan: plan_id)
 
         #Remove from the user's library additions
         subscription_plans = PlanType.all
         plan_type = find_plan(subscription, subscription_plans)
-        current_user.plan_subscription_library_additions.delete(plan_type)
+        flash[:success] = plan_type
+        # current_user.plan_subscription_library_additions.delete(plan_type)
 
-        #Delete the subscription from stripe and from the user... re-examine this first line
-        customer.subscriptions.retrieve(subscription.id).delete
-        current_user.update(stripe_subscription_id: nil)
-        current_user.subscribed = false
+        # #Delete the subscription from stripe and from the user... re-examine this first line
+        # customer.subscriptions.retrieve(subscription.id).delete
+        # current_user.update(stripe_subscription_id: nil)
+        # current_user.subscribed = false
 
         redirect_to subscription_library_index_path, notice: "Your subscription has been cancelled"
     end
