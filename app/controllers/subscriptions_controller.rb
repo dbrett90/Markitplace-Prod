@@ -78,8 +78,8 @@ class SubscriptionsController < ApplicationController
     def destroy
         Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
         customer = Stripe::Customer.retrieve(current_user.stripe_id)
-        #Find the current subscription that we're going to delete
-        plan_id = params[:plan_id]
+        #Find the current subscription that we're going to delete. Iterate over subscription ids until nickname matches up?
+        # while 
         #Are we pulling the ID from the params section - doesn't grab anything currently
         flash[:warning] = params
         # subscription = customer.subscriptions.retrieve(nickname: plan_id)
