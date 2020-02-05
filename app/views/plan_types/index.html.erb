@@ -34,10 +34,10 @@
                                     <% elsif current_user.is_subscribed? %>
                                         <%= link_to "More Info", plan_type_path(plan_type), class:"btn btn-success" %>
                                     <% else %>
-                                        <%= link_to "Else Conditional", plan_type_path(plan_type), class:"btn btn-success" %>
+                                        <%= link_to "More Info", plan_type_path(plan_type), class:"btn btn-success" %>
                                     <% end %>
                                 <% else %>
-                                    <%= link_to "More Info - Generic", plan_type_path(plan_type), class:"btn btn-success" %>
+                                    <%= link_to "More Info", plan_type_path(plan_type), class:"btn btn-success" %>
                                 <% end %>
                             </div>
                         </div>

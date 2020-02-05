@@ -74,6 +74,7 @@ class SubscriptionsController < ApplicationController
 
     end
 
+    #We have some work here - not properly deleting as of now
     def destroy
         Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
         customer = Stripe::Customer.retrieve(current_user.stripe_id)
