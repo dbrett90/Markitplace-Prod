@@ -82,7 +82,7 @@ class SubscriptionsController < ApplicationController
         plan_id = params[:plan_id]
         #Are we pulling the ID from the params section
         flash[:warning] = plan_id
-        subscription = customer.subscriptions.retrieve(plan: plan_id)
+        # subscription = customer.subscriptions.retrieve(plan: plan_id)
 
         #Remove from the user's library additions
         subscription_plans = PlanType.all
