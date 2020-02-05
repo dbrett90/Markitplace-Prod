@@ -80,9 +80,9 @@ class SubscriptionsController < ApplicationController
         customer = Stripe::Customer.retrieve(current_user.stripe_id)
         #Find the current subscription that we're going to delete
         plan_id = params[:plan_id]
-        #Are we pulling the ID from the params section
-        flash[:warning] = plan_id
-        # subscription = customer.subscriptions.retrieve(plan: plan_id)
+        #Are we pulling the ID from the params section - doesn't grab anything currently
+        flash[:warning] = params
+        # subscription = customer.subscriptions.retrieve(nickname: plan_id)
 
         #Remove from the user's library additions
         # subscription_plans = PlanType.all
