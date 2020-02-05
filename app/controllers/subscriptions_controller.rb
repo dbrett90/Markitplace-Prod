@@ -81,7 +81,8 @@ class SubscriptionsController < ApplicationController
         #Find the current subscription that we're going to delete. Iterate over subscription ids until nickname matches up?
         # while 
         #Are we pulling the ID from the params section - doesn't grab anything currently
-        flash[:warning] = params[:plan_type]
+        plan_type = PlanType.find:[id]
+        flash[:warning] = plan_type
         # subscription = customer.subscriptions.retrieve(nickname: plan_id)
 
         #Remove from the user's library additions
