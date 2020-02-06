@@ -38,7 +38,7 @@ class SubscriptionsController < ApplicationController
         plan_type = find_plan(plan, subscription_plans)
 
         #Update the subscription creation with stripe connected account param & application_fee_percent params. Sent via connect
-        subscription = customer.subscriptions.create(plan: plan.id, transfer_data{amount_percent:95 destination: plan_type.stripe_id })
+        subscription = customer.subscriptions.create(plan: plan.id, transfer_data{amount_percent: 95 destination: plan_type.stripe_id })
         #Update the hash
         current_user.stripe_subscription_id[plan.nickname.downcase] = subscription.id
         options = {
