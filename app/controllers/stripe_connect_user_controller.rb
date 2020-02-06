@@ -11,7 +11,7 @@ class StripeConnectUserController < ApplicationController
         connected_account_id = response.stripe_user_id
         flash[:warning] = response
         linkedAccount = Stripe::Account.retrieve(connected_account_id)
-        linkedEmail = email_exists?(linkedAccount)
+        #linkedEmail = email_exists?(linkedAccount)
         @stripe_connect_user = StripeConnectUser.new
         @stripe_connect_user.stripe_id = connected_account_id
         @stripe_connect_user.stripe_email = linkedAccount.email
