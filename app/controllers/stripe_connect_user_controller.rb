@@ -9,11 +9,12 @@ class StripeConnectUserController < ApplicationController
         })
         dummy_email = "dbrett14@gmail.com"
         connected_account_id = response.stripe_user_id
+        flash[:warning] = response
         linkedAccount = Stripe::Account.retrieve(connected_account_id)
         linkedEmail = email_exists?(linkedAccount)
         @stripe_connect_user = StripeConnectUser.new
         @stripe_connect_user.stripe_id = connected_account_id
-        @stripe_connect_user.stripe_email = dummy_email 
+        @stripe_connect_user.stripe_email = linkedAccount.email
         @stripe_connect_user.save
         @stripe_connect_user.send_instructions_email
         flash[:success] = "Your stripe account has now been linked! An email with instructions has been sent"
