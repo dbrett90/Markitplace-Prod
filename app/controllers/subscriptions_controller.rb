@@ -19,6 +19,11 @@ class SubscriptionsController < ApplicationController
         # flash[:warning] = plan
         token = params[:stripeToken]
         # flash[:warning] = Stripe.api_key
+        #Let's add subscription value to the Library.
+        subscription_plans = PlanType.all
+
+        #calling private function find_plan
+        plan_type = find_plan(plan, subscription_plans)
 
         customer = if current_user.stripe_id.present?
             Stripe::Customer.retrieve(current_user.stripe_id)
@@ -31,11 +36,6 @@ class SubscriptionsController < ApplicationController
             # Stripe::Customer.create(description: 'Test Customer')
             #Save the stripe id to the database
         end
-        #Let's add subscription value to the Library.
-        subscription_plans = PlanType.all
-
-        #calling private function find_plan
-        plan_type = find_plan(plan, subscription_plans)
 
         #Update the subscription creation with stripe connected account param & application_fee_percent params. Sent via connect
         #transfer_data{amount_percent: 95, destination: plan_type.stripe_id }
