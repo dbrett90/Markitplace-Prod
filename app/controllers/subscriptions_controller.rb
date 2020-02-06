@@ -114,7 +114,7 @@ class SubscriptionsController < ApplicationController
         end
     end
 
-    def removed_plan(plans, plan)
+    def remove_plan(plans, plan)
         plans.each do |each_plan|
             if each_plan.name.downcase == plan
                 return each_plan
