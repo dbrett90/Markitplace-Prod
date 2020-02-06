@@ -104,7 +104,7 @@ class SubscriptionsController < ApplicationController
         # #Delete the subscription from stripe and from the user... re-examine this first line
         customer.subscriptions.retrieve(subscription.id).delete
         current_user.stripe_subscription_id.delete(plan_type_downcased)
-        current_user.subscribed = still_subscribed(current_user)
+        current_user.subscribed = still_subscribed?(current_user)
 
         redirect_to plan_subscription_library_index_path, notice: "Your subscription has been cancelled"
     end
@@ -124,6 +124,8 @@ class SubscriptionsController < ApplicationController
             true
         else
             false
+        end
+    end
 
 
 end
