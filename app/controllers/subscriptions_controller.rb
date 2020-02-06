@@ -32,7 +32,7 @@ class SubscriptionsController < ApplicationController
             #Save the stripe id to the database
         end
         subscription = customer.subscriptions.create(plan: plan.id)
-        current_user.stripe_subscription_id << subscription.id
+        current_user.stripe_subscription_id << {plan.nickname.downcase: subscription.id}
         options = {
             stripe_id: customer.id,
             #Gonna need to check this line here
