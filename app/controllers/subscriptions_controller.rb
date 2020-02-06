@@ -33,7 +33,7 @@ class SubscriptionsController < ApplicationController
         end
         subscription = customer.subscriptions.create(plan: plan.id)
         #Update the hash
-        current_user.stripe_subscription_id << {plan.nickname.downcase: subscription.id}
+        current_user.stripe_subscription_id << {plan.nickname.downcase => subscription.id}
         options = {
             stripe_id: customer.id,
             #Gonna need to check this line here
