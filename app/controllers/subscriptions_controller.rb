@@ -32,6 +32,7 @@ class SubscriptionsController < ApplicationController
             #Save the stripe id to the database
         end
         subscription = customer.subscriptions.create(plan: plan.id)
+        #Update the hash
         current_user.stripe_subscription_id << {plan.nickname.downcase: subscription.id}
         options = {
             stripe_id: customer.id,

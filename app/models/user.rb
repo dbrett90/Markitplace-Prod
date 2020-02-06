@@ -8,7 +8,8 @@ class User < ApplicationRecord
     validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
     has_secure_password
     validates :password, presence: true, length: { minimum: 8 }, format: { with: VALID_PASSWORD_REGEX }, allow_nil: true
-
+    #Hash Values need to be seralized
+    serialize :stripe_subscription_id, Hash
     
     #Specific to a user's prod_subscription_libray.. May need to remove this shit
     has_many :products, dependent: :destroy
@@ -19,6 +20,7 @@ class User < ApplicationRecord
     has_many :plan_types, dependent: :destroy
     has_many :plan_subscription_libraries
     has_many :plan_subscription_library_additions, through: :plan_subscription_libraries, source: :plan_type
+    
 
 
     #Authentication Helper Methods
