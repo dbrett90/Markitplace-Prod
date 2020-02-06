@@ -31,8 +31,15 @@ class SubscriptionsController < ApplicationController
             # Stripe::Customer.create(description: 'Test Customer')
             #Save the stripe id to the database
         end
+        #Let's add subscription value to the Library.
+        subscription_plans = PlanType.all
+
+        #calling private function find_plan
+        plan_type = find_plan(plan, subscription_plans)
+        current_user.plan_subscription_library_additions << plan_type
+
         #Update the subscription creation with stripe connected account param & application_fee_percent params
-        subscription = customer.subscriptions.create(plan: plan.id)
+        subscription = customer.subscriptions.create(plan: plan.id, stripe_account:plan_type.stripe_id, application_fee_percent: 2 )
         #Update the hash
         current_user.stripe_subscription_id[plan.nickname.downcase] = subscription.id
         options = {
@@ -50,13 +57,6 @@ class SubscriptionsController < ApplicationController
             current_user.update(options)
         
         #Let's send the payment over via connect
-        
-        #Let's add subscription value to the Library.
-        subscription_plans = PlanType.all
-
-        #calling private function find_plan
-        plan_type = find_plan(plan, subscription_plans)
-        current_user.plan_subscription_library_additions << plan_type
 
         #Trigger Flash & The action mailers for confirmation
         OrderConfirmationMailer.customer_confirmation(current_user, plan.nickname, 

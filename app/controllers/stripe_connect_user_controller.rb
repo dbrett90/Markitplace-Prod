@@ -9,7 +9,7 @@ class StripeConnectUserController < ApplicationController
         })
         dummy_email = "dbrett14@gmail.com"
         connected_account_id = response.stripe_user_id
-        flash[:warning] = response
+        #flash[:warning] = response
         linkedAccount = Stripe::Account.retrieve(connected_account_id)
         #linkedEmail = email_exists?(linkedAccount)
         @stripe_connect_user = StripeConnectUser.new
