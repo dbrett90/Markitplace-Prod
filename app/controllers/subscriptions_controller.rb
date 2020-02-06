@@ -94,7 +94,7 @@ class SubscriptionsController < ApplicationController
         subscription_plans = PlanType.all
         # plan_type = find_plan(subscription.plan, subscription_plans)
         subscription_plans.each do |plan|
-            if plan.name.downcase = plan_type_downcased
+            if plan.name.downcase == plan_type_downcased
                 removed_plan = plan
             end
         end
