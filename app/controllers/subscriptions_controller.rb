@@ -91,15 +91,15 @@ class SubscriptionsController < ApplicationController
         flash[:warning] = subscription
 
         #Remove from the user's library additions. May need to refactor to be more efficient later on
-        subscription_plans = PlanType.all
-        plan_type = find_plan(subscription, subscription_plans)
-        flash[:success] = plan_type
-        current_user.plan_subscription_library_additions.delete(plan_type)
+        # subscription_plans = PlanType.all
+        # plan_type = find_plan(subscription, subscription_plans)
+        # flash[:success] = plan_type
+        # current_user.plan_subscription_library_additions.delete(plan_type)
 
-        # #Delete the subscription from stripe and from the user... re-examine this first line
-        customer.subscriptions.retrieve(subscription.id).delete
-        current_user.update(stripe_subscription_id: nil)
-        current_user.subscribed = false
+        # # #Delete the subscription from stripe and from the user... re-examine this first line
+        # customer.subscriptions.retrieve(subscription.id).delete
+        # current_user.update(stripe_subscription_id: nil)
+        # current_user.subscribed = false
 
         redirect_to plan_subscription_library_index_path, notice: "Your subscription has been cancelled"
     end
