@@ -86,7 +86,7 @@ class SubscriptionsController < ApplicationController
         plan_type_downcased = plan_type.name.downcase
         flash[:danger] = plan_type_downcased
         #Think we're going to need to update the datavase with a has of plan_name:subscription_id
-        subscription_id = customer.stripe_subscription_id[plan_type_downcased]
+        subscription_id = current_user.stripe_subscription_id[plan_type_downcased]
         subscription = customer.subscriptions.retrieve(id: subscription_id)
         flash[:warning] = subscription
 
