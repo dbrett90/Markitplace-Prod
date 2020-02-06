@@ -98,9 +98,9 @@ class SubscriptionsController < ApplicationController
 
         # #Delete the subscription from stripe and from the user... re-examine this first line
         customer.subscriptions.retrieve(subscription.id).delete
-        flash[:success] = current_user.stripe_subscription_id.length
+        #flash[:success] = current_user.stripe_subscription_id.length
         current_user.stripe_subscription_id.delete(plan_type_downcased)
-        flash[:danger] = current_user.stripe_subscription_id.length
+        #flash[:danger] = current_user.stripe_subscription_id.length
         current_user.subscribed = still_subscribed?(current_user)
         current_user.save
 
