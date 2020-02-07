@@ -21,6 +21,7 @@ class SubscriptionsController < ApplicationController
         #Need to update plan retrieval
         # flash[:warning] = plan
         token = params[:stripeToken]
+        flash[:danger] = params
         # flash[:warning] = Stripe.api_key
         #Let's add subscription value to the Library.
         subscription_plans = PlanType.all
