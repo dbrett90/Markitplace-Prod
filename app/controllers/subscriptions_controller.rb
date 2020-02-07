@@ -37,9 +37,9 @@ class SubscriptionsController < ApplicationController
             Stripe::Customer.create({
                 email: current_user.email, 
                 source:token,
-            }
+            },
             {
-                stripe_account: plan_type.stripe_id
+                stripe_account: plan_type.stripe_id,
             })
             # Stripe::Customer.create(description: 'Test Customer')
             #Save the stripe id to the database
