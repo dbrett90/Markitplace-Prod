@@ -13,7 +13,7 @@ class SubscriptionsController < ApplicationController
         #Make sure we change this to production when the time comes
         Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
 
-        #Make sure that the credentials file has the appropriate plan_ids
+        #Make sure that the credentials file has the appropriate plan_ids. Pulling this from PLATFORM account. Need to be added to connect account?
         plan_id = params[:plan_id]
         plan = Stripe::Plan.retrieve(plan_id)
         # flash[:warning] = plan
@@ -29,9 +29,17 @@ class SubscriptionsController < ApplicationController
             Stripe::Customer.retrieve(current_user.stripe_id)
             # flash[:danger] = "User already has a stripe ID!"
         else
+            #Create customer in my environemnt & in connected accounts environment
             Stripe::Customer.create({
                 email: current_user.email, 
                 source:token,
+            })
+            Stripe::Customer.create({
+                email: current_user.email, 
+                source:token,
+            }
+            {
+                stripe_account: plan_type.stripe_id
             })
             # Stripe::Customer.create(description: 'Test Customer')
             #Save the stripe id to the database
@@ -43,13 +51,7 @@ class SubscriptionsController < ApplicationController
 
         #Update the subscription creation with stripe connected account param & application_fee_percent params. Sent via connect
         #transfer_data{amount_percent: 95, destination: plan_type.stripe_id }
-        subscription = customer.subscriptions.create({
-            plan: plan.id, 
-            transfer_data: {
-                amount: 8.77,
-                destination: plan_type.stripe_id,
-            },
-        })
+        subscription = customer.subscriptions.create(plan: plan.id)
         #Update the hash
         current_user.stripe_subscription_id[plan.nickname.downcase] = subscription.id
         options = {
