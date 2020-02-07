@@ -59,7 +59,7 @@ class PlanTypesController < ApplicationController
        flash[:success] = "PLAN TYPE WAS SUCCESSFULLY CREATED"
        format.html { redirect_to plan_types_path, notice: 'PLAN TYPE was successfully created.' }
        format.json { render :index, status: :created, location: @plan_type }
-       Stripe::Plan.create({
+       stripe_plan = Stripe::Plan.create({
         amount: 10,
         currency: 'usd',
         interval: 'month',
@@ -73,6 +73,7 @@ class PlanTypesController < ApplicationController
        format.json { render json: @plan_type.errors, status: :unprocessable_entity }
      end
    end
+   flash[:warning] = stripe_plan
  end
 
  # PATCH/PUT /books/1
