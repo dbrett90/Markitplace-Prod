@@ -15,7 +15,7 @@ class SubscriptionsController < ApplicationController
 
         #Make sure that the credentials file has the appropriate plan_ids. Pulling this from PLATFORM account. Need to be added to connect account?
         plan_id = params[:plan_id]
-        plan_name = params[:plan]
+        plan_name = params[:plan_name]
         flash[:warning] = plan_name
         #Need to update plan retrieval
         # flash[:warning] = plan
