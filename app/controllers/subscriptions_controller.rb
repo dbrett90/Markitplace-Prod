@@ -38,7 +38,7 @@ class SubscriptionsController < ApplicationController
         end
         #Update the account with stripe_account id
         Stripe::Customer.update({
-            id: customer.id,
+            customer.id,
          },
         {stripe_account: plan_type.stripe_id})
         # customer.update({stripe_account: plan_type.stripe_id})
