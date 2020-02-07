@@ -29,7 +29,7 @@ class SubscriptionsController < ApplicationController
         # flash[:warning] = Stripe::Plan.list({limit: 3}, {stripe_account: plan_type.stripe_id})
 
         customer = if current_user.stripe_id.present?
-            Stripe::Customer.retrieve(current_user.stripe_id)
+            Stripe::Customer.retrieve({current_user.stripe_id}, stripe_account: plan_type.stripe_id)
             # flash[:danger] = "User already has a stripe ID!"
         else
             #Create customer in my environemnt & in connected accounts environment
