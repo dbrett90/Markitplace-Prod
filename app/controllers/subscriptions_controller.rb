@@ -5,6 +5,7 @@ class SubscriptionsController < ApplicationController
              flash[:warning] = "Please note that you are already subscribed to one plan. You can view
              your current subscriptions from the navbar"
         end
+        flash[:warning] = params
     end
 
     #Need to add a mailer after an account has been created... ADD THIS IN
