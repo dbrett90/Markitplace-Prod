@@ -65,7 +65,7 @@ class PlanTypesController < ApplicationController
         interval: 'month',
         product: {name: @plan_type.name.downcase}
       },
-      {stripe_account: @plan_type.stripe_id })
+      {stripe_account: @plan_type.stripe_id})
      else
        flash[:danger] = "SOME TYPE OF ISSUE WITH CREATION"
        flash[:notice] = @plan_type.errors.full_messages
