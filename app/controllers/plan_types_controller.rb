@@ -43,6 +43,9 @@ class PlanTypesController < ApplicationController
 #Essentially trying to replicate devise here.
 #Let's confirm that this actually pulls the current user. 
  def create
+    #Going to create the plan on behalf of the client - need key
+    Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
+
     @plan_type = current_user.plan_types.build(plan_type_params)
     @products = Product.all 
     @products.each do |product|
@@ -56,6 +59,13 @@ class PlanTypesController < ApplicationController
        flash[:success] = "PLAN TYPE WAS SUCCESSFULLY CREATED"
        format.html { redirect_to plan_types_path, notice: 'PLAN TYPE was successfully created.' }
        format.json { render :index, status: :created, location: @plan_type }
+       Stripe::Plan.create({
+        amount: 10,
+        currency: 'usd',
+        interval: 'month',
+        product: {name: @plan_type.name.downcase}
+      },
+      {stripe_account: @plan_type.stripe_id })
      else
        flash[:danger] = "SOME TYPE OF ISSUE WITH CREATION"
        flash[:notice] = @plan_type.errors.full_messages
