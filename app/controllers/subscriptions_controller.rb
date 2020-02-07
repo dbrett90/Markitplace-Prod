@@ -15,8 +15,8 @@ class SubscriptionsController < ApplicationController
 
         #Make sure that the credentials file has the appropriate plan_ids. Pulling this from PLATFORM account. Need to be added to connect account?
         plan_id = params[:plan_id]
-        plan = Stripe::Plan.retrieve(plan_id)
-        #plan = Stripe::plan.retrieve()
+        plan_name = params[:plan]
+        #Need to update plan retrieval
         # flash[:warning] = plan
         token = params[:stripeToken]
         # flash[:warning] = Stripe.api_key
@@ -24,7 +24,9 @@ class SubscriptionsController < ApplicationController
         subscription_plans = PlanType.all
 
         #calling private function find_plan
-        plan_type = find_plan(plan, subscription_plans)
+        plan_type = find_plan(plan_name, subscription_plans)
+        #Here is where things are going to get tricky....
+        plan = Stripe::Plan.retrieve(plan_id, plan_type.stripe_id)
 
         #plan = Stripe::Plan.retrieve(plan_id, {stripe_account: plan_type.stripe_id})
         # flash[:warning] = Stripe::Plan.list({limit: 3}, {stripe_account: plan_type.stripe_id})
@@ -124,7 +126,7 @@ class SubscriptionsController < ApplicationController
     #For create controller method
     def find_plan(stripe_subscription, subscription_plans)
         subscription_plans.each do |plan_type|
-            if stripe_subscription.nickname.downcase == plan_type.name.downcase
+            if stripe_subscription == plan_type.name.downcase
                 return plan_type
             end
         end
