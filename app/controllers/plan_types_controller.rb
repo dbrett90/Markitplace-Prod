@@ -57,7 +57,6 @@ class PlanTypesController < ApplicationController
    respond_to do |format|
      if @plan_type.save
        flash[:success] = "PLAN TYPE WAS SUCCESSFULLY CREATED"
-       flash[:warning] = stripe_plan
        format.html { redirect_to plan_types_path, notice: 'PLAN TYPE was successfully created.' }
        format.json { render :index, status: :created, location: @plan_type }
        stripe_plan = Stripe::Plan.create({
