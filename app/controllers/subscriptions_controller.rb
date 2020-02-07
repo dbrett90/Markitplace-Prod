@@ -16,6 +16,7 @@ class SubscriptionsController < ApplicationController
         #Make sure that the credentials file has the appropriate plan_ids. Pulling this from PLATFORM account. Need to be added to connect account?
         plan_id = params[:plan_id]
         plan = Stripe::Plan.retrieve(plan_id)
+        #plan = Stripe::plan.retrieve()
         # flash[:warning] = plan
         token = params[:stripeToken]
         # flash[:warning] = Stripe.api_key
@@ -29,7 +30,7 @@ class SubscriptionsController < ApplicationController
         # flash[:warning] = Stripe::Plan.list({limit: 3}, {stripe_account: plan_type.stripe_id})
 
         customer = if current_user.stripe_id.present?
-            Stripe::Customer.retrieve({current_user.stripe_id}, stripe_account: plan_type.stripe_id)
+            Stripe::Account.retrieve(plan_type.stripe_id)
             # flash[:danger] = "User already has a stripe ID!"
         else
             #Create customer in my environemnt & in connected accounts environment
