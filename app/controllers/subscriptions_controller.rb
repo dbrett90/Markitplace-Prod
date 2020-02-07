@@ -92,7 +92,7 @@ class SubscriptionsController < ApplicationController
 
         # #Redirect back to the root Path and send flash notice
         redirect_to root_path
-        flash[:success] = "Your subscription is now active! Please check your email for a confirmation notice."
+        #flash[:success] = "Your subscription is now active! Please check your email for a confirmation notice."
 
     end
 
