@@ -30,10 +30,10 @@ class SubscriptionsController < ApplicationController
             # flash[:danger] = "User already has a stripe ID!"
         else
             #Create customer in my environemnt & in connected accounts environment
-            Stripe::Customer.create({
-                email: current_user.email, 
-                source:token,
-            })
+            # Stripe::Customer.create({
+            #     email: current_user.email, 
+            #     source:token,
+            # })
             Stripe::Customer.create({
                 email: current_user.email, 
                 source:token,
