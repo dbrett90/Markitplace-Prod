@@ -29,8 +29,8 @@ class SubscriptionsController < ApplicationController
         #calling private function find_plan
         plan_type = find_plan(plan_name, subscription_plans)
         #flash[:success] = plan_type
-        #Here is where things are going to get tricky....
-        plan = Stripe::Plan.retrieve(plan_id, plan_type.stripe_id)
+        #Here is where things are going to get tricky.... RESUME HERE
+        plan = Stripe::Plan.retrieve(plan_id, {stripe_account: plan_type.stripe_id})
         flash[:success] = plan
 
         #plan = Stripe::Plan.retrieve(plan_id, {stripe_account: plan_type.stripe_id})
