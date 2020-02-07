@@ -64,7 +64,7 @@ class PlanTypesController < ApplicationController
         currency: 'usd',
         interval: 'month',
         nickname: @plan_type.name.downcase,
-        product: {name: @plan_type.name.downcase}
+        product: {name: "Markitplace Mealplan"}
       },
       {stripe_account: @plan_type.stripe_id})
       flash[:warning] = stripe_plan
