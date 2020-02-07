@@ -67,8 +67,8 @@ class PlanTypesController < ApplicationController
         product: {name: "Markitplace Mealplan"}
       },
       {stripe_account: @plan_type.stripe_id})
-      flash[:warning] = stripe_plan
-      flash[:success] = stripe_plan
+      flash[:danger] = stripe_plan
+      #flash[:success] = stripe_plan
      else
        flash[:danger] = "SOME TYPE OF ISSUE WITH CREATION"
        flash[:notice] = @plan_type.errors.full_messages
