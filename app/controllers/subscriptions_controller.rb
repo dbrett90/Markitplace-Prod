@@ -39,7 +39,7 @@ class SubscriptionsController < ApplicationController
         #Update the account with stripe_account id
 
         #Create Token with account info in it
-        account_token = Stripe::Token.create()
+        # account_token = Stripe::Token.create()
 
         #Update the subscription creation with stripe connected account param & application_fee_percent params. Sent via connect
         #transfer_data{amount_percent: 95, destination: plan_type.stripe_id }
