@@ -26,7 +26,7 @@ class SubscriptionsController < ApplicationController
         plan_type = find_plan(plan, subscription_plans)
 
         #plan = Stripe::Plan.retrieve(plan_id, {stripe_account: plan_type.stripe_id})
-        flash[:warning] = Stripe::Plan.list({limit: 3}, {stripe)account: plan_type.stripe_id})
+        flash[:warning] = Stripe::Plan.list({limit: 3}, {stripe_account: plan_type.stripe_id})
 
         # customer = if current_user.stripe_id.present?
         #     Stripe::Customer.retrieve(current_user.stripe_id)
