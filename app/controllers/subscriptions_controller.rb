@@ -25,7 +25,7 @@ class SubscriptionsController < ApplicationController
         #calling private function find_plan
         plan_type = find_plan(plan, subscription_plans)
 
-        plan = Stripe::Plan.retrive(plan_id, {stripe_account: plan_type.stripe_id})
+        plan = Stripe::Plan.retrieve(plan_id, {stripe_account: plan_type.stripe_id})
 
         customer = if current_user.stripe_id.present?
             Stripe::Customer.retrieve(current_user.stripe_id)
