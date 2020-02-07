@@ -36,7 +36,8 @@ class SubscriptionsController < ApplicationController
             # Stripe::Customer.create(description: 'Test Customer')
             #Save the stripe id to the database
         end
-        Stripe::Customer.update(id: customer.id, {stripe_account: plan_type.stripe_id} )
+        #Update the account with stripe_account id
+        Stripe::Customer.update(id: customer.id, {stripe_account => plan_type.stripe_id}, )
         # customer.update({stripe_account: plan_type.stripe_id})
 
         #Update the subscription creation with stripe connected account param & application_fee_percent params. Sent via connect
