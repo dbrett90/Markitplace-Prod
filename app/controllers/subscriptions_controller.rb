@@ -37,14 +37,19 @@ class SubscriptionsController < ApplicationController
             #Save the stripe id to the database
         end
         #Update the account with stripe_account id
-        # Stripe::Customer.update({
-        #     customer.id,
-        #  }, {stripe_account: plan_type.stripe_id})
-        # customer.update({stripe_account: plan_type.stripe_id})
+
+        #Create Token with account info in it
+        account_token = Stripe::Token.create()
 
         #Update the subscription creation with stripe connected account param & application_fee_percent params. Sent via connect
         #transfer_data{amount_percent: 95, destination: plan_type.stripe_id }
-        subscription = customer.subscriptions.create({plan: plan.id, application_fee_percent: 10,}, stripe_account: plan_type.stripe_id)
+        subscription = customer.subscriptions.create({
+            plan: plan.id, 
+            transfer_data: {
+                amount: 8.77,
+                destination: plan_type.stripe_id,
+            },
+        })
         #Update the hash
         current_user.stripe_subscription_id[plan.nickname.downcase] = subscription.id
         options = {
