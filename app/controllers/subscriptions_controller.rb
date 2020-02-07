@@ -28,12 +28,13 @@ class SubscriptionsController < ApplicationController
 
         #calling private function find_plan
         plan_type = find_plan(plan_name, subscription_plans)
-        flash[:success] = plan_type
+        #flash[:success] = plan_type
         #Here is where things are going to get tricky....
-        # plan = Stripe::Plan.retrieve(plan_id, plan_type.stripe_id)
+        plan = Stripe::Plan.retrieve(plan_id, plan_type.stripe_id)
+        flash[:success] = plan
 
-        # #plan = Stripe::Plan.retrieve(plan_id, {stripe_account: plan_type.stripe_id})
-        # # flash[:warning] = Stripe::Plan.list({limit: 3}, {stripe_account: plan_type.stripe_id})
+        #plan = Stripe::Plan.retrieve(plan_id, {stripe_account: plan_type.stripe_id})
+        # flash[:warning] = Stripe::Plan.list({limit: 3}, {stripe_account: plan_type.stripe_id})
 
         # customer = if current_user.stripe_id.present?
         #     Stripe::Account.retrieve(plan_type.stripe_id)
@@ -79,17 +80,17 @@ class SubscriptionsController < ApplicationController
         #     ) if params[:user][:card_last4]
         #     current_user.update(options)
 
-        # #Trigger Flash & The action mailers for confirmation
+        #Trigger Flash & The action mailers for confirmation
         # OrderConfirmationMailer.customer_confirmation(current_user, plan.nickname, 
         #     params[:payment_shipping][:recipient_name], params[:payment_shipping][:street_address_1],
         #     params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
         #     params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
 
-        # #Hit the order confirmation and send over to the vendor... need to pull the vendor email
-        # #from Stripe, but question becomes how to test for that.
-        # #OrderConfirmationMailer.vendor_confirmation(current_user)
+        #Hit the order confirmation and send over to the vendor... need to pull the vendor email
+        #from Stripe, but question becomes how to test for that.
+        #OrderConfirmationMailer.vendor_confirmation(current_user)
 
-        # # #Redirect back to the root Path and send flash notice
+        # #Redirect back to the root Path and send flash notice
         redirect_to root_path
         flash[:success] = "Your subscription is now active! Please check your email for a confirmation notice."
 
