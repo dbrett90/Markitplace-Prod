@@ -16,11 +16,16 @@ class OrderConfirmationMailer < ApplicationMailer
 
     #Where are you pulling the vendor_email from?
     #Take a look at this tomorrow. Going to need to pull it from Stripe Id for connect
-    def vendor_confirmation(current_user, vendor_email, plan_type, shipping_details)
+    def vendor_confirmation(current_user, vendor_email, plan_type, recipient_name, street_address_1, street_address_2, city, state, zipcode)
         @customer_name = current_user.name
         @customer_email = current_user.email
         @plan_type = plan_type
-        @shipping_details = shipping_details
+        @recipient_name = recipient_name
+        @street_address_1 = street_address_1
+        @street_address_2 = street_address_2
+        @city = city
+        @state = state
+        @zipcode = zipcode
         mail to: vendor_email, cc: "dbrett14@gmail.com", subject: "customer has placed an order on Markitplace"
     end
 end

@@ -82,18 +82,19 @@ class SubscriptionsController < ApplicationController
         # flash[:success] = customer
 
         #Trigger Flash & The action mailers for confirmation
-        # OrderConfirmationMailer.customer_confirmation(current_user, plan.nickname, 
-        #     params[:payment_shipping][:recipient_name], params[:payment_shipping][:street_address_1],
-        #     params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
-        #     params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
+        OrderConfirmationMailer.customer_confirmation(current_user, plan.nickname, 
+            params[:payment_shipping][:recipient_name], params[:payment_shipping][:street_address_1],
+            params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
+            params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
 
-        #Hit the order confirmation and send over to the vendor... need to pull the vendor email
-        #from Stripe, but question becomes how to test for that.
-        #OrderConfirmationMailer.vendor_confirmation(current_user)
+        #Hit the order confirmation and send over to the vendor... Sends them a confirmation email about the order type. Can also view it in the stripe dashboard
+        stripe_connect_users = StripeConnectUser.all
+        sc_user_email = find_sc_user_email(stripe_connect_users, plan_type.stripe_id)
+        OrderConfirmationMailer.vendor_confirmation(current_user,sc_user_email )
 
         # #Redirect back to the root Path and send flash notice
         redirect_to root_path
-        #flash[:success] = "Your subscription is now active! Please check your email for a confirmation notice."
+        flash[:success] = "Your subscription is now active! Please check your email for a confirmation notice."
 
     end
 
@@ -153,6 +154,14 @@ class SubscriptionsController < ApplicationController
             true
         else
             false
+        end
+    end
+
+    def find_sc_user_email(sc_users, stripe_id)
+        sc_users.each do |sc_user|
+            if sc_user.stripe_id == stripe_id
+                return sc_user.stripe_email
+            end
         end
     end
 
