@@ -62,7 +62,7 @@ class PlanTypesController < ApplicationController
        stripe_plan = Stripe::Plan.create({
         #Might need to include a pricing input value here so it's dynamic and not hard-coded.
         #Also need to figure out what the billing period for this would be.
-        amount_decimal: 1000.00,
+        amount_decimal: (@plan_type.price * 100),
         currency: 'usd',
         interval: 'month',
         nickname: @plan_type.name.downcase,
@@ -131,7 +131,7 @@ class PlanTypesController < ApplicationController
    # Never trust parameters from the scary internet, only allow the white list through.
     #Update with User ID?
    def plan_type_params
-     params.require(:plan_type).permit(:name, :description, :created_at, :updated_at, :stripe_id, :plan_id, :thumbnail)
+     params.require(:plan_type).permit(:name, :description, :created_at, :updated_at, :stripe_id, :plan_id, :price, :thumbnail)
    end
 end
 
