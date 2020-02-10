@@ -109,15 +109,17 @@ class SubscriptionsController < ApplicationController
         # plan_type_downcased = plan_type.name.downcase
 
         # #Add the plan name and subscription ID as a hash to the subscription id table
-        # subscription_id = current_user.stripe_subscription_id[plan_type_downcased]
-        # subscription = customer.subscriptions.retrieve(id: subscription_id)
+        subscription_id = params[:plan_id]
+        subscription = customer.subscriptions.retrieve(id: subscription_id, {stripe_account: connected_acct})
 
-        # #Remove from the user's library additions. May need to refactor to be more efficient later on...
-        # subscription_plans = PlanType.all
+
+        #Remove from the user's library additions. May need to refactor to be more efficient later on...
+        subscription_plans = PlanType.all
 
         # # Call function to find removed plan
-        # removed_plan = remove_plan(subscription_plans, plan_type_downcased)
-        # current_user.plan_subscription_library_additions.delete(removed_plan)
+        removed_plan = remove_plan(subscription_plans, subscription.nickname)
+        flash[:success] = subscription.nickname
+        #current_user.plan_subscription_library_additions.delete(removed_plan)
 
         # # #Delete the subscription from stripe and from the user...
         # customer.subscriptions.retrieve(subscription.id).delete
