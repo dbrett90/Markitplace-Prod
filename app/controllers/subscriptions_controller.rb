@@ -117,8 +117,8 @@ class SubscriptionsController < ApplicationController
         subscription_plans = PlanType.all
 
         # # Call function to find removed plan
-        removed_plan = remove_plan(subscription_plans, subscription.nickname)
-        flash[:success] = subscription.nickname
+        # removed_plan = remove_plan(subscription_plans, subscription.nickname)
+        flash[:success] = subscription
         #current_user.plan_subscription_library_additions.delete(removed_plan)
 
         # # #Delete the subscription from stripe and from the user...
