@@ -26,6 +26,6 @@ class OrderConfirmationMailer < ApplicationMailer
         @city = city
         @state = state
         @zipcode = zipcode
-        mail to: vendor_email, cc: "dbrett14@gmail.com", subject: "customer has placed an order on Markitplace"
+        mail to: vendor_email, cc: "dbrett14@gmail.com", subject: "Customer has bought a subscription on Markitplace"
     end
 end

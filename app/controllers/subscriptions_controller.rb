@@ -52,7 +52,7 @@ class SubscriptionsController < ApplicationController
         }
 
         #Add the plan_type to the subscription library so it shows up on the user's console
-        #current_user.plan_subscription_library_additions << plan_type
+        current_user.plan_subscription_library_additions << plan_type
 
         #Doing a merge if card value is updated. Below function will check this
         options.merge!(
