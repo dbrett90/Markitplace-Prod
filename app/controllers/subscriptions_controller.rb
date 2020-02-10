@@ -58,12 +58,11 @@ class SubscriptionsController < ApplicationController
         # account_token = Stripe::Token.create()
 
         #Update the subscription creation with stripe connected account param & application_fee_percent params. Sent via connect
-        #transfer_data{amount_percent: 95, destination: plan_type.stripe_id }
         # subscription = customer.subscriptions.create({plan: plan.id, application_fee_percent:5,}, stripe_account: plan_type.stripe_id)
         # #Update the hash
         # current_user.stripe_subscription_id[plan.nickname.downcase] = subscription.id
 
-        
+
         options = {
             stripe_id: customer.id,
             subscribed: true
@@ -72,13 +71,13 @@ class SubscriptionsController < ApplicationController
         # # current_user.plan_subscription_library_additions << plan_type
 
         # # #Doing a merge if card value is updated. Below function will check this
-        # options.merge!(
-        #     card_last4: params[:user][:card_last4],
-        #     card_exp_month: params[:user][:card_exp_month],
-        #     card_exp_year: params[:user][:card_exp_year],
-        #     card_type: params[:user][:card_type]
-        #     ) if params[:user][:card_last4]
-        #     current_user.update(options)
+        options.merge!(
+            card_last4: params[:user][:card_last4],
+            card_exp_month: params[:user][:card_exp_month],
+            card_exp_year: params[:user][:card_exp_year],
+            card_type: params[:user][:card_type]
+            ) if params[:user][:card_last4]
+            current_user.update(options)
 
         #Trigger Flash & The action mailers for confirmation
         # OrderConfirmationMailer.customer_confirmation(current_user, plan.nickname, 
