@@ -5,7 +5,6 @@ class SubscriptionsController < ApplicationController
              flash[:warning] = "Please note that you are already subscribed to one plan. You can view
              your current subscriptions from the navbar"
         end
-        flash[:warning] = params
     end
 
     #Need to add a mailer after an account has been created... ADD THIS IN
@@ -88,7 +87,7 @@ class SubscriptionsController < ApplicationController
         #Hit the order confirmation and send over to the vendor... Sends them a confirmation email about the order type. Can also view it in the stripe dashboard
         stripe_connect_users = StripeConnectUser.all
         sc_user_email = find_sc_user_email(stripe_connect_users, plan_type.stripe_id)
-        OrderConfirmationMailer.vendor_confirmation(current_user, sc_user_email,params[:payment_shipping][:recipient_name], params[:payment_shipping][:street_address_1],
+        OrderConfirmationMailer.vendor_confirmation(current_user, sc_user_email, plan_type, params[:payment_shipping][:recipient_name], params[:payment_shipping][:street_address_1],
             params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
             params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
 
