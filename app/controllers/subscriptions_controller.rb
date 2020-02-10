@@ -110,7 +110,7 @@ class SubscriptionsController < ApplicationController
 
         # #Add the plan name and subscription ID as a hash to the subscription id table
         subscription_id = params[:plan_id]
-        subscription = customer.subscriptions.retrieve(id: subscription_id, {stripe_account: connected_acct})
+        subscription = customer.subscriptions.retrieve(subscription_id, {stripe_account: connected_acct})
 
 
         #Remove from the user's library additions. May need to refactor to be more efficient later on...
