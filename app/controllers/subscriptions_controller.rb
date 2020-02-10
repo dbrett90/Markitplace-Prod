@@ -63,7 +63,16 @@ class SubscriptionsController < ApplicationController
             ) if params[:user][:card_last4]
 
         #Update the subscription creation with stripe connected account param & application_fee_percent params. Sent via connect
-        subscription = customer.subscriptions.create(plan.id, {stripe_account: plan_type.stripe_id})
+        #subscription = customer.subscriptions.create(plan.id, {stripe_account: plan_type.stripe_id})
+        subscription = Stripe::Subscription.create({
+            customer: customer,
+            items: [
+                {
+                    plan: plan_id
+                }
+            ],
+            application_fee_percent: 5,
+        }, stripe_account: plan_type.stripe_id)
         flash[:success] = subscription
         # #Update the hash
         current_user.stripe_subscription_id[plan.nickname.downcase] = subscription.id
