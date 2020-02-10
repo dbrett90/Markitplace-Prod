@@ -99,10 +99,8 @@ class SubscriptionsController < ApplicationController
     #Method to unsubscribe from a current subscription in Stripe
     def destroy
         Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
-        flash[:danger] = params
         connected_acct = params[:connected_acct]
         customer = Stripe::Customer.retrieve(current_user.stripe_id, {stripe_account: connected_acct})
-        flash[:success] = customer.email
 
         # #Are we pulling the ID from the params section - doesn't grab anything currently
         # plan_type = PlanType.find(params[:id])
