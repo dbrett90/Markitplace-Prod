@@ -36,32 +36,33 @@ class SubscriptionsController < ApplicationController
         #plan = Stripe::Plan.retrieve(plan_id, {stripe_account: plan_type.stripe_id})
         # flash[:warning] = Stripe::Plan.list({limit: 3}, {stripe_account: plan_type.stripe_id})
 
-        # customer = if current_user.stripe_id.present?
-        #     Stripe::Account.retrieve(plan_type.stripe_id)
-        #     # flash[:danger] = "User already has a stripe ID!"
-        # else
-        #     #Create customer in my environemnt & in connected accounts environment
-        #     # Stripe::Customer.create({
-        #     #     email: current_user.email, 
-        #     #     source:token,
-        #     # })
-        #     Stripe::Customer.create({
-        #         email: current_user.email, 
-        #         source:token,
-        #     },
-        #     {
-        #         stripe_account: plan_type.stripe_id,
-        #     })
-        #     # Stripe::Customer.create(description: 'Test Customer')
-        #     #Save the stripe id to the database
-        # end
-        # #Update the account with stripe_account id
+        customer = if current_user.stripe_id.present?
+            Stripe::Customer.retrieve(current_user.stripe_id, {stripe_account: plan_type.stripe_id})
+            # flash[:danger] = "User already has a stripe ID!"
+        else
+            #Create customer in my environemnt & in connected accounts environment
+            # Stripe::Customer.create({
+            #     email: current_user.email, 
+            #     source:token,
+            # })
+            Stripe::Customer.create({
+                email: current_user.email, 
+                source:token,
+            },
+            {
+                stripe_account: plan_type.stripe_id,
+            })
+            # Stripe::Customer.create(description: 'Test Customer')
+            #Save the stripe id to the database
+        end
+        flash[:success] = customer
+        #Update the account with stripe_account id
 
-        # #Create Token with account info in it
-        # # account_token = Stripe::Token.create()
+        #Create Token with account info in it
+        # account_token = Stripe::Token.create()
 
-        # #Update the subscription creation with stripe connected account param & application_fee_percent params. Sent via connect
-        # #transfer_data{amount_percent: 95, destination: plan_type.stripe_id }
+        #Update the subscription creation with stripe connected account param & application_fee_percent params. Sent via connect
+        #transfer_data{amount_percent: 95, destination: plan_type.stripe_id }
         # subscription = customer.subscriptions.create({plan: plan.id, application_fee_percent:5,}, stripe_account: plan_type.stripe_id)
         # #Update the hash
         # current_user.stripe_subscription_id[plan.nickname.downcase] = subscription.id
@@ -69,7 +70,8 @@ class SubscriptionsController < ApplicationController
         #     stripe_id: customer.id,
         #     subscribed: true
         # }
-        # current_user.plan_subscription_library_additions << plan_type
+        # #Add the plan_type to the subscription library
+        # # current_user.plan_subscription_library_additions << plan_type
 
         # # #Doing a merge if card value is updated. Below function will check this
         # options.merge!(
