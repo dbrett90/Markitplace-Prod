@@ -118,12 +118,12 @@ class SubscriptionsController < ApplicationController
 
         # # Call function to find removed plan
         removed_plan = remove_plan(subscription_plans, subscription.plan.nickname)
-        current_user.plan_subscription_library_additions.delete(removed_plan)
 
         # # #Delete the subscription from stripe and from the user...
         # customer.subscriptions.retrieve(subscription.id).delete
         subscription.delete
         current_user.stripe_subscription_id.delete(subscription.plan.nickname)
+        current_user.plan_subscription_library_additions.delete(removed_plan)
         current_user.subscribed = still_subscribed?(current_user)
         # #make sure to save the user to the database
         current_user.save
