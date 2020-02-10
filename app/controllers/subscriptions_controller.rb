@@ -14,27 +14,19 @@ class SubscriptionsController < ApplicationController
         #Make sure we change this to production when the time comes
         Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
 
-        #Make sure that the credentials file has the appropriate plan_ids. Pulling this from PLATFORM account. Need to be added to connect account?
+        #Make sure that the credentials file has the appropriate plan_ids. Pulling this from PLATFORM account. Making sure we pull this info from connected account.
         plan_id = params[:plan_id]
         plan_name = params[:plan_name]
         flash[:warning] = plan_name
-        #Need to update plan retrieval
-        # flash[:warning] = plan
         token = params[:stripeToken]
         flash[:danger] = params
-        # flash[:warning] = Stripe.api_key
         #Let's add subscription value to the Library.
         subscription_plans = PlanType.all
 
         #calling private function find_plan
         plan_type = find_plan(plan_name, subscription_plans)
-        #flash[:success] = plan_type
-        #Here is where things are going to get tricky.... RESUME HERE
         plan = Stripe::Plan.retrieve(plan_id, {stripe_account: plan_type.stripe_id})
         flash[:success] = plan
-
-        #plan = Stripe::Plan.retrieve(plan_id, {stripe_account: plan_type.stripe_id})
-        # flash[:warning] = Stripe::Plan.list({limit: 3}, {stripe_account: plan_type.stripe_id})
 
         customer = if current_user.stripe_id.present?
             Stripe::Customer.retrieve(current_user.stripe_id, {stripe_account: plan_type.stripe_id})
@@ -58,7 +50,8 @@ class SubscriptionsController < ApplicationController
             stripe_id: customer.id,
             subscribed: true
         }
-        #Add the plan_type to the subscription library
+
+        #Add the plan_type to the subscription library so it shows up on the user's console
         #current_user.plan_subscription_library_additions << plan_type
 
         #Doing a merge if card value is updated. Below function will check this
@@ -70,7 +63,7 @@ class SubscriptionsController < ApplicationController
             ) if params[:user][:card_last4]
 
         #Update the subscription creation with stripe connected account param & application_fee_percent params. Sent via connect
-        subscription = customer.subscriptions.create(plan.id, {application_fee_percent: 5, stripe_account: plan_type.stripe_id})
+        subscription = customer.subscriptions.create(plan.id, {stripe_account: plan_type.stripe_id})
         flash[:success] = subscription
         # #Update the hash
         current_user.stripe_subscription_id[plan.nickname.downcase] = subscription.id
