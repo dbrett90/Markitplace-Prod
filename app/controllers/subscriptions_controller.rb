@@ -2,7 +2,7 @@ class SubscriptionsController < ApplicationController
     def new
         @plans = PlanType.all
         if logged_in? && current_user.subscribed?
-             flash[:warning] = "Please note that you are already subscribed to one plan. You can view
+             flash[:warning] = "Please note that you are already subscribed to one or more plans. You can view
              your current subscriptions from the navbar"
         end
     end
@@ -16,7 +16,6 @@ class SubscriptionsController < ApplicationController
         #Make sure that the credentials file has the appropriate plan_ids. Pulling this from PLATFORM account. Making sure we pull this info from connected account.
         plan_id = params[:plan_id]
         plan_name = params[:plan_name]
-        flash[:warning] = plan_name
         token = params[:stripeToken]
         #Let's add subscription value to the Library.
         subscription_plans = PlanType.all
