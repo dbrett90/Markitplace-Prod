@@ -19,14 +19,13 @@ class SubscriptionsController < ApplicationController
         plan_name = params[:plan_name]
         flash[:warning] = plan_name
         token = params[:stripeToken]
-        flash[:danger] = params
         #Let's add subscription value to the Library.
         subscription_plans = PlanType.all
 
         #calling private function find_plan
         plan_type = find_plan(plan_name, subscription_plans)
         plan = Stripe::Plan.retrieve(plan_id, {stripe_account: plan_type.stripe_id})
-        flash[:success] = plan
+
 
         customer = if current_user.stripe_id.present?
             Stripe::Customer.retrieve(current_user.stripe_id, {stripe_account: plan_type.stripe_id})
@@ -74,7 +73,6 @@ class SubscriptionsController < ApplicationController
             application_fee_percent: 5,
             # application_fee: 0.50,
         }, stripe_account: plan_type.stripe_id)
-        flash[:success] = subscription
         # #Update the hash
         current_user.stripe_subscription_id[plan.nickname.downcase] = subscription.id
         current_user.update(options)
@@ -90,7 +88,9 @@ class SubscriptionsController < ApplicationController
         #Hit the order confirmation and send over to the vendor... Sends them a confirmation email about the order type. Can also view it in the stripe dashboard
         stripe_connect_users = StripeConnectUser.all
         sc_user_email = find_sc_user_email(stripe_connect_users, plan_type.stripe_id)
-        OrderConfirmationMailer.vendor_confirmation(current_user,sc_user_email )
+        OrderConfirmationMailer.vendor_confirmation(current_user, sc_user_email,params[:payment_shipping][:recipient_name], params[:payment_shipping][:street_address_1],
+            params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
+            params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
 
         # #Redirect back to the root Path and send flash notice
         redirect_to root_path
