@@ -51,33 +51,32 @@ class SubscriptionsController < ApplicationController
             # Stripe::Customer.create(description: 'Test Customer')
             #Save the stripe id to the database
         end
-        flash[:success] = customer
+        # flash[:success] = customer
         #Update the account with stripe_account id
-
-        #Create Token with account info in it
-        # account_token = Stripe::Token.create()
-
-        #Update the subscription creation with stripe connected account param & application_fee_percent params. Sent via connect
-        # subscription = customer.subscriptions.create({plan: plan.id, application_fee_percent:5,}, stripe_account: plan_type.stripe_id)
-        # #Update the hash
-        # current_user.stripe_subscription_id[plan.nickname.downcase] = subscription.id
-
 
         options = {
             stripe_id: customer.id,
             subscribed: true
         }
-        # #Add the plan_type to the subscription library
-        # # current_user.plan_subscription_library_additions << plan_type
+        #Add the plan_type to the subscription library
+        #current_user.plan_subscription_library_additions << plan_type
 
-        # # #Doing a merge if card value is updated. Below function will check this
+        #Doing a merge if card value is updated. Below function will check this
         options.merge!(
             card_last4: params[:user][:card_last4],
             card_exp_month: params[:user][:card_exp_month],
             card_exp_year: params[:user][:card_exp_year],
             card_type: params[:user][:card_type]
             ) if params[:user][:card_last4]
-            current_user.update(options)
+        current_user.update(options)
+
+        #Update the subscription creation with stripe connected account param & application_fee_percent params. Sent via connect
+        subscription = customer.subscriptions.create(plan.id {application_fee_percent: 5, stripe_account: plan_type.stripe_id} )
+        flash[:success] = subscription
+        # #Update the hash
+        # current_user.stripe_subscription_id[plan.nickname.downcase] = subscription.id
+
+        # flash[:success] = customer
 
         #Trigger Flash & The action mailers for confirmation
         # OrderConfirmationMailer.customer_confirmation(current_user, plan.nickname, 
