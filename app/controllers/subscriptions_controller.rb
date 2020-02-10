@@ -40,11 +40,7 @@ class SubscriptionsController < ApplicationController
             Stripe::Customer.retrieve(current_user.stripe_id, {stripe_account: plan_type.stripe_id})
             # flash[:danger] = "User already has a stripe ID!"
         else
-            #Create customer in my environemnt & in connected accounts environment
-            # Stripe::Customer.create({
-            #     email: current_user.email, 
-            #     source:token,
-            # })
+            #Create customer in connected accounts environment.
             Stripe::Customer.create({
                 email: current_user.email, 
                 source:token,
@@ -65,11 +61,11 @@ class SubscriptionsController < ApplicationController
         #transfer_data{amount_percent: 95, destination: plan_type.stripe_id }
         # subscription = customer.subscriptions.create({plan: plan.id, application_fee_percent:5,}, stripe_account: plan_type.stripe_id)
         # #Update the hash
-        # current_user.stripe_subscription_id[plan.nickname.downcase] = subscription.id
-        # options = {
-        #     stripe_id: customer.id,
-        #     subscribed: true
-        # }
+        current_user.stripe_subscription_id[plan.nickname.downcase] = subscription.id
+        options = {
+            stripe_id: customer.id,
+            subscribed: true
+        }
         # #Add the plan_type to the subscription library
         # # current_user.plan_subscription_library_additions << plan_type
 
