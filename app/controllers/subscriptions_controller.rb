@@ -98,30 +98,31 @@ class SubscriptionsController < ApplicationController
 
     #Method to unsubscribe from a current subscription in Stripe
     def destroy
-        Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
-        customer = Stripe::Customer.retrieve(current_user.stripe_id)
+        flash[:danger] = params
+        # Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
+        # Stripe::Customer.retrieve(current_user.stripe_id, {stripe_account: plan_type.stripe_id})
 
-        #Are we pulling the ID from the params section - doesn't grab anything currently
-        plan_type = PlanType.find(params[:id])
-        plan_type_downcased = plan_type.name.downcase
+        # #Are we pulling the ID from the params section - doesn't grab anything currently
+        # plan_type = PlanType.find(params[:id])
+        # plan_type_downcased = plan_type.name.downcase
 
-        #Add the plan name and subscription ID as a hash to the subscription id table
-        subscription_id = current_user.stripe_subscription_id[plan_type_downcased]
-        subscription = customer.subscriptions.retrieve(id: subscription_id)
+        # #Add the plan name and subscription ID as a hash to the subscription id table
+        # subscription_id = current_user.stripe_subscription_id[plan_type_downcased]
+        # subscription = customer.subscriptions.retrieve(id: subscription_id)
 
-        #Remove from the user's library additions. May need to refactor to be more efficient later on...
-        subscription_plans = PlanType.all
+        # #Remove from the user's library additions. May need to refactor to be more efficient later on...
+        # subscription_plans = PlanType.all
 
-        # Call function to find removed plan
-        removed_plan = remove_plan(subscription_plans, plan_type_downcased)
-        current_user.plan_subscription_library_additions.delete(removed_plan)
+        # # Call function to find removed plan
+        # removed_plan = remove_plan(subscription_plans, plan_type_downcased)
+        # current_user.plan_subscription_library_additions.delete(removed_plan)
 
-        # #Delete the subscription from stripe and from the user...
-        customer.subscriptions.retrieve(subscription.id).delete
-        current_user.stripe_subscription_id.delete(plan_type_downcased)
-        current_user.subscribed = still_subscribed?(current_user)
-        #make sure to save the user to the database
-        current_user.save
+        # # #Delete the subscription from stripe and from the user...
+        # customer.subscriptions.retrieve(subscription.id).delete
+        # current_user.stripe_subscription_id.delete(plan_type_downcased)
+        # current_user.subscribed = still_subscribed?(current_user)
+        # #make sure to save the user to the database
+        # current_user.save
 
         redirect_to plan_subscription_library_index_path, notice: "Your subscription has been cancelled"
     end
