@@ -10,7 +10,7 @@ class OrderConfirmationMailer < ApplicationMailer
         @state = state
         @zipcode = zipcode
         #Remove the CC afterwards.... just for testing purposes. 
-        mail to: current_user.email, cc: "dbrett14@gmail.com" subject: "Markitplace Subscription Confirmation"
+        mail to: current_user.email, cc: "dbrett14@gmail.com", subject: "Markitplace Subscription Confirmation"
         #flash[:warning] = "Confirmation Email has been sent"
     end
 
