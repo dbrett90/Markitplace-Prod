@@ -60,6 +60,8 @@ class PlanTypesController < ApplicationController
        format.html { redirect_to plan_types_path, notice: 'PLAN TYPE was successfully created.' }
        format.json { render :index, status: :created, location: @plan_type }
        stripe_plan = Stripe::Plan.create({
+        #Might need to include a pricing input value here so it's dynamic and not hard-coded.
+        #Also need to figure out what the billing period for this would be.
         amount_decimal: 1000.00,
         currency: 'usd',
         interval: 'month',
