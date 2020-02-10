@@ -61,7 +61,9 @@ class SubscriptionsController < ApplicationController
         #transfer_data{amount_percent: 95, destination: plan_type.stripe_id }
         # subscription = customer.subscriptions.create({plan: plan.id, application_fee_percent:5,}, stripe_account: plan_type.stripe_id)
         # #Update the hash
-        current_user.stripe_subscription_id[plan.nickname.downcase] = subscription.id
+        # current_user.stripe_subscription_id[plan.nickname.downcase] = subscription.id
+
+        
         options = {
             stripe_id: customer.id,
             subscribed: true
