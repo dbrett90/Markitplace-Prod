@@ -60,7 +60,7 @@ class PlanTypesController < ApplicationController
        format.html { redirect_to plan_types_path, notice: 'PLAN TYPE was successfully created.' }
        format.json { render :index, status: :created, location: @plan_type }
        stripe_plan = Stripe::Plan.create({
-        amount: 10,
+        amount: 10.00,
         currency: 'usd',
         interval: 'month',
         nickname: @plan_type.name.downcase,
