@@ -54,12 +54,7 @@ class PlanTypesController < ApplicationController
         @plan_type.products << product
       end
     end
-   respond_to do |format|
-     if @plan_type.save
-       flash[:success] = "PLAN TYPE WAS SUCCESSFULLY CREATED"
-       format.html { redirect_to plan_types_path, notice: 'PLAN TYPE was successfully created.' }
-       format.json { render :index, status: :created, location: @plan_type }
-       stripe_plan = Stripe::Plan.create({
+    stripe_plan = Stripe::Plan.create({
         #Might need to include a pricing input value here so it's dynamic and not hard-coded.
         #Also need to figure out what the billing period for this would be.
         amount_decimal: (@plan_type.price * 100),
@@ -69,8 +64,16 @@ class PlanTypesController < ApplicationController
         product: {name: "Markitplace Mealplan"}
       },
       {stripe_account: @plan_type.stripe_id})
-      flash[:danger] = stripe_plan
-      flash[:warning] = stripe_plan.id
+    flash[:danger] = stripe_plan
+    flash[:warning] = stripe_plan.id
+    @plan_type.plan_type_id = stripe_plan.id
+    @plan_type.save
+
+   respond_to do |format|
+     if @plan_type.save
+       flash[:success] = "PLAN TYPE WAS SUCCESSFULLY CREATED"
+       format.html { redirect_to plan_types_path, notice: 'PLAN TYPE was successfully created.' }
+       format.json { render :index, status: :created, location: @plan_type }
       # @plan_type.plan_type_id = stripe_plan.id
       # @plan_type.save
      else
@@ -80,9 +83,6 @@ class PlanTypesController < ApplicationController
        format.json { render json: @plan_type.errors, status: :unprocessable_entity }
      end
    end
-   #May need to change this depending on errors
-   @plan_type.plan_type_id = stripe_plan.id
-   @plan_type.save
  end
 
  # PATCH/PUT /books/1
