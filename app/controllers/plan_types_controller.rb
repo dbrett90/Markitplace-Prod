@@ -70,8 +70,9 @@ class PlanTypesController < ApplicationController
       },
       {stripe_account: @plan_type.stripe_id})
       flash[:danger] = stripe_plan
-      @plan_type.plan_type_id = stripe_plan.id
-      @plan_type.save
+      flash[:warning] = stripe_plan.id
+      # @plan_type.plan_type_id = stripe_plan.id
+      # @plan_type.save
      else
        flash[:danger] = "SOME TYPE OF ISSUE WITH CREATION"
        flash[:notice] = @plan_type.errors.full_messages
