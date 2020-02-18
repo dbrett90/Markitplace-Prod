@@ -54,7 +54,13 @@ class PlanTypesController < ApplicationController
         @plan_type.products << product
       end
     end
-    stripe_plan = Stripe::Plan.create({
+
+   respond_to do |format|
+     if @plan_type.save
+       flash[:success] = params
+       format.html { redirect_to plan_types_path, notice: 'PLAN TYPE was successfully created.' }
+       format.json { render :index, status: :created, location: @plan_type }
+       stripe_plan = Stripe::Plan.create({
         #Might need to include a pricing input value here so it's dynamic and not hard-coded.
         #Also need to figure out what the billing period for this would be.
         amount_decimal: (@plan_type.price * 100),
@@ -67,12 +73,6 @@ class PlanTypesController < ApplicationController
     flash[:danger] = stripe_plan
     flash[:warning] = stripe_plan.id
     @plan_type.update_attribute(:plan_type_id, stripe_plan.id)
-
-   respond_to do |format|
-     if @plan_type.save
-       flash[:success] = params
-       format.html { redirect_to plan_types_path, notice: 'PLAN TYPE was successfully created.' }
-       format.json { render :index, status: :created, location: @plan_type }
       # @plan_type.plan_type_id = stripe_plan.id
       # @plan_type.save
      else
