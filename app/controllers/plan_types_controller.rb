@@ -67,7 +67,6 @@ class PlanTypesController < ApplicationController
     flash[:danger] = stripe_plan
     flash[:warning] = stripe_plan.id
     @plan_type.plan_type_id = stripe_plan.id
-    @plan_type.save
 
    respond_to do |format|
      if @plan_type.save
@@ -136,7 +135,7 @@ class PlanTypesController < ApplicationController
    # Never trust parameters from the scary internet, only allow the white list through.
     #Update with User ID?
    def plan_type_params
-     params.require(:plan_type).permit(:name, :description, :created_at, :updated_at, :stripe_id, :plan_type_id, :price, :thumbnail)
+     params.require(:plan_type).permit(:name, :description, :created_at, :updated_at, :stripe_id, :price, :thumbnail)
    end
 end
 
