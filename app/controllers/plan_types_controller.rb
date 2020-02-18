@@ -80,6 +80,9 @@ class PlanTypesController < ApplicationController
        format.json { render json: @plan_type.errors, status: :unprocessable_entity }
      end
    end
+   #May need to change this depending on errors
+   @plan_type.plan_type_id = stripe_plan.id
+   @plan_type.save
  end
 
  # PATCH/PUT /books/1
