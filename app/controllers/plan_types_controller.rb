@@ -66,7 +66,7 @@ class PlanTypesController < ApplicationController
       {stripe_account: @plan_type.stripe_id})
     flash[:danger] = stripe_plan
     flash[:warning] = stripe_plan.id
-    @plan_type.plan_type_id = stripe_plan.id
+    @plan_type.update_attribute(:plan_type_id, stripe_plan.id)
 
    respond_to do |format|
      if @plan_type.save
