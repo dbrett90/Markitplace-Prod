@@ -69,8 +69,8 @@ class PlanTypesController < ApplicationController
         product: {name: "Markitplace Mealplan"}
       },
       {stripe_account: @plan_type.stripe_id})
-      flash[:danger] = "MAKE SURE TO UPDATE THE CREDENTIALS FILE WITH THE PLAN ID"
-      #flash[:success] = stripe_plan
+      flash[:danger] = stripe_plan
+      @plan_type.plan_type_id = stripe_plan.id
      else
        flash[:danger] = "SOME TYPE OF ISSUE WITH CREATION"
        flash[:notice] = @plan_type.errors.full_messages
