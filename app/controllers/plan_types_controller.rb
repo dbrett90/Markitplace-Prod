@@ -71,6 +71,7 @@ class PlanTypesController < ApplicationController
       {stripe_account: @plan_type.stripe_id})
       flash[:danger] = stripe_plan
       @plan_type.plan_type_id = stripe_plan.id
+      @plan_type.save
      else
        flash[:danger] = "SOME TYPE OF ISSUE WITH CREATION"
        flash[:notice] = @plan_type.errors.full_messages
@@ -131,7 +132,7 @@ class PlanTypesController < ApplicationController
    # Never trust parameters from the scary internet, only allow the white list through.
     #Update with User ID?
    def plan_type_params
-     params.require(:plan_type).permit(:name, :description, :created_at, :updated_at, :stripe_id, :plan_id, :price, :thumbnail)
+     params.require(:plan_type).permit(:name, :description, :created_at, :updated_at, :stripe_id, :plan_type_id, :price, :thumbnail)
    end
 end
 
