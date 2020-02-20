@@ -175,7 +175,8 @@ class SubscriptionsController < ApplicationController
     def limit_zipcodes(zipcode)
         available_cities = ["brooklyn", "new york city", "bronx", "queens"]
         shipping_address = ZipCodes.identify(zipcode)
-        available_cities.include?(shipping_address.downcase)
+        shipping_address_down = shipping_address.downcase
+        available_cities.include?(shipping_address_down)
     end
 
 
