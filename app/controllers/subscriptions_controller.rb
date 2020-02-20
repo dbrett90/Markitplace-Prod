@@ -99,7 +99,7 @@ class SubscriptionsController < ApplicationController
             redirect_to root_path
             flash[:success] = "Your subscription is now active! Please check your email for a confirmation notice."
         else
-            #redirect_to root_path
+            redirect_to :back
             flash[:danger] = "Zip code invalid. Please see our list of available locations we deliver to."
         end
     end
