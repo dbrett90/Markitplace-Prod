@@ -13,22 +13,22 @@ class SubscriptionsController < ApplicationController
     def create
         #Make sure we change this to production when the time comes
         Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
+
+        #Retrieve plan detais
+        #Make sure that the credentials file has the appropriate plan_ids. Pulling this from PLATFORM account. Making sure we pull this info from connected account.
+        plan_id = params[:plan_id]
+        plan_name = params[:plan_name]
+        token = params[:stripeToken]
+        #Let's add subscription value to the Library.
+        subscription_plans = PlanType.all
+
+        #calling private function find_plan
+        plan_type = find_plan(plan_name, subscription_plans)
+        plan = Stripe::Plan.retrieve(plan_id, {stripe_account: plan_type.stripe_id})
+        connected_acct = plan_type.stripe_id
+
         zipcode_val = params[:payment_shipping][:zipcode]
         if limit_zipcodes(zipcode_val.downcase)
-
-            #Make sure that the credentials file has the appropriate plan_ids. Pulling this from PLATFORM account. Making sure we pull this info from connected account.
-            plan_id = params[:plan_id]
-            plan_name = params[:plan_name]
-            token = params[:stripeToken]
-            #Let's add subscription value to the Library.
-            subscription_plans = PlanType.all
-
-            #calling private function find_plan
-            plan_type = find_plan(plan_name, subscription_plans)
-            plan = Stripe::Plan.retrieve(plan_id, {stripe_account: plan_type.stripe_id})
-            connected_acct = plan_type.stripe_id
-
-
             customer = if current_user.stripe_id[connected_acct].present?
                 Stripe::Customer.retrieve(current_user.stripe_id[connected_acct], {stripe_account: plan_type.stripe_id})
                 # flash[:danger] = "User already has a stripe ID!"
@@ -99,7 +99,8 @@ class SubscriptionsController < ApplicationController
             redirect_to root_path
             flash[:success] = "Your subscription is now active! Please check your email for a confirmation notice."
         else
-            redirect_to :back
+            symbolize = plan_type.name.downcase.to_sym
+            redirect_to new_subscription_path(plan: plan_type.name.downcase, plan_id: Rails.application.credentials.development.dig(symbolize), plan_name: plan_type.name.downcase )
             flash[:danger] = "Zip code invalid. Please see our list of available locations we deliver to."
         end
     end
