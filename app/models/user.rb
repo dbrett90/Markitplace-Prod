@@ -10,6 +10,7 @@ class User < ApplicationRecord
     validates :password, presence: true, length: { minimum: 8 }, format: { with: VALID_PASSWORD_REGEX }, allow_nil: true
     #Hash Values need to be seralized
     serialize :stripe_subscription_id, Hash
+    serialize :stripe_id, Hash
     
     #Specific to a user's prod_subscription_libray.. May need to remove this shit
     has_many :products, dependent: :destroy
