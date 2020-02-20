@@ -15,6 +15,7 @@ class SubscriptionsController < ApplicationController
         Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
         zipcode_val = params[:payment_shipping][:zipcode]
         flash[:warning] = zipcode_val
+        flash[:danger] = params
         if limit_zipcodes(zipcode_val.downcase)
 
             #Make sure that the credentials file has the appropriate plan_ids. Pulling this from PLATFORM account. Making sure we pull this info from connected account.
@@ -100,7 +101,7 @@ class SubscriptionsController < ApplicationController
             redirect_to root_path
             flash[:success] = "Your subscription is now active! Please check your email for a confirmation notice."
         else
-            redirect_to new_subscription_path
+            redirect_to root_path
             flash[:danger] = "Zip code invalid. Please see our list of available locations we deliver to."
         end
     end
