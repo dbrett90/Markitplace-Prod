@@ -45,7 +45,7 @@ class SubscriptionsController < ApplicationController
         #Update the account with stripe_account id
 
         options = {
-            stripe_id[connected_acct]: customer.id,
+            stripe_id[connected_acct] => customer.id,
             subscribed: true
         }
 
