@@ -13,7 +13,7 @@ class SubscriptionsController < ApplicationController
     def create
         #Make sure we change this to production when the time comes
         Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
-        zipcode_val = params[:payment_shipping][:zipcode]
+        zipcode_val = (params[:payment_shipping][:zipcode]).to_s
         flash[:warning] = zipcode_val
         if limit_zipcodes(zipcode_val)
 
