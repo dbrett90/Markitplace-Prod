@@ -7,10 +7,13 @@
     <div class="card col-md-6 col-md-offset-3">
       <div class="card-body placeholder">
         <div class= "form-block">
+        <%= link_to "Purchase Meal Kits", signup_path, class: "btn btn-outline-success jumbo-button" %>
+        <%= link_to "Partner with Markitplace", redirect_to "https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_FX0EKPNDzWlcxcjjUNnxNAhUa0cjuVBI&scope=read_write", class: "btn btn-outline-success jumbo-button" %>
             <%= form_for(:business_or_customer, url: signup_info_path) do |f| %>   
                 <p class="subtext-gray pb-1" style="font-size:14px">Please choose the appropriate
                 response from the dropdown </p><br>
                 <%= f.select(:business_or_customer_select, ["Purchase Meal Kits", "Leverage Markitplace for my Business"], { :class => 'dropdown-style' })%> <br>
+
                 <%= f.submit "Next", class: "btn btn-success jumbo-button mt-2" %>
             <% end %>
         </div>
