@@ -101,7 +101,7 @@ class SubscriptionsController < ApplicationController
         else
             symbolize = plan_type.name.downcase.to_sym
             redirect_to new_subscription_path(plan: plan_type.name.downcase, plan_id: Rails.application.credentials.development.dig(symbolize), plan_name: plan_type.name.downcase )
-            flash[:danger] = "Zip code invalid. Please see our list of available locations we deliver to."
+            flash[:danger] = "Zip code invalid. Delivery services are currently limited to NYC, Brooklyn, Bronx and Queens."
         end
     end
 
