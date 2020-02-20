@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_18_222320) do
+ActiveRecord::Schema.define(version: 2020_02_20_151754) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 2020_02_18_222320) do
     t.datetime "activated_at"
     t.string "reset_digest"
     t.datetime "reset_sent_at"
-    t.string "stripe_id"
+    t.text "stripe_id"
     t.text "stripe_subscription_id"
     t.string "card_last4"
     t.integer "card_exp_month"

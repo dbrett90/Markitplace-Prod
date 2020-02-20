@@ -23,10 +23,11 @@ class SubscriptionsController < ApplicationController
         #calling private function find_plan
         plan_type = find_plan(plan_name, subscription_plans)
         plan = Stripe::Plan.retrieve(plan_id, {stripe_account: plan_type.stripe_id})
+        connected_acct = plan_type.stripe_id
 
 
-        customer = if current_user.stripe_id.present?
-            Stripe::Customer.retrieve(current_user.stripe_id, {stripe_account: plan_type.stripe_id})
+        customer = if current_user.stripe_id[connected_acct].present?
+            Stripe::Customer.retrieve(current_user.stripe_id[connected_acct], {stripe_account: plan_type.stripe_id})
             # flash[:danger] = "User already has a stripe ID!"
         else
             #Create customer in connected accounts environment.
@@ -44,7 +45,7 @@ class SubscriptionsController < ApplicationController
         #Update the account with stripe_account id
 
         options = {
-            stripe_id: customer.id,
+            stripe_id[connected_acct]: customer.id,
             subscribed: true
         }
 
@@ -100,7 +101,7 @@ class SubscriptionsController < ApplicationController
     def destroy
         Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
         connected_acct = params[:connected_acct]
-        customer = Stripe::Customer.retrieve(current_user.stripe_id, {stripe_account: connected_acct})
+        customer = Stripe::Customer.retrieve(current_user.stripe_id[connected_acct], {stripe_account: connected_acct})
 
         # #Are we pulling the ID from the params section - doesn't grab anything currently
         # plan_type = PlanType.find(params[:id])
