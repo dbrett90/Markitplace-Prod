@@ -13,7 +13,9 @@ class SubscriptionsController < ApplicationController
     def create
         #Make sure we change this to production when the time comes
         Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
-        if limit_zipcodes(params[:payment_shipping][:zipcode])
+        zipcode_val = params[:payment_shipping][:zipcode]
+        flash[:warning] = zipcode_val
+        if limit_zipcodes(zipcode_val)
 
             #Make sure that the credentials file has the appropriate plan_ids. Pulling this from PLATFORM account. Making sure we pull this info from connected account.
             plan_id = params[:plan_id]
