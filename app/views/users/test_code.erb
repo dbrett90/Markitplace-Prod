@@ -4,7 +4,13 @@
         #   <a href="http://gravatar.com/emails" target="_blank">Change</a>
 # </div>
 
+# <%= form_for(:business_or_customer, url: signup_info_path) do |f| %>   
+#         <p class="subtext-gray pb-1" style="font-size:14px">Please choose the appropriate
+#         response from the dropdown </p><br>
+#         <%= f.select(:business_or_customer_select, ["Purchase Meal Kits", "Leverage Markitplace for my Business"], { :class => 'dropdown-style' })%> <br>
 
+#         <%= f.submit "Next", class: "btn btn-success jumbo-button mt-2" %>
+#     <% end %>
 # FROM SESSIONS-->NEW
 # <h1 style= "text-align: center">Log in</h1>
 
