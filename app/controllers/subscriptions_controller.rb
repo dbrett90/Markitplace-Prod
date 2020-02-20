@@ -43,9 +43,8 @@ class SubscriptionsController < ApplicationController
         end
         # flash[:success] = customer
         #Update the account with stripe_account id
-
+        current_user.stripe_id[connected_acct] = customer.id
         options = {
-            stripe_id[connected_acct] => customer.id,
             subscribed: true
         }
 
@@ -75,6 +74,8 @@ class SubscriptionsController < ApplicationController
         # #Update the hash
         current_user.stripe_subscription_id[plan.nickname.downcase] = subscription.id
         current_user.update(options)
+        #For the hash portion
+        current_user.save
 
         # flash[:success] = customer
 
