@@ -1,6 +1,6 @@
 class SubscriptionsController < ApplicationController    
     def new
-        flash[:warning] = params
+        flash[:danger] = params
         @plans = PlanType.all
         if logged_in? && current_user.subscribed?
              flash[:warning] = "Please note that you are already subscribed to one or more plans. You can view
