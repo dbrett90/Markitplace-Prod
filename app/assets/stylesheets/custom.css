@@ -264,6 +264,10 @@ li:hover {
     /* border-radius:30px; */
 }
 
+.w-33{
+  width: 33%;
+}
+
 /* 
 TOP WAS 33% */
 .showText{
