@@ -34,4 +34,6 @@ $(function() {
     });
   });
   
-  
+  $('.nav-link').on('click', function(){
+      AOS.refresh();
+  });
