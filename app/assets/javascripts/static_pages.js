@@ -27,4 +27,10 @@ $(document).on("turbolinks:load", function() {
     $('.dropdown-toggle').dropdown()
 });
 
-AOS.init(); 
+$(function() {
+    AOS.init();
+  });
+  
+  $(window).on('load', function() {
+    AOS.refresh();
+  });
