@@ -29,8 +29,8 @@ $(document).on("turbolinks:load", function() {
 
 $(function() {
     AOS.init({
-        once: true;
-        duration: 1000;
+        once: true,
+        duration: 1000,
     });
   });
   
