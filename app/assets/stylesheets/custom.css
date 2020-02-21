@@ -268,12 +268,13 @@ li:hover {
   width: 33%;
 }
 
+/* Need to be careful here with important of overwriting values */
 .container-fluid{
-  width: 95%;
+  width: 95% !important;
 }
 
 .header-img{
-  padding: 0.5em 0.5em 0.5em 0.5em;
+  padding: 0.5em 0.5em 0.5em 0.5em !important;
 }
 
 /* 
