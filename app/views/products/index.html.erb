@@ -16,12 +16,12 @@
             <div class="row ml-3">
                 <%  @products.each do |product| %>
                     <div class="col-4 pb-3">
-                        <div class="card see-cooking w-33" style="width: 20rem;">
+                        <div class="card see-cooking w-33" style="width: 25rem;">
                             <div class="ribbon-wrapper">
                                 <div class="ribbon green"> <%= product.plan_type_name %> </div>
                             </div>
                             <div class="header-img">
-                                <%= image_tag product.thumbnail.variant(resize: "940x440"), class:"card-img-top hover-gray" %>
+                                <%= image_tag product.thumbnail.variant(resize: "470x220"), class:"card-img-top hover-gray" %>
                                 <div class="textOverlay">
                                     <div class="showText">More Info</div>
                                 </div>
