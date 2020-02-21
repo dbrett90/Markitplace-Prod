@@ -2,7 +2,7 @@
 <div class="product-homepage">
     <div class="product-homepage-2019">
         <section class="jumbotron jumbotron-fluid" id='jumbotron-products'>
-          <div class="container">
+          <div class="container-fluid">
             <div class="row justify-content-end">
               <div class="col-12 col-lg-5 justify-content-end" id="jumbo-textbox">
                 <h1 class="homepage-text shadow-underscore jumbo-maintext">THE RIGHT MEAL KIT AT THE BEST AVAILABLE PRICE</h1>
@@ -27,7 +27,7 @@
                             <div class="card-body text-center">
                                 <h5 class="card-title text-center"> <%= product.name %></h5>
                                 <h6 class="card-subtitle mb-2 text-muted text-center"> <%= product.partner_name %></h6>
-                                <p class="card-text text-center" id="overwrite-card-text"> <%= product.calories %> Calories <%= product.protein %>g Protein, <%= product.carbs %> Carbs, <%=product.fats %>g Fats </p>
+                                <p class="card-text text-center" id="overwrite-card-text"> <%= product.calories, %> Calories <%= product.protein %>g Protein, <%= product.carbs %> Carbs, <%=product.fats %>g Fats </p>
                                 <% if current_user.is_subscribed? %>
                                     <%= link_to "More Info - Test", product_path(product), class:"btn btn-success" %>
                                 <% else %>
