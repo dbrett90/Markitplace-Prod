@@ -20,9 +20,11 @@
                             <div class="ribbon-wrapper">
                                 <div class="ribbon green"> <%= product.plan_type_name %> </div>
                             </div>
-                            <%= image_tag product.thumbnail.variant(resize: "940x440"), class:"card-img-top hover-gray" %>
-                            <div class="textOverlay">
-                                <div class="showText">More Info</div>
+                            <div class="header-img">
+                                <%= image_tag product.thumbnail.variant(resize: "940x440"), class:"card-img-top hover-gray" %>
+                                <div class="textOverlay">
+                                    <div class="showText">More Info</div>
+                                </div>
                             </div>
                             <div class="card-body text-center">
                                 <h5 class="card-title text-center"> <%= product.name %></h5>

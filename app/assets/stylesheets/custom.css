@@ -272,6 +272,10 @@ li:hover {
   width: 95%;
 }
 
+.header-img{
+  padding: 0.5em 0.5em 0.5em 0.5em;
+}
+
 /* 
 TOP WAS 33% */
 .showText{
