@@ -25,14 +25,18 @@
 
 $(document).on("turbolinks:load", function() {
     $('.dropdown-toggle').dropdown()
-});
-
-$(function() {
     AOS.init({
         once: true,
         duration: 1000,
-    });
-  });
+        });
+});
+
+// $(function() {
+//     AOS.init({
+//         once: true,
+//         duration: 1000,
+//     });
+//   });
   
   $('.nav-link').on('click', function(){
       AOS.refresh();
