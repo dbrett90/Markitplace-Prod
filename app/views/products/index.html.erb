@@ -16,7 +16,7 @@
             <div class="row ml-1">
                 <%  @products.each do |product| %>
                     <div class="col-4 pb-3">
-                        <div class="card see-cooking" style="width: 25rem;">
+                        <div class="card see-cooking" style="width: 22rem;">
                             <div class="ribbon-wrapper">
                                 <div class="ribbon green"> <%= product.plan_type_name %> </div>
                             </div>
@@ -29,7 +29,7 @@
                             <div class="card-body text-center">
                                 <h5 class="card-title text-center"> <%= product.name %></h5>
                                 <h6 class="card-subtitle mb-2 text-muted text-center"> <%= product.partner_name %></h6>
-                                <p class="card-text text-center" id="overwrite-card-text"> <%= product.calories, %> Calories <%= product.protein %>g Protein, <%= product.carbs %> Carbs, <%=product.fats %>g Fats </p>
+                                <p class="card-text text-center" id="overwrite-card-text"> <%= product.calories %> Calories, <%= product.protein %>g Protein, <%= product.carbs %> Carbs, <%=product.fats %>g Fats </p>
                                 <% if current_user.is_subscribed? %>
                                     <%= link_to "More Info - Test", product_path(product), class:"btn btn-success" %>
                                 <% else %>
