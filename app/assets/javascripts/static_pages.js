@@ -28,7 +28,10 @@ $(document).on("turbolinks:load", function() {
 });
 
 $(function() {
-    AOS.init();
+    AOS.init({
+        once: true;
+        duration: 1000;
+    });
   });
   
   $(window).on('load', function() {
