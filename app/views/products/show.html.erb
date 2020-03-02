@@ -3,11 +3,11 @@
   <section class= "container">
     <div class = "recipe-header pt-2">
       <div class = "row">
-      <div class= "col-12 reciper-header-button">
+      <div class= "col-12 reciper-header-button text-center">
+          <h1><%= @product.name %> </h1>
           <%= image_tag @product.thumbnail, class:"img-fluid" %>
         </div>
-        <div class = "col-6 my-auto recipe-header-text align-content-center">
-          <h1><%= @product.name %> </h1>
+        <div class = "col-12 my-auto recipe-header-text align-content-center text-center">
           <p> <%= @product.description %></p>
           <% if logged_in? %>
             <% symbolize = @product.plan_type_name.downcase.to_sym %>
