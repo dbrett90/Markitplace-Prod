@@ -1,9 +1,17 @@
 <h1>Markitplace</h1>
 
-<p>Hi There! Your account has been successfully linked to our payment systems.
+<% if @stripe_connect_user.firstname.exists? && @stripe_connect_user.lastname.exists? %>
+    <% person_name = @stripe_connect_user.firstname + " " + @stripe_connect_user.lastname %>
+<% elsif @stripe_connect_user.firstname.exists? %>
+    <% person_name = @stripe_connect_user.firstname %>
+<% else %>
+    <% person_name = "there" %>
+<% end %>
+
+<p>Hi <%= person_name%>! Your account has been successfully linked to our payment systems.
 You will now be able to post your offerings to the platform and receive payments 
 from customers. Please note that a support specialist from our team will be in contact
-with you shortly to fully enable access. If you have any questions please 
+with you shortly to onboard you into the environmentx. If you have any questions please 
 use the contact form on our site. Thank you!
 </p>
 
