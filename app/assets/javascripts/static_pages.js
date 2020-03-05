@@ -27,7 +27,7 @@ $(document).on("turbolinks:load", function() {
     $('.dropdown-toggle').dropdown()
     AOS.init({
         once: true,
-        duration: 500,
+        duration: 1000,
         });
 });
 
