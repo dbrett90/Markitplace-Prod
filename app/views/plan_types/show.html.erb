@@ -21,7 +21,7 @@
                                 <div class="ribbon green"> <%= product.plan_type_name %> </div>
                             </div>
                             <%= link_to product_path(product) do %>
-                                <%= image_tag product.thumbnail.variant(resize: "450x450"), class:"card-img-top hover-gray" %>
+                                <%= image_tag product.thumbnail.variant(resize: "450x450"), class:"card-img-top hover-gray", alt: "Meal Kit Image" %>
                                 <div class="textOverlay">
                                     <div class="showText">More Info</div>
                                 </div>
