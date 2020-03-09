@@ -12,7 +12,7 @@
           tried the kit!</p>
           <% @plans.each do |plan| %>
             <% if plan.name.downcase == params[:plan].downcase %>
-              <%= image_tag plan.thumbnail, class:"img-fluid" %>
+              <%= image_tag plan.thumbnail, class:"img-fluid", alt:"Mealkit Plan Image" %>
             <% end %>
           <% end %>
         </div>
