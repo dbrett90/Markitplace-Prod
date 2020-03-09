@@ -41,7 +41,7 @@
                         </div>
                     </div>       
                 <% end %>
-                <div class = "col-12 justify-content-center">
+                <div class = "col-12 text-center">
                     <% if logged_in? %>
                         <% symbolize = @plan_type.name.downcase.to_sym %>
                         <%= link_to "GET STARTED", new_subscription_path(plan: @plan_type.name.downcase, plan_id: Rails.application.credentials.development.dig(symbolize), plan_name: @plan_type.name.downcase ), class: "btn btn-success jumbo-button" %>
