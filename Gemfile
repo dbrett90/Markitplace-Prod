@@ -46,6 +46,10 @@ gem 'zip-codes'
 gem 'mini_magick', '~> 4.8'
 gem "aws-sdk-s3", require: false
 
+#For sitemap generation
+gem "fog-aws"
+gem "sitemap_generator"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
