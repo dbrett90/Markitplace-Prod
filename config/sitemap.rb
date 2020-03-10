@@ -17,19 +17,6 @@ SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
 
 
 
-# config/sitemap.rb
-SitemapGenerator::Sitemap.default_host = "https://www.markitplace.io" # Your Domain Name
-SitemapGenerator::Sitemap.public_path = 'tmp/sitemap'
-# Where you want your sitemap.xml.gz file to be uploaded.
-SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new(
-    'markitplace-sitemaps', 
-    aws_access_key_id: Rails.application.credentials.dig(:aws, :access_key_id),
-    aws_secret_access_key: Rails.application.credentials.dig(:aws, :secret_access_key),
-    aws_region: 'us-east-2'
-    # fog_provider: 'AWS',
-    # fog_directory: 'markitplace-sitemaps',
-    # fog_region: 'us-east-2'
-)
 
 # The full path to your bucket
 SitemapGenerator::Sitemap.sitemaps_host = "https://markitplace-sitemaps.s3.amazonaws.com"
