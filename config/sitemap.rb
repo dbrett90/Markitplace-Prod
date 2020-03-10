@@ -14,17 +14,13 @@ fog_region: "us-east-2"
 SitemapGenerator::Sitemap.sitemaps_host = "https://markitplace-sitemaps.s3.amazonaws.com"
 # The paths that need to be included into the sitemap.
 SitemapGenerator::Sitemap.create do
-    Article.find_each do |article|
-     add article_path(article.slug_en, locale: :en)
-     add article_path(article, locale: :nl) if article.slug_nl != ""
+    PlanType.find_each do |plan_type|
+     add plan_type_path(plan_type.slug_en, locale: :en)
+     add plan_type_path(plan_type, locale: :nl)
     end
-    Project.find_each do |project|
-     add project_path(project, locale: :en)
-     add project_path(project, locale: :nl)
-    end
-    Page.find_each do |page|
-     add page_path(page, locale: :en)
-     add page_path(page, locale: :nl)
+    Product.find_each do |product|
+     add product_path(product, locale: :en)
+     add product_path(product, locale: :nl)
     end
 
     add "en/single-page"
