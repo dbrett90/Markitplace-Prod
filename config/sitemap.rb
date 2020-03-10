@@ -6,7 +6,7 @@ SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new(
     aws_access_key_id: Rails.application.credentials.dig(:aws, :access_key_id),
     aws_secret_access_key: Rails.application.credentials.dig(:aws, :secret_access_key),
     fog_provider: 'AWS',
-    fog_directory: 'markitplace-sitemaps',
+    fog_directory: 'markitplace-product-images',
     fog_region: 'us-east-2'
 )
 
@@ -14,6 +14,7 @@ SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new(
 SitemapGenerator::Sitemap.sitemaps_host = "https://markitplace-sitemaps.s3.amazonaws.com"
 # The paths that need to be included into the sitemap.
 SitemapGenerator::Sitemap.create do
+    add root_path
     PlanType.find_each do |plan_type|
      add plan_type_path(plan_type, locale: :en)
      add plan_type_path(plan_type, locale: :nl)
@@ -22,15 +23,4 @@ SitemapGenerator::Sitemap.create do
      add product_path(product, locale: :en)
      add product_path(product, locale: :nl)
     end
-
-    add "en/single-page"
-    add "nl/single-page"
-    add "nl/starters-website"
-    add "en/starters-website"
-    add "nl/website-op-maat"
-    add "en/website-op-maat"
-    add "nl/webapplicatie"
-    add "en/webapplicatie"
-    add "nl/website-analyse"
-    add "en/website-analyse"
 end
