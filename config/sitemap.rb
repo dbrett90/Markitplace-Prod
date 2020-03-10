@@ -21,7 +21,7 @@ SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
 SitemapGenerator::Sitemap.default_host = "https://www.markitplace.io" # Your Domain Name
 SitemapGenerator::Sitemap.public_path = 'tmp/sitemap'
 # Where you want your sitemap.xml.gz file to be uploaded.
-SitemapGenerator::Sitemap.adapter = SitemapGenerator::AwsSdkAdapter.new(
+SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new(
     'markitplace-sitemaps', 
     aws_access_key_id: Rails.application.credentials.dig(:aws, :access_key_id),
     aws_secret_access_key: Rails.application.credentials.dig(:aws, :secret_access_key),
