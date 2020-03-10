@@ -10,6 +10,8 @@
                 you the greatest variety of kits at the most competitive prices.</h3>
                 <% if !logged_in? %>
                   <%= link_to "Sign up now!", signup_path, class: "btn btn-outline-success jumbo-button" %>
+                <% else %>
+                  <%link_to "GET STARTED", plan_type_path, class: "btn btn-outline-success jumbo-button" %>
                 <% end %>
               </div>
             </div>
@@ -66,6 +68,8 @@
               <div class="col-12 text-center pt-3">
                 <% if !logged_in? %>
                   <%= link_to "GET STARTED!", signup_path, class: "btn btn-success jumbo-button" %>
+                <% else %>
+                  <%= link_to "SEE OFFERINGS", plan_type_path, class: "btn btn-success jumbo-button" %>
                 <% end %>
               </div>
             </div>
