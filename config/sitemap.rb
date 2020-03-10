@@ -10,16 +10,12 @@ SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new(
     fog_directory: 'markitplace-sitemaps',
     fog_region: 'us-east-2')
 # inform the map cross-linking where to find the other maps
-SitemapGenerator::Sitemap.sitemaps_host = "http://markitplace-sitemaps.s3.amazonaws.com/"
+SitemapGenerator::Sitemap.sitemaps_host = "http://s3-us-east-2.amazonaws.com/markitplace-sitemaps/"
 # pick a namespace within your bucket to organize your maps
 SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
 
 
 
-
-
-# The full path to your bucket
-SitemapGenerator::Sitemap.sitemaps_host = "https://markitplace-sitemaps.s3.amazonaws.com"
 # The paths that need to be included into the sitemap.
 SitemapGenerator::Sitemap.create do
     add root_path, changefreq: 'daily'
