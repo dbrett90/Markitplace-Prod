@@ -15,7 +15,7 @@ SitemapGenerator::Sitemap.sitemaps_host = "https://markitplace-sitemaps.s3.amazo
 # The paths that need to be included into the sitemap.
 SitemapGenerator::Sitemap.create do
     PlanType.find_each do |plan_type|
-     add plan_type_path(plan_type.slug_en, locale: :en)
+     add plan_type_path(plan_type, locale: :en)
      add plan_type_path(plan_type, locale: :nl)
     end
     Product.find_each do |product|
