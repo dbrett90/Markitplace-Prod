@@ -6,7 +6,7 @@ SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new(
     aws_access_key_id: Rails.application.credentials.dig(:aws, :access_key_id),
     aws_secret_access_key: Rails.application.credentials.dig(:aws, :secret_access_key),
     fog_provider: 'AWS',
-    fog_directory: 'markitplace-product-images',
+    fog_directory: 'markitplace-sitemaps',
     fog_region: 'us-east-2'
 )
 
