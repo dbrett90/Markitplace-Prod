@@ -2,10 +2,6 @@ class SubscriptionsController < ApplicationController
     def new
         # flash[:danger] = params
         @plans = PlanType.all
-        # if logged_in? && current_user.subscribed?
-        #      flash.now[:warning] = "Please note that you are already subscribed to one or more plans. You can view
-        #      your current subscriptions from the navbar"
-        # end
     end
 
     #Need to add a mailer after an account has been created... ADD THIS IN

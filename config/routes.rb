@@ -48,4 +48,7 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :contact_emails, only: [:edit]
+
+  #For Sitemap capture
+  get '/sitemap.xml.gz', to: redirect("https://markitplace-sitemaps.s3.us-east-2.amazonaws.com/sitemaps/sitemap.xml.gz")
 end
