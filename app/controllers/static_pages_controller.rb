@@ -8,7 +8,7 @@ class StaticPagesController < ApplicationController
   def contact
   end
 
-  def contact-test
+  def contact_test
   end
 
   def partners
