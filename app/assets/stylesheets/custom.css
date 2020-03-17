@@ -182,8 +182,8 @@ li:hover {
 }
 
 .box-opaque{
-  -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%) !important;
+  filter: grayscale(100%) !important;
 }
 
 /* ***************** */
