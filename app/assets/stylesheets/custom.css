@@ -165,6 +165,11 @@ li:hover {
   font-weight: 1.5px;
 }
 
+.jumbotron-food{
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
 
 
 #our-process{
