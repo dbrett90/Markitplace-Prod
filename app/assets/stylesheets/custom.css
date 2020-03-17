@@ -241,6 +241,11 @@ li:hover {
   /* letter-spacing: 1.5px; */
 }
 
+.shrink{
+  font-size: 50%;
+  vertical-align: super;
+}
+
 /* ***************** */
 /* ****Products Page**** */
 /* ***************** */
