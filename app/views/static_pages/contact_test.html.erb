@@ -4,80 +4,43 @@
     <div class="container">
         <div class="row justify-content-end">
         <div class="col-12 col-lg-6" >
-            <h1 class="homepage-text shadow-underscore jumbo-maintext">PARTNERS</h1>
-            <h3 class ="homepage-text pt-3 pb-3 jumbo-subtext">Interested in partnering with us? Please find a brief overview of the services we offer.</h3>
+            <h1 class="homepage-text shadow-underscore jumbo-maintext">SERVICES FOR PARTNERS</h1>
+            <h3 class ="homepage-text pt-3 pb-3 jumbo-subtext">Markitplace© is a platform designed to increase revenue and exposure for non on-demand food delivery companies.
+            We help grow our partner&#39;s customer base through our platform and provide insightful analytics on industry
+            trends and customer needs</h3>
         </div>
         </div>
     </div>
     </section>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-6" >
-                <h2>Overview</h2>
-                <p>Markitplace<sup class="shrink">©</sup> is a platform designed to increase revenue and exposure for non on-demand food delivery companies. This is done through two major initiatives:<br>
-                <br>
-                1.) By growing their customer base through use of our platform <br>
-                2.) By providing insightful analytics on industry trends and customer needs<br>
-                </p>
+            <div class="col-sm-12 col-md-6">
                 <h3>Inspiring Growth</h3>
                 <p>Markitplace<sup class="shrink">©</sup> offers our partners a fully managed platform where they can advertise their products and reach a larger customer base. Our team also leverages
                 search engine optimization and digital marketing campaigns to boost the exposure of our partners.
                 </p>
+                <%= link_to "LEARN MORE", root_path, class: "btn btn-outline-success jumbo-button" %>
+            </div>
+            <div class="col-sm-12 col-md-6">
                 <h3>Analytics</h3>
                 <p>Monthly Analytics reports will include success of growth campaigns and other key metrics around the performance of the partnership. Additionally, our platform
                 actively seeks out user feedback which is condensed and presented to our partners so they can make actionable change based on customer responses.
                 </p>
+                <%= link_to "LEARN MORE", root_path, class: "btn btn-outline-success jumbo-button" %>
+            </div>
+            <div class="col-sm-12 col-md-6">
                 <h3>Pricing</h3>
                 <p>Clients are not charged anything to have their product posted on our platform, instead clients are charged on a per booking basis every time a meal/subscription
                 is purchased through the Markitplace<sup class="shrink">©</sup> platform. For specifics on pricing, please reach out to our support team.
                 </p>
-                <h3>Conclusion</h3>
+                <%= link_to "LEARN MORE", root_path, class: "btn btn-outline-success jumbo-button" %>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <h3>Value</h3>
                 <p>By helping companies boost their exposure and open up a new revenue stream, Markitplace<sup class="shrink">©</sup> gives clients more time to focus on what makes them great. 
                 With Markitplace<sup class="shrink">©</sup> you can continue to maintain and build upon the same great brand your customers love. 
                 </p>
-            </div>
-            <div class="col-6">
-            <div class="form-block">
-            <%= form_for(:partners, url: partner_information_path) do |f| %>
-              <div class="text-block pb-3">
-                    Please fill out the form below with how we can help you today and a support specialist will contact you shorty. Thank you!
-                </div>
-                <%= f.label :partner_name, class: 'field-label emphasis' do %>
-                    <span class = 'field-label emphasis'> Name </span><br>
-                <% end %><br>
-                <%= f.text_field :partner_name, class: 'form-control', placeholder: "Name" %><br>
-                <%= f.label :partner_email, class: 'field-label emphasis' do %>
-                    <span class = 'field-label emphasis'> Email </span><br>
-                <% end %><br>
-                <%= f.email_field :partner_email, class: 'form-control', placeholder: "Email" %><br>
-                <%= f.label :partner_location, class: 'field-label emphasis' do %>
-                    <span class = 'field-label emphasis'> Where are you based? </span><br>
-                <% end %><br>
-                <%= f.text_field :partner_location, class: 'form-control', placeholder: "New York City, NY"  %><br>
-                <%= f.label :partner_food_type, class: 'field-label emphasis' do %>
-                    <span class = 'field-label emphasis'> Does your company specialize in a specific type of cuisine? If so, what?</span><br>
-                <% end %><br>
-                <%= f.text_area :partner_food_type, class: 'form-control', placeholder: "Please give us some background on the food you prepare."  %><br>
-                <%= f.label :partner_services_interest, class: 'field-label emphasis' do %>
-                    <span class = 'field-label emphasis'>Which services are you interested in?</span><br>
-                <% end %><br>
-                <%= f.check_box :partner_post_offering, class: "checkboxtext"%>
-                <%= f.label :partner_post_offering do %>
-                    <span> Post your offerings on our platform</span>
-                <% end %><br>
-                <%= f.check_box :partner_analytics, class: "checkboxtext"%>
-                <%= f.label :partner_analytics do %>
-                    <span> Analytics Reports </span>
-                <% end %><br>
-                <%= f.check_box :partner_brand_management, class: "checkboxtext"%>
-                <%= f.label :partner_brand_management do %>
-                    <span> Media & Brand Management </span>
-                <% end %><br>
-                
-                <%= f.submit "Submit", class: "btn btn-success jumbo-button mt-2" %><br>
-            <% end %>
-            </div>
-        </div>
+                <%= link_to "LEARN MORE", root_path, class: "btn btn-outline-success jumbo-button" %>
             </div>
         </div>
     </div>
