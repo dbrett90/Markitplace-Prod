@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post '/contact', to: 'static_pages#create'
   get '/partner-information', to: 'static_pages#partners'
   post '/partner-information', to: 'static_pages#partners_create'
+  get 'partner-contact', to: 'static_pages#partner_contact'
   get '/signup-info', to: 'users#business_or_customer'
   post '/signup-info', to: 'users#business_or_customer_create'
   get  '/signup',  to: 'users#new'
