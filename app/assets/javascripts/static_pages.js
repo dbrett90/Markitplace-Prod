@@ -53,5 +53,5 @@ function setIframeHeight(iframe) {
 };
 
 window.onload = function () {
-	setIframeHeight(document.getElementById('your-frame-id'));
+	setIframeHeight(document.getElementById('terms-of-service'));
 };
