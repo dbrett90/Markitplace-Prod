@@ -437,10 +437,10 @@ TOP WAS 33% */
 /* TERMS OF SERVICE */
 iframe.terms-of-service
 {
-  width: 100%;
+  width: 85%;
   height: 65vh;
-  margin: auto;
-  /* text-align: center; */
+  margin: 0 auto;
+  text-align: center;
 
   border: none;
   box-shadow: 0 0 25px rgba(0, 0, 0, .1);
