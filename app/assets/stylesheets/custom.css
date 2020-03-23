@@ -441,7 +441,7 @@ iframe.terms-of-service
     height: 100%;
     /* margin: 0 auto; */
     /* margin: 0 auto; */
-    position: relative;
+    position: fixed;
     top: 0;
     left: 0;
 
