@@ -435,6 +435,11 @@ TOP WAS 33% */
 }
 
 /* TERMS OF SERVICE */
+
+.termspage{
+  text-align: center;
+}
+
 iframe.terms-of-service
 {
   width: 85%;
