@@ -41,3 +41,17 @@ $(document).on("turbolinks:load", function() {
   $('.nav-link').on('click', function(){
       AOS.refresh();
   });
+
+  //Specifically for Terms of Services
+function setIframeHeight(iframe) {
+    if (iframe) {
+		var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
+		if (iframeWin.document.body) {
+			iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
+		}
+	}
+};
+
+window.onload = function () {
+	setIframeHeight(document.getElementById('your-frame-id'));
+};
