@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/partner-information', to: 'static_pages#partners'
   post '/partner-information', to: 'static_pages#partners_create'
   get 'partner-contact', to: 'static_pages#partner_contact'
+  get 'terms-of-service', to: 'static_pages$terms_of_service'
   get '/signup-info', to: 'users#business_or_customer'
   post '/signup-info', to: 'users#business_or_customer_create'
   get  '/signup',  to: 'users#new'
