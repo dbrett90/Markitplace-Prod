@@ -433,3 +433,14 @@ TOP WAS 33% */
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   grid-gap: 20px;
 }
+
+/* TERMS OF SERVICE */
+iframe.terms-of-service
+{
+    width: 300px;
+    height: 400px;
+    margin: 0 auto;
+
+    border: none;
+    box-shadow: 0 0 25px rgba(0, 0, 0, .1);
+}
