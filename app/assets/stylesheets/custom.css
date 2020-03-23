@@ -439,7 +439,8 @@ iframe.terms-of-service
 {
   width: 100%;
   height: 65vh;
-  margin: 0 0;
+  margin: 0 auto;
+  text-align: center;
 
   border: none;
   box-shadow: 0 0 25px rgba(0, 0, 0, .1);
