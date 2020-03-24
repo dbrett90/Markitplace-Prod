@@ -302,9 +302,9 @@ TOP WAS 33% */
   color: white;
   font-size: 20px;
   position: absolute;
-  top: 50%; 
+  top: 10%; 
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -10%);
   text-align: center;
 }
 
