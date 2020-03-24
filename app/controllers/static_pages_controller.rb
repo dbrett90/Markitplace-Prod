@@ -17,7 +17,11 @@ class StaticPagesController < ApplicationController
   def partner_contact 
   end
 
+  #Functions specific for terms of service and privacy policies
   def terms_of_service
+  end
+
+  def privacy_policy
   end
 
   def create

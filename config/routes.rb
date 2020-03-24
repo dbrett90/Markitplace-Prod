@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   post '/partner-information', to: 'static_pages#partners_create'
   get 'partner-contact', to: 'static_pages#partner_contact'
   get 'terms-of-service', to: 'static_pages#terms_of_service'
+  get 'privacy-policy', to: 'static_pages#privacy_policy'
   get '/signup-info', to: 'users#business_or_customer'
   post '/signup-info', to: 'users#business_or_customer_create'
   get  '/signup',  to: 'users#new'
