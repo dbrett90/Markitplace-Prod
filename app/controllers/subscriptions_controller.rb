@@ -67,7 +67,7 @@ class SubscriptionsController < ApplicationController
                         plan: plan_id
                     }
                 ],
-                application_fee_percent: 5,
+                application_fee_percent: 0,
                 # application_fee: 0.50,
             }, stripe_account: plan_type.stripe_id)
             # #Update the hash
