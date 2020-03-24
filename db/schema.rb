@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_20_151754) do
+ActiveRecord::Schema.define(version: 2020_03_24_011126) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2020_02_20_151754) do
     t.string "partner_name"
     t.integer "calories"
     t.integer "protein"
-    t.integer "carbs"
+    t.integer "servings"
     t.integer "fats"
     t.integer "user_id"
     t.integer "plan_type_id"
