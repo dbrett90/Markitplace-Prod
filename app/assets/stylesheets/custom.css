@@ -298,6 +298,16 @@ TOP WAS 33% */
   text-align: center;
 }
 
+.showTextIndex{
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
 .showText:hover{
   -webkit-filter: inherit;
   filter: inherit;
