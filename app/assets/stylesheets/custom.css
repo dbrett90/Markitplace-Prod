@@ -472,4 +472,7 @@ iframe.terms-of-service
   .description-text-mobile{
     font-size: 26px;
   }
+  .mobile-hidden{
+    display:none;
+  }
 }
