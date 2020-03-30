@@ -467,10 +467,7 @@ iframe.terms-of-service
 
 /* MOBILE COMPATABILITY SECTION - May Need to Refactor Later On. Want as flexible as possible */
 /* IN FUTURE TRY TO AVOID !IMPORTANT. Not good practice */
-@media (max-width: 750px){
-  .media-test{
-    font-size: 2em;
-  }
+@media (max-width: 1200px){
   h3{
     font-size: 40px;
   }
