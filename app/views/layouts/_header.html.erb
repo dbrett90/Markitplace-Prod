@@ -6,7 +6,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <ul class = "navbar-nav mr-auto nav-text-mobile">
-                <li class="nav-item active n-homepage"><%= link_to "Home",   root_path, class: "nav-color nav-link", id: "test-color" %><span class="sr-only">(current)</span></li>
+                <li class="nav-item active n-homepage nav-text-mobile"><%= link_to "Home",   root_path, class: "nav-color nav-link", id: "test-color" %><span class="sr-only">(current)</span></li>
                 <% if logged_in? %>
                     <% if current_user.admin? %>
                         <li class= "nav-item dropdown" data-turbolinks="false">
