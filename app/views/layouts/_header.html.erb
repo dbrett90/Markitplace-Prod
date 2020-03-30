@@ -5,7 +5,7 @@
      <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <ul class = "navbar-nav mr-auto">
+            <ul class = "navbar-nav mr-auto nav-text-mobile">
                 <li class="nav-item active n-homepage"><%= link_to "Home",   root_path, class: "nav-color nav-link", id: "test-color" %><span class="sr-only">(current)</span></li>
                 <% if logged_in? %>
                     <% if current_user.admin? %>
