@@ -464,7 +464,7 @@ iframe.terms-of-service
 /* MOBILE COMPATABILITY SECTION - May Need to Refactor Later On */
 @media (max-width: 1200px){
   .media-test{
-    font-size: 5em;
+    font-size: 2em;
   }
   h3{
     font-size: 40px;
