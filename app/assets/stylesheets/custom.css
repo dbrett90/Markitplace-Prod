@@ -493,7 +493,7 @@ iframe.terms-of-service
   .jumbotron-mobile{
     height: 70vh !important;
   }
-  .nav-item.nav-text-mobile{
+  .navbar-nav.nav-text-mobile{
     font-size: 40px;
   }
   .nav-collpase-mobile{
