@@ -470,9 +470,12 @@ iframe.terms-of-service
     font-size: 40px;
   }
   .description-text-mobile{
-    font-size: 26px;
+    font-size: 30px;
   }
   .mobile-hidden{
     display:none;
+  }
+  .btn-mobile{
+    font-size: 40px;
   }
 }
