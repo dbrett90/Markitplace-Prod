@@ -461,12 +461,12 @@ iframe.terms-of-service
   box-shadow: 0 0 25px rgba(0, 0, 0, .1);
 }
 
-/* MOBILE COMPATABILITY SECTION */
+/* MOBILE COMPATABILITY SECTION - May Need to Refactor Later On */
 @media (max-width: 1200px){
   .media-test{
     font-size: 20px;
   }
   h3{
-    font-size: 24px;
+    font-size: 60px;
   }
 }
