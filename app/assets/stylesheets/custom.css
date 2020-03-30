@@ -467,7 +467,7 @@ iframe.terms-of-service
 
 /* MOBILE COMPATABILITY SECTION - May Need to Refactor Later On. Want as flexible as possible */
 /* IN FUTURE TRY TO AVOID !IMPORTANT. Not good practice */
-@media only screen and (min-width: 375px) and (max-width:667px) {
+@media only screen and (min-width: 375px) and (max-width: 812px) {
   h3{
     font-size: 40px;
   }
