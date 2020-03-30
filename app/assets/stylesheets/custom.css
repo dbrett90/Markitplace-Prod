@@ -460,3 +460,10 @@ iframe.terms-of-service
   border: none;
   box-shadow: 0 0 25px rgba(0, 0, 0, .1);
 }
+
+/* MOBILE COMPATABILITY SECTION */
+@media (max-width: 1200px){
+  .media-test{
+    font-size: 16px;
+  }
+}
