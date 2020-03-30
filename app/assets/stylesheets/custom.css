@@ -494,6 +494,9 @@ iframe.terms-of-service
     height: 70vh !important;
   }
   .nav-text-mobile{
-    font-size: 25px;
+    font-size: 40px !important;
+  }
+  nav-collpase-mobile{
+    font-size: 50px;
   }
 }
