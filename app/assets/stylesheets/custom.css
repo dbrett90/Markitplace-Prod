@@ -533,4 +533,10 @@ iframe.terms-of-service
   .form-control-mobile{
     height: 70px;
   }
+  .text-area-mobile{
+    height: 100px;
+  }
+  .form-control-mobile, .text-area-mobile{
+    font-size: 35px;
+  }
 }

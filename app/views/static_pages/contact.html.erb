@@ -26,15 +26,15 @@
           <%= f.label :contact_email, class: 'field-label emphasis contact-form-item-mobile' do %>
             <span class = 'field-label emphasis'> Email </span><br>
           <% end %><br>
-          <%= f.email_field :contact_email, class: 'form-control', placeholder: "Email" %><br>
+          <%= f.email_field :contact_email, class: 'form-control form-control-mobile', placeholder: "Email" %><br>
           <%= f.label :contact_how, class: 'field-label emphasis contact-form-item-mobile' do %>
             <span class = 'field-label emphasis'> How did you hear about Markitplace? </span><br>
           <% end %><br>
-          <%= f.text_area :contact_how, class: 'form-control', placeholder: "Did you hear about us from friends, ads, or an email campaign?"  %><br>
+          <%= f.text_area :contact_how, class: 'form-control text-area-mobile', placeholder: "Did you hear about us from friends, ads, or an email campaign?"  %><br>
           <%= f.label :contact_help, class: 'field-label emphasis contact-form-item-mobile' do %>
             <span class = 'field-label emphasis'> How can we help you?</span><br>
           <% end %><br>
-          <%= f.text_area :contact_help, class: 'form-control', placeholder: "Please explain and we will get back to you as quickly as possible."  %><br>
+          <%= f.text_area :contact_help, class: 'form-control text-area-mobile', placeholder: "Please explain and we will get back to you as quickly as possible."  %><br>
           <%= f.submit "Submit", class: "btn btn-success jumbo-button mt-2" %><br>
         <% end %>
       </div>
