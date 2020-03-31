@@ -520,4 +520,10 @@ iframe.terms-of-service
   .margin-nonmobile-left{
     margin-left: 0px;
   }
+  .service-offering-mobile{
+    font-size: 45px;
+  }
+  .service-offering-text-mobile{
+    font-size: 30px;
+  }
 }
