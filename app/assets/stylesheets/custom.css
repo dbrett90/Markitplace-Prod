@@ -539,4 +539,8 @@ iframe.terms-of-service
   .form-control-mobile, .text-area-mobile{
     font-size: 35px;
   }
+  .checkbox-mobile{
+    height: 50px;
+    width: 50px;
+  }
 }

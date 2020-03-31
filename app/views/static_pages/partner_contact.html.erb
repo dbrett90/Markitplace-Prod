@@ -22,23 +22,23 @@
                         <%= f.label :partner_name, class: 'field-label emphasis contact-form-item-mobile' do %>
                             <span class = 'field-label emphasis'> Name </span><br>
                         <% end %><br>
-                        <%= f.text_field :partner_name, class: 'form-control', placeholder: "Name" %><br>
+                        <%= f.text_field :partner_name, class: 'form-control form-control-mobile', placeholder: "Name" %><br>
                         <%= f.label :partner_email, class: 'field-label emphasis contact-form-item-mobile' do %>
                             <span class = 'field-label emphasis'> Email </span><br>
                         <% end %><br>
-                        <%= f.email_field :partner_email, class: 'form-control', placeholder: "Email" %><br>
+                        <%= f.email_field :partner_email, class: 'form-control form-control-mobile', placeholder: "Email" %><br>
                         <%= f.label :partner_location, class: 'field-label emphasis contact-form-item-mobile' do %>
                             <span class = 'field-label emphasis'> Where are you based? </span><br>
                         <% end %><br>
-                        <%= f.text_field :partner_location, class: 'form-control', placeholder: "New York City, NY"  %><br>
+                        <%= f.text_field :partner_location, class: 'form-control form-control-mobile', placeholder: "New York City, NY"  %><br>
                         <%= f.label :partner_food_type, class: 'field-label emphasis contact-form-item-mobile' do %>
                             <span class = 'field-label emphasis'> Does your company specialize in a specific type of cuisine? If so, what?</span><br>
                         <% end %><br>
-                        <%= f.text_area :partner_food_type, class: 'form-control', placeholder: "Please give us some background on the food you prepare."  %><br>
+                        <%= f.text_area :partner_food_type, class: 'form-control text-area-mobile', placeholder: "Please give us some background on the food you prepare."  %><br>
                         <%= f.label :partner_services_interest, class: 'field-label emphasis contact-form-item-mobile' do %>
                             <span class = 'field-label emphasis'>Which services are you interested in?</span><br>
                         <% end %><br>
-                        <%= f.check_box :partner_post_offering, class: "checkboxtext"%>
+                        <%= f.check_box :partner_post_offering, class: "checkboxtext checkbox-mobile"%>
                         <%= f.label :partner_post_offering, class: "contact-form-item-mobile" do %>
                             <span> Post your offerings on our platform</span>
                         <% end %><br>
