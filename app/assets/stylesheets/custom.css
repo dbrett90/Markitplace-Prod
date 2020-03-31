@@ -490,6 +490,9 @@ iframe.terms-of-service
   .title-mobile{
     font-size: 50px;
   }
+  .subtitle-mobile{
+    font-size: 40px;
+  }
   .jumbotron-mobile{
     height: 70vh !important;
   }
