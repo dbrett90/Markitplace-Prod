@@ -16,22 +16,22 @@
     <div class="col-8">
       <div class="form-block">
         <%= form_for(:contact, url: contact_path) do |f| %>
-          <div class="text-block pb-3">
+          <div class="text-block pb-3 subtitle-description-mobile">
             Please fill out the form below with how we can help you today and a support specialist will contact you shorty. Thank you!
           </div>
-          <%= f.label :contact_name, class: 'field-label emphasis' do %>
+          <%= f.label :contact_name, class: 'field-label emphasis contact-form-item-mobile' do %>
             <span class = 'field-label emphasis'> Name </span><br>
           <% end %><br>
           <%= f.text_field :contact_name, class: 'form-control', placeholder: "Name" %><br>
-          <%= f.label :contact_email, class: 'field-label emphasis' do %>
+          <%= f.label :contact_email, class: 'field-label emphasis contact-form-item-mobile' do %>
             <span class = 'field-label emphasis'> Email </span><br>
           <% end %><br>
           <%= f.email_field :contact_email, class: 'form-control', placeholder: "Email" %><br>
-          <%= f.label :contact_how, class: 'field-label emphasis' do %>
+          <%= f.label :contact_how, class: 'field-label emphasis contact-form-item-mobile' do %>
             <span class = 'field-label emphasis'> How did you hear about Markitplace? </span><br>
           <% end %><br>
           <%= f.text_area :contact_how, class: 'form-control', placeholder: "Did you hear about us from friends, ads, or an email campaign?"  %><br>
-          <%= f.label :contact_help, class: 'field-label emphasis' do %>
+          <%= f.label :contact_help, class: 'field-label emphasis contact-form-item-mobile' do %>
             <span class = 'field-label emphasis'> How can we help you?</span><br>
           <% end %><br>
           <%= f.text_area :contact_help, class: 'form-control', placeholder: "Please explain and we will get back to you as quickly as possible."  %><br>

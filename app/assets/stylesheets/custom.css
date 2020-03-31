@@ -523,7 +523,7 @@ iframe.terms-of-service
   .service-offering-mobile{
     font-size: 60px;
   }
-  .service-offering-text-mobile{
+  .service-offering-text-mobile, .contact-form-item-mobile{
     font-size: 40px;
   }
   #nameBrand{
