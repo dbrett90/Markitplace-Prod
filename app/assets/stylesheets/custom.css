@@ -194,8 +194,11 @@ li:hover {
 /* ****OUR TEAM**** */
 /* ***************** */
 
-.margin-nonmobile{
+.margin-nonmobile-right{
   margin-right: 20px;
+}
+.margin-nonmobile-left{
+  margin-left: 20px;
 }
 
 .text-overlay{
@@ -511,8 +514,10 @@ iframe.terms-of-service
   .founder-description-mobile{
     font-size:35px;
   }
-
-.margin-nonmobile{
-  margin-right: 0px;
+  .margin-nonmobile-right{
+    margin-right: 0px;
+  }
+  .margin-nonmobile-left{
+    margin-left: 0px;
   }
 }
