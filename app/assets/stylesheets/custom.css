@@ -526,4 +526,8 @@ iframe.terms-of-service
   .service-offering-text-mobile{
     font-size: 40px;
   }
+  #nameBrand{
+    height:50px;
+    width: 50px;
+  }
 }
