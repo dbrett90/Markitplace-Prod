@@ -530,4 +530,7 @@ iframe.terms-of-service
     height:85px;
     width: 100px;
   }
+  .form-control-mobile{
+    height: 70px;
+  }
 }
