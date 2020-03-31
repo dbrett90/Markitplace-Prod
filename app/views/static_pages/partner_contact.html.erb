@@ -19,39 +19,39 @@
                         <div class="text-block pb-3">
                             Please fill out the form below with how we can help you today and a support specialist will contact you shorty. Thank you!
                         </div>
-                        <%= f.label :partner_name, class: 'field-label emphasis' do %>
+                        <%= f.label :partner_name, class: 'field-label emphasis contact-form-item-mobile' do %>
                             <span class = 'field-label emphasis'> Name </span><br>
                         <% end %><br>
                         <%= f.text_field :partner_name, class: 'form-control', placeholder: "Name" %><br>
-                        <%= f.label :partner_email, class: 'field-label emphasis' do %>
+                        <%= f.label :partner_email, class: 'field-label emphasis contact-form-item-mobile' do %>
                             <span class = 'field-label emphasis'> Email </span><br>
                         <% end %><br>
                         <%= f.email_field :partner_email, class: 'form-control', placeholder: "Email" %><br>
-                        <%= f.label :partner_location, class: 'field-label emphasis' do %>
+                        <%= f.label :partner_location, class: 'field-label emphasis contact-form-item-mobile' do %>
                             <span class = 'field-label emphasis'> Where are you based? </span><br>
                         <% end %><br>
                         <%= f.text_field :partner_location, class: 'form-control', placeholder: "New York City, NY"  %><br>
-                        <%= f.label :partner_food_type, class: 'field-label emphasis' do %>
+                        <%= f.label :partner_food_type, class: 'field-label emphasis contact-form-item-mobile' do %>
                             <span class = 'field-label emphasis'> Does your company specialize in a specific type of cuisine? If so, what?</span><br>
                         <% end %><br>
                         <%= f.text_area :partner_food_type, class: 'form-control', placeholder: "Please give us some background on the food you prepare."  %><br>
-                        <%= f.label :partner_services_interest, class: 'field-label emphasis' do %>
+                        <%= f.label :partner_services_interest, class: 'field-label emphasis contact-form-item-mobile' do %>
                             <span class = 'field-label emphasis'>Which services are you interested in?</span><br>
                         <% end %><br>
                         <%= f.check_box :partner_post_offering, class: "checkboxtext"%>
-                        <%= f.label :partner_post_offering do %>
+                        <%= f.label :partner_post_offering, class: "contact-form-item-mobile" do %>
                             <span> Post your offerings on our platform</span>
                         <% end %><br>
                         <%= f.check_box :partner_analytics, class: "checkboxtext"%>
-                        <%= f.label :partner_analytics do %>
+                        <%= f.label :partner_analytics, class: "contact-form-item-mobile" do %>
                             <span> Analytics Reports </span>
                         <% end %><br>
                         <%= f.check_box :partner_brand_management, class: "checkboxtext"%>
-                        <%= f.label :partner_brand_management do %>
+                        <%= f.label :partner_brand_management, class: "contact-form-item-mobile" do %>
                             <span> Media & Brand Management </span>
                         <% end %><br>
                         
-                        <%= f.submit "Submit", class: "btn btn-success jumbo-button mt-2" %><br>
+                        <%= f.submit "Submit", class: "btn btn-success jumbo-button mt-2 btn-mobile" %><br>
                     <% end %>
                 </div>
             </div>
