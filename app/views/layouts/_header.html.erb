@@ -5,7 +5,7 @@
      <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <ul class = "navbar-nav mr-auto nav-text-mobile">
+            <ul class = "navbar-nav mr-auto">
                 <li class="nav-item active n-homepage nav-text-mobile"><%= link_to "Home",   root_path, class: "nav-color nav-link", id: "test-color" %><span class="sr-only">(current)</span></li>
                 <% if logged_in? %>
                     <% if current_user.admin? %>
@@ -17,14 +17,14 @@
                                 <%= link_to "Add Plan", new_plan_type_path, class: "dropdown-item nav-link nav-text-mobile" %>
                                 <%= link_to "Add Product", new_product_path, class: "dropdown-item nav-link nav-text-mobile" %> 
                     <% else %>
-                        <li class="nav-item active"><%= link_to "Meal Kits",plan_types_path, class: "nav-color nav-link" %><span class="sr-only">(current)</span></li> 
+                        <li class="nav-item active"><%= link_to "Meal Kits",plan_types_path, class: "nav-color nav-link nav-text-mobile" %><span class="sr-only">(current)</span></li> 
                     <% end %>
                 <% else %>
-                    <li class="nav-item active"><%= link_to "Meal Kits", plan_types_path, class: "nav-color nav-link" %><span class="sr-only">(current)</span></li> 
+                    <li class="nav-item active"><%= link_to "Meal Kits", plan_types_path, class: "nav-color nav-link nav-text-mobile" %><span class="sr-only">(current)</span></li> 
                 <% end %>
-                <li class="nav-item active"><%= link_to "Services", partner_information_path, class: "nav-color nav-link" %><span class="sr-only">(current)</span></li>
-                <li class="nav-item active n-our-team"><%= link_to "Our Team",  our_team_path, class: "nav-color nav-link" %><span class="sr-only">(current)</span></li>
-                <li class="nav-item active n-contact-us"><%= link_to "Contact", contact_path, class: "nav-color nav-link" %><span class="sr-only">(current)</span></li>
+                <li class="nav-item active"><%= link_to "Services", partner_information_path, class: "nav-color nav-link nav-text-mobile" %><span class="sr-only">(current)</span></li>
+                <li class="nav-item active n-our-team"><%= link_to "Our Team",  our_team_path, class: "nav-color nav-link nav-text-mobile" %><span class="sr-only">(current)</span></li>
+                <li class="nav-item active n-contact-us"><%= link_to "Contact", contact_path, class: "nav-color nav-link nav-text-mobile" %><span class="sr-only">(current)</span></li>
             </ul>
             <ul class="navbar-nav">
                 <% if logged_in? %>
@@ -32,22 +32,22 @@
                         <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" style="color:black" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-turbolinks="false">Account</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <% if user_subscribed? %>
-                                <%= link_to "Profile", current_user, class: "dropdown-item nav-link" %>
-                                <%= link_to "Subscriptions", plan_subscription_library_index_path, class: "dropdown-item nav-link" %>
-                                <%= link_to "Settings", edit_user_path(current_user), class: "dropdown-item nav-link" %>
+                                <%= link_to "Profile", current_user, class: "dropdown-item nav-link nav-text-mobile" %>
+                                <%= link_to "Subscriptions", plan_subscription_library_index_path, class: "dropdown-item nav-link nav-text-mobile" %>
+                                <%= link_to "Settings", edit_user_path(current_user), class: "dropdown-item nav-link nav-text-mobile" %>
                                 <div class="dropdown-divider"></div>
-                                <%= link_to "Log Out", logout_path, method: :delete, class: "dropdown-item nav-link" %>
+                                <%= link_to "Log Out", logout_path, method: :delete, class: "dropdown-item nav-link nav-text-mobile" %>
                             <% else %>
                                 <%= link_to "Profile", current_user, class: "dropdown-item nav-link" %>
-                                <%= link_to "Settings", edit_user_path(current_user), class: "dropdown-item nav-link" %>
+                                <%= link_to "Settings", edit_user_path(current_user), class: "dropdown-item nav-link nav-text-mobile" %>
                                 <div class="dropdown-divider"></div>
-                                <%= link_to "Log out", logout_path, method: :delete, class: "dropdown-item nav-link" %>
+                                <%= link_to "Log out", logout_path, method: :delete, class: "dropdown-item nav-link nav-text-mobile" %>
                             <% end %>
                         </div>
                     </li>
                 <% else %>
-                    <li class="nav-item active n-homepage"><%= link_to "Sign up", signup_info_path, class: "nav-link" %></li>
-                    <li class="nav-item active n-homepage"><%= link_to "Log in", login_path, class: "nav-link" %></li>
+                    <li class="nav-item active n-homepage nav-text-mobile"><%= link_to "Sign up", signup_info_path, class: "nav-link" %></li>
+                    <li class="nav-item active n-homepage nav-text-mobile"><%= link_to "Log in", login_path, class: "nav-link" %></li>
                 <% end %>
             </ul>
     </div>
