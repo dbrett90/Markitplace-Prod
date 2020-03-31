@@ -194,6 +194,9 @@ li:hover {
 /* ****OUR TEAM**** */
 /* ***************** */
 
+.margin-nonmobile{
+  margin-right: 20px;
+}
 
 .text-overlay{
   color: #449900;
@@ -507,5 +510,9 @@ iframe.terms-of-service
   }
   .founder-description-mobile{
     font-size:35px;
+  }
+
+.margin-nonmobile{
+  margin-right: 0px;
   }
 }
