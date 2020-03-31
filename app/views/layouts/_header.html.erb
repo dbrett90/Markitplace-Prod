@@ -6,7 +6,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <ul class = "navbar-nav mr-auto">
-                <li class="nav-item active n-homepage nav-text-mobile"><%= link_to "Home",   root_path, class: "nav-color nav-link", id: "test-color" %><span class="sr-only">(current)</span></li>
+                <li class="nav-item active n-homepage nav-text-mobile"><%= link_to "Home",   root_path, class: "nav-color nav-link nav-text-mobile", id: "test-color" %><span class="sr-only">(current)</span></li>
                 <% if logged_in? %>
                     <% if current_user.admin? %>
                         <li class= "nav-item dropdown" data-turbolinks="false">
@@ -46,8 +46,8 @@
                         </div>
                     </li>
                 <% else %>
-                    <li><%= link_to "Sign up", signup_info_path, class: "nav-link nav-text-mobile" %></li>
-                    <li><%= link_to "Log in", login_path, class: "nav-link nav-text-mobile" %></li>
+                    <li class="nav-item nav-text-mobile active n-homepage"><%= link_to "Sign up", signup_info_path, class: "nav-link nav-text-mobile" %></li>
+                    <li class="nav-item nav-text-mobile active n-homepage"><%= link_to "Log in", login_path, class: "nav-link nav-text-mobile" %></li>
                 <% end %>
             </ul>
     </div>
