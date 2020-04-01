@@ -3,23 +3,23 @@
 <div class='container'>
   <div class="row topspace-lg justify-content-center">
     <div class= "col-12">
-      <h1 style= "text-align: center">Log in</h1>
+      <h1 style= "text-align: center title-larger-mobil">Log in</h1>
     </div>
     <div class="card col-md-6 col-md-offset-3">
       <div class="card-body placeholder">
         <%= form_for(:session, url: login_path) do |f| %>
-          <%= f.email_field :email, class: 'form-control', placeholder: "Email" %><br>
+          <%= f.email_field :email, class: 'form-control form-control-mobile', placeholder: "Email" %><br>
     
-          <%= f.password_field :password, class: 'form-control', placeholder: "Password" %>
+          <%= f.password_field :password, class: 'form-control form-control-mobile', placeholder: "Password" %>
           <br>
-          <%= f.label :remember_me, class: "checkbox inline" do %>
-            <%= f.check_box :remember_me %>
+          <%= f.label :remember_me, class: "checkbox inline checkbox-item-mobile" do %>
+            <%= f.check_box :remember_me class:"checkbox-mobile" %>
             <span>Remember Me</span>
           <% end %><br>
     
-          <%= f.submit "Log in", class: "btn btn-success btn-block" %><br>
-          <p class="text-center style="text-align:center">New user? <%= link_to "Sign up now!", signup_path %></p>
-          <p class="text-center"> Forgot password? <%= link_to "Reset here", new_password_reset_path %></p>
+          <%= f.submit "Log in", class: "btn btn-success btn-block btn-mobile" %><br>
+          <p class="text-center subtitle-description-mobile" style="text-align:center">New user? <%= link_to "Sign up now!", signup_path %></p>
+          <p class="text-center subtitle-description-mobile"> Forgot password? <%= link_to "Reset here", new_password_reset_path %></p>
         <% end %>
       </div>
     </div>  
