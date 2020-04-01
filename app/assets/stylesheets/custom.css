@@ -515,12 +515,12 @@ iframe.terms-of-service
     font-size:35px;
   }
   .margin-nonmobile-right{
-    margin-right: auto;
-    margin-left: auto;
+    margin-right: 0;
+    margin-left: 0;
   }
   .margin-nonmobile-left{
-    margin-right: auto;
-    margin-left: auto;
+    margin-right: 0;
+    margin-left: 0;
   }
   .service-offering-mobile{
     font-size: 60px;
