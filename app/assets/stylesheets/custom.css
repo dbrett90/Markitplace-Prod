@@ -496,6 +496,9 @@ iframe.terms-of-service
   .title-mobile{
     font-size: 50px;
   }
+  .title-larger-mobile{
+    font-size: 70px;
+  }
   .subtitle-description-mobile{
     font-size: 30px;
   }
