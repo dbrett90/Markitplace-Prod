@@ -502,6 +502,10 @@ iframe.terms-of-service
   .btn-mobile{
     font-size: 40px !important;
   }
+  .btn-fa-mobile{
+    height: 50px;
+    width: 50px;
+  }
   .title-mobile{
     font-size: 50px;
   }
@@ -562,6 +566,8 @@ iframe.terms-of-service
   }
   .card-width{
     width: unset;
-    padding-bottom: 10px;
+  }
+  .card-padding-mobile{
+    padding-bottom: 20px;
   }
 }
