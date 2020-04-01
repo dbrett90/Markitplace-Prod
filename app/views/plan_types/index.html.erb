@@ -4,7 +4,7 @@
         <section class="jumbotron jumbotron-fluid home-jumbotron jumbotron-mobile" id='jumbotron-plans'>
           <div class="container">
             <div class="row text-left">
-              <div class="col-12 col-lg-5 justify-content-center" id="jumbo-textbox">
+              <div class="col-5 col-lg-5 justify-content-center" id="jumbo-textbox">
                 <h1 class="homepage-text shadow-underscore jumbo-maintext title-mobile">Kit Options</h1>
                 <h3 class ="homepage-text pt-3 pb-3" id ="jumbo-subtext">Check out the various plans available from our partners!</h3>
                 <a href="#plan-offerings"><i class="fas fa-chevron-circle-down fa-3x scroll-down" style="color: #449900;"></i></a>
@@ -15,7 +15,7 @@
         <div class="container" id="plan-offerings">
             <div class="row ml-3">
                 <%  @plan_types.each do |plan_type| %>
-                    <div class="col-4 pb-3 d-flex align-items-stretch">
+                    <div class="col-12 col-lg-4 pb-3 d-flex align-items-stretch">
                         <div class="card see-cooking" style="width: 20rem;">
                             <%= link_to plan_type_path(plan_type) do %>
                                 <%= image_tag plan_type.thumbnail.variant(resize: "450x450"), class:"card-img-top hover-gray", alt: "Meal Kit Plan Image" %>
