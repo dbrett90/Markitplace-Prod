@@ -264,6 +264,10 @@ li:hover {
 /* ****Products Page */
 /* ***************** */
 
+.card-width{
+  width: 20rem;
+}
+
 .textOverlay {
   opacity: 0;
 }
@@ -555,5 +559,8 @@ iframe.terms-of-service
   .checkbox-mobile{
     height: 30px;
     width: 30px;
+  }
+  .card-width{
+    width: unset;
   }
 }
