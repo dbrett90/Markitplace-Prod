@@ -6,7 +6,7 @@
             <div class="row justify-content-end">
               <div class="col-6 col-lg-5 justify-content-end" id="jumbo-textbox">
                 <h1 class="homepage-text shadow-underscore jumbo-maintext title-mobile">THE RIGHT MEAL KIT AT THE BEST AVAILABLE PRICE</h1>
-                <h3 class ="homepage-text pt-3 pb-3" id ="jumbo-subtext">Check out our offerings, who we partner with, and other relevant information
+                <h3 class ="d-none d-lg-block homepage-text pt-3 pb-3" id ="jumbo-subtext">Check out our offerings, who we partner with, and other relevant information
                 below.</h3>
               </div>
             </div>
@@ -15,7 +15,7 @@
         <div class="container-fluid" id="product-offerings">
             <div class="row justify-content-center">
                 <%  @products.each do |product| %>
-                    <div class="col-12 col-lg-4 pb-3 d-flex align-items-stretch">
+                    <div class="col-12 col-lg-4 pb-3 d-flex align-items-stretch card-padding-mobile">
                         <div class="card see-cooking card-width">
                             <div class="ribbon-wrapper">
                                 <div class="ribbon green subtitle-description-mobile"> <%= product.plan_type_name %> </div>
