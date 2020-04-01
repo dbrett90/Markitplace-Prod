@@ -4,7 +4,7 @@
         <section class="jumbotron jumbotron-fluid" id='jumbotron-products'>
           <div class="container">
             <div class="row justify-content-end">
-              <div class="col-12 col-lg-5 justify-content-end" id="jumbo-textbox">
+              <div class="col-7 col-lg-5 justify-content-end" id="jumbo-textbox">
                 <h1 class="homepage-text shadow-underscore jumbo-maintext">THE RIGHT MEAL KIT AT THE BEST AVAILABLE PRICE</h1>
                 <h3 class ="homepage-text pt-3 pb-3" id ="jumbo-subtext">Check out our offerings, who we partner with, and other relevant information
                 below.</h3>
@@ -15,26 +15,26 @@
         <div class="container-fluid" id="product-offerings">
             <div class="row justify-content-center">
                 <%  @products.each do |product| %>
-                    <div class="col-sm-12 col-md-4 pb-3 d-flex align-items-stretch">
-                        <div class="card see-cooking" style="width: 22rem;">
+                    <div class="col-12 col-lg-4 pb-3 d-flex align-items-stretch">
+                        <div class="card see-cooking card-width">
                             <div class="ribbon-wrapper">
-                                <div class="ribbon green"> <%= product.plan_type_name %> </div>
+                                <div class="ribbon green subtitle-description-mobile"> <%= product.plan_type_name %> </div>
                             </div>
                             <%= link_to product_path(product) do %>
                                 <%= image_tag product.thumbnail.variant(resize: "450x450"), class:"card-img-top hover-gray", alt: "Meal Kit Image" %>
                                 <div class="textOverlay justify-content-center text-center align-middle">
-                                    <div class="showText align-middle">More Info</div>
+                                    <div class="showText align-middle subtitle-description-mobile">More Info</div>
                                 </div>
                             <% end %>
                             <div class="card-body text-center">
-                                <h5 class="card-title text-center"> <%= product.name %></h5>
-                                <h6 class="card-subtitle mb-2 text-muted text-center"> <%= product.partner_name %></h6>
-                                <p class="card-text text-center" id="overwrite-card-text"> <%= product.calories %> Calories, <%= product.protein %>g Protein, <%= product.servings %> Servings, <%=product.fats %>g Fats </p>
+                                <h5 class="card-title text-center title-mobile"> <%= product.name %></h5>
+                                <h6 class="card-subtitle mb-2 text-muted text-center subtitle-description-mobile"> <%= product.partner_name %></h6>
+                                <p class="card-text text-center subtitle-description-mobile" id="overwrite-card-text"> <%= product.calories %> Calories, <%= product.protein %>g Protein, <%= product.servings %> Servings, <%=product.fats %>g Fats </p>
                                 <% if logged_in? %>
                                     <% if current_user.admin? %>
-                                        <%= link_to "More Info", product_path(product), class:"btn btn-success" %>
-                                        <%= link_to "Edit Product", edit_product_path(product), class: "btn btn-warning" %>
-                                        <%= link_to 'Delete Product', product_path(product), data: {confirm: "Are you sure you want to delete this product?"}, method: :delete, class: "btn btn-danger" %>
+                                        <%= link_to "More Info", product_path(product), class:"btn btn-success btn-mobile" %>
+                                        <%= link_to "Edit Product", edit_product_path(product), class: "btn btn-warning btn-mobile" %>
+                                        <%= link_to 'Delete Product', product_path(product), data: {confirm: "Are you sure you want to delete this product?"}, method: :delete, class: "btn btn-danger btn-mobile" %>
                                     <% end %>
                                 <% end %> 
                             </div>
@@ -44,9 +44,9 @@
                 <div class = "col-12 text-center mx-auto">
                     <% if logged_in? %>
                         <% symbolize = @plan_type.name.downcase.to_sym %>
-                        <%= link_to "GET STARTED", new_subscription_path(plan: @plan_type.name.downcase, plan_id: Rails.application.credentials.development.dig(symbolize), plan_name: @plan_type.name.downcase ), class: "btn btn-success jumbo-button" %>
+                        <%= link_to "GET STARTED", new_subscription_path(plan: @plan_type.name.downcase, plan_id: Rails.application.credentials.development.dig(symbolize), plan_name: @plan_type.name.downcase ), class: "btn btn-success jumbo-button btn-mobile" %>
                     <% else %>
-                        <%= link_to "GET STARTED", signup_path, class: "btn btn-success jumbo-button" %>
+                        <%= link_to "GET STARTED", signup_path, class: "btn btn-success jumbo-button btn-mobile" %>
                     <% end %>
                 </div>
             <div>
