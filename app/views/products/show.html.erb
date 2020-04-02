@@ -38,10 +38,10 @@
       </ul>
     </div>
     <div class= "row align-items-center">
-      <div class = "col-md-8">
+      <div class = "col-12 col-lg-8">
           <p class="description-text subtitle-description-mobile"> <%= @product.description %></p>
       </div>
-      <div class = "col-md-4 text-center align-items-center">
+      <div class = "col-12 col-lg-4 text-center align-items-center">
         <% if logged_in? %>
           <% symbolize = @product.plan_type_name.downcase.to_sym %>
           <%= link_to 'START COOKING', new_subscription_path(plan: @product.plan_type_name.downcase, plan_id: Rails.application.credentials.development.dig(symbolize), plan_name: @product.plan_type_name.downcase ), class:"btn btn-outline-success jumbo-button btn-mobile" %>
