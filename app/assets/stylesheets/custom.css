@@ -577,7 +577,7 @@ iframe.terms-of-service
     padding-bottom: 20px;
   }
   #overwrite-card-text{
-    font-size: unset;
+    font-size: 30px;
   }
   
 }
