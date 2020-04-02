@@ -576,4 +576,8 @@ iframe.terms-of-service
   .card-padding-mobile{
     padding-bottom: 20px;
   }
+  #overwrite-card-text{
+    font-size: unset;
+  }
+  
 }
