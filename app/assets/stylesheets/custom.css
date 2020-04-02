@@ -597,5 +597,8 @@ iframe.terms-of-service
   .btn-alignment-mobile{
     text-align: center;
   }
+  .partner-text-mobile{
+    font-size: 35px !important;
+  }
   
 }
