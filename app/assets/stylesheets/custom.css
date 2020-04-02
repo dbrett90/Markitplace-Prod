@@ -594,5 +594,9 @@ iframe.terms-of-service
   .signup-font{
     font-size: 30px;
   }
+  .btn-alignment-mobile{
+    padding-bottom: 5px;
+    text-align: center;
+  }
   
 }
