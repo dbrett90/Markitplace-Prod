@@ -4,7 +4,7 @@
     <div class = "recipe-header pt-2">
       <div class = "row">
         <div class= "col-12 reciper-header-button text-center pb-2">
-          <h1 class="pb-1"><%= @product.name %> </h1>
+          <h1 class="pb-1 title-mobile"><%= @product.name %> </h1>
           <%= image_tag @product.thumbnail, class:"img-fluid", alt: "Meal Kit Image" %>
         </div>
       </div>
@@ -12,26 +12,26 @@
     <div class = "recipe-intro d-flex pt-3">
       <ul class="stats list-inline mx-auto justify-content-center">
         <li class="list-inline-item">
-          <div class="stats-item">
+          <div class="stats-item subtitle-description-mobile">
             <%= @product.calories %>
           </div>
-          <div class="stats-subitem">
+          <div class="stats-subitem nutrition-facts-mobile">
             Calories 
           </div>
         </li>
         <li class="list-inline-item">
-          <div class="stats-item">
+          <div class="stats-item subtitle-description-mobile">
             <%= @product.fats %>
           </div>
-          <div class="stats-subitem">
+          <div class="stats-subitem nutrition-facts-mobile">
             Grams of Fat
           </div>
         </li>
         <li class="list-inline-item">
-          <div class="stats-item">
+          <div class="stats-item subtitle-description-mobile">
             <%= @product.servings %>
           </div>
-          <div class="stats-subitem">
+          <div class="stats-subitem nutrition-facts-mobile">
             Servings
           </div>
         </li>
@@ -39,22 +39,22 @@
     </div>
     <div class= "row align-items-center">
       <div class = "col-md-8">
-          <p class="description-text"> <%= @product.description %></p>
+          <p class="description-text subtitle-description-mobile"> <%= @product.description %></p>
       </div>
       <div class = "col-md-4 text-center align-items-center">
         <% if logged_in? %>
           <% symbolize = @product.plan_type_name.downcase.to_sym %>
-          <%= link_to 'START COOKING', new_subscription_path(plan: @product.plan_type_name.downcase, plan_id: Rails.application.credentials.development.dig(symbolize), plan_name: @product.plan_type_name.downcase ), class:"btn btn-outline-success jumbo-button" %>
+          <%= link_to 'START COOKING', new_subscription_path(plan: @product.plan_type_name.downcase, plan_id: Rails.application.credentials.development.dig(symbolize), plan_name: @product.plan_type_name.downcase ), class:"btn btn-outline-success jumbo-button btn-mobile" %>
         <% else %>
-          <%= link_to 'START COOKING', new_user_path, class:"btn btn-outline-success jumbo-button" %>
+          <%= link_to 'START COOKING', new_user_path, class:"btn btn-outline-success jumbo-button btn-mobile" %>
         <% end %>
       </div>
     </div>
 
     <% if logged_in? %>
       <% if current_user.admin? %>
-        <%= link_to 'Edit Product', edit_product_path(@product), class: "btn btn-warning" %>
-        <%= link_to 'Delete Product', product_path(@product), method: :delete, class: "btn btn-danger" %>
+        <%= link_to 'Edit Product', edit_product_path(@product), class: "btn btn-warning btn-mobile" %>
+        <%= link_to 'Delete Product', product_path(@product), method: :delete, class: "btn btn-danger btn-mobile" %>
       <% end %>
     <% end %>
   </section>
