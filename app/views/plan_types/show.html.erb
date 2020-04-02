@@ -13,7 +13,7 @@
           </div>
         </section>
         <div class="container" id="product-offerings">
-            <div class="row ml-3 jusify-content-center align-items-stretch">
+            <div class="row ml-3 jusify-content-center align-items">
                 <%  @products.each do |product| %>
                     <div class="col-12 col-lg-4 pb-3 d-flex align-items-stretch card-padding-mobile">
                         <div class="card see-cooking card-width">
@@ -28,8 +28,8 @@
                             <% end %>
                             <div class="card-body text-center">
                                 <h5 class="card-title text-center title-card-mobile"> <%= product.name %></h5>
-                                <h6 class="card-subtitle mb-2 text-muted text-center subtitle-description-mobile"> <%= product.partner_name %></h6>
-                                <p class="card-text text-center subtitle-description-mobile" id="overwrite-card-text"> <%= product.calories %> Calories, <%= product.protein %>g Protein, <%= product.servings %> Servings, <%=product.fats %>g Fats </p>
+                                <h6 class="card-subtitle mb-2 text-muted text-center subtitle-mobile"> <%= product.partner_name %></h6>
+                                <p class="card-text text-center nutrition-facts-mobile" id="overwrite-card-text"> <%= product.calories %> Calories, <%= product.protein %>g Protein, <%= product.servings %> Servings, <%=product.fats %>g Fats </p>
                                 <% if logged_in? %>
                                     <% if current_user.admin? %>
                                         <%= link_to "More Info", product_path(product), class:"btn btn-success btn-mobile" %>

@@ -515,8 +515,14 @@ iframe.terms-of-service
   .title-card-mobile{
     font-size: 45px;
   }
+  .subtitle-mobile{
+    font-size: 40px;
+  }
   .subtitle-description-mobile{
     font-size: 30px;
+  }
+  .nutrition-facts-mobie{
+    font-size: 25px;
   }
   .jumbotron-mobile{
     height: 70vh !important;
