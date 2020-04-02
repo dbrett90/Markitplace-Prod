@@ -502,6 +502,9 @@ iframe.terms-of-service
   .btn-mobile{
     font-size: 40px !important;
   }
+  .btn-small-mobile{
+    font-size: 30px !important;
+  }
   .btn-fa-mobile{
     height: 50px;
     width: 50px;
@@ -586,6 +589,9 @@ iframe.terms-of-service
     padding-bottom: 20px;
   }
   #overwrite-card-text{
+    font-size: 30px;
+  }
+  .signup-font{
     font-size: 30px;
   }
   
