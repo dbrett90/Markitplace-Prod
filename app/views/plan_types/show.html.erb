@@ -29,7 +29,7 @@
                             <div class="card-body text-center card-body-mobile">
                                 <h5 class="card-title text-center title-card-mobile"> <%= product.name %></h5>
                                 <h6 class="card-subtitle mb-2 text-muted text-center subtitle-mobile"> <%= product.partner_name %></h6>
-                                <p class="card-text text-center subtitle-description-mobile" id="overwrite-card-text"> <%= product.calories %> Calories, <%= product.protein %>g Protein, <%= product.servings %> Servings, <%=product.fats %>g Fats </p>
+                                <p class="card-text text-center subtitle-description-mobile" id="overwrite-card-text"> <%= product.calories %> Calories, <%= product.protein %>g Protein, <%= product.servings %> Servings, <div class="d-lg-none"><br></div> <%=product.fats %>g Fats </p>
                                 <% if logged_in? %>
                                     <% if current_user.admin? %>
                                         <%= link_to "More Info", product_path(product), class:"btn btn-success btn-mobile" %>
