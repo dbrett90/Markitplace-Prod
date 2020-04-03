@@ -1,8 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-light sticky-top" id="mainNavbar">
-    <%=link_to image_tag("name-in-globe.png", id: "nameBrand"), root_path, class: "title-mobile img-fluid"  %>
-    <button class="navbar-toggler nav-collpase-mobile" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-     <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="navbar-header">
+        <%=link_to image_tag("name-in-globe-slim.png", id:"nameBrand"), root_path, class: "title-mobile navbar-brand"  %>
+        <button class="navbar-toggler nav-collpase-mobile" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <ul class = "navbar-nav mr-auto">
                 <li class="nav-item active n-homepage nav-text-mobile"><%= link_to "Home",   root_path, class: "nav-color nav-link nav-text-mobile", id: "test-color" %><span class="sr-only">(current)</span></li>
