@@ -485,6 +485,10 @@ iframe.terms-of-service
   h3{
     font-size: 40px;
   }
+  .navbar-mobile{
+    widows: 100%;
+    height: 100%;
+  }
   .jumbo-header-mobile{
     font-size: 60px;
   }
