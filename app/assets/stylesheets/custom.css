@@ -599,9 +599,11 @@ iframe.terms-of-service
   .card-padding-mobile{
     padding-bottom: 20px;
     width: 100%;
-    -webkit-box-shadow: 8px 8px 8px pxpx #999;
+    margin-left: unset;
+    margin: auto auto;
+    /* -webkit-box-shadow: 8px 8px 8px pxpx #999;
     -moz-box-shadow: 8px 8px 8px 8px #999;
-    box-shadow: 8px 8px 8px 8px #999;
+    box-shadow: 8px 8px 8px 8px #999; */
   }
   #overwrite-card-text{
     font-size: 30px;
