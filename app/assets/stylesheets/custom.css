@@ -210,6 +210,11 @@ li:hover {
   /* -webkit-text-stroke: 1px white; */
 }
 
+#nameBrand{
+  height:40px;
+  width: 100px
+}
+
 .img-rounded{
   border-radius: 50%;
 }
@@ -568,10 +573,6 @@ iframe.terms-of-service
   }
   .service-offering-text-mobile, .contact-form-item-mobile{
     font-size: 40px;
-  }
-  #nameBrand{
-    height:40px;
-    width: 100px
   }
   .form-control-mobile{
     height: 70px;
