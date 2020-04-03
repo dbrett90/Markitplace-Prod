@@ -486,7 +486,11 @@ iframe.terms-of-service
     font-size: 40px;
   }
   .navbar-mobile{
-    widows: 100%;
+    width: 100%;
+    height: 100%;
+  }
+  #nameBrand{
+    width: 100%;
     height: 100%;
   }
   .jumbo-header-mobile{
