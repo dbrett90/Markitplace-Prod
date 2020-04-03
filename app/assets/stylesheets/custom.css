@@ -72,6 +72,9 @@ input[type=checkbox]
 .navbar-light .navbar-brand {
   color: white;
 } */
+.navbar-toggler{
+  float: right;
+}
 
 .btn-outline-success.navButtons{
   font-size: 12px;
