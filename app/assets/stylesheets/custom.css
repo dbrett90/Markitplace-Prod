@@ -493,7 +493,7 @@ iframe.terms-of-service
     height: 100%;
   }
   #nameBrand{
-    width: 300px;
+    width: 500px;
     height: 150px;
   }
   .jumbo-header-mobile{
@@ -569,10 +569,9 @@ iframe.terms-of-service
   .service-offering-text-mobile, .contact-form-item-mobile{
     font-size: 40px;
   }
-  #nameBrand{
-    height:85px;
-    width: 100px;
-  }
+  /* #nameBrand{
+    height:40px;
+  } */
   .form-control-mobile{
     height: 70px;
   }
