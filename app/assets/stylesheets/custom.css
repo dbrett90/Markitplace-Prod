@@ -129,7 +129,7 @@ li:hover {
   border: 1px solid black;
 }
 #nameBrand {
-  height: 50px;
+  height: 40px;
   padding-right: 0px;
 }
 #mainNavbar > a:nth-child(1){
