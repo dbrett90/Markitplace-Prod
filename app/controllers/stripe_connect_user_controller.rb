@@ -15,8 +15,8 @@ class StripeConnectUserController < ApplicationController
         @stripe_connect_user = StripeConnectUser.new
         @stripe_connect_user.stripe_id = connected_account_id
         @stripe_connect_user.stripe_email = linkedAccount.email
-        @stripe_connect_user.firstname = linkedAccount.first_name
-        @stripe_connect_user.lastname = linkedAccount.last_name
+        # @stripe_connect_user.firstname = linkedAccount.first_name
+        # @stripe_connect_user.lastname = linkedAccount.last_name
         @stripe_connect_user.save
         @stripe_connect_user.send_instructions_email
         flash[:success] = "Your stripe account has now been linked! An email with instructions has been sent"
