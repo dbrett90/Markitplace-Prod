@@ -1,0 +1,7 @@
+<% if !(@stripe_connect_user.firstname.empty?) && !(@stripe_connect_user.lastname.empty?) %>
+    <% person_name = @stripe_connect_user.firstname + " " + @stripe_connect_user.lastname %>
+<% elsif !(@stripe_connect_user.firstname.empty?) %>
+    <% person_name = @stripe_connect_user.firstname %>
+<% else %>
+    <% person_name = "there" %>
+<% end %>
