@@ -1,5 +1,4 @@
 class OneOffProductsController < ApplicationController
-
     def index
     end
     
@@ -20,5 +19,4 @@ class OneOffProductsController < ApplicationController
 
     def destroy
     end
-
 end
