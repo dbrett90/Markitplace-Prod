@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
   get '/plan-types', to: 'plan_types#index'
   get '/mealkits', to: 'products#index'
-  get '/additional-products', to 'one_off_products#index'
+  get '/additional-products', to: 'one_off_products#index'
   resources :users
   resources :stripe_connect_users
   #Below routes specifically for product library
