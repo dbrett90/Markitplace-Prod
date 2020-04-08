@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   end
   #Look into the pricing controller needed here?
   # Resources pricing, only: [:index]
+  resources :one_off_products
   resources :products
   resources :product_subscription_library, only: [:index] 
 
