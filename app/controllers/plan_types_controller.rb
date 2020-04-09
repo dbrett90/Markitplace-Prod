@@ -88,7 +88,31 @@ class PlanTypesController < ApplicationController
 
  # PATCH/PUT /books/1
  # PATCH/PUT /books/1.json
+ #Not abiding by DRY here.... how to add 
  def update
+  Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
+
+    @plan_type = current_user.plan_types.build(plan_type_params)
+    @products = Product.all 
+    @products.each do |product|
+      if product.plan_type_name.downcase == @plan_type.name.downcase 
+        product.plan_type = @plan_type 
+        @plan_type.products << product
+      end
+    end
+    stripe_plan = Stripe::Plan.create({
+        #Might need to include a pricing input value here so it's dynamic and not hard-coded.
+        #Also need to figure out what the billing period for this would be.
+        amount_decimal: (@plan_type.price * 100),
+        currency: 'usd',
+        interval: 'month',
+        nickname: @plan_type.name.downcase,
+        product: {name: "Markitplace Mealplan"}
+      },
+      {stripe_account: @plan_type.stripe_id})
+    # flash[:danger] = stripe_plan
+    # flash[:warning] = stripe_plan.id
+    @plan_type.update_attribute(:plan_type_id, stripe_plan.id)
    respond_to do |format|
      if @plan_type.update(plan_type_params)
        format.html { redirect_to plan_types_path, notice: 'PLAN was successfully updated.' }
