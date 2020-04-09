@@ -14,9 +14,13 @@
         </section>
         <div class="container" id="product-offerings">
             <div class = "row justify-content-center align-items">
-                <p> What is in this meal kit: <br>
-                <%= @plan_type.extended_description %> </p>
-                <p> THIS IS A <%= @plan_type.name %> TEST </p>
+                <div class="d-none d-lg-block col-3">
+                    <span></span>
+                </div>
+                <div class = "col-12 col-lg-6 TEXT-ALIGN-CENTER">
+                    <h5> What is in this meal kit:</h5> <br>
+                    <p><%= @plan_type.extended_description %> </p>
+                </div>
             </div>
             <div class="row ml-3 jusify-content-center align-items">
                 <%  @products.each do |product| %>
