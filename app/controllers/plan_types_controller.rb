@@ -91,8 +91,6 @@ class PlanTypesController < ApplicationController
  #Not abiding by DRY here.... how to add 
  def update
   Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
-
-    @plan_type = current_user.plan_types.build(plan_type_params)
     @products = Product.all 
     @products.each do |product|
       if product.plan_type_name.downcase == @plan_type.name.downcase 
