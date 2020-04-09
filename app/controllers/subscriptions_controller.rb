@@ -13,6 +13,7 @@ class SubscriptionsController < ApplicationController
         #Retrieve plan detais
         #Make sure that the credentials file has the appropriate plan_ids. Pulling this from PLATFORM account. Making sure we pull this info from connected account.
         plan_id = params[:plan_id]
+        flash[:danger] = plan_id
         plan_name = params[:plan_name]
         token = params[:stripeToken]
         #Let's add subscription value to the Library.
