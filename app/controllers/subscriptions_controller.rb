@@ -20,85 +20,87 @@ class SubscriptionsController < ApplicationController
 
         #calling private function find_plan
         plan_type = find_plan(plan_name, subscription_plans)
-        plan = Stripe::Plan.retrieve(plan_id, {stripe_account: plan_type.stripe_id})
-        connected_acct = plan_type.stripe_id
+        flash[:success] = plan_type
+        redirect_to root_path
+        # plan = Stripe::Plan.retrieve(plan_id, {stripe_account: plan_type.stripe_id})
+        # connected_acct = plan_type.stripe_id
 
-        zipcode_val = params[:payment_shipping][:zipcode]
-        if limit_zipcodes(zipcode_val.downcase)
-            customer = if current_user.stripe_id[connected_acct].present?
-                Stripe::Customer.retrieve(current_user.stripe_id[connected_acct], {stripe_account: plan_type.stripe_id})
-                # flash[:danger] = "User already has a stripe ID!"
-            else
-                #Create customer in connected accounts environment.
-                Stripe::Customer.create({
-                    email: current_user.email, 
-                    source:token,
-                },
-                {
-                    stripe_account: plan_type.stripe_id,
-                })
-                # Stripe::Customer.create(description: 'Test Customer')
-                #Save the stripe id to the database
-            end
-            # flash[:success] = customer
-            #Update the account with stripe_account id
-            current_user.stripe_id[connected_acct] = customer.id
-            options = {
-                subscribed: true
-            }
+        # zipcode_val = params[:payment_shipping][:zipcode]
+        # if limit_zipcodes(zipcode_val.downcase)
+        #     customer = if current_user.stripe_id[connected_acct].present?
+        #         Stripe::Customer.retrieve(current_user.stripe_id[connected_acct], {stripe_account: plan_type.stripe_id})
+        #         # flash[:danger] = "User already has a stripe ID!"
+        #     else
+        #         #Create customer in connected accounts environment.
+        #         Stripe::Customer.create({
+        #             email: current_user.email, 
+        #             source:token,
+        #         },
+        #         {
+        #             stripe_account: plan_type.stripe_id,
+        #         })
+        #         # Stripe::Customer.create(description: 'Test Customer')
+        #         #Save the stripe id to the database
+        #     end
+        #     # flash[:success] = customer
+        #     #Update the account with stripe_account id
+        #     current_user.stripe_id[connected_acct] = customer.id
+        #     options = {
+        #         subscribed: true
+        #     }
 
-            #Add the plan_type to the subscription library so it shows up on the user's console
-            current_user.plan_subscription_library_additions << plan_type
+        #     #Add the plan_type to the subscription library so it shows up on the user's console
+        #     current_user.plan_subscription_library_additions << plan_type
 
-            #Doing a merge if card value is updated. Below function will check this
-            options.merge!(
-                card_last4: params[:user][:card_last4],
-                card_exp_month: params[:user][:card_exp_month],
-                card_exp_year: params[:user][:card_exp_year],
-                card_type: params[:user][:card_type]
-                ) if params[:user][:card_last4]
+        #     #Doing a merge if card value is updated. Below function will check this
+        #     options.merge!(
+        #         card_last4: params[:user][:card_last4],
+        #         card_exp_month: params[:user][:card_exp_month],
+        #         card_exp_year: params[:user][:card_exp_year],
+        #         card_type: params[:user][:card_type]
+        #         ) if params[:user][:card_last4]
 
-            #Update the subscription creation with stripe connected account param & application_fee_percent params. Sent via connect
-            #subscription = customer.subscriptions.create(plan.id, {stripe_account: plan_type.stripe_id})
-            subscription = Stripe::Subscription.create({
-                customer: customer,
-                items: [
-                    {
-                        plan: plan_id
-                    }
-                ],
-                application_fee_percent: 0,
-                # application_fee: 0.50,
-            }, stripe_account: plan_type.stripe_id)
-            # #Update the hash
-            current_user.stripe_subscription_id[plan.nickname.downcase] = subscription.id
-            current_user.update(options)
-            #For the hash portion
-            current_user.save
+        #     #Update the subscription creation with stripe connected account param & application_fee_percent params. Sent via connect
+        #     #subscription = customer.subscriptions.create(plan.id, {stripe_account: plan_type.stripe_id})
+        #     subscription = Stripe::Subscription.create({
+        #         customer: customer,
+        #         items: [
+        #             {
+        #                 plan: plan_id
+        #             }
+        #         ],
+        #         application_fee_percent: 0,
+        #         # application_fee: 0.50,
+        #     }, stripe_account: plan_type.stripe_id)
+        #     # #Update the hash
+        #     current_user.stripe_subscription_id[plan.nickname.downcase] = subscription.id
+        #     current_user.update(options)
+        #     #For the hash portion
+        #     current_user.save
 
-            # flash[:success] = customer
+        #     # flash[:success] = customer
 
-            #Trigger Flash & The action mailers for confirmation
-            OrderConfirmationMailer.customer_confirmation(current_user, plan.nickname, 
-                params[:payment_shipping][:recipient_name], params[:payment_shipping][:street_address_1],
-                params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
-                params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
+        #     #Trigger Flash & The action mailers for confirmation
+        #     OrderConfirmationMailer.customer_confirmation(current_user, plan.nickname, 
+        #         params[:payment_shipping][:recipient_name], params[:payment_shipping][:street_address_1],
+        #         params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
+        #         params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
 
-            #Hit the order confirmation and send over to the vendor... Sends them a confirmation email about the order type. Can also view it in the stripe dashboard
-            stripe_connect_users = StripeConnectUser.all
-            sc_user_email = find_sc_user_email(stripe_connect_users, plan_type.stripe_id)
-            OrderConfirmationMailer.vendor_confirmation(current_user, sc_user_email, plan_type, params[:payment_shipping][:recipient_name], params[:payment_shipping][:street_address_1],
-                params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
-                params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
+        #     #Hit the order confirmation and send over to the vendor... Sends them a confirmation email about the order type. Can also view it in the stripe dashboard
+        #     stripe_connect_users = StripeConnectUser.all
+        #     sc_user_email = find_sc_user_email(stripe_connect_users, plan_type.stripe_id)
+        #     OrderConfirmationMailer.vendor_confirmation(current_user, sc_user_email, plan_type, params[:payment_shipping][:recipient_name], params[:payment_shipping][:street_address_1],
+        #         params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
+        #         params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
 
-            # #Redirect back to the root Path and send flash notice
-            redirect_to root_path
-            flash[:success] = "Your subscription is now active! Please check your email for a confirmation notice."
-        else
-            symbolize = plan_type.name.downcase.to_sym
-            redirect_to new_subscription_path(plan: plan_type.name.downcase, plan_id: Rails.application.credentials.development.dig(symbolize), plan_name: plan_type.name.downcase )
-            flash[:danger] = "Zip code invalid. Delivery services are currently limited to NYC, Brooklyn, Bronx and Queens."
-        end
+        #     # #Redirect back to the root Path and send flash notice
+        #     redirect_to root_path
+        #     flash[:success] = "Your subscription is now active! Please check your email for a confirmation notice."
+        # else
+        #     symbolize = plan_type.name.downcase.to_sym
+        #     redirect_to new_subscription_path(plan: plan_type.name.downcase, plan_id: Rails.application.credentials.development.dig(symbolize), plan_name: plan_type.name.downcase )
+        #     flash[:danger] = "Zip code invalid. Delivery services are currently limited to NYC, Brooklyn, Bronx and Queens."
+        # end
     end
 
     #Method to unsubscribe from a current subscription in Stripe
