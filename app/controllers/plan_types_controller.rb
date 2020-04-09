@@ -29,6 +29,7 @@ class PlanTypesController < ApplicationController
 
  def show
   @products = @plan_type.products
+  @extended_list = parse_extended_field(@plan_type)
   # @products = Product.all
   # flash[:danger] = @products.count
  end
@@ -131,6 +132,12 @@ class PlanTypesController < ApplicationController
    #Grab the current plan_type
    def set_plan_type
     @plan_type = PlanType.find(params[:id])
+   end
+
+   def parse_extended_field(plan_type)
+    extended_field = plan_type.extended_description
+    extended_list = extended_field.split(',')
+    return extended_list
    end
 
    # Never trust parameters from the scary internet, only allow the white list through.
