@@ -2,6 +2,7 @@ class SubscriptionsController < ApplicationController
     def new
         # flash[:danger] = params
         @plans = PlanType.all
+        flash[:warning] = params
     end
 
     #Need to add a mailer after an account has been created... ADD THIS IN
@@ -14,6 +15,7 @@ class SubscriptionsController < ApplicationController
         #Make sure that the credentials file has the appropriate plan_ids. Pulling this from PLATFORM account. Making sure we pull this info from connected account.
         plan_id = params[:plan_id]
         flash[:danger] = plan_id
+        flash[:warning] = params
         plan_name = params[:plan_name]
         token = params[:stripeToken]
         #Let's add subscription value to the Library.

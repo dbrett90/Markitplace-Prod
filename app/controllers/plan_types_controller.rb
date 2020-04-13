@@ -100,6 +100,7 @@ class PlanTypesController < ApplicationController
   end
     respond_to do |format|
       if @plan_type.update(plan_type_params)
+        flash[:success] = params
         format.html { redirect_to plan_types_path, notice: 'PLAN was successfully updated.' }
         format.json { render :show, status: :ok, location: @plan_type }
       else
