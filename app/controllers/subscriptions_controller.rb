@@ -13,8 +13,7 @@ class SubscriptionsController < ApplicationController
 
         #Retrieve plan detais
         #Make sure that the credentials file has the appropriate plan_ids. Pulling this from PLATFORM account. Making sure we pull this info from connected account.
-        plan_id = params[:plan_type_id]
-        flash[:danger] = plan_id
+        # plan_id = params[:plan_type_id]
         flash[:warning] = params
         plan_name = params[:plan_name]
         token = params[:stripeToken]
@@ -23,7 +22,9 @@ class SubscriptionsController < ApplicationController
 
         #calling private function find_plan
         plan_type = find_plan(plan_name, subscription_plans)
+        plan_id = plan_type.plan_type_id
         flash[:success] = plan_type
+        flash[:danger] = plan_id
         redirect_to root_path
         # plan = Stripe::Plan.retrieve(plan_id, {stripe_account: plan_type.stripe_id})
         # connected_acct = plan_type.stripe_id
