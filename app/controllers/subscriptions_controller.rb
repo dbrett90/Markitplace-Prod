@@ -27,7 +27,6 @@ class SubscriptionsController < ApplicationController
         flash[:danger] = plan_id
         plan = Stripe::Plan.retrieve(plan_id, {stripe_account: plan_type.stripe_id})
         connected_acct = plan_type.stripe_id
-
         zipcode_val = params[:payment_shipping][:zipcode]
         if limit_zipcodes(zipcode_val.downcase)
             customer = if current_user.stripe_id[connected_acct].present?
@@ -100,9 +99,10 @@ class SubscriptionsController < ApplicationController
             redirect_to root_path
             flash[:success] = "Your subscription is now active! Please check your email for a confirmation notice."
         else
-            symbolize = plan_type.name.downcase.to_sym
+            stripped_name = strip_spaces(plan_type.name.downcase)
+            symbolize = stripped_name.to_sym
             redirect_to new_subscription_path(plan: plan_type.name.downcase, plan_id: Rails.application.credentials.development.dig(symbolize), plan_name: plan_type.name.downcase )
-            flash[:danger] = "Zip code invalid. Delivery services are currently limited to NYC, Brooklyn, Bronx and Queens."
+            flash[:danger] = "Zip code invalid. Delivery services are currently limited to NYC, Brooklyn, Bronx and Queens, and Brookline."
         end
     end
 
@@ -181,6 +181,10 @@ class SubscriptionsController < ApplicationController
         shipping_address = ZipCodes.identify(zipcode)
         # shipping_address_down = shipping_address.downcase
         available_cities.include?(shipping_address)
+    end
+
+    def strip_spaces(keyword)
+        return keyword..gsub!(/\s/,'')
     end
 
 
