@@ -184,7 +184,7 @@ class SubscriptionsController < ApplicationController
     end
 
     def strip_spaces(keyword)
-        return keyword..gsub!(/\s/,'')
+        return keyword.gsub!(/\s/,'')
     end
 
 
