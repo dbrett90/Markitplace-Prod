@@ -180,12 +180,13 @@ class SubscriptionsController < ApplicationController
         #Going to need to build this into the model too
         available_cities = ["brooklyn", "new york city", "bronx", "queens", "brookline"]
         shipping_address = ZipCodes.identify(zipcode)
+        shipping_city = shipping_address[:city]
         # shipping_address_down = shipping_address.downcase
-        available_cities.include?(shipping_address[:city])
+        available_cities.include?(shipping_city)
     end
 
     def strip_spaces(keyword)
-        return keyword.gsub!(/\s/,'')
+        return keyword.gsub!(/\s/,'_')
     end
 
 

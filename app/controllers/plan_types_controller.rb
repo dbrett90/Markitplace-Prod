@@ -163,6 +163,10 @@ class PlanTypesController < ApplicationController
     return extended_list
    end
 
+  def strip_spaces(keyword)
+    return keyword.gsub!(/\s/,'_')
+  end
+
    # Never trust parameters from the scary internet, only allow the white list through.
     #Update with User ID?
    def plan_type_params
