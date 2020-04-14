@@ -105,7 +105,7 @@ class SubscriptionsController < ApplicationController
             stripped_name = strip_spaces(plan_type.name.downcase)
             symbolize = stripped_name.to_sym
             redirect_to new_subscription_path(plan: plan_type.name.downcase, plan_id: Rails.application.credentials.development.dig(symbolize), plan_name: plan_type.name.downcase )
-            flash[:danger] = "Zip code invalid. Delivery services are currently limited to NYC, Brooklyn, Bronx and Queens, and Brookline."
+            flash[:danger] = "Zip code invalid. Delivery services are currently limited to <%= plan_type.zipcodes %> For this product"
         end
     end
 
@@ -198,7 +198,7 @@ class SubscriptionsController < ApplicationController
 
     def parse_zipcodes(plan_type)
         zipcode_list = plan_type.zipcodes
-        zipcode_list = extended_field.split(',')
+        zipcode_list = zipcode_list.split(',')
         return zipcode_list
        end
 
