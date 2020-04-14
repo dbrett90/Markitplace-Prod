@@ -193,11 +193,7 @@ class SubscriptionsController < ApplicationController
     end
 
     def strip_spaces(keyword)
-        if keyword.is_empty?
-            return ""
-        else 
-            keyword.gsub!(/\s/,'_')
-        end
+        keyword.gsub!(/\s/,'_')
     end
 
     def parse_zipcodes(plan_type)
