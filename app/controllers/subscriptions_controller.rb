@@ -28,6 +28,7 @@ class SubscriptionsController < ApplicationController
         plan = Stripe::Plan.retrieve(plan_id, {stripe_account: plan_type.stripe_id})
         connected_acct = plan_type.stripe_id
         zipcode_val = params[:payment_shipping][:zipcode]
+        zipcode_val = zipcode_val.to_s
         if limit_zipcodes(zipcode_val.downcase)
             customer = if current_user.stripe_id[connected_acct].present?
                 Stripe::Customer.retrieve(current_user.stripe_id[connected_acct], {stripe_account: plan_type.stripe_id})
@@ -180,7 +181,7 @@ class SubscriptionsController < ApplicationController
         available_cities = ["brooklyn", "new york city", "bronx", "queens", "brookline"]
         shipping_address = ZipCodes.identify(zipcode)
         # shipping_address_down = shipping_address.downcase
-        available_cities.include?(shipping_address)
+        available_cities.include?(shipping_address[:city])
     end
 
     def strip_spaces(keyword)
