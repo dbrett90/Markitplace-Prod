@@ -1,0 +1,20 @@
+<%= form_for(@one_off_product) do |f| %>
+    <p class="subtext-gray pb-1" style="font-size:14px">Only admins should be able to
+    access this page. Updating Product Types </p>
+
+    <%= f.text_field :name, class: 'form-control', placeholder: "Name", required: true %><br>
+
+    <%= f.text_field :description, class: 'form-control', placeholder: "Product Description", required: true %><br>
+
+    <%= f.number_field :price, class: "form-control", placeholder: "Plan Price", required: true %><br>
+
+    <%= f.text_field :stripe_id, class: 'form-control', placeholder: "Stripe ID of Partner", required: true %><br>
+
+    <%= f.label :thumbail do %>
+        <span class = 'field-label emphasis'> Product Type Image </span><br>
+    <% end %><br>
+    <%= f.file_field :thumbnail, multiple: false, required: true %> <br>
+    <br>
+
+    <%= f.submit "Submit", class: "btn btn-success btn-block form-actions" %><br>
+<% end %>
