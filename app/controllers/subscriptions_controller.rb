@@ -187,9 +187,11 @@ class SubscriptionsController < ApplicationController
         else
             shipping_address = ZipCodes.identify(zipcode)
             shipping_city = shipping_address[:city]
+            shipping_city = shipping_city.downcase
+            flash[:warning] = zipcode_list
             # flash[:warning] = shipping_city
             # shipping_address_down = shipping_address.downcase
-            zipcode_list.include?(shipping_city.downcase)
+            zipcode_list.include?(shipping_city)
         end
     end
 
