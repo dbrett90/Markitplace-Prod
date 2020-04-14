@@ -23,8 +23,8 @@ class SubscriptionsController < ApplicationController
         #calling private function find_plan
         plan_type = find_plan(plan_name, subscription_plans)
         plan_id = plan_type.plan_type_id
-        flash[:success] = plan_type
-        flash[:danger] = plan_id
+        # flash[:success] = plan_type
+        # flash[:danger] = plan_id
         plan = Stripe::Plan.retrieve(plan_id, {stripe_account: plan_type.stripe_id})
         connected_acct = plan_type.stripe_id
         zipcode_val = params[:payment_shipping][:zipcode]
@@ -186,7 +186,7 @@ class SubscriptionsController < ApplicationController
         else
             shipping_address = ZipCodes.identify(zipcode)
             shipping_city = shipping_address[:city]
-            flash[:warning] = shipping_city
+            # flash[:warning] = shipping_city
             # shipping_address_down = shipping_address.downcase
             zipcode_list.include?(shipping_city.downcase)
         end
