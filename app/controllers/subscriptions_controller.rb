@@ -182,8 +182,9 @@ class SubscriptionsController < ApplicationController
         available_cities = ["brooklyn", "new york city", "bronx", "queens", "brookline"]
         shipping_address = ZipCodes.identify(zipcode)
         shipping_city = shipping_address[:city]
+        flash[:warning] = shipping_city
         # shipping_address_down = shipping_address.downcase
-        available_cities.include?(shipping_city)
+        available_cities.include?(shipping_city.downcase)
     end
 
     def strip_spaces(keyword)
