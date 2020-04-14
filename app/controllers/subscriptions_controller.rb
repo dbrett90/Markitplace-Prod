@@ -105,7 +105,7 @@ class SubscriptionsController < ApplicationController
             stripped_name = strip_spaces(plan_type.name.downcase)
             symbolize = stripped_name.to_sym
             redirect_to new_subscription_path(plan: plan_type.name.downcase, plan_id: Rails.application.credentials.development.dig(symbolize), plan_name: plan_type.name.downcase )
-            flash[:danger] = "Zip code invalid. Delivery services are currently limited to " + plan_type.zipcodes + " For this product"
+            flash[:danger] = "Zip code invalid. Delivery services are currently limited to " + plan_type.zipcodes + " for this product"
         end
     end
 
@@ -193,7 +193,11 @@ class SubscriptionsController < ApplicationController
     end
 
     def strip_spaces(keyword)
-        return keyword.gsub!(/\s/,'_')
+        if keyword.is_empty?
+            return ""
+        else 
+            keyword.gsub!(/\s/,'_')
+        end
     end
 
     def parse_zipcodes(plan_type)
