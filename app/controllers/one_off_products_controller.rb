@@ -63,6 +63,6 @@ class OneOffProductsController < ApplicationController
     end
 
     def one_off_product_params
-        params.require(:one_off_product).permit(:name, :description, :product_id, :price, :partner_name :created_at, :updated_at, :stripe_id, :thumbnail)
+        params.require(:one_off_product).permit(:name, :description, :product_id, :price, :partner_name, :created_at, :updated_at, :stripe_id, :thumbnail)
     end
 end
