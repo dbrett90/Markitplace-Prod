@@ -5,7 +5,7 @@ class OneOffProductsController < ApplicationController
 
     def index
         #Show all the one-offs
-        @one_off_products = OneOffProducts.all
+        @one_off_products = OneOffProduct.all
     end
 
     def new
