@@ -29,7 +29,8 @@ class SubscriptionsController < ApplicationController
         connected_acct = plan_type.stripe_id
         zipcode_val = params[:payment_shipping][:zipcode]
         zipcode_val = zipcode_val.to_s
-        if limit_zipcodes(zipcode_val.downcase)
+        flash[:warning] = zipcode_val
+        if limit_zipcodes(zipcode_val)
             customer = if current_user.stripe_id[connected_acct].present?
                 Stripe::Customer.retrieve(current_user.stripe_id[connected_acct], {stripe_account: plan_type.stripe_id})
                 # flash[:danger] = "User already has a stripe ID!"
