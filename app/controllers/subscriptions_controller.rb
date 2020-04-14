@@ -206,6 +206,7 @@ class SubscriptionsController < ApplicationController
             return []
         else 
             zipcode_list = zipcode_list.split(',')
+            zipcode_list.map{|city| city.chomp}
             return zipcode_list
        end
     end
