@@ -103,7 +103,8 @@ class SubscriptionsController < ApplicationController
             flash[:success] = "Your subscription is now active! Please check your email for a confirmation notice."
         else
             # stripped_name = strip_spaces(plan_type.name.downcase)
-            symbolize = plan_type.name.downcase.to_sym
+            symbolize = plan_type.name.downcase
+            symbolize = symbolize.to_sym
             redirect_to new_subscription_path(plan: plan_type.name.downcase, plan_id: Rails.application.credentials.development.dig(symbolize), plan_name: plan_type.name.downcase )
             flash[:danger] = "Zip code invalid. Delivery services are currently limited to " + plan_type.zipcodes + " for this product"
         end
