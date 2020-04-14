@@ -202,7 +202,7 @@ class SubscriptionsController < ApplicationController
 
     def parse_zipcodes(plan_type)
         if plan_type.city_delivery.nil?
-            return ""
+            return []
         else 
             zipcode_list = plan_type.city_delivery
             zipcode_list = zipcode_list.split(',')
