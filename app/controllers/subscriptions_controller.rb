@@ -2,7 +2,7 @@ class SubscriptionsController < ApplicationController
     def new
         # flash[:danger] = params
         @plans = PlanType.all
-        flash[:warning] = params
+        # flash[:warning] = params
     end
 
     #Need to add a mailer after an account has been created... ADD THIS IN
