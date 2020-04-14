@@ -31,7 +31,7 @@ class SubscriptionsController < ApplicationController
         zipcode_val = zipcode_val.to_s
         # flash[:warning] = zipcode_val
         zipcode_list = parse_zipcodes(plan_type.zipcodes)
-        if limit_zipcodes(zipcode_val, zipcode list)
+        if limit_zipcodes(zipcode_val, zipcode_list)
             customer = if current_user.stripe_id[connected_acct].present?
                 Stripe::Customer.retrieve(current_user.stripe_id[connected_acct], {stripe_account: plan_type.stripe_id})
                 # flash[:danger] = "User already has a stripe ID!"
