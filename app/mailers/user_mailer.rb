@@ -25,7 +25,7 @@ class UserMailer < ApplicationMailer
     @user_name = user_name
     @user_how = user_how 
     @user_msg = user_msg
-    mail to: "danbrett107@gmail.com", cc:"harrington.robert15@gmail.com", subject: "Markitplace Support Required", from: user_email
+    mail to: "admin@markitplace.io",  subject: "Markitplace Support Required", from: user_email
   end
 
   def partners_contact_support(partner_name, partner_email, partner_location, partner_cuisine, partner_post_offerings, partner_analytics_reports, partner_brand_management )
@@ -36,6 +36,6 @@ class UserMailer < ApplicationMailer
     @partner_post_offerings=partner_post_offerings
     @partner_analytics_reports=partner_analytics_reports
     @partner_brand_management=partner_brand_management
-    mail to: "danbrett107@gmail.com", cc:"harrington.robert15@gmail.com",  subject: "PARTNER INTEREST REQUEST", from: partner_email
+    mail to: "admin@markitplace.io",  subject: "PARTNER INTEREST REQUEST", from: partner_email
   end
 end

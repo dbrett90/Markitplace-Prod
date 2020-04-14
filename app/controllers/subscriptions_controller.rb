@@ -29,8 +29,9 @@ class SubscriptionsController < ApplicationController
         connected_acct = plan_type.stripe_id
         zipcode_val = params[:payment_shipping][:zipcode]
         zipcode_val = zipcode_val.to_s
-        flash[:warning] = zipcode_val
-        if limit_zipcodes(zipcode_val)
+        # flash[:warning] = zipcode_val
+        zipcode_list = parse_zipcodes(plan_type.zipcodes)
+        if limit_zipcodes(zipcode_val, zipcode list)
             customer = if current_user.stripe_id[connected_acct].present?
                 Stripe::Customer.retrieve(current_user.stripe_id[connected_acct], {stripe_account: plan_type.stripe_id})
                 # flash[:danger] = "User already has a stripe ID!"
@@ -177,19 +178,29 @@ class SubscriptionsController < ApplicationController
         end
     end
 
-    def limit_zipcodes(zipcode)
+    def limit_zipcodes(zipcode, zipcode_list)
         #Going to need to build this into the model too
-        available_cities = ["brooklyn", "new york city", "bronx", "queens", "brookline"]
-        shipping_address = ZipCodes.identify(zipcode)
-        shipping_city = shipping_address[:city]
-        flash[:warning] = shipping_city
-        # shipping_address_down = shipping_address.downcase
-        available_cities.include?(shipping_city.downcase)
+        #available_cities = ["brooklyn", "new york city", "bronx", "queens", "brookline"]
+        if zipcode_list.length == 0
+            return true
+        else
+            shipping_address = ZipCodes.identify(zipcode)
+            shipping_city = shipping_address[:city]
+            flash[:warning] = shipping_city
+            # shipping_address_down = shipping_address.downcase
+            zipcode_list.include?(shipping_city.downcase)
+        end
     end
 
     def strip_spaces(keyword)
         return keyword.gsub!(/\s/,'_')
     end
+
+    def parse_zipcodes(plan_type)
+        zipcode_list = plan_type.zipcodes
+        zipcode_list = extended_field.split(',')
+        return zipcode_list
+       end
 
 
 end
