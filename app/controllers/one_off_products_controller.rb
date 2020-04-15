@@ -23,6 +23,7 @@ class OneOffProductsController < ApplicationController
         #Going to create the plan on behalf of the client - need key
         Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
         @one_off_product = current_user.one_off_products.build(one_off_product_params)
+        #Create a new product and a new SKU
         stripe_product = Stripe::Product.create({
             #Might need to include a pricing input value here so it's dynamic and not hard-coded.
             #Also need to figure out what the billing period for this would be.
@@ -31,7 +32,7 @@ class OneOffProductsController < ApplicationController
             # amount_decimal: (@plan_type.price * 100),
             # currency: 'usd'
           },
-          {stripe_account: @plan_type.stripe_id})
+          {stripe_account: @one_off_product.stripe_id})
 
         respond_to do |format|
             if @one_off_product.save
