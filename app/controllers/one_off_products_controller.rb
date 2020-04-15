@@ -19,6 +19,7 @@ class OneOffProductsController < ApplicationController
     end
 
     #This is where we'll link to stripe to create the one-off-product
+    #SKU only letting us set a certain amount... need to think about this
     def create
         #Going to create the plan on behalf of the client - need key
         Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
@@ -29,6 +30,7 @@ class OneOffProductsController < ApplicationController
             #Also need to figure out what the billing period for this would be.
             name: @one_off_product.name,
             description: @one_off_product.description,
+            type: "good",
             # amount_decimal: (@plan_type.price * 100),
             # currency: 'usd'
           },
