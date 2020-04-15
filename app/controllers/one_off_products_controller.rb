@@ -28,8 +28,8 @@ class OneOffProductsController < ApplicationController
             #Also need to figure out what the billing period for this would be.
             name: @one_off_product.name,
             description: @one_off_product.description,
-            amount_decimal: (@plan_type.price * 100),
-            currency: 'usd'
+            # amount_decimal: (@plan_type.price * 100),
+            # currency: 'usd'
           },
           {stripe_account: @plan_type.stripe_id})
 
