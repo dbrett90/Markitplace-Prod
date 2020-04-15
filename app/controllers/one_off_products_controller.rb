@@ -34,6 +34,14 @@ class OneOffProductsController < ApplicationController
           },
           {stripe_account: @one_off_product.stripe_id})
 
+          stripe_sku = Stripe::SKU.create({
+              price: (@one_off_product.price * 100),
+              currency: 'usd',
+              inventory: {type: 'infinite'},
+              product: stripe_product.id,
+            },
+            {stripe_account: @one_off_product.stripe_id})
+
         respond_to do |format|
             if @one_off_product.save
                 flash[:success] = params
