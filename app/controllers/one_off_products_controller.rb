@@ -35,7 +35,7 @@ class OneOffProductsController < ApplicationController
           {stripe_account: @one_off_product.stripe_id})
 
           stripe_sku = Stripe::SKU.create({
-              price: (@one_off_product.price * 100),
+              price: (@one_off_product.price * 100).to_i,
               currency: 'usd',
               inventory: {type: 'infinite'},
               product: stripe_product.id,
