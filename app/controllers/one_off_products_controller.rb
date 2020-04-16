@@ -99,7 +99,7 @@ class OneOffProductsController < ApplicationController
     def destroy
         @one_off_product.destroy
         respond_to do |format|
-            format.html { redirect_to plan_types_path, success: 'Product was successfully deleted.' }
+            format.html { redirect_to one_off_products_path, success: 'Product was successfully deleted.' }
             format.json { head :no_content }
         end
     end
