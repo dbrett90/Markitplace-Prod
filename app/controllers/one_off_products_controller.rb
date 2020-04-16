@@ -97,6 +97,11 @@ class OneOffProductsController < ApplicationController
 
     #Need to buil in a way to destroy the product at some point
     def destroy
+        @one_off_product.destroy
+        respond_to do |format|
+            format.html { redirect_to plan_types_path, success: 'Product was successfully deleted.' }
+            format.json { head :no_content }
+        end
     end
 
     private
