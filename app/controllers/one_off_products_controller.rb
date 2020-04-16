@@ -35,6 +35,7 @@ class OneOffProductsController < ApplicationController
             # currency: 'usd'
           },
           {stripe_account: @one_off_product.stripe_id})
+          @one_off_product.update_attribute(:product_id, stripe_product.id)
 
         # #Should you be creating SKUs here?
         #   stripe_sku = Stripe::SKU.create({
@@ -63,8 +64,38 @@ class OneOffProductsController < ApplicationController
     end
 
     def update
+        #Going to create the plan on behalf of the client - need key
+        Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
+        @one_off_product = current_user.one_off_products.build(one_off_product_params)
+        #Create a new product and a new SKU
+        stripe_product = Stripe::Product.create({
+            #Might need to include a pricing input value here so it's dynamic and not hard-coded.
+            #Also need to figure out what the billing period for this would be.
+            name: @one_off_product.name,
+            description: @one_off_product.description,
+            type: "good",
+          },
+          {stripe_account: @one_off_product.stripe_id})
+          @one_off_product.update_attribute(:product_id, stripe_product.id)
+
+        respond_to do |format|
+            if @one_off_product.save
+                flash[:success] = params
+                format.html { redirect_to plan_types_path, success: 'ONE OFF PRODUCT was successfully created.' }
+                format.json { render :index, status: :created, location: @one_off_product }
+                flash[:warning] = "Make sure you update the credentials file with product ID"
+               # @plan_type.plan_type_id = stripe_plan.id
+               # @plan_type.save
+            else
+                flash[:danger] = "SOME TYPE OF ISSUE WITH CREATION"
+                flash[:notice] = @one_off_product.errors.full_messages
+                format.html { render :new }
+                format.json { render json: @one_off_product.errors, status: :unprocessable_entity }
+            end
+        end
     end
 
+    #Need to buil in a way to destroy the product at some point
     def destroy
     end
 
