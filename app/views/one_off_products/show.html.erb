@@ -1,0 +1,38 @@
+<% provide(:title, 'Food Products') %>
+<div class = "container recipe-overview  mt-4 justify-content-center">
+  <section class= "container">
+    <div class = "recipe-header pt-2">
+      <div class = "row">
+        <div class= "col-12 reciper-header-button text-center pb-2">
+          <h1 class="pb-1 title-mobile"><%= @one_off_product.name %> </h1>
+          <%= image_tag @one_off_product.thumbnail, class:"img-fluid", alt: "Product Image" %>
+        </div>
+      </div>
+    </div>
+    <div class= "row align-items-center text-center">
+      <div class = "col-12 col-lg-8">
+          <p class="description-text subtitle-description-mobile"> <%= @one_off_product.description %></p>
+      </div>
+      <div class = "col-12 col-lg-4 text-center align-items-center text-center">
+        <% if logged_in? %>
+          <% symbolize = @one_off_product.name.downcase.to_sym %>
+          <%= link_to 'START COOKING', new_purchase_one_off_path(one_off_product: @one_off_product.name.downcase, plan_id: Rails.application.credentials.development.dig(symbolize), one_off_product_name: @one_off_product.name.downcase ), class:"btn btn-outline-success jumbo-button btn-mobile" %>
+        <% else %>
+          <%= link_to 'START COOKING', new_user_path, class:"btn btn-outline-success jumbo-button btn-mobile" %>
+        <% end %>
+        <div class="col-12 d-lg-none">
+          <span></span>
+          <br>
+          <span</> 
+        </div>
+
+      </div>
+    </div>
+
+    <% if logged_in? %>
+      <% if current_user.admin? %>
+        <%= link_to 'Edit Product', edit_one_off_product_path(@one_off_product), class: "btn btn-warning btn-mobile" %>
+      <% end %>
+    <% end %>
+  </section>
+</div>
