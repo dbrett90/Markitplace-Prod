@@ -11,10 +11,11 @@ class PurchaseOneOffsController < ApplicationController
         one_off_product_name = params[:one_off_product_name]
         token = params[:stripeToken]
         #Going to correctly identify the proper plan here
-        one_off_purchases = OneOffPurchase.all
+        one_off_purchases = OneOffProduct.all
         #Call private function to match with the correct one off puchase
         one_off_purchase = find_one_off
         flash[:success] = one_off_purchase
+        redirect_to root_path
     end
 
     #Do we want this ability to cancel orders in the code?
