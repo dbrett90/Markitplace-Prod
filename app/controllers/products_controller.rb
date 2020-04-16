@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
     #books which I don't think we want. Need to make a decision about how much to include
  #Updated to allow users to access a library
  before_action :set_product, only: [:show, :edit, :update, :destroy, :library]
- before_action :logged_in?, except: [:index, :show]
+ before_action :admin_user, except: [:index, :show]
 #  before_action :authenticate_user!, except: [:index, :show]
 #This is what the Devise action basically does.
 #before_action :logged_in_user, except: [:index, :show]
@@ -125,6 +125,10 @@ class ProductsController < ApplicationController
     #make sure to review the entire controller
    def product_params
      params.require(:product).permit(:name, :description, :created_at, :updated_at, :product_id, :plan_type_name, :partner_name, :calories, :protein, :servings, :fats, :thumbnail, :user_id)
+   end
+
+   def admin_user
+    redirect_to(root_url) unless current_user.admin?
    end
 end
 
