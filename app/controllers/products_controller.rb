@@ -1,13 +1,6 @@
 class ProductsController < ApplicationController
-    # Lots of questions on this one. Can certainly reference the books 
-    #controller in the sample app, but that also allows a user to create new
-    #books which I don't think we want. Need to make a decision about how much to include
- #Updated to allow users to access a library
  before_action :set_product, only: [:show, :edit, :update, :destroy, :library]
  before_action :admin_user, except: [:index, :show]
-#  before_action :authenticate_user!, except: [:index, :show]
-#This is what the Devise action basically does.
-#before_action :logged_in_user, except: [:index, :show]
 
 #  def plans 
 #  end
