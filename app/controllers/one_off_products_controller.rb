@@ -1,7 +1,7 @@
 class OneOffProductsController < ApplicationController
     #May need to add library type to before action for set_product
     before_action :set_product_type, only: [:edit, :show, :update, :destroy]
-    before_action :admin?, except: [:index, :show]
+    before_action :admin_user, except: [:index, :show]
 
     def index
         #Show all the one-offs
@@ -112,5 +112,10 @@ class OneOffProductsController < ApplicationController
 
     def one_off_product_params
         params.require(:one_off_product).permit(:name, :description, :product_id, :price, :partner_name, :user_id, :created_at, :updated_at, :stripe_id, :thumbnail)
+    end
+
+    #This is not DRY. Pulling from users controller
+    def admin_user
+        redirect_to(root_url) unless current_user.admin?
     end
 end
