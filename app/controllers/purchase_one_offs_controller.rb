@@ -13,7 +13,7 @@ class PurchaseOneOffsController < ApplicationController
         #Going to correctly identify the proper plan here
         one_off_purchases = OneOffProduct.all
         #Call private function to match with the correct one off puchase
-        one_off_purchase = find_one_off
+        one_off_purchase = find_one_off(one_off_product_name, one_off_purchases)
         flash[:success] = one_off_purchase
         redirect_to root_path
     end
