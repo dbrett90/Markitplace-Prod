@@ -51,6 +51,7 @@ class PurchaseOneOffsController < ApplicationController
             payment_method_types: ['card'],
             amount: (one_off_purchase.price * 1000).to_i,
             currency: 'usd',
+            customer: customer,
             transfer_data: {
                 destination: one_off_purchase.stripe_id,
             },
