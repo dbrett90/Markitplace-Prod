@@ -16,6 +16,7 @@ class PurchaseOneOffsController < ApplicationController
         one_off_purchase = find_one_off(one_off_product_name, one_off_purchases)
         #pull the connected ID from the database
         connected_acct = one_off_purchase.stripe_id
+        flash[:success] = connected_acct
         # flash[:success] = one_off_purchase
         # redirect_to root_path
 
@@ -42,26 +43,27 @@ class PurchaseOneOffsController < ApplicationController
         options = {
             subscribed: true
         }
+
         options.merge!(
             card_last4: params[:user][:card_last4],
             card_exp_month: params[:user][:card_exp_month],
             card_exp_year: params[:user][:card_exp_year],
             card_type: params[:user][:card_type]
             ) if params[:user][:card_last4]
-        
-        payment_intent = Stripe::PaymentIntent.create({
-            payment_method_types: ['card'],
-            amount: (one_off_purchase.price * 1000).to_i,
-            currency: 'usd',
-            customer: customer,
-            transfer_data: {
-                destination: one_off_purchase.stripe_id,
-            },
-        })
-        # current_user.stripe_one_off_id[one_off_purchase.nickname.downcase] = payment_intent.id
+        current_user.stripe_one_off_id[one_off_purchase.nickname.downcase] = payment_intent.id
         current_user.update(options)
         #For the hash portion
         current_user.save
+        
+        # payment_intent = Stripe::PaymentIntent.create({
+        #     payment_method_types: ['card'],
+        #     amount: (one_off_purchase.price * 1000).to_i,
+        #     currency: 'usd',
+        #     customer: customer,
+        #     transfer_data: {
+        #         destination: one_off_purchase.stripe_id,
+        #     },
+        # })
 
         redirect_to root_path
         
