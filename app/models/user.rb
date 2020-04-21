@@ -11,6 +11,7 @@ class User < ApplicationRecord
     #Hash Values need to be seralized
     serialize :stripe_subscription_id, Hash
     serialize :stripe_id, Hash
+    serialize :one_off_id, Hash
     
     #Specific to a user's prod_subscription_libray.. May need to remove this shit
     has_many :products, dependent: :destroy
