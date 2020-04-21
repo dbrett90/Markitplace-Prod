@@ -14,6 +14,8 @@ class PurchaseOneOffsController < ApplicationController
         one_off_purchases = OneOffProduct.all
         #Call private function to match with the correct one off puchase
         one_off_purchase = find_one_off(one_off_product_name, one_off_purchases)
+        #pull the connected ID from the database
+        connected_acct = one_off_purchase.stripe_id
         # flash[:success] = one_off_purchase
         # redirect_to root_path
 
