@@ -51,7 +51,7 @@ class PurchaseOneOffsController < ApplicationController
             card_type: params[:user][:card_type]
             ) if params[:user][:card_last4]
         #May need to change one_off_id for naming convention
-        current_user.one_off_id[one_off_purchase.nickname.downcase] = payment_intent.id
+        current_user.one_off_id[one_off_purchase.name.downcase] = payment_intent.id
         current_user.update(options)
         #For the hash portion
         current_user.save
