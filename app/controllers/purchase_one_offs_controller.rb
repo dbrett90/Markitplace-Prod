@@ -52,7 +52,7 @@ class PurchaseOneOffsController < ApplicationController
             amount: (one_off_purchase.price * 1000).to_i,
             currency: 'usd',
             transfer_data: {
-                destination: customer.id,
+                destination: one_off_purchase.stripe_id,
             },
         })
 
