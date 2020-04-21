@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_14_224847) do
+ActiveRecord::Schema.define(version: 2020_04_21_025018) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(version: 2020_04_14_224847) do
     t.integer "card_exp_year"
     t.string "card_type"
     t.boolean "subscribed"
+    t.text "one_off_id"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

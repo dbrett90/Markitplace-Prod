@@ -36,9 +36,7 @@ class PurchaseOneOffsController < ApplicationController
         end
         #Save the stripe ID to the database of the newly created customer in the connected account
         current_user.stripe_id[connected_acct] = customer.id
-        options = {
-            subscribed: true
-        }
+        #SUBSCCRIBED = TRUE?
         #Need to clarify why we need options here for the card_last4 etc... Necessary?
         options.merge!(
             card_last4: params[:user][:card_last4],
@@ -56,6 +54,10 @@ class PurchaseOneOffsController < ApplicationController
                 destination: one_off_purchase.stripe_id,
             },
         })
+        # current_user.stripe_one_off_id[one_off_purchase.nickname.downcase] = payment_intent.id
+        current_user.update(options)
+        #For the hash portion
+        current_user.save
 
         redirect_to root_path
         
