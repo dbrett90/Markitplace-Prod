@@ -50,21 +50,23 @@ class PurchaseOneOffsController < ApplicationController
             card_exp_year: params[:user][:card_exp_year],
             card_type: params[:user][:card_type]
             ) if params[:user][:card_last4]
+
+        
+        payment_intent = Stripe::PaymentIntent.create({
+            payment_method_types: ['card'],
+            amount: (one_off_purchase.price * 1000).to_i,
+            currency: 'usd',
+            customer: customer,
+            transfer_data: {
+                destination: one_off_purchase.stripe_id,
+            },
+        })
+
         #May need to change one_off_id for naming convention
-        # current_user.one_off_id[one_off_purchase.name.downcase] = payment_intent.id
+        current_user.one_off_id[one_off_purchase.name.downcase] = payment_intent.id
         current_user.update(options)
         #For the hash portion
         current_user.save
-        
-        # payment_intent = Stripe::PaymentIntent.create({
-        #     payment_method_types: ['card'],
-        #     amount: (one_off_purchase.price * 1000).to_i,
-        #     currency: 'usd',
-        #     customer: customer,
-        #     transfer_data: {
-        #         destination: one_off_purchase.stripe_id,
-        #     },
-        # })
 
         redirect_to root_path
         
