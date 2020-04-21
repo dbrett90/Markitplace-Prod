@@ -49,7 +49,7 @@ class PurchaseOneOffsController < ApplicationController
         
         payment_intent = Stripe::PaymentIntent.create({
             payment_method_types: ['card'],
-            amount: one_off_purchase.price * 1000,
+            amount: (one_off_purchase.price * 1000).to_i,
             currency: 'usd',
             transfer_data: {
                 destination: customer.id,
