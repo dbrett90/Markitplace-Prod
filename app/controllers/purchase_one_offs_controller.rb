@@ -38,6 +38,10 @@ class PurchaseOneOffsController < ApplicationController
         current_user.stripe_id[connected_acct] = customer.id
         #SUBSCCRIBED = TRUE?
         #Need to clarify why we need options here for the card_last4 etc... Necessary?
+        #Check the code on subscribed feature
+        options = {
+            subscribed: true
+        }
         options.merge!(
             card_last4: params[:user][:card_last4],
             card_exp_month: params[:user][:card_exp_month],
