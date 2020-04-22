@@ -69,7 +69,7 @@ document.addEventListener("turbolinks:load", function() {
             addCardField(form, token, field);
         });
         //This may be something you remove
-        determineCardType(card.number)
+        // determineCardType(card.number)
 
         form.submit();
     }
@@ -83,13 +83,13 @@ document.addEventListener("turbolinks:load", function() {
     }
 
     // This may be something you remove
-    function determineCardType(card_number){
-        let hiddenInput = document.createElement('input');
-        hiddenInput.setAttribute('type', 'hidden');
-        hiddenInput.setAttribute('name', "card_brand");
-        hiddenInput.setAttribute('value', card_number.cardType);
-        form.appendChild(hiddenInput);
-    }
+    // function determineCardType(card_number){
+    //     let hiddenInput = document.createElement('input');
+    //     hiddenInput.setAttribute('type', 'hidden');
+    //     hiddenInput.setAttribute('name', "card_brand");
+    //     hiddenInput.setAttribute('value', card_number.cardType);
+    //     form.appendChild(hiddenInput);
+    // }
 
 
 })
