@@ -48,7 +48,7 @@ class PurchaseOneOffsController < ApplicationController
             card_last4: params[:user][:card_last4],
             card_exp_month: params[:user][:card_exp_month],
             card_exp_year: params[:user][:card_exp_year],
-            card_type: params[:user][:card_type]
+            card_type: params[:user][:card_brand]
             ) if params[:user][:card_last4]
 
         
@@ -69,9 +69,12 @@ class PurchaseOneOffsController < ApplicationController
         # card_method_payment = 'pm_card_'+params[:user][:card_brand]
         # flash[:danger] = card_method_payment
         flash[:warning] = params[:user]
+        card_brand = (params[:user][:card_brand]).downcase
+        payment_method_card = 'pm_card_'+card_brand
+        flash[:danger] = payment_method_card
         confirm_payment = Stripe::PaymentIntent.confirm(
             payment_intent.id,
-            {payment_method: 'pm_card_visa'},
+            {payment_method: payment_method_card},
         )
 
         ##NEED TO CONFIRM THE PAYMENT AFTER THE FACT! CHECK THE DOCS FOR THIS

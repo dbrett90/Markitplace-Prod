@@ -62,7 +62,7 @@ class SubscriptionsController < ApplicationController
                 card_last4: params[:user][:card_last4],
                 card_exp_month: params[:user][:card_exp_month],
                 card_exp_year: params[:user][:card_exp_year],
-                card_type: params[:user][:card_type]
+                card_type: params[:user][:card_brand]
                 ) if params[:user][:card_last4]
 
             #Update the subscription creation with stripe connected account param & application_fee_percent params. Sent via connect
