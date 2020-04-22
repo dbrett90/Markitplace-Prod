@@ -57,7 +57,7 @@ class PurchaseOneOffsController < ApplicationController
             amount: (one_off_purchase.price * 1000).to_i,
             currency: 'usd',
             capture_method: 'automatic',
-            confirmation_method: 'automatic'
+            confirmation_method: 'automatic',
             # customer: customer,
             transfer_data: {
                 destination: one_off_purchase.stripe_id,
