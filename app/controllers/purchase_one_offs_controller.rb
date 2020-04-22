@@ -61,10 +61,11 @@ class PurchaseOneOffsController < ApplicationController
                 destination: one_off_purchase.stripe_id,
             },
         })
-
-        Stripe::PaymentIntent.confirm(
-            id: payment_intent.id
-        )
+        flash[:success] = payment_intent
+        flash[:danger] = payment_intent.id
+        # Stripe::PaymentIntent.confirm(
+        #     id: payment_intent.id
+        # )
 
         ##NEED TO CONFIRM THE PAYMENT AFTER THE FACT! CHECK THE DOCS FOR THIS
 
