@@ -68,6 +68,8 @@ document.addEventListener("turbolinks:load", function() {
         ["type", "last4", "exp_month", "exp_year"].forEach(function(field){
             addCardField(form, token, field);
         });
+        //This may be something you remove
+        determineCardType(card.number)
 
         form.submit();
     }
@@ -77,6 +79,15 @@ document.addEventListener("turbolinks:load", function() {
         hiddenInput.setAttribute('type', 'hidden');
         hiddenInput.setAttribute('name', "user[card_" + field + "]");
         hiddenInput.setAttribute('value', token.card[field]);
+        form.appendChild(hiddenInput);
+    }
+
+    // This may be something you remove
+    function determineCardType(card_number){
+        let hiddenInput = document.createElement('input');
+        hiddenInput.setAttribute('type', 'hidden');
+        hiddenInput.setAttribute('name', "card_brand");
+        hiddenInput.setAttribute('value', card_number.cardType);
         form.appendChild(hiddenInput);
     }
 
