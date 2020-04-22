@@ -54,7 +54,7 @@ class PurchaseOneOffsController < ApplicationController
         
         payment_intent = Stripe::PaymentIntent.create({
             payment_method_types: ['card'],
-            amount: (one_off_purchase.price * 1000).to_i,
+            amount: (one_off_purchase.price * 100).to_i,
             currency: 'usd',
             capture_method: 'automatic',
             confirmation_method: 'automatic',
@@ -68,7 +68,7 @@ class PurchaseOneOffsController < ApplicationController
         #flash[:danger] = payment_intent.id
         card_method_payment = 'pm_card_'+params[:user][:card_type]
         flash[:danger] = card_method_payment
-        flash[:warning] = params[:user][:type]
+        flash[:warning] = params[:user][:card_type]
         Stripe::PaymentIntent.confirm(
             payment_intent.id,
             {payment_method: 'pm_card_visa'},
