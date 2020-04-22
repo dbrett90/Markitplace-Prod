@@ -67,9 +67,9 @@ class PurchaseOneOffsController < ApplicationController
         #Confirm that the ID is indeed coming through this way
         #flash[:danger] = payment_intent.id
         # card_method_payment = 'pm_card_'+params[:user][:card_brand]
-        flash[:danger] = card_method_payment
+        # flash[:danger] = card_method_payment
         flash[:warning] = params[:user]
-        Stripe::PaymentIntent.confirm(
+        confirm_payment = Stripe::PaymentIntent.confirm(
             payment_intent.id,
             {payment_method: 'pm_card_visa'},
         )
