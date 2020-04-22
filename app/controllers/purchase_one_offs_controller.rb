@@ -56,6 +56,8 @@ class PurchaseOneOffsController < ApplicationController
             payment_method_types: ['card'],
             amount: (one_off_purchase.price * 1000).to_i,
             currency: 'usd',
+            capture_method: 'automatic',
+            confirmation_method: 'automatic'
             # customer: customer,
             transfer_data: {
                 destination: one_off_purchase.stripe_id,
@@ -63,9 +65,9 @@ class PurchaseOneOffsController < ApplicationController
         })
         flash[:success] = payment_intent
         flash[:danger] = payment_intent.id
-        # Stripe::PaymentIntent.confirm(
-        #     id: payment_intent.id
-        # )
+        Stripe::PaymentIntent.confirm(
+            id: payment_intent.id
+        )
 
         ##NEED TO CONFIRM THE PAYMENT AFTER THE FACT! CHECK THE DOCS FOR THIS
 
