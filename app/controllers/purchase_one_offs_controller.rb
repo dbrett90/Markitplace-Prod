@@ -68,7 +68,7 @@ class PurchaseOneOffsController < ApplicationController
         flash[:danger] = payment_intent.id
         Stripe::PaymentIntent.confirm(
             payment_intent.id,
-            {payment_method: 'card'},
+            {payment_method: 'pm_card'},
         )
 
         ##NEED TO CONFIRM THE PAYMENT AFTER THE FACT! CHECK THE DOCS FOR THIS
