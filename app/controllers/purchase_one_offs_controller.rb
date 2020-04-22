@@ -62,6 +62,12 @@ class PurchaseOneOffsController < ApplicationController
             },
         })
 
+        Stripe::PaymentIntent.confirm(
+            id: payment_intent.id
+        )
+
+        ##NEED TO CONFIRM THE PAYMENT AFTER THE FACT! CHECK THE DOCS FOR THIS
+
         #May need to change one_off_id for naming convention
         current_user.one_off_id[one_off_purchase.name.downcase] = payment_intent.id
         current_user.update(options)
