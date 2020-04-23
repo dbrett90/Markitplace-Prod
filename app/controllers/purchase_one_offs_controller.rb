@@ -85,11 +85,26 @@ class PurchaseOneOffsController < ApplicationController
         #For the hash portion
         current_user.save
 
+        OrderConfirmationMailer.one_off_customer_confirmation(current_user, one_off_purchase, 
+            params[:payment_shipping][:recipient_name], params[:payment_shipping][:street_address_1],
+            params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
+            params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
+        
+        #THIS IS ALSO NOT DRY. SAME AS SUBSCRIPTIONS CONTROLLER. HIGHLY RECOMMEND MOVING OUT ONCE WE UNDERSTAND MORE
+        stripe_connect_users = StripeConnectUser.all
+        sc_user_email = find_sc_user_email(stripe_connect_users, one_off_purchase.stripe_id)
+
+        OrderConfirmationMailer.one_off_vendor_confirmation(current_user, sc_user_email, plan_type, params[:payment_shipping][:recipient_name], params[:payment_shipping][:street_address_1],
+            params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
+            params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
+
+        flash[:success] = "We have received your order. You should be receiving a confirmation email shortly!"
         redirect_to root_path
         
         
 
     end
+
 
     #Do we want this ability to cancel orders in the code?
     def destroy
@@ -101,6 +116,14 @@ class PurchaseOneOffsController < ApplicationController
         one_off_purchases.each do |one_off|
             if stripe_one_off == one_off.name.downcase
                 return one_off
+            end
+        end
+    end
+
+    def find_sc_user_email(sc_users, stripe_id)
+        sc_users.each do |sc_user|
+            if sc_user.stripe_id == stripe_id
+                return sc_user.stripe_email
             end
         end
     end

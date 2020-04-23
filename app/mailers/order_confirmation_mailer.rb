@@ -28,4 +28,31 @@ class OrderConfirmationMailer < ApplicationMailer
         @zipcode = zipcode
         mail to: vendor_email, cc: "admin@markitplace.io", subject: "Customer has bought a subscription on Markitplace"
     end
+
+    def one_off_customer_confirmation(current_user, one_off_product, recipient_name, street_address_1, street_address_2, city, state, zipcode)
+        @user_name = current_user.name
+        @user_email = current_user.email
+        @one_off_product = one_off_product
+        @recipient_name = recipient_name
+        @street_address_1 = street_address_1
+        @street_address_2 = street_address_2
+        @city = city
+        @state = state
+        @zipcode = zipcode
+        #Make sure we're CCed on the initial emails in the beginning
+        mail to: current_user.email, cc: "admin@markitplace.io", subject: "Markitplace Order Confirmation"
+    end
+
+    def one_off_vendor_confirmation(current_user, vendor_email, one_off_product, recipient_name, street_address_1, street_address_2, city, state, zipcode)
+        @customer_name = current_user.name
+        @customer_email = current_user.email
+        @one_off_product = one_off_product
+        @recipient_name = recipient_name
+        @street_address_1 = street_address_1
+        @street_address_2 = street_address_2
+        @city = city
+        @state = state
+        @zipcode = zipcode
+        mail to: vendor_email, cc: "admin@markitplace.io", subject: "Customer has bought a product on Markitplace"
+    end
 end
