@@ -2,7 +2,7 @@ class PurchaseOneOffsController < ApplicationController
     def new
         #Give access to all plan types
         @one_off_products = OneOffProduct.all
-        flash[:warning ] = params
+        # flash[:warning ] = params
     end
 
     def create
@@ -16,7 +16,7 @@ class PurchaseOneOffsController < ApplicationController
         one_off_purchase = find_one_off(one_off_product_name, one_off_purchases)
         #pull the connected ID from the database
         connected_acct = one_off_purchase.stripe_id
-        flash[:success] = connected_acct
+        # flash[:success] = connected_acct
         # flash[:success] = one_off_purchase
         # redirect_to root_path
 
@@ -63,15 +63,15 @@ class PurchaseOneOffsController < ApplicationController
                 destination: one_off_purchase.stripe_id,
             },
         })
-        flash[:success] = payment_intent
+        # flash[:success] = payment_intent
         #Confirm that the ID is indeed coming through this way
         #flash[:danger] = payment_intent.id
         # card_method_payment = 'pm_card_'+params[:user][:card_brand]
         # flash[:danger] = card_method_payment
-        flash[:warning] = params[:user]
+        # flash[:warning] = params[:user]
         card_brand = (params[:user][:card_brand]).downcase
         payment_method_card = 'pm_card_' + card_brand
-        flash[:danger] = payment_method_card
+        # flash[:danger] = payment_method_card
         confirm_payment = Stripe::PaymentIntent.confirm(
             payment_intent.id,
             {payment_method: payment_method_card},
