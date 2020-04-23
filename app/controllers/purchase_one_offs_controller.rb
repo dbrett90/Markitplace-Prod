@@ -85,8 +85,7 @@ class PurchaseOneOffsController < ApplicationController
         #For the hash portion
         current_user.save
 
-        OrderConfirmationMailer.one_off_customer_confirmation(current_user, one_off_purchase, 
-            params[:payment_shipping][:recipient_name], params[:payment_shipping][:street_address_1],
+        OrderConfirmationMailer.one_off_customer_confirmation(current_user, one_off_purchase, params[:payment_shipping][:recipient_name], params[:payment_shipping][:street_address_1],
             params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
             params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
         
@@ -94,7 +93,7 @@ class PurchaseOneOffsController < ApplicationController
         stripe_connect_users = StripeConnectUser.all
         sc_user_email = find_sc_user_email(stripe_connect_users, one_off_purchase.stripe_id)
 
-        OrderConfirmationMailer.one_off_vendor_confirmation(current_user, sc_user_email, plan_type, params[:payment_shipping][:recipient_name], params[:payment_shipping][:street_address_1],
+        OrderConfirmationMailer.one_off_vendor_confirmation(current_user, sc_user_email, one_off_purchase, params[:payment_shipping][:recipient_name], params[:payment_shipping][:street_address_1],
             params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
             params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
 
