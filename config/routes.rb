@@ -53,6 +53,7 @@ Rails.application.routes.draw do
   ######BASIC SETUP ROUTES#######
   resources :subscriptions
   resources :purchase_one_offs
+  resources :partner_logos
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :contact_emails, only: [:edit]
