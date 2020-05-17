@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get '/plan-types', to: 'plan_types#index'
   get '/mealkits', to: 'products#index'
   get '/additional-products', to: 'one_off_products#index'
+  get '/partners', to: 'partner_logos#index'
   resources :users
   resources :stripe_connect_users
   #Below routes specifically for product library
