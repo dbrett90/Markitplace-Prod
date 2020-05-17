@@ -15,7 +15,7 @@
                         <% if logged_in? %>
                             <% if current_user.admin? %>
                                 <%= link_to "Edit Logo", edit_partner_logo_path(@partner_logo), class: "btn btn-warning btn-mobile" %>
-                                <%= link_to "Delete Logo" partner_logo_path(@partner_logo), method: :delete, class: "btn btn-danger btn-mobile" %>
+                                <%= link_to "Delete Logo", partner_logo_path(@partner_logo), method: :delete, class: "btn btn-danger btn-mobile" %>
                             <% end %>
                         <% end %>
                     </div>
