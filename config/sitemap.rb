@@ -21,7 +21,7 @@ SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
 SitemapGenerator::Sitemap.create do
     add root_path, changefreq: 'daily'
     add contact_path, changefreq: 'daily'
-    add partner_information_path, changefreq: 'daily'
+    add services_path, changefreq: 'daily'
     PlanType.find_each do |plan_type|
      add plan_type_path(plan_type), changefreq: 'daily'
     end
