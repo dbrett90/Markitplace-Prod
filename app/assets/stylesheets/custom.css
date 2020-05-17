@@ -470,6 +470,15 @@ TOP WAS 33% */
   grid-gap: 20px;
 }
 
+/* PARTNER LOGO PAGE */
+.logo-text{
+  font-size: 20px;
+}
+
+.shadow-bottom{
+  box-shadow: 0 4px 2px -2px gray;
+}
+
 /* TERMS OF SERVICE */
 
 .termspage{
