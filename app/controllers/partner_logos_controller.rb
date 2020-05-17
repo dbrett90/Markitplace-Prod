@@ -33,7 +33,7 @@ class PartnerLogosController < ApplicationController
         @partner_logo = PartnerLogo.find(params[:id])
         if @partner_logo.update_attributes(partner_logo_params)
             flash[:success] = "The partner logo & info has been updated successfully"
-            redirect to partner_logos_path
+            redirect_to partner_logos_path
         else
             render 'edit'
         end
