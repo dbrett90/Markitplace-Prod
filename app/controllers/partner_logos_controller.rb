@@ -48,7 +48,7 @@ class PartnerLogosController < ApplicationController
 
     private
 
-    def set_product
+    def set_logo
         @parnter_logo = PartnerLogo.find(params[:id])
     end
 
