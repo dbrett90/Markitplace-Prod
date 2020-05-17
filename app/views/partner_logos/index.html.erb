@@ -5,7 +5,7 @@
             <div class="row">
                 <%  @partner_logos.each do |logo| %>
                     <div class = "col- 12 col-md-4 img-fluid">
-                        <%= image_tag logo.thumbnail, class: "img-fluid" %>
+                        <%= image_tag logo.thumbnail.variant("250x250"), class: "img-fluid" %>
                     </div>
                     <div class = "col-12 col-md-8">
                         <p class = "description-text subtitle-description-mobile"> <%= logo.description %>
