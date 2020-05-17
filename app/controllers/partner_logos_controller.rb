@@ -41,7 +41,7 @@ class PartnerLogosController < ApplicationController
 
     def destroy
         PartnerLogo.find(params[:id]).destroy
-        flash[:warning] = params
+        # flash[:warning] = params
         flash[:success] = "Partner Logo Deleted"
         redirect_to partner_logos_path
     end
