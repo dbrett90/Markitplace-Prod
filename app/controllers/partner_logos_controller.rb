@@ -40,7 +40,8 @@ class PartnerLogosController < ApplicationController
     end
 
     def destroy
-        PartnerLogo.find(params[:id]).destroy
+        # PartnerLogo.find(params[:id]).destroy
+        flash[:success] = params
         flash[:success] = "Partner Logo Deleted"
         redirect_to partner_logos_path
     end
@@ -58,9 +59,5 @@ class PartnerLogosController < ApplicationController
     def admin_user
         redirect_to(root_url) unless current_user.admin?
     end
-
-
-
-
 
 end
