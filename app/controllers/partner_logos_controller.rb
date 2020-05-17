@@ -46,9 +46,18 @@ class PartnerLogosController < ApplicationController
     end
 
     private
+
+    def set_product
+        @parnter_logo = PartnerLogo.find(params[:id])
+    end
+
+    def partner_logo_params
+        params.require(:partner_logo).permit(:name, :description, :created_at, :updated_at, :thumbnail)
+    end
+
     def admin_user
         redirect_to(root_url) unless current_user.admin?
-      end
+    end
 
 
 
