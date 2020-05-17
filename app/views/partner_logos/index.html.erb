@@ -1,0 +1,17 @@
+<% provide(:title, "Our Partners") %>
+<div class="parners-homepage">
+    <div class="partners-homepage-2019">
+        <div class="container-fluid" id="partner-offerings">
+            <div class="row">
+                <%  @partner_logos.each do |logo| %>
+                    <div class = "col- 12 col-md-4 img-fluid">
+                        <%= image_tag logo.thumbnail, class: "img-fluid" %>
+                    </div>
+                    <div class = "col-12 col-md-8">
+                        <p class = "description-text subtitle-description-mobile"> <%= logo.description %>
+                    </div>
+                <% end %>
+            <div>
+        </div>
+    </div>
+</div>
