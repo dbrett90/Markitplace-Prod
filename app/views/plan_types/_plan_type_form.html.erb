@@ -12,6 +12,8 @@
 
     <%= f.number_field :price, class: "form-control", placeholder: "Plan Price", required: true %><br>
 
+    <%= f.text_field :is_trial, class: 'form-control', placeholder: "Is this a trial? No app fee - answer yes or no", required: true %><br>
+
     <%= f.text_field :stripe_id, class: 'form-control', placeholder: "Stripe ID of Partner", required: true %><br>
 
     <%= f.label :thumbail do %>
