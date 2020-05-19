@@ -14,6 +14,7 @@ class PurchaseOneOffsController < ApplicationController
         one_off_purchases = OneOffProduct.all
         #Call private function to match with the correct one off puchase
         one_off_purchase = find_one_off(one_off_product_name, one_off_purchases)
+        fee_amount = dyanmic_app_fee(one_off_purchase)
         #pull the connected ID from the database
         connected_acct = one_off_purchase.stripe_id
         # flash[:success] = connected_acct
@@ -56,6 +57,7 @@ class PurchaseOneOffsController < ApplicationController
             payment_method_types: ['card'],
             amount: (one_off_purchase.price * 100).to_i,
             currency: 'usd',
+            application_fee_percent: fee_amount,
             capture_method: 'automatic',
             confirmation_method: 'automatic',
             # customer: customer,
@@ -124,6 +126,15 @@ class PurchaseOneOffsController < ApplicationController
             if sc_user.stripe_id == stripe_id
                 return sc_user.stripe_email
             end
+        end
+    end
+
+    def dyanmic_app_fee(one_off)
+        fee_binary = one_off.is_trial.downcase
+        if fee_binary == "yes"
+            fee_value = 0
+        else
+            fee_value = 10
         end
     end
 
