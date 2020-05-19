@@ -10,7 +10,7 @@ class OrderConfirmationMailer < ApplicationMailer
         @state = state
         @zipcode = zipcode
         #Remove the CC afterwards.... just for testing purposes. 
-        mail to: current_user.email, cc: "admin@markitplace.io", subject: "Markitplace Subscription Confirmation"
+        mail to: current_user.email, bcc: "admin@markitplace.io", subject: "Markitplace Subscription Confirmation"
         #flash[:warning] = "Confirmation Email has been sent"
     end
 
@@ -26,7 +26,7 @@ class OrderConfirmationMailer < ApplicationMailer
         @city = city
         @state = state
         @zipcode = zipcode
-        mail to: vendor_email, cc: "admin@markitplace.io", subject: "Customer has bought a subscription on Markitplace"
+        mail to: vendor_email, bcc: "admin@markitplace.io", subject: "Customer has bought a subscription on Markitplace"
     end
 
     def one_off_customer_confirmation(current_user, one_off_product, recipient_name, street_address_1, street_address_2, city, state, zipcode)
@@ -40,7 +40,7 @@ class OrderConfirmationMailer < ApplicationMailer
         @state = state
         @zipcode = zipcode
         #Make sure we're CCed on the initial emails in the beginning
-        mail to: current_user.email, cc: "admin@markitplace.io", subject: "Markitplace Order Confirmation"
+        mail to: current_user.email, bcc: "admin@markitplace.io", subject: "Markitplace Order Confirmation"
     end
 
     def one_off_vendor_confirmation(current_user, vendor_email, one_off_product, recipient_name, street_address_1, street_address_2, city, state, zipcode)
@@ -53,6 +53,6 @@ class OrderConfirmationMailer < ApplicationMailer
         @city = city
         @state = state
         @zipcode = zipcode
-        mail to: vendor_email, cc: "admin@markitplace.io", subject: "Customer has bought a product on Markitplace"
+        mail to: vendor_email, bcc: "admin@markitplace.io", subject: "Customer has bought a product on Markitplace"
     end
 end
