@@ -22,6 +22,7 @@ class SubscriptionsController < ApplicationController
 
         #calling private function find_plan
         plan_type = find_plan(plan_name, subscription_plans)
+        fee_value = dyanmic_app_fee(plan_type)
         plan_id = plan_type.plan_type_id
         # flash[:success] = plan_type
         # flash[:danger] = plan_id
@@ -74,7 +75,7 @@ class SubscriptionsController < ApplicationController
                         plan: plan_id
                     }
                 ],
-                application_fee_percent: 0,
+                application_fee_percent: fee_value,
                 # application_fee: 0.50,
             }, stripe_account: plan_type.stripe_id)
             # #Update the hash
@@ -198,6 +199,15 @@ class SubscriptionsController < ApplicationController
 
     def strip_spaces(keyword)
         keyword.gsub!(/\s/,'_')
+    end
+
+    def dyanmic_app_fee(plan_type)
+        fee_binary = plan_type.is_trial.downcase
+        if fee_binary == "yes"
+            fee_value = 0
+        else
+            fee_value = 10
+        end
     end
 
     def parse_zipcodes(plan_type)
