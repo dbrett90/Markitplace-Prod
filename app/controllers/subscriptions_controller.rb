@@ -201,6 +201,7 @@ class SubscriptionsController < ApplicationController
         keyword.gsub!(/\s/,'_')
     end
 
+    #Need to change this value here to reflect app fee changes
     def dyanmic_app_fee(plan_type)
         fee_binary = plan_type.is_trial.downcase
         if fee_binary == "yes"
