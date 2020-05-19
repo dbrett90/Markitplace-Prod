@@ -15,7 +15,7 @@ class PurchaseOneOffsController < ApplicationController
         #Call private function to match with the correct one off puchase
         one_off_purchase = find_one_off(one_off_product_name, one_off_purchases)
         fee_amount = dyanmic_app_fee(one_off_purchase)
-        changed_price = one_off_purchase.price *100
+        changed_price = one_off_purchase.price * 100
         fee_amount = (changed_price / fee_amount).to_i
         #pull the connected ID from the database
         connected_acct = one_off_purchase.stripe_id
