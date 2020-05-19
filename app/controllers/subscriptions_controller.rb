@@ -204,9 +204,9 @@ class SubscriptionsController < ApplicationController
     def dyanmic_app_fee(plan_type)
         fee_binary = plan_type.is_trial.downcase
         if fee_binary == "yes"
-            fee_value = 10
-        else
             fee_value = 0
+        else
+            fee_value = 10
         end
     end
 
