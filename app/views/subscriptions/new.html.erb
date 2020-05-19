@@ -6,9 +6,9 @@
         <div class = "col-6 my-auto recipe-header-text align-content-center">
           <h1>Checkout </h1>
           <h2><%= params[:plan].capitalize %> Plan </h2>
-          <p><%=plan.extended_description%></p>
           <% @plans.each do |plan| %>
             <% if plan.name.downcase == params[:plan].downcase %>
+              <p><%=plan.extended_description %></p>
               <%= image_tag plan.thumbnail, class:"img-fluid", alt:"Mealkit Plan Image" %>
             <% end %>
           <% end %>
