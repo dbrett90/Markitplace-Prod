@@ -1,4 +1,6 @@
 class OrderConfirmationMailer < ApplicationMailer
+
+    #In the interim added the admin email as bcc so we can actually track which orders are coming in and view them from there.  
     def customer_confirmation(current_user, plan_type, recipient_name, street_address_1, street_address_2, city, state, zipcode)
         @user_name = current_user.name
         @user_email = current_user.email
