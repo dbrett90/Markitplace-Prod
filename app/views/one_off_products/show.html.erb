@@ -16,7 +16,7 @@
       <div class = "col-12 col-lg-4 text-center align-items-center text-center">
         <% if logged_in? %>
           <% symbolize = @one_off_product.name.downcase.to_sym %>
-          <%= link_to 'START COOKING', new_purchase_one_off_path(one_off_product: @one_off_product.name.downcase, plan_id: Rails.application.credentials.development.dig(symbolize), one_off_product_name: @one_off_product.name.downcase ), class:"btn btn-outline-success jumbo-button btn-mobile" %>
+          <%= link_to 'ADD TO CART', new_purchase_one_off_path(one_off_product: @one_off_product.name.downcase, plan_id: Rails.application.credentials.development.dig(symbolize), one_off_product_name: @one_off_product.name.downcase ), class:"btn btn-outline-success jumbo-button btn-mobile" %>
         <% else %>
           <%= link_to 'START COOKING', new_user_path, class:"btn btn-outline-success jumbo-button btn-mobile" %>
         <% end %>
