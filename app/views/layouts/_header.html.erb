@@ -19,6 +19,8 @@
                                 <%= link_to "Add Plan", new_plan_type_path, class: "dropdown-item nav-link nav-text-mobile" %>
                                 <%= link_to "Add Product", new_product_path, class: "dropdown-item nav-link nav-text-mobile" %> 
                                 <%= link_to "Add One Off", new_one_off_product_path, class: "dropdown-item nav-link nav-text-mobile" %> 
+                            </div>
+                        </li> 
                     <% else %>
                         <li class="nav-item active"><%= link_to "Meal Kits",plan_types_path, class: "nav-color nav-link nav-text-mobile" %><span class="sr-only">(current)</span></li> 
                     <% end %>
