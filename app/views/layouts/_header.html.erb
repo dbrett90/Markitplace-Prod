@@ -28,7 +28,7 @@
                     <li class="nav-item active"><%= link_to "Meal Kits", plan_types_path, class: "nav-color nav-link nav-text-mobile" %><span class="sr-only">(current)</span></li> 
                 <% end %>
                 <li class= "nav-item dropdown" data-turbolinks="false">
-                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" style="color:black" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  data-turbolinks="false">About Us</a>
+                    <a href="#" class="nav-link nav-text-mobile dropdown-toggle" id="navbarDropdown" style="color:black" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  data-turbolinks="false">About Us</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <%= link_to "Services", services_path, class: "dropdown-item nav-link nav-text-mobile" %>
                         <%= link_to "Our Team",  our_team_path, class: "dropdown-item nav-link nav-text-mobile" %>
@@ -39,7 +39,7 @@
             <ul class="navbar-nav">
                 <% if logged_in? %>
                     <li class= "nav-item dropdown" data-turbolinks="false">
-                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" style="color:black" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-turbolinks="false">Account</a>
+                        <a href="#" class="nav-link nav-text-mobile dropdown-toggle" id="navbarDropdown" style="color:black" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-turbolinks="false">Account</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <% if user_subscribed? %>
                                 <%= link_to "Subscriptions", plan_subscription_library_index_path, class: "dropdown-item nav-link nav-text-mobile" %>
