@@ -12,7 +12,7 @@
         </section>
         <div class="container" id="product-offerings">
             <div class="row ml-3 jusify-content-center align-items">
-                <div class = "col-12">
+                <div class = "col-12 text-center">
                     <h2 class = " title-mobile"><%= @plan_type.name.upcase %></h2><br>
                 </div>
                 <%  @products.each do |product| %>
@@ -43,9 +43,12 @@
                     </div>       
                 <% end %>
                 <div class = "row justify-content-center align-items pb-2">
+                    <div class = "d-md-none col-lg-2">
+                        <span></span>
+                    </div>
                     <div class = "col-12 col-lg-8 text-center">
                         <h5 class="subtitle-mobile"> What is in this meal kit:</h5>
-                        <ul class="text-left">
+                        <ul class="text-center">
                             <% @extended_list.each do |item| %>
                                 <li class="subtitle-description-mobile"> <%= item %> </li>
                             <% end %>
