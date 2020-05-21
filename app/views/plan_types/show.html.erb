@@ -43,14 +43,12 @@
                     </div>       
                 <% end %>
             </div>
-            <div class = "container-fluid pb-3 inline-block">
+            <div class = "container-fluid pb-5 inline-block">
                 <div class = "col-12 text-center mx-auto">
                     <h4 class="subtitle-mobile"> What's In This Meal Kit:</h5>
-                    <ul>
-                        <% @extended_list.each do |item| %>
-                            <li style= "list-style-type:none" class="subtitle-description-mobile"> <%= item %> </li>
-                        <% end %>
-                    </ul>
+                    <% @extended_list.each do |item| %>
+                        <p class="subtitle-description-mobile"><%=item %> </p><br>
+                    <% end %>
                 </div>
                 <div class = "col-12 text-center mx-auto">
                     <% if logged_in? %>
