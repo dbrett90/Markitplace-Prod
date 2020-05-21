@@ -12,7 +12,9 @@
         </section>
         <div class="container" id="product-offerings">
             <div class="row ml-3 jusify-content-center align-items">
-                <h2 class = " title-mobile"><%= @plan_type.name.upcase %></h2><br>
+                <div class = "col-12">
+                    <h2 class = " title-mobile"><%= @plan_type.name.upcase %></h2><br>
+                </div>
                 <%  @products.each do |product| %>
                     <div class="col-11 col-lg-4 pb-3 d-flex align-items-stretch card-padding-mobile">
                         <div class="card see-cooking card-width">
@@ -41,15 +43,15 @@
                     </div>       
                 <% end %>
                 <div class = "row justify-content-center align-items pb-2">
-                <div class = "col-12 col-lg-8 text-center">
-                    <h5 class="subtitle-mobile"> What is in this meal kit:</h5>
-                    <ul class="text-left">
-                        <% @extended_list.each do |item| %>
-                            <li class="subtitle-description-mobile"> <%= item %> </li>
-                        <% end %>
-                    </ul>
+                    <div class = "col-12 col-lg-8 text-center">
+                        <h5 class="subtitle-mobile"> What is in this meal kit:</h5>
+                        <ul class="text-left">
+                            <% @extended_list.each do |item| %>
+                                <li class="subtitle-description-mobile"> <%= item %> </li>
+                            <% end %>
+                        </ul>
+                    </div>
                 </div>
-            </div>
                 <div class = "col-12 text-center mx-auto">
                     <% if logged_in? %>
                         <% symbolize = @plan_type.name.downcase.to_sym %>
