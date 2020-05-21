@@ -42,18 +42,16 @@
                         </div>
                     </div>       
                 <% end %>
-                <div class = "container-fluid">
-                    <div class = "col-12 text-center">
-                        <h3 class="subtitle-mobile"> What's In This Meal Kit:</h5>
-                        <ul class="text-center">
-                            <% @extended_list.each do |item| %>
-                                <li style= "list-style-type:none" class="subtitle-description-mobile text-center"> <%= item %> </li>
-                            <% end %>
-                        </ul>
-                    </div>
-                </div>
             </div>
-            <div class = "container-fluid pb-3"> 
+            <div class = "container-fluid pb-3">
+                <div class = "col-12 text-center mx-auto">
+                    <h4 class="subtitle-mobile"> What's In This Meal Kit:</h5>
+                    <ul>
+                        <% @extended_list.each do |item| %>
+                            <li style= "list-style-type:none" class="subtitle-description-mobile"> <%= item %> </li>
+                        <% end %>
+                    </ul>
+                </div>
                 <div class = "col-12 text-center mx-auto">
                     <% if logged_in? %>
                         <% symbolize = @plan_type.name.downcase.to_sym %>
