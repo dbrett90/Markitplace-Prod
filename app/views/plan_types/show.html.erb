@@ -42,13 +42,15 @@
                         </div>
                     </div>       
                 <% end %>
-                <div class = "col-12 text-center">
-                    <h5 class="subtitle-mobile"> What's in this meal kit:</h5>
-                    <ul class="text-center">
-                        <% @extended_list.each do |item| %>
-                            <li style= "list-style-type:none" class="subtitle-description-mobile text-center"> <%= item %> </li>
-                        <% end %>
-                    </ul>
+                <div class = "container-fluid">
+                    <div class = "col-12 text-center">
+                        <h5 class="subtitle-mobile"> What's in this meal kit:</h5>
+                        <ul class="text-center">
+                            <% @extended_list.each do |item| %>
+                                <li style= "list-style-type:none" class="subtitle-description-mobile text-center"> <%= item %> </li>
+                            <% end %>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class = "container-fluid pb-3"> 
