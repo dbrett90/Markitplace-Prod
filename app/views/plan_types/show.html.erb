@@ -50,6 +50,8 @@
                         <% end %>
                     </ul>
                 </div>
+            </div>
+            <div class = "container-fluid"> 
                 <div class = "col-12 text-center mx-auto">
                     <% if logged_in? %>
                         <% symbolize = @plan_type.name.downcase.to_sym %>
@@ -58,7 +60,7 @@
                         <%= link_to "GET STARTED", signup_path, class: "btn btn-success jumbo-button btn-mobile" %>
                     <% end %>
                 </div>
-            <div>
+            </div>
         </div>
     </div>
 </div>
