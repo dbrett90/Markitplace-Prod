@@ -153,6 +153,11 @@ li:hover {
   color: black;
 }
 
+.hr-class{
+  border-color: green;
+  background-color: green;
+  color: green;
+}
 
 .subtext-gray{
   color: #8c8c8c
