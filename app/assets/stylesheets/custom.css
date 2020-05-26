@@ -156,8 +156,8 @@ li:hover {
 
 #hr-id{
   height: 2px;
-  color: red;
-  background-color: red;
+  color: red !important;
+  background-color: red !important;
   border: none;
 }
 
