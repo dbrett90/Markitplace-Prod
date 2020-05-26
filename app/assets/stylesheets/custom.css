@@ -155,6 +155,14 @@ li:hover {
 
 .hr-class{
   border-color: green;
+  border: green;
+  background-color: green;
+  color: green;
+}
+
+#hr-id{
+  border-color: green;
+  border: green;
   background-color: green;
   color: green;
 }
