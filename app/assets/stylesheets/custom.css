@@ -199,6 +199,32 @@ li:hover {
 /* ***************** */
 /* ****OUR TEAM**** */
 /* ***************** */
+
+.image-overlay {
+  background: green;
+}
+
+.image-overlay > .hover-green {
+  vertical-align: middle;
+}
+
+.image-overlay::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: green;
+  opacity: 0;
+  transition: .5s ease;
+}
+
+.image-overlay:hover::before {
+  opacity: 0.8;
+}
+
+
 .our-team-descr:hover .textOverlay{
   opacity: 1;
   transition: .5s ease;
@@ -208,8 +234,8 @@ li:hover {
   background: #228B22;
   /* -webkit-filter: brightness(20%);
   filter: brightness(20%); */
-  filter: sepia(50%) saturate(300%) brightness(70%) hue-rotate(180deg);
-  color: green;
+  /* filter: sepia(0) saturate(0%) brightness(100%) hue-rotate(90deg);
+  color: green; */
   /* background: green; */
     /* width:100%;
     height:100%; */
@@ -218,6 +244,7 @@ li:hover {
     opacity:0.5; */
     /* border-radius:30px; */
 }
+
 
 .showTextOurTeam{
   color:white;
@@ -257,7 +284,7 @@ li:hover {
 }
 
 .subtext-about{
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .headshot-border{
