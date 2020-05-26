@@ -153,15 +153,9 @@ li:hover {
   color: black;
 }
 
-.hr-class{
-  border-color: green;
-  border: green;
-  background-color: green;
-  color: green;
-}
 
 #hr-id{
-  border-color: green;
+  border-color: green !important;
   border: green;
   background-color: green;
   color: green;
