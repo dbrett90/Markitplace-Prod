@@ -155,11 +155,10 @@ li:hover {
 
 
 #hr-id{
-  border-top: 2px solid;
-  border-top-color: green;
-  background-color: green;
-  color: green;
-  background: green;
+  height: 2px;
+  color: red;
+  background-color: red;
+  border: none;
 }
 
 .subtext-gray{
