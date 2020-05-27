@@ -688,5 +688,9 @@ iframe.terms-of-service
   .partner-text-mobile{
     font-size: 35px !important;
   }
+
+  .about-description-mobile{
+    font-size: 30px;
+  }
   
 }
