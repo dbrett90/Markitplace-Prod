@@ -54,6 +54,7 @@ input[type=checkbox]
 .adjust-size{
   font-size-adjust: 0.5 !important;
 }
+
 .navbar {
     -webkit-box-shadow: 0 8px 6px -6px #999;
     -moz-box-shadow: 0 8px 6px -6px #999;
@@ -284,7 +285,7 @@ li:hover {
 }
 
 .subtext-about{
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .headshot-border{
