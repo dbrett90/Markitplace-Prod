@@ -22,10 +22,22 @@
                             </div>
                         </li> 
                     <% else %>
-                        <li class="nav-item active"><%= link_to "Meal Kits", plan_types_path, class: "nav-color nav-link nav-text-mobile" %><span class="sr-only">(current)</span></li> 
+                        <li class= "nav-item dropdown" data-turbolinks="false">
+                            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" style="color:black" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  data-turbolinks="false">Meals</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <%= link_to "Meal Kits", plan_types_path, class: "nav-color nav-link nav-text-mobile" %>
+                                <%= link_to "Prepared Food", one_off_products_path, class: "nav-color nav-link nav-text-mobile" %>
+                            </div>
+                        </li>
                     <% end %>
                 <% else %>
-                    <li class="nav-item active"><%= link_to "Meal Kits", plan_types_path, class: "nav-color nav-link nav-text-mobile" %><span class="sr-only">(current)</span></li> 
+                <li class= "nav-item dropdown" data-turbolinks="false">
+                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" style="color:black" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  data-turbolinks="false">Meals</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <%= link_to "Meal Kits", plan_types_path, class: "nav-color nav-link nav-text-mobile" %>
+                        <%= link_to "Prepared Food", one_off_products_path, class: "nav-color nav-link nav-text-mobile" %>
+                    </div>
+            </li>
                 <% end %>
                 <li class= "nav-item dropdown" data-turbolinks="false">
                     <a href="#" class="nav-link nav-text-mobile dropdown-toggle" id="navbarDropdown" style="color:black" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  data-turbolinks="false">About Us</a>
