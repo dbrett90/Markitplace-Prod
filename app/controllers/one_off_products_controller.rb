@@ -68,18 +68,9 @@ class OneOffProductsController < ApplicationController
         Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
         @one_off_product = current_user.one_off_products.build(one_off_product_params)
         #Create a new product and a new SKU
-        stripe_product = Stripe::Product.create({
-            #Might need to include a pricing input value here so it's dynamic and not hard-coded.
-            #Also need to figure out what the billing period for this would be.
-            name: @one_off_product.name,
-            description: @one_off_product.description,
-            type: "good",
-          },
-          {stripe_account: @one_off_product.stripe_id})
-          @one_off_product.update_attribute(:product_id, stripe_product.id)
 
         respond_to do |format|
-            if @one_off_product.save
+            if @one_off_product.update(plan_type_params)
                 flash[:success] = params
                 format.html { redirect_to @one_off_product, success: 'ONE OFF PRODUCT was successfully created.' }
                 format.json { render :show, status: :created, location: @one_off_product }
@@ -93,6 +84,15 @@ class OneOffProductsController < ApplicationController
                 format.json { render json: @one_off_product.errors, status: :unprocessable_entity }
             end
         end
+        stripe_product = Stripe::Product.create({
+            #Might need to include a pricing input value here so it's dynamic and not hard-coded.
+            #Also need to figure out what the billing period for this would be.
+            name: @one_off_product.name,
+            description: @one_off_product.description,
+            type: "good",
+          },
+          {stripe_account: @one_off_product.stripe_id})
+          @one_off_product.update_attribute(:product_id, stripe_product.id)
     end
 
     #Need to buil in a way to destroy the product at some point
