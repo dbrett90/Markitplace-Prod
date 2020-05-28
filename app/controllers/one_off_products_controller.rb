@@ -49,8 +49,8 @@ class OneOffProductsController < ApplicationController
         respond_to do |format|
             if @one_off_product.save
                 flash[:success] = params
-                format.html { redirect_to one_off_product_path, success: 'ONE OFF PRODUCT was successfully created.' }
-                format.json { render :index, status: :created, location: @one_off_product }
+                format.html { redirect_to @one_off_product, success: 'ONE OFF PRODUCT was successfully created.' }
+                format.json { render :show, status: :created, location: @one_off_product }
                 flash[:warning] = "Make sure you update the credentials file with product ID"
                # @plan_type.plan_type_id = stripe_plan.id
                # @plan_type.save
@@ -81,8 +81,8 @@ class OneOffProductsController < ApplicationController
         respond_to do |format|
             if @one_off_product.save
                 flash[:success] = params
-                format.html { redirect_to one_off_product_path, success: 'ONE OFF PRODUCT was successfully created.' }
-                format.json { render :index, status: :created, location: @one_off_product }
+                format.html { redirect_to @one_off_product, success: 'ONE OFF PRODUCT was successfully created.' }
+                format.json { render :show, status: :created, location: @one_off_product }
                 flash[:warning] = "Make sure you update the credentials file with product ID"
                # @plan_type.plan_type_id = stripe_plan.id
                # @plan_type.save
