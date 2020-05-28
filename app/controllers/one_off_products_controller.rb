@@ -49,7 +49,7 @@ class OneOffProductsController < ApplicationController
         respond_to do |format|
             if @one_off_product.save
                 flash[:success] = params
-                format.html { redirect_to @one_off_product, success: 'ONE OFF PRODUCT was successfully created.' }
+                format.html redirect_to @one_off_product, success: 'ONE OFF PRODUCT was successfully created.' }
                 format.json { render :show, status: :created, location: @one_off_product }
                 flash[:warning] = "Make sure you update the credentials file with product ID"
                # @plan_type.plan_type_id = stripe_plan.id
@@ -70,7 +70,7 @@ class OneOffProductsController < ApplicationController
         #Create a new product and a new SKU
 
         respond_to do |format|
-            if @one_off_product.update(plan_type_params)
+            if @one_off_product.update(one_off_product_params)
                 flash[:success] = params
                 format.html { redirect_to @one_off_product, success: 'ONE OFF PRODUCT was successfully created.' }
                 format.json { render :show, status: :created, location: @one_off_product }
