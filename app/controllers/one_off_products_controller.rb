@@ -66,7 +66,7 @@ class OneOffProductsController < ApplicationController
     def update
         #Going to create the plan on behalf of the client - need key
         Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
-        @one_off_product = current_user.one_off_products.build(one_off_product_params)
+        #@one_off_product = current_user.one_off_products.build(one_off_product_params)
         #Create a new product and a new SKU
 
         respond_to do |format|
