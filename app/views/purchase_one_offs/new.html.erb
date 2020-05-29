@@ -5,7 +5,7 @@
       <div class = "row">
         <div class = "col-6 recipe-header-text">
           <h1>Checkout </h1>
-          <h2><%= params[:one_off_product].capitalize %> Product </h2>
+          <h2><%= params[:one_off_product].capitalize %></h2>
           <% @one_off_products.each do |one_off_product| %>
             <% if one_off_product.name.downcase == params[:one_off_product].downcase %>
               <%= image_tag one_off_product.thumbnail, class:"img-fluid", alt:"Product Image" %>
