@@ -8,6 +8,7 @@
           <h2><%= params[:one_off_product].capitalize %></h2>
           <% @one_off_products.each do |one_off_product| %>
             <% if one_off_product.name.downcase == params[:one_off_product].downcase %>
+              <h5><%= one_off_product.description %></h5>
               <%= image_tag one_off_product.thumbnail, class:"img-fluid", alt:"Product Image" %>
             <% end %>
           <% end %>
