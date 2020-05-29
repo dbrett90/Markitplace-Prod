@@ -595,6 +595,10 @@ iframe.terms-of-service
   .btn-mobile{
     font-size: 40px !important;
   }
+
+  .btn-mobile-left{
+    text-align: left;
+  }
   .btn-small-mobile{
     font-size: 25px !important;
   }
