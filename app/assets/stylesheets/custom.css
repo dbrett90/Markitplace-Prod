@@ -46,10 +46,11 @@ input[type=checkbox]
     padding-left: 10px;
 }
 
-.nav-link:hover {
+.nav-link:hover, .fa-shopping-cart:hover {
   color:green !important;
   transition: 0.5s;
 }
+
 
 .adjust-size{
   font-size-adjust: 0.5 !important;
