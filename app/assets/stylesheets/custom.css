@@ -48,7 +48,7 @@ input[type=checkbox]
 
 .nav-link:hover, .fa-shopping-cart:hover {
   color:green !important;
-  transition: 0.5s;
+  transition: 0.3s;
 }
 
 
