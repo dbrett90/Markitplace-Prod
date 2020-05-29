@@ -16,6 +16,12 @@
 </div>
 </nav>
 
+<%= if current_user.admin? %>
+  <li><%= link_to root_path do %>
+      <i class="fas fa-shopping-cart"></i></li>
+  <% end %>
+<% end %>
+
 
 <h1>Change Password</h1>
 
