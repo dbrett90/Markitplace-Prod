@@ -17,7 +17,7 @@ class CartsController < ApplicationController
         redirect_to one_off_products_path
     end
 
-    def checkout
+    def view_cart
         @cart_items = current_user.cart.products
     end
 
