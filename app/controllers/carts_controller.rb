@@ -2,7 +2,7 @@ class CartsController < ApplicationController
 
     def add_to_cart
         item = params[:one_off_product]
-        # flash[:danger] = item
+        lash[:danger] = item
         if cart_empty?
             # empty_cart = Cart.create(products: [])
             current_user.cart.create(products: [item])
