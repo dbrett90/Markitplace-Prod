@@ -5,7 +5,7 @@ class OneOffProduct < ApplicationRecord
     has_one_attached :thumbnail
     #belongs_to :user, through: :cart
     has_many :carts
-    has_many :users, through: cart
+    has_many :users, through: :carts
     #Again what you're doing here is linking each product to a user 
     #via the subscription libraries. Can think of it as a massive join. 
     #may need to rethink the relationship between product and subscription libraries
