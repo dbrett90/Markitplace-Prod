@@ -27,7 +27,7 @@ class User < ApplicationRecord
     has_many :one_off_products, dependent: :destroy
 
     #Specific to Cart - saing each user has a cart
-    has_one :cart
+    has_one :cart, dependent: :destroy
     
 
 
