@@ -5,7 +5,7 @@ class CartsController < ApplicationController
         if cart_empty?
             empty_cart = Cart.create(products: [])
             current_user.cart = empty_cart
-            curent_user.cart.products.append(item)
+            current_user.cart.products.append(item)
         else
             current_user.cart.products.append(item)
         end
