@@ -7,9 +7,10 @@ class CartsController < ApplicationController
             current_user.cart.create(products: [item])
             flash[:warning]= "Went through the right way"
         else
-            current_user.cart.products.append(item)
+            current_user.cart.products << item
         end
         flash[:success] = "Item has been added to your shopping cart!"
+        flas[:danger] = params
         redirect_to root_path
     end
 
