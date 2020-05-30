@@ -10,7 +10,7 @@ class CartsController < ApplicationController
             current_user.cart.products << item
         end
         flash[:success] = "Item has been added to your shopping cart!"
-        flas[:danger] = params
+        flash[:danger] = params
         redirect_to root_path
     end
 
