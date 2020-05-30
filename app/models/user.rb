@@ -25,6 +25,9 @@ class User < ApplicationRecord
 
     #One_off_products section
     has_many :one_off_products, dependent: :destroy
+
+    #Specific to Cart
+    has_one :cart
     
 
 

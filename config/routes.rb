@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   get '/home-signup-successful', to: 'stripe_connect_user#new'
   get '/our-team', to: 'static_pages#our_team'
+  get '/add-to-cart', to: 'carts#add_to_cart'
   get '/contact', to: 'static_pages#contact'
   get '/contact-test', to: 'static_pages#contact_test'
   post '/contact', to: 'static_pages#create'
@@ -50,6 +51,7 @@ Rails.application.routes.draw do
   end
   resources :plan_types 
   resources :plan_subscription_library, only: [:index]
+  # resources :carts
 
   ######BASIC SETUP ROUTES#######
   resources :subscriptions

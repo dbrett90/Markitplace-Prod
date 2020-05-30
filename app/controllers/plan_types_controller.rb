@@ -140,7 +140,7 @@ class PlanTypesController < ApplicationController
     if type=="add"
         #Add the plan to the library additions array - need to change this
         current_user.plan_subscription_library_additions << @plan_type
-        redirect_to pplan_subscription_library_index_path, notice: "#{@plan_type.name} was added to your active subscriptions!"
+        redirect_to plan_subscription_library_index_path, notice: "#{@plan_type.name} was added to your active subscriptions!"
     elsif type=="remove"
         current_user.plan_subscription_library_additions.delete(@plan_type)
         redirect_to root_path, notice: "#{@plan_type.name} was removed from your active subscriptions. you will no longer be charged"
