@@ -8,6 +8,7 @@ class CartsController < ApplicationController
             flash[:warning]= "Went through the right way"
         else
             current_user.cart.products << item
+            flash[:warning] = "Adding Item!"
         end
         flash[:success] = "Item has been added to your shopping cart!"
         flash[:danger] = params
