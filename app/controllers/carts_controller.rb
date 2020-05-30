@@ -11,6 +11,7 @@ class CartsController < ApplicationController
             current_user.cart.products << item
             flash[:warning] = "Adding Item!"
         end
+        curren_user.cart.save
         flash[:success] = "Item has been added to your shopping cart!"
         # flash[:danger] = params
         redirect_to root_path
