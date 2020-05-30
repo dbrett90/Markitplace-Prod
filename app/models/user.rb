@@ -24,10 +24,11 @@ class User < ApplicationRecord
     has_many :plan_subscription_library_additions, through: :plan_subscription_libraries, source: :plan_type
 
     #One_off_products section
-    has_many :one_off_products, dependent: :destroy
+    # has_many :one_off_products, dependent: :destroy
 
     #Specific to Cart - saing each user has a cart
     has_one :cart, dependent: :destroy
+    has_many :one_off_products, through: :cart
     
 
 

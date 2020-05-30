@@ -5,8 +5,8 @@ class CartsController < ApplicationController
         flash[:danger] = item
         if cart_empty?
             # empty_cart = Cart.create(products: [])
-            current_user.cart.create(products: [item])
-            flash[:warning]= "Went through the right way"
+            current_user.cart.create(products: [])
+            # flash[:warning]= "Went through the right way"
         else
             current_user.cart.products << item
             # flash[:warning] = "Adding Item!"
