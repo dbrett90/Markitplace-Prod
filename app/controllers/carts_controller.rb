@@ -2,6 +2,7 @@ class CartsController < ApplicationController
 
     def add_to_cart
         item = params[:one_off_product]
+        flash[:danger] = item
         if cart_empty?
             # empty_cart = Cart.create(products: [])
             current_user.cart.create(products: [item])
@@ -11,7 +12,7 @@ class CartsController < ApplicationController
             flash[:warning] = "Adding Item!"
         end
         flash[:success] = "Item has been added to your shopping cart!"
-        flash[:danger] = params
+        # flash[:danger] = params
         redirect_to root_path
     end
 
