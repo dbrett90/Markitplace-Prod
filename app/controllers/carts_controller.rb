@@ -20,10 +20,11 @@ class CartsController < ApplicationController
     end
 
     def view_cart
-        @cart_items = current_user.cart.one_off_products
         if cart_empty?
             redirect_to root_path
             flash[:warning] = "Your Cart is currently empty!"
+        else
+            @cart_items = current_user.cart.one_off_products
         end 
     end
 
