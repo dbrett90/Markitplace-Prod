@@ -6,9 +6,6 @@
         <div class = "col-6 checkout-header">
             <h1>Checkout</h1>
             <h4>Order Summary</h4>
-            <% @cart_items.each do |item| %>
-                
-
         </div>
         <div class= "col-6 checkout-header">
           <%= form_for(:payment_shipping, url: subscriptions_path, html: {id: "payment-form"}) do |f| %>
