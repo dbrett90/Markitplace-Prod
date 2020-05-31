@@ -6,9 +6,10 @@ class CartsController < ApplicationController
         if cart_empty?
             # empty_cart = Cart.create(products: [])
             current_user.cart.create(products: [])
+            current_user.cart.one_off_products << item
             # flash[:warning]= "Went through the right way"
         else
-            current_user.cart.products << item
+            current_user.cart.one_off_products << item
             # flash[:warning] = "Adding Item!"
         end
         current_user.cart.save
