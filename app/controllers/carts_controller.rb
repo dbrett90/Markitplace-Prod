@@ -44,7 +44,7 @@ class CartsController < ApplicationController
 
     def find_one_off(item)
         @one_off_products = OneOffProduct.all 
-        @one_off_product.each do |product|
+        @one_off_products.each do |product|
             if product.name.downcase == item
                 return product 
             end
