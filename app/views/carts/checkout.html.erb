@@ -3,7 +3,14 @@
   <section class= "container">
     <div class = "subscription-header pt-2">
       <div class = "row">
-        <div class= "col-12 checkout-header">
+        <div class = "col-6 checkout-header">
+            <h1>Checkout</h1>
+            <h4>Order Summary</h4>
+            <% @cart_items.each do |item| %>
+                
+
+        </div>
+        <div class= "col-6 checkout-header">
           <%= form_for(:payment_shipping, url: subscriptions_path, html: {id: "payment-form"}) do |f| %>
             <div class="shipping-information">
               <h1>Shipping Information</h1>
