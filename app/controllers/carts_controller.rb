@@ -19,7 +19,7 @@ class CartsController < ApplicationController
     end
 
     def view_cart
-        @cart_items = current_user.cart.products
+        @cart_items = current_user.cart.one_off_products
     end
 
     def new
