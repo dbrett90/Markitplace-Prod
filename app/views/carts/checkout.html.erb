@@ -7,18 +7,17 @@
             <h1>Checkout</h1>
             <h4>Order Summary</h4>
             <h5>$<%= @total_price %></h5>
-            <div class = "row">
-                    <% @cart_items.each do |item| %>
-                        <div class = "col-6">
-                            <%= image_tag item.thumbnail.variant(resize: "450x450"), class: "img-fluid" %>
-                        </div>
-                        <div class = "col-6">
-                            <%= item.name %>
-                            <%= item.description %>
-                        </div>
-                        <br>
-                    <% end %>
-            </div>
+            <% @cart_items.each do |item| %>
+                <div class = "row pb-3">
+                    <div class = "col-6">
+                        <%= image_tag item.thumbnail.variant(resize: "450x450"), class: "img-fluid" %>
+                    </div>
+                    <div class = "col-6">
+                        <%= item.name %>
+                        <%= item.description %>
+                    </div>
+                </div>
+            <% end %>
         </div>
         <div class= "col-6 checkout-header">
           <%= form_for(:payment_shipping, url: subscriptions_path, html: {id: "payment-form"}) do |f| %>
