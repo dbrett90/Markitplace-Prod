@@ -24,8 +24,8 @@ class CartsController < ApplicationController
     end
 
     def checkout
-        total_price = sum_price(current_user.cart.one_off_products)
-        flash[:success] = total_price
+        @total_price = sum_price(current_user.cart.one_off_products)
+        #flash[:success] = total_price
     end
 
     def new
