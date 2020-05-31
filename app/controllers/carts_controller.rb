@@ -2,14 +2,15 @@ class CartsController < ApplicationController
 
     def add_to_cart
         item = params[:one_off_product]
-        flash[:danger] = item
+        one_off = find_one_off(item)
+        # flash[:danger] = item
         if cart_empty?
             # empty_cart = Cart.create(products: [])
             current_user.cart.create(products: [])
-            current_user.cart.one_off_products << item
+            current_user.cart.one_off_products << one_off
             # flash[:warning]= "Went through the right way"
         else
-            current_user.cart.one_off_products << item
+            current_user.cart.one_off_products << one_off
             # flash[:warning] = "Adding Item!"
         end
         current_user.cart.save
@@ -38,6 +39,15 @@ class CartsController < ApplicationController
             false
         else
             true
+        end
+    end
+
+    def find_one_off(item)
+        @one_off_products = OneOffProduct.all 
+        @one_off_product.each do |product|
+            if product.name.downcase == item
+                return product 
+            end
         end
     end
 
