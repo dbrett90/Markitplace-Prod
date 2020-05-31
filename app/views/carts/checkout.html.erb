@@ -5,15 +5,14 @@
       <div class = "row">
         <div class = "col-6 checkout-header">
             <h1>Checkout</h1>
-            <h4>Order Summary</h4>
-            <h5>$<%= @total_price %></h5>
+            <h4>Order Summary: $<%= @total_price %> </h4>
             <% @cart_items.each do |item| %>
                 <div class = "row pb-3">
                     <div class = "col-6">
                         <%= image_tag item.thumbnail.variant(resize: "450x450"), class: "img-fluid" %>
                     </div>
                     <div class = "col-6">
-                        <%= item.name %>
+                        <h5><%= item.name %></h5>
                         <%= item.description %>
                     </div>
                 </div>
