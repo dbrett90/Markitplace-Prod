@@ -23,6 +23,9 @@ class CartsController < ApplicationController
         @cart_items = current_user.cart.one_off_products
     end
 
+    def checkout
+    end
+
     def new
     end
 

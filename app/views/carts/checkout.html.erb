@@ -1,0 +1,57 @@
+<% provide(:title, 'Checkout') %>
+<div class = "container subscription-overview  mt-4 justify-content-center">
+  <section class= "container">
+    <div class = "subscription-header pt-2">
+      <div class = "row">
+        <div class= "col-12 checkout-header">
+          <%= form_for(:payment_shipping, url: subscriptions_path, html: {id: "payment-form"}) do |f| %>
+            <div class="shipping-information">
+              <h1>Shipping Information</h1>
+              <%= f.label :recipient_name, class: 'field-label emphasis' do %>
+                <span class = 'field-label emphasis'> Name </span><br>
+              <% end %><br>
+              <%= f.text_field :recipient_name, class: 'form-control', placeholder: "Name" %><br>
+              <%= f.label :street_address_1, class: 'field-label emphasis' do %>
+                <span class = 'field-label emphasis'> Street Address 1 </span><br>
+              <% end %><br>
+              <%= f.text_field :street_address_1, class: 'form-control', placeholder: "Street Address" %><br>
+              <%= f.label :street_address_2, class: 'field-label emphasis' do %>
+                <span class = 'field-label emphasis'> Street Address (Room/Apt Number) </span><br>
+              <% end %><br>
+              <%= f.text_field :street_address_2, class: 'form-control', placeholder: "Street Address" %><br>
+              <%= f.label :city, class: 'field-label emphasis' do %>
+                <span class = 'field-label emphasis'> City </span><br>
+              <% end %><br>
+              <%= f.text_field :city, class: 'form-control', placeholder: "City" %><br>
+              <%= f.label :state, class: 'field-label emphasis' do %>
+                <span class = 'field-label emphasis'> State </span><br>
+              <% end %><br>
+              <%= f.text_field :state, class: 'form-control', placeholder: "State" %><br>
+              <%= f.label :zipcode, class: 'field-label emphasis' do %>
+                <span class = 'field-label emphasis'> Zipcode </span><br>
+              <% end %><br>
+              <%= f.number_field :zipcode, class: 'form-control', placeholder: "Zipcode" %><br>
+            </div>
+            <div class="payment-information">
+              <h1>Card Information</h1>
+              <div class="field card-information">
+                <label for="card-element" class="field-label emphasis">Enter credit or debit card</label>
+                <div id="card-element">
+                  <!-- A Stripe Element will be inserted here. -->
+                </div>
+                <br>
+      
+                <div id="card-errors" role="alert"></div>
+      
+                <%= hidden_field_tag :plan_id, params[:plan_id] %>
+                <%= hidden_field_tag :plan_name, params[:plan_name] %>
+      
+                <button class="btn btn-outline-success mt-1">Submit</button>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
