@@ -4,7 +4,7 @@ class CartsController < ApplicationController
         item = params[:one_off_product]
         one_off = find_one_off(item)
         # flash[:danger] = item
-        if cart_empty?
+        if cart_not_created?
             # empty_cart = Cart.create(products: [])
             current_user.cart.create(products: [])
             current_user.cart.one_off_products << one_off
@@ -21,6 +21,10 @@ class CartsController < ApplicationController
 
     def view_cart
         @cart_items = current_user.cart.one_off_products
+        if cart_empty?
+            redirect_to root_path
+            flash[:warning] = "Your Cart is currently empty!"
+        end 
     end
 
     def checkout
@@ -40,11 +44,20 @@ class CartsController < ApplicationController
 
     private
 
-    def cart_empty?
+    def cart_not_created?
         if current_user.cart != nil
             false
         else
             true
+        end
+    end
+
+    def cart_empty?
+        product_length = current_user.cart.one_off_products.length 
+        if product_length < 1
+            return false
+        else
+            return true
         end
     end
 
