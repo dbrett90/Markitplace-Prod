@@ -13,8 +13,10 @@
                             <%= image_tag item.thumbnail.variant(resize: "450x450"), class: "img-fluid" %>
                         </div>
                         <div class = "col-6">
+                            <%= item.name %>
                             <%= item.description %>
                         </div>
+                        <br>
                     <% end %>
             </div>
         </div>
