@@ -14,7 +14,7 @@ class CartsController < ApplicationController
 
     def add_to_cart
         item = params[:one_off_product]
-        one_off = find_one_off(item)
+        one_off = find_one_off_by_name(item)
         # flash[:danger] = item
         if cart_not_created?
             # empty_cart = Cart.create(products: [])
@@ -35,7 +35,6 @@ class CartsController < ApplicationController
     def destroy
         item = params[:one_off_product]
         #It's pulling all the items in the cart here.
-        one_off = find_one_off(item)
         one_off_by_name = find_one_off_by_name(item)
         flash[:warning] = params
         flash[:danger] = one_off_by_name
