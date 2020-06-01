@@ -39,7 +39,7 @@ class CartsController < ApplicationController
         one_off_by_name = find_one_off_by_name(item)
         flash[:warning] = params
         flash[:danger] = one_off_by_name
-        current_user.cart.one_off_products.delete(one_off)
+        current_user.cart.one_off_products.delete(one_off_by_name)
         flash[:success] = "item has been removed from your cart"
         redirect_to root_path
     end
