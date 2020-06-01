@@ -1,5 +1,17 @@
 class CartsController < ApplicationController
 
+    def index
+        if cart_not_created?
+            redirect_to root_path
+            flash[:warning] = "Your Cart is currently empty!"
+        elsif cart_empty?
+            redirect_to root_path
+            flash[:warning] = "Your Cart is currently empty!"
+        else
+            @cart_items = current_user.cart.one_off_products
+        end 
+    end
+
     def add_to_cart
         item = params[:one_off_product]
         one_off = find_one_off(item)
@@ -19,16 +31,12 @@ class CartsController < ApplicationController
         redirect_to one_off_products_path
     end
 
-    def index
-        if cart_not_created?
-            redirect_to root_path
-            flash[:warning] = "Your Cart is currently empty!"
-        elsif cart_empty?
-            redirect_to root_path
-            flash[:warning] = "Your Cart is currently empty!"
-        else
-            @cart_items = current_user.cart.one_off_products
-        end 
+    def remove_from_cart
+        item = params[:one_off_product]
+        one_off = find_one_off(item)
+        current_user.cart.one_off_orders.delete(one_off)
+        flash[:success] = "item has been removed from your cart"
+        redirect_to cart_path
     end
 
     def checkout
