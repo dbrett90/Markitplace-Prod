@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/our-team', to: 'static_pages#our_team'
   get '/add-to-cart', to: 'carts#add_to_cart'
   get '/checkout', to: 'carts#checkout'
-  post '/checkout', to: 'carts#comlete_checkout'
+  post '/checkout', to: 'carts#complete_checkout'
   get '/cart', to: 'carts#index'
   delete '/cart', to: 'carts#destroy'
   get '/contact', to: 'static_pages#contact'
