@@ -27,7 +27,6 @@ class CartsController < ApplicationController
         end
         current_user.cart.save
         flash[:success] = "Item has been added to your shopping cart!"
-        flash[:warning] = current_user.cart.one_off_products
         # flash[:danger] = params
         redirect_to one_off_products_path
     end
@@ -36,8 +35,6 @@ class CartsController < ApplicationController
         item = params[:one_off_product]
         #It's pulling all the items in the cart here.
         one_off_by_name = find_one_off_by_name(item)
-        flash[:warning] = params
-        flash[:danger] = one_off_by_name
         current_user.cart.one_off_products.delete(one_off_by_name)
         flash[:success] = "item has been removed from your cart"
         redirect_to cart_path
