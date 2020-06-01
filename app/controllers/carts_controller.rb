@@ -14,7 +14,7 @@ class CartsController < ApplicationController
 
     def add_to_cart
         item = params[:one_off_product]
-        one_off = find_one_off_by_name(item)
+        one_off = find_one_off(item)
         # flash[:danger] = item
         if cart_not_created?
             # empty_cart = Cart.create(products: [])
