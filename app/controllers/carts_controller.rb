@@ -51,7 +51,7 @@ class CartsController < ApplicationController
         #Make sure we change this to production when the time comes
         Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
         @cart_items = current_user.cart.one_off_products
-        token = params [:stripeToken]
+        token = params[:stripeToken]
         @cart_items.each do |item|
             fee_amount = dyanmic_app_fee(item)
             changed_price = item.price * 100
