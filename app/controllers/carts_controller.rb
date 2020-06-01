@@ -19,10 +19,10 @@ class CartsController < ApplicationController
         redirect_to one_off_products_path
     end
 
-    def view_cart
+    def index
         if cart_not_created?
             redirect_to root_path
-            flash[:warning] = "Your Cart is empty!"
+            flash[:warning] = "Your Cart is currently empty!"
         elsif cart_empty?
             redirect_to root_path
             flash[:warning] = "Your Cart is currently empty!"
@@ -37,6 +37,7 @@ class CartsController < ApplicationController
         #flash[:success] = total_price
     end
 
+
     def new
     end
 
@@ -44,6 +45,7 @@ class CartsController < ApplicationController
     end
 
     def destroy
+
     end
 
     private
