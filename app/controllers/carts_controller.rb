@@ -14,7 +14,7 @@ class CartsController < ApplicationController
 
     def add_to_cart
         item = params[:one_off_product]
-        one_off = find_one_off(item)
+        one_off = find_one_off_by_name(item)
         # flash[:danger] = item
         if cart_not_created?
             # empty_cart = Cart.create(products: [])
@@ -40,7 +40,7 @@ class CartsController < ApplicationController
         flash[:danger] = one_off_by_name
         current_user.cart.one_off_products.delete(one_off_by_name)
         flash[:success] = "item has been removed from your cart"
-        redirect_to root_path
+        redirect_to cart_path
     end
 
     def checkout
