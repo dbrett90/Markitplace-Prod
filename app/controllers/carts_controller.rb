@@ -36,9 +36,9 @@ class CartsController < ApplicationController
         one_off = find_one_off(item)
         flash[:warning] = params
         flash[:danger] = one_off
-        current_user.cart.delete(one_off)
+        current_user.cart.one_off_products.delete(one_off)
         flash[:success] = "item has been removed from your cart"
-        redirect_to cart_path
+        redirect_to root_path
     end
 
     def checkout
