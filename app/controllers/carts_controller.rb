@@ -47,7 +47,7 @@ class CartsController < ApplicationController
         redirect_to cart_path
     end
 
-    def create
+    def complete_checkout
         #Make sure we change this to production when the time comes
         Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
         @cart_items = current_user.cart.one_off_products
