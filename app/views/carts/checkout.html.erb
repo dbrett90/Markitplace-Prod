@@ -19,7 +19,7 @@
           <% end %>
         </div>
         <div class= "col-6 checkout-header">
-          <%= form_for(:payment_shipping, url: subscriptions_path, html: {id: "payment-form"}) do |f| %>
+          <%= form_for(:payment_shipping, url: checkout_path, html: {id: "payment-form"}) do |f| %>
             <div class="shipping-information">
               <h1>Shipping Information</h1>
               <%= f.label :recipient_name, class: 'field-label emphasis' do %>

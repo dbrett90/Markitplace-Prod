@@ -121,9 +121,6 @@ class CartsController < ApplicationController
             #For the hash portion
             current_user.save
         end
-
-
-        # end
     end
 
 
