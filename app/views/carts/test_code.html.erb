@@ -1,0 +1,11 @@
+<% @cart_items.each do |item| %>
+    <div class = "row pb-3">
+        <div class = "col-6">
+            <%= image_tag item.thumbnail.variant(resize: "450x450"), class: "img-fluid" %>
+        </div>
+        <div class = "col-6">
+            <h5><%= item.name %></h5>
+            <%= item.description %>
+        </div>
+    </div>
+<% end %>

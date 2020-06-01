@@ -5,7 +5,7 @@
             <div class="row ml-3">
                 <div class = "col-12 pb-3 text-center">
                     <h1>Your Cart </h1><br>
-                    <%= link_to "Checkout", new_cart_path, class: "btn btn-outline-success jumbo-button btn-mobile" %>
+                    <%= link_to "Checkout", checkout_path, class: "btn btn-outline-success jumbo-button btn-mobile" %>
                 </div>
                 <%  @cart_items.each do |one_off_product| %>
                     <div class="col-12 col-lg-4 pb-3 d-flex align-items-stretch card-padding-mobile">
