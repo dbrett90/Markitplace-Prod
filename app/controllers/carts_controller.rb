@@ -47,6 +47,12 @@ class CartsController < ApplicationController
     end
 
     def create
+        #Make sure we change this to production when the time comes
+        # Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
+        # @cart_items = current_user.cart.one_off_products
+        # token = params [:stripeToken]
+        # @cart_items.each do |item|
+        # end
     end
 
 
