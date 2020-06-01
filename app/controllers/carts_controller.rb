@@ -36,7 +36,7 @@ class CartsController < ApplicationController
         item = params[:one_off_product]
         #It's pulling all the items in the cart here.
         one_off = find_one_off(item)
-        one_off_by_name = find_one_off_by_name(itm)
+        one_off_by_name = find_one_off_by_name(item)
         flash[:warning] = params
         flash[:danger] = one_off_by_name
         current_user.cart.one_off_products.delete(one_off)
