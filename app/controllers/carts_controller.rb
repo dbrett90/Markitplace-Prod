@@ -55,7 +55,11 @@ class CartsController < ApplicationController
         @cart_items.each do |item|
             fee_amount = dyanmic_app_fee(item)
             changed_price = item.price * 100
-            fee_amount = (changed_price / fee_amount).to_i
+            unless fee_amount == 0
+                fee_amount = (changed_price / fee_amount).to_i
+            else
+                fee_amount = 0
+            end
             connected_acct = item.stripe_id
 
             #Retrieve Customer
