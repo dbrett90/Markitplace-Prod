@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/add-to-cart', to: 'carts#add_to_cart'
   get '/checkout', to: 'carts#checkout'
   get '/cart', to: 'carts#index'
+  delete '/cart', to: 'carts#destroy'
   get '/contact', to: 'static_pages#contact'
   get '/contact-test', to: 'static_pages#contact_test'
   post '/contact', to: 'static_pages#create'
