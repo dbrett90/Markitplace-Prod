@@ -34,9 +34,11 @@ class CartsController < ApplicationController
 
     def destroy
         item = params[:one_off_product]
+        #It's pulling all the items in the cart here.
         one_off = find_one_off(item)
+        one_off_by_name = find_one_off_by_name(itm)
         flash[:warning] = params
-        flash[:danger] = one_off
+        flash[:danger] = one_off_by_name
         current_user.cart.one_off_products.delete(one_off)
         flash[:success] = "item has been removed from your cart"
         redirect_to root_path
@@ -72,6 +74,10 @@ class CartsController < ApplicationController
         else
             return false
         end
+    end
+
+    def find_one_off_by_name(item)
+        OneOffProduct.where(:name => item)
     end
 
     def find_one_off(item)
