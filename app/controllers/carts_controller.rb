@@ -64,33 +64,33 @@ class CartsController < ApplicationController
             connected_acct = item.stripe_id
             flash[:warning] = item.price         
 
-            # #Retrieve Customer
-            # customer = if current_user.stripe_id[connected_acct].present?
-            #     Stripe::Customer.retrieve(current_user.stripe_id[connected_acct], {stripe_account: item.stripe_id})
-            # else
-            #     #Create customer in connected accounts environment.
-            #     Stripe::Customer.create({
-            #         email: current_user.email, 
-            #         source:token,
-            #     },
-            #     {
-            #         stripe_account: item.stripe_id,
-            #     })
-            #     # Stripe::Customer.create(description: 'Test Customer')
-            #     #Save the stripe id to the database
-            # end
-            # current_user.stripe_id[connected_acct] = customer.id
+            #Retrieve Customer
+            customer = if current_user.stripe_id[connected_acct].present?
+                Stripe::Customer.retrieve(current_user.stripe_id[connected_acct], {stripe_account: item.stripe_id})
+            else
+                #Create customer in connected accounts environment.
+                Stripe::Customer.create({
+                    email: current_user.email, 
+                    source:token,
+                },
+                {
+                    stripe_account: item.stripe_id,
+                })
+                # Stripe::Customer.create(description: 'Test Customer')
+                #Save the stripe id to the database
+            end
+            current_user.stripe_id[connected_acct] = customer.id
 
-            # options = {
-            #     subscribed: true
-            # }
+            options = {
+                subscribed: true
+            }
     
-            # options.merge!(
-            #     card_last4: params[:user][:card_last4],
-            #     card_exp_month: params[:user][:card_exp_month],
-            #     card_exp_year: params[:user][:card_exp_year],
-            #     card_type: params[:user][:card_brand]
-            #     ) if params[:user][:card_last4]
+            options.merge!(
+                card_last4: params[:user][:card_last4],
+                card_exp_month: params[:user][:card_exp_month],
+                card_exp_year: params[:user][:card_exp_year],
+                card_type: params[:user][:card_brand]
+                ) if params[:user][:card_last4]
     
             
             # payment_intent = Stripe::PaymentIntent.create({
