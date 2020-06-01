@@ -22,7 +22,7 @@ class CartsController < ApplicationController
     def view_cart
         if cart_not_created?
             redirect_to root_path
-            flash[:warning] = "Your Cart is currently empty!"
+            flash[:warning] = "Your Cart is empty!"
         elsif cart_empty?
             redirect_to root_path
             flash[:warning] = "Your Cart is currently empty!"
@@ -59,9 +59,9 @@ class CartsController < ApplicationController
     def cart_empty?
         product_length = current_user.cart.one_off_products.length 
         if product_length < 1
-            return false
-        else
             return true
+        else
+            return false
         end
     end
 
