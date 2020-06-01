@@ -120,6 +120,7 @@ class CartsController < ApplicationController
             current_user.update(options)
             #For the hash portion
             current_user.save
+            redirect_to root_path
         end
     end
 
