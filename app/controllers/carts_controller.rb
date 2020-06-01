@@ -36,14 +36,17 @@ class CartsController < ApplicationController
         #It's pulling all the items in the cart here.
         one_off_by_name = find_one_off_by_name(item)
         current_user.cart.one_off_products.delete(one_off_by_name)
-        flash[:success] = "item has been removed from your cart"
+        flash[:success] = "Item has been removed from your cart"
         redirect_to cart_path
     end
 
-    def checkout
+    def new
         @cart_items = current_user.cart.one_off_products
         @total_price = sum_price(current_user.cart.one_off_products)
         #flash[:success] = total_price
+    end
+
+    def create
     end
 
 
