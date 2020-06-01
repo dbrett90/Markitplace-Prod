@@ -1,5 +1,12 @@
 class CartsController < ApplicationController
 
+    def new
+        @cart_items = current_user.cart.one_off_products
+        flash[:success] = @cart_items
+        @total_price = sum_price(current_user.cart.one_off_products)
+        #flash[:success] = total_price
+    end
+
     def index
         if cart_not_created?
             redirect_to root_path
@@ -38,12 +45,6 @@ class CartsController < ApplicationController
         current_user.cart.one_off_products.delete(one_off_by_name)
         flash[:success] = "Item has been removed from your cart"
         redirect_to cart_path
-    end
-
-    def new
-        @cart_items = current_user.cart.one_off_products
-        @total_price = sum_price(current_user.cart.one_off_products)
-        #flash[:success] = total_price
     end
 
     def create
