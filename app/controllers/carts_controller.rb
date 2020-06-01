@@ -31,7 +31,7 @@ class CartsController < ApplicationController
         redirect_to one_off_products_path
     end
 
-    def remove_from_cart
+    def destroy
         item = params[:one_off_product]
         one_off = find_one_off(item)
         current_user.cart.one_off_orders.delete(one_off)
@@ -50,10 +50,6 @@ class CartsController < ApplicationController
     end
 
     def create
-    end
-
-    def destroy
-
     end
 
     private
