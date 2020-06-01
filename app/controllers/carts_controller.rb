@@ -52,7 +52,7 @@ class CartsController < ApplicationController
         Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
         @cart_items = current_user.cart.one_off_products
         token = params[:stripeToken]
-        flash[:success] = @cart_items
+        # flash[:success] = @cart_items
         @cart_items.each do |item|
             fee_amount = dyanmic_app_fee(item)
             changed_price = item.price * 100
@@ -64,68 +64,68 @@ class CartsController < ApplicationController
             connected_acct = item.stripe_id
             
 
-            # #Retrieve Customer
-            # customer = if current_user.stripe_id[connected_acct].present?
-            #     Stripe::Customer.retrieve(current_user.stripe_id[connected_acct], {stripe_account: item.stripe_id})
-            # else
-            #     #Create customer in connected accounts environment.
-            #     Stripe::Customer.create({
-            #         email: current_user.email, 
-            #         source:token,
-            #     },
-            #     {
-            #         stripe_account: item.stripe_id,
-            #     })
-            #     # Stripe::Customer.create(description: 'Test Customer')
-            #     #Save the stripe id to the database
-            # end
-            # current_user.stripe_id[connected_acct] = customer.id
+            #Retrieve Customer
+            customer = if current_user.stripe_id[connected_acct].present?
+                Stripe::Customer.retrieve(current_user.stripe_id[connected_acct], {stripe_account: item.stripe_id})
+            else
+                #Create customer in connected accounts environment.
+                Stripe::Customer.create({
+                    email: current_user.email, 
+                    source:token,
+                },
+                {
+                    stripe_account: item.stripe_id,
+                })
+                # Stripe::Customer.create(description: 'Test Customer')
+                #Save the stripe id to the database
+            end
+            current_user.stripe_id[connected_acct] = customer.id
 
-            # options = {
-            #     subscribed: true
-            # }
+            options = {
+                subscribed: true
+            }
     
-            # options.merge!(
-            #     card_last4: params[:user][:card_last4],
-            #     card_exp_month: params[:user][:card_exp_month],
-            #     card_exp_year: params[:user][:card_exp_year],
-            #     card_type: params[:user][:card_brand]
-            #     ) if params[:user][:card_last4]
+            options.merge!(
+                card_last4: params[:user][:card_last4],
+                card_exp_month: params[:user][:card_exp_month],
+                card_exp_year: params[:user][:card_exp_year],
+                card_type: params[:user][:card_brand]
+                ) if params[:user][:card_last4]
     
             
-            # payment_intent = Stripe::PaymentIntent.create({
-            #     payment_method_types: ['card'],
-            #     amount: (item.price * 100).to_i,
-            #     currency: 'usd',
-            #     application_fee_amount: fee_amount,
-            #     capture_method: 'automatic',
-            #     confirmation_method: 'automatic',
-            #     # customer: customer,
-            #     transfer_data: {
-            #         destination: item.stripe_id,
-            #     },
-            # })
-            # # flash[:success] = payment_intent
-            # #Confirm that the ID is indeed coming through this way
-            # #flash[:danger] = payment_intent.id
-            # # card_method_payment = 'pm_card_'+params[:user][:card_brand]
-            # # flash[:danger] = card_method_payment
-            # # flash[:warning] = params[:user]
-            # card_brand = (params[:user][:card_brand]).downcase
-            # payment_method_card = 'pm_card_' + card_brand
-            # # flash[:danger] = payment_method_card
-            # confirm_payment = Stripe::PaymentIntent.confirm(
-            #     payment_intent.id,
-            #     {payment_method: payment_method_card},
-            # )
+            payment_intent = Stripe::PaymentIntent.create({
+                payment_method_types: ['card'],
+                amount: (item.price * 100).to_i,
+                currency: 'usd',
+                application_fee_amount: fee_amount,
+                capture_method: 'automatic',
+                confirmation_method: 'automatic',
+                # customer: customer,
+                transfer_data: {
+                    destination: item.stripe_id,
+                },
+            })
+            # flash[:success] = payment_intent
+            #Confirm that the ID is indeed coming through this way
+            #flash[:danger] = payment_intent.id
+            # card_method_payment = 'pm_card_'+params[:user][:card_brand]
+            # flash[:danger] = card_method_payment
+            # flash[:warning] = params[:user]
+            card_brand = (params[:user][:card_brand]).downcase
+            payment_method_card = 'pm_card_' + card_brand
+            # flash[:danger] = payment_method_card
+            confirm_payment = Stripe::PaymentIntent.confirm(
+                payment_intent.id,
+                {payment_method: payment_method_card},
+            )
     
-            # ##NEED TO CONFIRM THE PAYMENT AFTER THE FACT! CHECK THE DOCS FOR THIS
+            ##NEED TO CONFIRM THE PAYMENT AFTER THE FACT! CHECK THE DOCS FOR THIS
     
-            # #May need to change one_off_id for naming convention
-            # current_user.one_off_id[item.name.downcase] = payment_intent.id
-            # current_user.update(options)
-            # #For the hash portion
-            # current_user.save
+            #May need to change one_off_id for naming convention
+            current_user.one_off_id[item.name.downcase] = payment_intent.id
+            current_user.update(options)
+            #For the hash portion
+            current_user.save
         end
         redirect_to root_path
     end
