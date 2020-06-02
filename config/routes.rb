@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/home-signup-successful', to: 'stripe_connect_user#new'
   get '/our-team', to: 'static_pages#our_team'
   get '/add-to-cart', to: 'carts#add_to_cart'
+  get 'add-subscription-to-cart', to: 'carts#add_to_cart_subscription'
   get '/checkout', to: 'carts#checkout'
   post '/checkout', to: 'carts#complete_checkout'
   get '/cart', to: 'carts#index'

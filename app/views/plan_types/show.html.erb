@@ -52,8 +52,7 @@
                 </div>
                 <div class = "col-12 text-center mx-auto">
                     <% if logged_in? %>
-                        <% symbolize = @plan_type.name.downcase.to_sym %>
-                        <%= link_to "ADD TO CART", new_subscription_path(plan: @plan_type.name.downcase, plan_id: Rails.application.credentials.development.dig(symbolize), plan_name: @plan_type.name.downcase ), class: "btn btn-success jumbo-button btn-mobile" %>
+                        <%= link_to "ADD TO CART", add_subscription_to_cart_path(plan_type: @plan_type.name), class: "btn btn-success jumbo-button btn-mobile" %>
                     <% else %>
                         <%= link_to "GET STARTED", signup_path, class: "btn btn-success jumbo-button btn-mobile" %>
                     <% end %>
