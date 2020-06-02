@@ -229,8 +229,17 @@ class CartsController < ApplicationController
                 current_user.update(options)
                 #For the hash portion
                 current_user.save
+            else
+                 # stripped_name = strip_spaces(plan_type.name.downcase)
+                symbolize = plan_type.name.downcase
+                symbolize = symbolize.to_sym
+                redirect_to cart_path
+                flash[:danger] = "Zip code invalid. Delivery services are currently limited to " + plan_type.city_delivery + " for this product"
+            end
         end
 
+        flash[:success] = "Thank you for your Purchase! You will receive
+        an email with a confirmation notice shortly."
         current_user.cart.one_off_products.delete_all
         redirect_to root_path
     end
