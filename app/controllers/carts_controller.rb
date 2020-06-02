@@ -6,6 +6,7 @@ class CartsController < ApplicationController
         # flash[:success] = @cart_items
         # @item_price = sum_price(current_user.cart.one_off_products)
         # @sub_price = sum_price(current_user.cart.plan_types)
+        #Calculate the total price of the items
         @total_price = sum_price(current_user.cart.one_off_products) + sum_price(current_user.cart.plan_types)
         #flash[:success] = total_price
     end
@@ -62,7 +63,11 @@ class CartsController < ApplicationController
     end
 
     def destroy
-        item = params[:one_off_product]
+        if params[:one_off_product].nil?
+            item = params[:plan_type]
+        else
+            item = params[:one_off_product]
+        end
         #It's pulling all the items in the cart here.
         one_off_by_name = find_one_off_by_name(item)
         current_user.cart.one_off_products.delete(one_off_by_name)
