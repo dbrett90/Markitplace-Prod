@@ -65,12 +65,14 @@ class CartsController < ApplicationController
     def destroy
         if params[:one_off_product] == nil
             item = params[:plan_type]
+            plan_type = find_plan_type_by_name(item)
+            current_user.cart.plan_types.delete(lan_type)
         else
             item = params[:one_off_product]
+            one_off_by_name = find_one_off_by_name(item)
+            current_user.cart.one_off_products.delete(one_off_by_name)
         end
         #It's pulling all the items in the cart here.
-        one_off_by_name = find_one_off_by_name(item)
-        current_user.cart.one_off_products.delete(one_off_by_name)
         flash[:success] = "Item has been removed from your cart"
         redirect_to cart_path
     end
