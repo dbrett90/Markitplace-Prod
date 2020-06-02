@@ -145,7 +145,7 @@ class CartsController < ApplicationController
                 symbolize = plan_type.name.downcase
                 symbolize = symbolize.to_sym
                 flash[:danger] = "Please note that for this subscription the zip code you provided is invalid. Delivery services are currently limited to " + plan_type.city_delivery + " for this product"
-                redirect to root_path
+                redirect_to cart_path
                 return
             end
         end
