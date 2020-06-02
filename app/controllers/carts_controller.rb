@@ -83,6 +83,72 @@ class CartsController < ApplicationController
         @cart_items = current_user.cart.one_off_products
         @cart_items_subscriptions = current_user.cart.plan_types
         token = params[:stripeToken]
+
+        #Complete Checkout for Subscriptions
+        @cart_items_subscriptions.each do |plan_type|
+            fee_value = dyanmic_app_fee(plan_type)
+            plan_id = plan_type.plan_type_id
+            plan = Stripe::Plan.retrieve(plan_id, {stripe_account: plan_type.stripe_id})
+            connected_acct = plan_type.stripe_id
+            zipcode_val = params[:payment_shipping][:zipcode]
+            zipcode_val = zipcode_val.to_s
+            zipcode_list = parse_zipcodes(plan_type)
+            if limit_zipcodes(zipcode_val, zipcode_list)
+                customer = if current_user.stripe_id[connected_acct].present?
+                    Stripe::Customer.retrieve(current_user.stripe_id[connected_acct], {stripe_account: plan_type.stripe_id})
+                    # flash[:danger] = "User already has a stripe ID!"
+                else
+                    #Create customer in connected accounts environment.
+                    Stripe::Customer.create({
+                        email: current_user.email, 
+                        source:token,
+                    },
+                    {
+                        stripe_account: plan_type.stripe_id,
+                    })
+                    # Stripe::Customer.create(description: 'Test Customer')
+                    #Save the stripe id to the database
+                end
+                current_user.stripe_id[connected_acct] = customer.id
+                options = {
+                    subscribed: true
+                }
+                current_user.plan_subscription_library_additions << plan_type
+
+                #Doing a merge on cards
+                options.merge!(
+                card_last4: params[:user][:card_last4],
+                card_exp_month: params[:user][:card_exp_month],
+                card_exp_year: params[:user][:card_exp_year],
+                card_type: params[:user][:card_brand]
+                ) if params[:user][:card_last4]
+
+                #Create the subscription
+                subscription = Stripe::Subscription.create({
+                    customer: customer,
+                    items: [
+                        {
+                            plan: plan_id
+                        }
+                    ],
+                    application_fee_percent: fee_value,
+                    # application_fee: 0.50,
+                }, stripe_account: plan_type.stripe_id)
+
+                #Update the user hash
+                current_user.stripe_subscription_id[plan.nickname.downcase] = subscription.id
+                current_user.update(options)
+                #For the hash portion
+                current_user.save
+            else
+                 # stripped_name = strip_spaces(plan_type.name.downcase)
+                symbolize = plan_type.name.downcase
+                symbolize = symbolize.to_sym
+                flash[:danger] = "Please note that for this subscription the zip code you provided is invalid. Delivery services are currently limited to " + plan_type.city_delivery + " for this product"
+                redirect to root_path
+                return
+            end
+        end
         # flash[:success] = @cart_items
         @cart_items.each do |item|
             fee_amount = dyanmic_app_fee(item)
@@ -171,71 +237,6 @@ class CartsController < ApplicationController
             current_user.update(options)
             #For the hash portion
             current_user.save
-        end
-
-        #Complete Checkout for Subscriptions
-        @cart_items_subscriptions.each do |plan_type|
-            fee_value = dyanmic_app_fee(plan_type)
-            plan_id = plan_type.plan_type_id
-            plan = Stripe::Plan.retrieve(plan_id, {stripe_account: plan_type.stripe_id})
-            connected_acct = plan_type.stripe_id
-            zipcode_val = params[:payment_shipping][:zipcode]
-            zipcode_val = zipcode_val.to_s
-            zipcode_list = parse_zipcodes(plan_type)
-            if limit_zipcodes(zipcode_val, zipcode_list)
-                customer = if current_user.stripe_id[connected_acct].present?
-                    Stripe::Customer.retrieve(current_user.stripe_id[connected_acct], {stripe_account: plan_type.stripe_id})
-                    # flash[:danger] = "User already has a stripe ID!"
-                else
-                    #Create customer in connected accounts environment.
-                    Stripe::Customer.create({
-                        email: current_user.email, 
-                        source:token,
-                    },
-                    {
-                        stripe_account: plan_type.stripe_id,
-                    })
-                    # Stripe::Customer.create(description: 'Test Customer')
-                    #Save the stripe id to the database
-                end
-                current_user.stripe_id[connected_acct] = customer.id
-                options = {
-                    subscribed: true
-                }
-                current_user.plan_subscription_library_additions << plan_type
-
-                #Doing a merge on cards
-                options.merge!(
-                card_last4: params[:user][:card_last4],
-                card_exp_month: params[:user][:card_exp_month],
-                card_exp_year: params[:user][:card_exp_year],
-                card_type: params[:user][:card_brand]
-                ) if params[:user][:card_last4]
-
-                #Create the subscription
-                subscription = Stripe::Subscription.create({
-                    customer: customer,
-                    items: [
-                        {
-                            plan: plan_id
-                        }
-                    ],
-                    application_fee_percent: fee_value,
-                    # application_fee: 0.50,
-                }, stripe_account: plan_type.stripe_id)
-
-                #Update the user hash
-                current_user.stripe_subscription_id[plan.nickname.downcase] = subscription.id
-                current_user.update(options)
-                #For the hash portion
-                current_user.save
-            else
-                 # stripped_name = strip_spaces(plan_type.name.downcase)
-                symbolize = plan_type.name.downcase
-                symbolize = symbolize.to_sym
-                redirect_to cart_path
-                flash[:danger] = "Zip code invalid. Delivery services are currently limited to " + plan_type.city_delivery + " for this product"
-            end
         end
 
         flash[:success] = "Thank you for your Purchase! You will receive
