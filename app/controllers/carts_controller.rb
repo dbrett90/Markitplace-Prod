@@ -92,19 +92,20 @@ class CartsController < ApplicationController
                 card_type: params[:user][:card_brand]
                 ) if params[:user][:card_last4]
     
-            
-            payment_intent = Stripe::PaymentIntent.create({
-                payment_method_types: ['card'],
-                amount: (item.price * 100).to_i,
-                currency: 'usd',
-                application_fee_amount: fee_amount,
-                capture_method: 'automatic',
-                confirmation_method: 'automatic',
-                # customer: customer,
-                transfer_data: {
-                    destination: item.stripe_id,
-                },
-            })
+            testAmount = (item.price*100).to_i
+            flash[:success] = testAmount
+            # payment_intent = Stripe::PaymentIntent.create({
+            #     payment_method_types: ['card'],
+            #     amount: (item.price * 100).to_i,
+            #     currency: 'usd',
+            #     application_fee_amount: fee_amount,
+            #     capture_method: 'automatic',
+            #     confirmation_method: 'automatic',
+            #     # customer: customer,
+            #     transfer_data: {
+            #         destination: item.stripe_id,
+            #     },
+            # })
             # flash[:success] = payment_intent
             # #Confirm that the ID is indeed coming through this way
             # #flash[:danger] = payment_intent.id
