@@ -66,7 +66,7 @@ class CartsController < ApplicationController
         if params[:one_off_product] == nil
             item = params[:plan_type]
             plan_type = find_plan_type_by_name(item)
-            current_user.cart.plan_types.delete(lan_type)
+            current_user.cart.plan_types.delete(plan_type)
         else
             item = params[:one_off_product]
             one_off_by_name = find_one_off_by_name(item)
