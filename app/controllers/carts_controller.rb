@@ -62,7 +62,7 @@ class CartsController < ApplicationController
                 fee_amount = 0
             end
             connected_acct = item.stripe_id
-            flash[:warning] = item.price         
+            # flash[:warning] = item.price         
 
             #Retrieve Customer
             customer = if current_user.stripe_id[connected_acct].present?
@@ -92,11 +92,10 @@ class CartsController < ApplicationController
                 card_type: params[:user][:card_brand]
                 ) if params[:user][:card_last4]
     
-            testAmount = (item.price*100).to_i
-            flash[:success] = testAmount
+            
             # payment_intent = Stripe::PaymentIntent.create({
             #     payment_method_types: ['card'],
-            #     amount: (item.price * 100).to_i,
+            #     amount: (item.price*100).to_i,
             #     currency: 'usd',
             #     application_fee_amount: fee_amount,
             #     capture_method: 'automatic',
