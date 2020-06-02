@@ -17,6 +17,18 @@
                   </div>
               </div>
           <% end %>
+          <% @cart_items_subscriptions.each do |item| %>
+            <div class = "row pb-3">
+                <div class = "col-6">
+                    <%= image_tag item.thumbnail.variant(resize: "450x450"), class: "img-fluid" %>
+                </div>
+                <div class = "col-6">
+                    <h5><%= item.name %></h5>
+                    <%= item.description %>
+                </div>
+            </div>
+        <% end %>
+
         </div>
         <div class= "col-6 checkout-header">
           <%= form_for(:payment_shipping, url: checkout_path, html: {id: "payment-form"}) do |f| %>
