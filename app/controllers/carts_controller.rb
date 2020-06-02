@@ -38,6 +38,25 @@ class CartsController < ApplicationController
         redirect_to one_off_products_path
     end
 
+    def add_to_cart_subscription
+        item = params[:plan_type]
+        plan_type = find_plan_type_by_name(item)
+        if cart_not_created?
+            # empty_cart = Cart.create(products: [])
+            current_user.cart.create(products: [])
+            current_user.cart.plan_types << plan_type
+            # flash[:warning]= "Went through the right way"
+        else
+            current_user.cart.plan_types << plan_type
+            # flash[:warning] = "Adding Item!"
+        end
+        current_user.cart.save
+        flash[:success] = "Subscription has been added to your shopping cart!"
+        # flash[:danger] = params
+        redirect_to one_off_products_path
+
+    end
+
     def destroy
         item = params[:one_off_product]
         #It's pulling all the items in the cart here.
@@ -181,6 +200,10 @@ class CartsController < ApplicationController
 
     def find_one_off_by_name(item)
         OneOffProduct.where(:name => item)
+    end
+
+    def find_plan_type_by_name(item)
+        PlanType.where(:name => item)
     end
 
     def find_one_off(item)
