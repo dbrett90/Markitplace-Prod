@@ -141,6 +141,7 @@ class CartsController < ApplicationController
             #For the hash portion
             current_user.save
         end
+        current_user.cart.one_off_products.delete_all
         redirect_to root_path
     end
 
