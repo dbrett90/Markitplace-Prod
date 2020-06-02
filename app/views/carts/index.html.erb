@@ -25,6 +25,24 @@
                         </div>
                     </div>
                 <% end %>
+                <% @cart_items_sunscriptions.each do |subscription| %>
+                    <div class="col-12 col-lg-4 pb-3 d-flex align-items-stretch card-padding-mobile">
+                        <div class="card see-cooking card-width">
+                            <%= link_to plan_type_path(subscription) do %>
+                                <%= image_tag subscription.thumbnail.variant(resize: "450x450"), class:"card-img-top hover-gray", alt: "Meal Kit Plan Image" %>
+                                <div class="textOverlay align-middle text-center subtitle-description-mobile">
+                                    <div class="showTextIndex align-middle text-center subtitle-description-mobile">See what&#39;s cooking</div>
+                                </div>
+                            <% end %>
+                            <div class="card-body text-center">
+                                <h5 class="card-title text-center title-card-mobile"> <%= subscription.name %></h5>
+                                <h6 class="text-center title-mobile">$<%= subscription.price %></h6>
+                                <h6 class="card-subtitle mb-2 text-muted text-center subtitle-description-mobile pb-2"> <%= subscription.description %></h6>
+                                <%= link_to "Remove from Cart", cart_path(plan_type: subscription.name), data: {confirm: "Are you sure you want to remove this from our cart?"}, method: :delete, class: "btn btn-danger" %> 
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
             <div>
         </div>
     </div>

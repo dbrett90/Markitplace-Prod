@@ -2,6 +2,7 @@ class CartsController < ApplicationController
 
     def checkout
         @cart_items = current_user.cart.one_off_products
+        @cart_items_subscriptions = current_user.cart.plan_types
         # flash[:success] = @cart_items
         @total_price = sum_price(current_user.cart.one_off_products)
         #flash[:success] = total_price
@@ -16,6 +17,7 @@ class CartsController < ApplicationController
             flash[:warning] = "Your Cart is currently empty!"
         else
             @cart_items = current_user.cart.one_off_products
+            @cart_items_subscriptions = current_user.cart.plan_types
         end 
     end
 
@@ -191,7 +193,8 @@ class CartsController < ApplicationController
 
     def cart_empty?
         product_length = current_user.cart.one_off_products.length 
-        if product_length < 1
+        subscription_length = current_user.cart.plan_types.length
+        if product_length < 1 && subscription_length < 1
             return true
         else
             return false
