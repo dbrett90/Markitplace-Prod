@@ -81,6 +81,7 @@ class CartsController < ApplicationController
         #Make sure we change this to production when the time comes
         Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
         @cart_items = current_user.cart.one_off_products
+        @cart_items_subscriptions = current_user.cart.plan_types
         token = params[:stripeToken]
         # flash[:success] = @cart_items
         @cart_items.each do |item|
@@ -171,6 +172,65 @@ class CartsController < ApplicationController
             #For the hash portion
             current_user.save
         end
+
+        #Complete Checkout for Subscriptions
+        @cart_items_subscriptions.each do |plan_type|
+            fee_value = dyanmic_app_fee(plan_type)
+            plan_id = plan_type.plan_type_id
+            plan = Stripe::Plan.retrieve(plan_id, {stripe_account: plan_type.stripe_id})
+            connected_acct = plan_type.stripe_id
+            zipcode_val = params[:payment_shipping][:zipcode]
+            zipcode_val = zipcode_val.to_s
+            zipcode_list = parse_zipcodes(plan_type)
+            if limit_zipcodes(zipcode_val, zipcode_list)
+                customer = if current_user.stripe_id[connected_acct].present?
+                    Stripe::Customer.retrieve(current_user.stripe_id[connected_acct], {stripe_account: plan_type.stripe_id})
+                    # flash[:danger] = "User already has a stripe ID!"
+                else
+                    #Create customer in connected accounts environment.
+                    Stripe::Customer.create({
+                        email: current_user.email, 
+                        source:token,
+                    },
+                    {
+                        stripe_account: plan_type.stripe_id,
+                    })
+                    # Stripe::Customer.create(description: 'Test Customer')
+                    #Save the stripe id to the database
+                end
+                current_user.stripe_id[connected_acct] = customer.id
+                options = {
+                    subscribed: true
+                }
+                current_user.plan_subscription_library_additions << plan_type
+
+                #Doing a merge on cards
+                options.merge!(
+                card_last4: params[:user][:card_last4],
+                card_exp_month: params[:user][:card_exp_month],
+                card_exp_year: params[:user][:card_exp_year],
+                card_type: params[:user][:card_brand]
+                ) if params[:user][:card_last4]
+
+                #Create the subscription
+                subscription = Stripe::Subscription.create({
+                    customer: customer,
+                    items: [
+                        {
+                            plan: plan_id
+                        }
+                    ],
+                    application_fee_percent: fee_value,
+                    # application_fee: 0.50,
+                }, stripe_account: plan_type.stripe_id)
+
+                #Update the user hash
+                current_user.stripe_subscription_id[plan.nickname.downcase] = subscription.id
+                current_user.update(options)
+                #For the hash portion
+                current_user.save
+        end
+
         current_user.cart.one_off_products.delete_all
         redirect_to root_path
     end
@@ -241,6 +301,48 @@ class CartsController < ApplicationController
             fee_value = 0.0
         else
             fee_value = 10.0
+        end
+    end
+
+    def parse_zipcodes(plan_type)
+        zipcode_list = plan_type.city_delivery
+        if zipcode_list.nil?
+            return []
+        else 
+            zipcode_list = zipcode_list.split(',')
+            zipcode_list= zipcode_list.map do |city|
+                city.gsub(/\s+/, '')
+            end
+            return zipcode_list
+        end
+    end
+
+    def limit_zipcodes(zipcode, zipcode_list)
+        #Going to need to build this into the model too
+        #available_cities = ["brooklyn", "new york city", "bronx", "queens", "brookline"]
+        if zipcode_list.length == 0
+            return true
+        else
+            shipping_address = ZipCodes.identify(zipcode)
+            shipping_city = shipping_address[:city]
+            shipping_city = shipping_city.downcase
+            # flash[:success] = shipping_city
+            # flash[:warning] = zipcode_list
+            # flash[:warning] = shipping_city
+            # shipping_address_down = shipping_address.downcase
+            zipcode_list.include?(shipping_city)
+        end
+    end
+
+    def strip_spaces(keyword)
+        keyword.gsub!(/\s/,'_')
+    end
+
+    def find_sc_user_email(sc_users, stripe_id)
+        sc_users.each do |sc_user|
+            if sc_user.stripe_id == stripe_id
+                return sc_user.stripe_email
+            end
         end
     end
 
