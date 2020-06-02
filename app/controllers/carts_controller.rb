@@ -53,7 +53,7 @@ class CartsController < ApplicationController
         current_user.cart.save
         flash[:success] = "Subscription has been added to your shopping cart!"
         # flash[:danger] = params
-        redirect_to one_off_products_path
+        redirect_to plan_types_path
 
     end
 
