@@ -92,40 +92,54 @@ class CartsController < ApplicationController
                 card_type: params[:user][:card_brand]
                 ) if params[:user][:card_last4]
     
-            
-            # payment_intent = Stripe::PaymentIntent.create({
-            #     payment_method_types: ['card'],
-            #     amount: (item.price*100).to_i,
-            #     currency: 'usd',
-            #     application_fee_amount: fee_amount,
-            #     capture_method: 'automatic',
-            #     confirmation_method: 'automatic',
-            #     # customer: customer,
-            #     transfer_data: {
-            #         destination: item.stripe_id,
-            #     },
-            # })
-            # flash[:success] = payment_intent
-            # #Confirm that the ID is indeed coming through this way
-            # #flash[:danger] = payment_intent.id
-            # # card_method_payment = 'pm_card_'+params[:user][:card_brand]
-            # # flash[:danger] = card_method_payment
-            # # flash[:warning] = params[:user]
-            # card_brand = (params[:user][:card_brand]).downcase
-            # payment_method_card = 'pm_card_' + card_brand
-            # # flash[:danger] = payment_method_card
-            # confirm_payment = Stripe::PaymentIntent.confirm(
-            #     payment_intent.id,
-            #     {payment_method: payment_method_card},
-            # )
+            if charge_app_fee?(fee_amount)
+                payment_intent = Stripe::PaymentIntent.create({
+                    payment_method_types: ['card'],
+                    amount: (item.price*100).to_i,
+                    currency: 'usd',
+                    application_fee_amount: fee_amount,
+                    capture_method: 'automatic',
+                    confirmation_method: 'automatic',
+                    # customer: customer,
+                    transfer_data: {
+                        destination: item.stripe_id,
+                    },
+                })
+            else
+                payment_intent = Stripe::PaymentIntent.create({
+                    payment_method_types: ['card'],
+                    amount: (item.price*100).to_i,
+                    currency: 'usd',
+                    capture_method: 'automatic',
+                    confirmation_method: 'automatic',
+                    # customer: customer,
+                    transfer_data: {
+                        destination: item.stripe_id,
+                    },
+                })
+            end
+
+            flash[:success] = payment_intent
+            #Confirm that the ID is indeed coming through this way
+            #flash[:danger] = payment_intent.id
+            # card_method_payment = 'pm_card_'+params[:user][:card_brand]
+            # flash[:danger] = card_method_payment
+            # flash[:warning] = params[:user]
+            card_brand = (params[:user][:card_brand]).downcase
+            payment_method_card = 'pm_card_' + card_brand
+            # flash[:danger] = payment_method_card
+            confirm_payment = Stripe::PaymentIntent.confirm(
+                payment_intent.id,
+                {payment_method: payment_method_card},
+            )
     
-            # ##NEED TO CONFIRM THE PAYMENT AFTER THE FACT! CHECK THE DOCS FOR THIS
+            ##NEED TO CONFIRM THE PAYMENT AFTER THE FACT! CHECK THE DOCS FOR THIS
     
-            # #May need to change one_off_id for naming convention
-            # current_user.one_off_id[item.name.downcase] = payment_intent.id
-            # current_user.update(options)
-            # #For the hash portion
-            # current_user.save
+            #May need to change one_off_id for naming convention
+            current_user.one_off_id[item.name.downcase] = payment_intent.id
+            current_user.update(options)
+            #For the hash portion
+            current_user.save
         end
         redirect_to root_path
     end
@@ -138,6 +152,14 @@ class CartsController < ApplicationController
     end
 
     private
+
+    def charge_app_fee?(fee_amount)
+        if fee_amount == 0
+            false
+        else
+            true
+        end
+    end
 
     def cart_not_created?
         if current_user.cart != nil
