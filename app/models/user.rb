@@ -18,10 +18,7 @@ class User < ApplicationRecord
     has_many :product_subscription_libraries
     has_many :product_subscription_library_additions, through: :product_subscription_libraries, source: :product
 
-    #Updated to refelect plan association.. Each user associated with a PLAN
-    has_many :plan_types, dependent: :destroy
-    has_many :plan_subscription_libraries
-    has_many :plan_subscription_library_additions, through: :plan_subscription_libraries, source: :plan_type
+    
 
     #One_off_products section
     # has_many :one_off_products, dependent: :destroy
@@ -29,6 +26,11 @@ class User < ApplicationRecord
     #Specific to Cart - saing each user has a cart
     has_one :cart, dependent: :destroy
     has_many :one_off_products, through: :cart
+
+    #Updated to refelect plan association.. Each user associated with a PLAN
+    has_many :plan_types, through: :cart
+    has_many :plan_subscription_libraries
+    has_many :plan_subscription_library_additions, through: :plan_subscription_libraries, source: :plan_type
     
 
 

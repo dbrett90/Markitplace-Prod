@@ -119,7 +119,7 @@ class CartsController < ApplicationController
                 })
             end
 
-            flash[:success] = payment_intent
+            # flash[:success] = payment_intent
             #Confirm that the ID is indeed coming through this way
             #flash[:danger] = payment_intent.id
             # card_method_payment = 'pm_card_'+params[:user][:card_brand]
