@@ -63,7 +63,7 @@ class CartsController < ApplicationController
     end
 
     def destroy
-        if params[:one_off_product].nil?
+        if params[:one_off_product] == nil
             item = params[:plan_type]
         else
             item = params[:one_off_product]
