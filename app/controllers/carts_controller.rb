@@ -30,7 +30,7 @@ class CartsController < ApplicationController
         # flash[:danger] = item
         if cart_not_created?
             # empty_cart = Cart.create(products: [])
-            current_user.cart.create(products: [])
+            # current_user.cart.create()
             current_user.cart.one_off_products << one_off
             # flash[:warning]= "Went through the right way"
         else
