@@ -377,7 +377,8 @@ class CartsController < ApplicationController
             end
             plan_types.each do |plan_type| 
                 if sc_user.stripe_id == plan_type.stripe_id
-                    email_list[sc_user.stripe_email] << plan_type.name 
+                    combined_string = plan_type.name + " recurring subscription"
+                    email_list[sc_user.stripe_email] << combined_string
                 end
             end
         end
