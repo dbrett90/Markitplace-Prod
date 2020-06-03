@@ -246,12 +246,13 @@ class CartsController < ApplicationController
         params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
         params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
 
-    # #Hit the order confirmation and send over to the vendor... Sends them a confirmation email about the order type. Can also view it in the stripe dashboard
-    # stripe_connect_users = StripeConnectUser.all
-    # sc_user_email = find_sc_user_email(stripe_connect_users, plan_type.stripe_id)
-    # OrderConfirmationMailer.vendor_confirmation(current_user, sc_user_email, plan_type, params[:payment_shipping][:recipient_name], params[:payment_shipping][:street_address_1],
-    #     params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
-    #     params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
+        # #Hit the order confirmation and send over to the vendor(s)... Sends them a confirmation email about the order type. Can also view it in the stripe dashboard
+        stripe_connect_users = StripeConnectUser.all
+        sc_user_email_hash = find_sc_user_email(stripe_connect_users, current_user.cart.one_off_products, current_user.cart.plan_types)
+        flash[:danger] = sc_user_email_hash
+        # OrderConfirmationMailer.vendor_confirmation(current_user, sc_user_email, plan_type, params[:payment_shipping][:recipient_name], params[:payment_shipping][:street_address_1],
+        #     params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
+        #     params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
 
 
         #Confirm that the orders were made and notify customers on webpage
@@ -365,14 +366,22 @@ class CartsController < ApplicationController
         keyword.gsub!(/\s/,'_')
     end
 
-    def find_sc_user_email(sc_users, stripe_id)
+    #Generate a hash of all the vendors with confirmation of products
+    def find_sc_user_email(sc_users, one_off_products, plan_types)
+        email_list = Hash.new{|hsh,key| hsh[key] = [] }
         sc_users.each do |sc_user|
-            if sc_user.stripe_id == stripe_id
-                return sc_user.stripe_email
+            one_off_products.each do |one_off|
+                if sc_user.stripe_id == one_off.stripe_id
+                    email_list[sc_user.stripe_email] <<  one_off.name
+                end
+            end
+            plan_types.each do |plan_type| 
+                if sc_user.stripe_id == plan_type.stripe_id
+                    email_list[sc_user.stripe_id] << plan_type.name 
+                end
             end
         end
+        email_list
     end
-
-
 
 end

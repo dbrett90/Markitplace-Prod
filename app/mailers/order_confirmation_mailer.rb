@@ -33,6 +33,20 @@ class OrderConfirmationMailer < ApplicationMailer
         #flash[:warning] = "Confirmation Email has been sent"
     end
 
+    #Multiple different Emails
+    def vendor_order_confirmation(current_user, vendor_email, plan_type, recipient_name, street_address_1, street_address_2, city, state, zipcode)
+        @customer_name = current_user.name
+        @customer_email = current_user.email
+        @plan_type = plan_type
+        @recipient_name = recipient_name
+        @street_address_1 = street_address_1
+        @street_address_2 = street_address_2
+        @city = city
+        @state = state
+        @zipcode = zipcode
+        mail to: vendor_email, bcc: "admin@markitplace.io", subject: "Customer has bought a subscription on Markitplace"
+    end
+
     #Where are you pulling the vendor_email from?
     #Take a look at this tomorrow. Going to need to pull it from Stripe Id for connect
     def vendor_confirmation(current_user, vendor_email, plan_type, recipient_name, street_address_1, street_address_2, city, state, zipcode)
