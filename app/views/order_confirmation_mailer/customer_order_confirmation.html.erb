@@ -6,7 +6,7 @@
 <% if @plan_types.length >= 1 %>
     <ul>
     <% @plan_types.each do |plan_type| %>
-        <li><strong><%plan_type.name %></strong> Recurring Subscription</li>
+        <li><strong><%= plan_type.name %></strong> Recurring Subscription</li>
     <% end %>
     </ul>
 <% end %>
@@ -14,7 +14,7 @@
 <% if @one_off_products.length >= 1 %>
     <ul>
     <% @one_off_products.each do |product| %>
-        <li><strong><%product.name %></strong></li>
+        <li><strong><%= product.name %></strong></li>
     <% end %>
     </ul>
 <% end %>
