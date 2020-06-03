@@ -49,6 +49,7 @@ class CartsController < ApplicationController
         plan_type = find_plan_type_by_name(item)
         if cart_not_created?
             # empty_cart = Cart.create(products: [])
+            #Create an instance of the cart an attach it to a user.
             testCart = Cart.new()
             current_user.cart = testCart
             current_user.cart.plan_types << plan_type
