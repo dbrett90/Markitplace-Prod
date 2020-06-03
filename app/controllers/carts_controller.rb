@@ -377,7 +377,7 @@ class CartsController < ApplicationController
             end
             plan_types.each do |plan_type| 
                 if sc_user.stripe_id == plan_type.stripe_id
-                    email_list[sc_user.stripe_id] << plan_type.name 
+                    email_list[sc_user.email] << plan_type.name 
                 end
             end
         end
