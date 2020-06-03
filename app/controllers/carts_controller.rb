@@ -258,6 +258,7 @@ class CartsController < ApplicationController
         flash[:success] = "Thank you for your Purchase! You will receive
         an email with a confirmation notice shortly."
         current_user.cart.one_off_products.delete_all
+        current_user.cart.plan_types.delete_all
         redirect_to root_path
     end
 
