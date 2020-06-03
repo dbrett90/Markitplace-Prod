@@ -1,0 +1,15 @@
+<h1>Markitplace</h1>
+
+<p> Hi, customer has completed a purchase order. The customer & product information is as follows:</p>
+<ul>
+<% @products.each do |product| %>
+    <li><strong><%= product %></strong></li>
+</ul>
+
+<p>The customer has requested that their meal kit be sent to the following address: </p> <br>
+<p><%= @recipient_name %> </p>
+<p><%= @street_address_1 %> </p>
+<p><%= @street_address_2 %> </p>
+<p><%= @city %> </p>
+<p><%= @state %> </p>
+<p><%= @zipcode %> </p>

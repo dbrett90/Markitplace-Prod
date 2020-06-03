@@ -249,7 +249,11 @@ class CartsController < ApplicationController
         # #Hit the order confirmation and send over to the vendor(s)... Sends them a confirmation email about the order type. Can also view it in the stripe dashboard
         stripe_connect_users = StripeConnectUser.all
         sc_user_email_hash = find_sc_user_email(stripe_connect_users, current_user.cart.one_off_products, current_user.cart.plan_types)
-        flash[:danger] = sc_user_email_hash
+        sc_user_email_hash.each do |vendor_email|
+            OrderConfirmationMailer.vendor_order_confirmation(current_user, params[:payment_shipping][:recipient_name], vendor_email, sc_user_email_hash[vendor_email], params[:payment_shipping][:recipient_name], params[:payment_shipping][:street_address_1],
+            params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
+            params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
+        end 
         # OrderConfirmationMailer.vendor_confirmation(current_user, sc_user_email, plan_type, params[:payment_shipping][:recipient_name], params[:payment_shipping][:street_address_1],
         #     params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
         #     params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now

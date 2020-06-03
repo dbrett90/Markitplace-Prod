@@ -34,8 +34,8 @@ class OrderConfirmationMailer < ApplicationMailer
     end
 
     #Multiple different Emails
-    def vendor_order_confirmation(current_user, vendor_email, products, recipient_name, street_address_1, street_address_2, city, state, zipcode)
-        @customer_name = current_user.name
+    def vendor_order_confirmation(current_user, recipient_name, vendor_email, products, recipient_name, street_address_1, street_address_2, city, state, zipcode)
+        @customer_name = recipient_name
         @customer_email = current_user.email
         @products = products
         @recipient_name = recipient_name
