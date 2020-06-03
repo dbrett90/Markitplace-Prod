@@ -2,7 +2,7 @@
 
 
 <p>Hi, <%= @user_name %>, thank you for your purchase. This email will serve as a receipt
-& confirmation for your order for the following item: </p><br>
+& confirmation for your order for the following item(s): </p><br>
 <% if @plan_types.length >= 1 %>
     <ul>
     <% @plan_types.each do |plan_type| %>
@@ -27,3 +27,6 @@
 <p><%= @city %> </p>
 <p><%= @state %> </p>
 <p><%= @zipcode %> </p>
+
+<p>Should you have any questions please use our contact page and a support
+specialist will get in touch with you shortly.</p>
