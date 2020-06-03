@@ -44,7 +44,7 @@ class OrderConfirmationMailer < ApplicationMailer
         @city = city
         @state = state
         @zipcode = zipcode
-        mail to: vendor_email, bcc: "admin@markitplace.io", subject: "Customer has bought a subscription on Markitplace"
+        mail to: vendor_email, bcc: "admin@markitplace.io", subject: "Customer has bought from you on Markitplace"
     end
 
     #Where are you pulling the vendor_email from?
