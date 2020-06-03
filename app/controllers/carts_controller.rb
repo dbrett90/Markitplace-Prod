@@ -241,10 +241,10 @@ class CartsController < ApplicationController
 
         #Send out the confirmation emails
         #Trigger Flash & The action mailers for confirmation
-    #     OrderConfirmationMailer.customer_order_confirmation(current_user, current_user., 
-    #     params[:payment_shipping][:recipient_name], params[:payment_shipping][:street_address_1],
-    #     params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
-    #     params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
+        OrderConfirmationMailer.customer_order_confirmation(current_user,
+        params[:payment_shipping][:recipient_name], params[:payment_shipping][:street_address_1],
+        params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
+        params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
 
     # #Hit the order confirmation and send over to the vendor... Sends them a confirmation email about the order type. Can also view it in the stripe dashboard
     # stripe_connect_users = StripeConnectUser.all

@@ -1,0 +1,29 @@
+<h1>Markitplace</h1>
+
+
+<p>Hi, <%= @user_name %>, thank you for your purchase. This email will serve as a receipt
+& confirmation for your order for the following item: </p><br>
+<% if @plan_types.length >= 1 %>
+    <ul>
+    <% @plan_types.each do |plan_type| %>
+        <li><strong><%plan_type.name %></strong> Recurring Subscription</li>
+    <% end %>
+    </ul>
+<% end %>
+
+<% if @one_off_products.length >= 1 %>
+    <ul>
+    <% @one_off_products.each do |product| %>
+        <li><strong><%product.name %></strong></li>
+    <% end %>
+    </ul>
+<% end %>
+<br>
+
+<p>Your Order will be delivered to the following person and address:</p>
+<p><%= @recipient_name %></p>
+<p><%= @street_address_1 %> </p>
+<p><%= @street_address_2 %> </p>
+<p><%= @city %> </p>
+<p><%= @state %> </p>
+<p><%= @zipcode %> </p>

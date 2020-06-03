@@ -16,9 +16,10 @@ class OrderConfirmationMailer < ApplicationMailer
         #flash[:warning] = "Confirmation Email has been sent"
     end
 
-    def customer_order_confirmation(current_user, vendor_email, recipient_name, street_address_1, street_address_2, city, state, zipcode)
+    def customer_order_confirmation(current_user, recipient_name, street_address_1, street_address_2, city, state, zipcode)
         @user_name = current_user.name
         @user_email = current_user.email
+        # @recipient_name = recipient_name
         @plan_types = current_user.cart.plan_types
         @one_off_products = current_user.cart.one_off_products
         @recipient_name = recipient_name
@@ -28,7 +29,7 @@ class OrderConfirmationMailer < ApplicationMailer
         @state = state
         @zipcode = zipcode
         #Remove the CC afterwards.... just for testing purposes. 
-        mail to: current_user.email, bcc: "admin@markitplace.io", subject: "Markitplace Subscription Confirmation"
+        mail to: current_user.email, bcc: "admin@markitplace.io", subject: "Markitplace Order Confirmation"
         #flash[:warning] = "Confirmation Email has been sent"
     end
 
