@@ -42,7 +42,6 @@
         </div>
         <div class = "col-12 col-lg-4 text-center align-items-center text-center">
           <% if logged_in? %>
-            <% symbolize = @product.plan_type_name.downcase.to_sym %>
             <%= link_to 'START COOKING', add_subscription_to_cart_path(one_off_product: @one_off_product.name), class: "btn btn-outline-success jumbo-button btn-mobile" %>
           <% else %>
             <%= link_to 'START COOKING', new_user_path, class:"btn btn-outline-success jumbo-button btn-mobile" %>
