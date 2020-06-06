@@ -2,36 +2,58 @@
 <div class = "container recipe-overview  mt-4 justify-content-center">
   <section class= "container">
     <div class = "recipe-header pt-2">
-      <div class = "row pb-3">
-        <div class= "col-12 text-center our-team-descr image-overlay">
-          <span class"image-overlay">
-            <%= image_tag(@one_off_product.thumbnail, class:"img-fluid hover-green", alt: "Product Image") %>
-            <div class="textOverlay">
-              <div class="showTextOurTeam adjust-size founder-description-mobile text-center" style="display: inline-block">
-                <h5 class="founder-description-mobile"><%= @one_off_product.name %> </h5>
-                <p class="subtext-about about-description-mobile">
-                  <%= @one_off_product.description %>
-                </p>
-              </div>
+      <div class = "row">
+        <div class= "col-12 text-center recipe-header-button pb-2">
+          <h1 class "pb-1 title-mobile"><%= @one_off_product.name %> </h1>
+          <%= image_tag(@one_off_product.thumbnail, class:"img-fluid", alt: "Product Image") %>
+        </div>
+      </div>
+      <div class = "recipe-intro d-flex pt-3">
+        <ul class= "stats list-inline mx-auto justify-content-center">
+          <li class = "list-inline-item">
+            <div class="stats-item subtitle-description-mobile">
+              <%= @one_off_product.calories %>
             </div>
-          </span>
+            <div class="stats-subitem nutrition-facts-mobile">
+              Calories 
+            </div>
+          </li>
+          <li class="list-inline-item">
+            <div class="stats-item subtitle-description-mobile">
+              <%= @one_off_product.fats %>
+            </div>
+            <div class="stats-subitem nutrition-facts-mobile">
+              Grams of Fat
+            </div>
+          </li>
+          <li class="list-inline-item">
+            <div class="stats-item subtitle-description-mobile">
+              <%= @one_off_product.servings %>
+            </div>
+            <div class="stats-subitem nutrition-facts-mobile">
+              Servings
+            </div>
+          </li>
+        </ul>
+      </div>  
+      <div class= "row align-items-center text-center">
+        <div class = "col-12 col-lg-8">
+            <p class="description-text subtitle-description-mobile"> <%= @one_off_product.description %></p>
+        </div>
+        <div class = "col-12 col-lg-4 text-center align-items-center text-center">
+          <% if logged_in? %>
+            <% symbolize = @product.plan_type_name.downcase.to_sym %>
+            <%= link_to 'START COOKING', add_subscription_to_cart_path(plan_type: @one_off_product.plan_type_name), class: "btn btn-outline-success jumbo-button btn-mobile" %>
+          <% else %>
+            <%= link_to 'START COOKING', new_user_path, class:"btn btn-outline-success jumbo-button btn-mobile" %>
+          <% end %>
+          <div class="col-12 d-lg-none">
+            <span></span>
+            <br>
+            <span<span/> 
+          </div>
         </div>
       </div>
     </div>
-    <div class= "row align-items-center text-center pb-3">
-      <div class = "col-12 text-center align-items-center">
-        <% if logged_in? %>
-          <%= link_to 'ADD TO CART', add_to_cart_path(one_off_product: @one_off_product.name), class:"btn btn-outline-success jumbo-button btn-mobile" %>
-        <% else %>
-          <%= link_to 'START COOKING', new_user_path, class:"btn btn-outline-success jumbo-button btn-mobile" %>
-        <% end %>
-      </div>
-    </div>
-
-    <% if logged_in? %>
-      <% if current_user.admin? %>
-        <%= link_to 'Edit Product', edit_one_off_product_path(@one_off_product), class: "btn btn-warning btn-mobile" %>
-      <% end %>
-    <% end %>
   </section>
 </div>
