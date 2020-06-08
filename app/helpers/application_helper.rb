@@ -17,6 +17,19 @@ module ApplicationHelper
     logged_in? && current_user.admin?
   end
 
+  def get_cart_length
+    one_offs = current_user.cart.one_off_products.length
+    subscriptions = current_user.cart.plan_types.length
+    if one_offs == nil
+      one_offs = 0
+    end
+    if subscriptions == nil
+      subscriptions = 0
+    end
+    sum = one_offs + subscriptions
+    return sum.to_s
+  end
+
   
   # def subscribed?
   #   logged_in_user? && current_user.subscribed?
