@@ -33,14 +33,5 @@ module ApplicationHelper
       return sum
     end
     sum.to_s
-  end
-
-  
-  # def subscribed?
-  #   logged_in_user? && current_user.subscribed?
-  # end
-
-
-
-    
+  end  
 end
