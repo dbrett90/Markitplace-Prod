@@ -17,6 +17,7 @@ module ApplicationHelper
     logged_in? && current_user.admin?
   end
 
+  #Implement 9+ as according to Sof
   def get_cart_length
     one_offs = current_user.cart.one_off_products.length
     subscriptions = current_user.cart.plan_types.length
@@ -27,6 +28,9 @@ module ApplicationHelper
       subscriptions = 0
     end
     sum = one_offs + subscriptions
+    if sum > 9
+      sum = "9+"
+    end
     return sum.to_s
   end
 
