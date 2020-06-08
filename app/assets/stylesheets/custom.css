@@ -92,6 +92,10 @@ input[type=checkbox]
   background: white;
   border-style:solid;
 }
+
+.btn-left{
+  text-align: left;
+}
 .fa-circle {
   color: green;
 }
