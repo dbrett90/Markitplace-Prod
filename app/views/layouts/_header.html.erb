@@ -71,7 +71,7 @@
                 <% end %>
             </ul>
             <% if logged_in? %>
-                <ul class="navbar-nav fa-stack" data-count= <%= get_cart_length %> >
+                <ul class="navbar-nav fa-stack inline-block" data-count= <%= get_cart_length %> >
                     <li class="nav-item nav-text-mobile active n-homepage btn btn-lg btn-mobile-left"><%= link_to cart_path do %>
                         <i class="fas fa-shopping-cart fa-stack-1x btn-mobile-left" style="color:black;"></i>
                     <% end %>
