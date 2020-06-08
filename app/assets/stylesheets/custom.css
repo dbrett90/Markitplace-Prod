@@ -75,10 +75,10 @@ input[type=checkbox]
   color: white;
 } */
 
-.fa-stack[data-count]:after{
+.test-stack[data-count]:after{
   position:absolute;
-  right:0%;
-  top:15%;
+  right: 1.75%;
+  top: 15%;
   content: attr(data-count);
   font-size:40%;
   padding:.6em;
