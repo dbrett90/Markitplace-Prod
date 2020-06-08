@@ -725,5 +725,23 @@ iframe.terms-of-service
   .about-description-mobile{
     font-size: 28px;
   }
+
+  .test-stack[data-count]:after{
+    position:unset;
+    right: unset;
+    top: unset;
+    content: unset;
+    font-size:unset;
+    padding:unset;
+    border-radius:unset;
+    line-height:unset;
+    color: unset;
+    color: unset;
+    text-align:left !important;
+    min-width:unset;
+    font-weight:unset;
+    background: unset;
+    border-style:unset;
+  }
   
 }
