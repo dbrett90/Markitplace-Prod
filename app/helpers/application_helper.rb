@@ -30,8 +30,9 @@ module ApplicationHelper
     sum = one_offs + subscriptions
     if sum > 9
       sum = "9+"
+      return sum
     end
-    return sum.to_s
+    sum.to_s
   end
 
   
