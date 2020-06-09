@@ -63,7 +63,7 @@
               <h1 class="title-mobile">Card Information</h1>
               <div class="field card-information">
                 <label for="card-element" class="field-label emphasis contact-form-item-mobile ">Enter credit or debit card</label>
-                <div id="card-element form-control-mobile">
+                <div id="card-element">
                   <!-- A Stripe Element will be inserted here. -->
                 </div>
                 <br>
@@ -73,7 +73,7 @@
                 <%= hidden_field_tag :plan_id, params[:plan_id] %>
                 <%= hidden_field_tag :plan_name, params[:plan_name] %>
       
-                <button class="btn btn-outline-success mt-1">Submit</button>
+                <button class="btn btn-outline-success btn-mobile mt-1">Submit</button>
               </div>
             </div>
           <% end %>
