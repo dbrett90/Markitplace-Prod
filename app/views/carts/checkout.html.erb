@@ -13,7 +13,7 @@
                   </div>
                   <div class = "col-6">
                       <h5 class="title-mobile"><%= item.name %></h5>
-                      <%= item.description, class: "subtitle-mobile" %>
+                      <p class="subtitle-mobile" <%= item.description %></p>
                   </div>
               </div>
           <% end %>
@@ -23,8 +23,8 @@
                     <%= image_tag item.thumbnail.variant(resize: "450x450"), class: "img-fluid" %>
                 </div>
                 <div class = "col-12 col-md-6">
-                    <h5><%= item.name %></h5>
-                    <%= item.description %>
+                    <h5 class="title-mobile"><%= item.name %></h5>
+                    <p class="subtitle-mobile"><%= item.description %></p>
                 </div>
             </div>
         <% end %>
@@ -33,7 +33,7 @@
         <div class= "col-12 col-md-6 checkout-header">
           <%= form_for(:payment_shipping, url: checkout_path, html: {id: "payment-form"}) do |f| %>
             <div class="shipping-information">
-              <h1>Shipping Information</h1>
+              <h1 class="title-mobile">Shipping Information</h1>
               <%= f.label :recipient_name, class: 'field-label emphasis' do %>
                 <span class = 'field-label emphasis'> Name </span>
               <% end %>
@@ -60,7 +60,7 @@
               <%= f.number_field :zipcode, class: 'form-control', placeholder: "Zipcode" %><br>
             </div>
             <div class="payment-information">
-              <h1>Card Information</h1>
+              <h1 class="title-mobile">Card Information</h1>
               <div class="field card-information">
                 <label for="card-element" class="field-label emphasis">Enter credit or debit card</label>
                 <div id="card-element">
