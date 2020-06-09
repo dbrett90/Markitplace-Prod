@@ -15,7 +15,7 @@ document.addEventListener("turbolinks:load", function() {
             color: "#32325d",
             fontWeight: 500,
             fontFamily: "Inter, Open Sans, Segoe UI, sans-serif",
-            fontSize: "1em",
+            fontSize: "2em",
             fontSmoothing: "antialiased",
 
             "::placeholder": {
