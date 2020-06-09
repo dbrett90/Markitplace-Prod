@@ -4,7 +4,7 @@
 // @import "bootstrap/variables";
 
 .mobile-across{
-  @include make-col-ready;
+  @include make-col-ready();
   @include media-breakpoint-up(xs) {
     @include make-col(12);
   }
