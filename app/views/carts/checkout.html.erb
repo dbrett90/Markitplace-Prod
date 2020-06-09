@@ -34,27 +34,27 @@
           <%= form_for(:payment_shipping, url: checkout_path, html: {id: "payment-form"}) do |f| %>
             <div class="shipping-information">
               <h1 class="title-mobile">Shipping Information</h1>
-              <%= f.label :recipient_name, class: 'field-label emphasis' do %>
+              <%= f.label :recipient_name, class: 'field-label emphasis contact-form-item-mobile' do %>
                 <span class = 'field-label emphasis'> Name </span>
               <% end %>
               <%= f.text_field :recipient_name, class: 'form-control', placeholder: "Name" %>
-              <%= f.label :street_address_1, class: 'field-label emphasis' do %>
+              <%= f.label :street_address_1, class: 'field-label emphasis contact-form-item-mobile' do %>
                 <span class = 'field-label emphasis'> Street Address 1 </span>
               <% end %>
               <%= f.text_field :street_address_1, class: 'form-control', placeholder: "Street Address" %>
-              <%= f.label :street_address_2, class: 'field-label emphasis' do %>
+              <%= f.label :street_address_2, class: 'field-label emphasis contact-form-item-mobile' do %>
                 <span class = 'field-label emphasis'> Street Address (Room/Apt Number) </span>
               <% end %>
               <%= f.text_field :street_address_2, class: 'form-control', placeholder: "Street Address" %>
-              <%= f.label :city, class: 'field-label emphasis' do %>
+              <%= f.label :city, class: 'field-label emphasis contact-form-item-mobile' do %>
                 <span class = 'field-label emphasis'> City </span>
               <% end %>
               <%= f.text_field :city, class: 'form-control', placeholder: "City" %>
-              <%= f.label :state, class: 'field-label emphasis' do %>
+              <%= f.label :state, class: 'field-label emphasis contact-form-item-mobile' do %>
                 <span class = 'field-label emphasis'> State </span>
               <% end %>
               <%= f.text_field :state, class: 'form-control', placeholder: "State" %>
-              <%= f.label :zipcode, class: 'field-label emphasis' do %>
+              <%= f.label :zipcode, class: 'field-label emphasis contact-form-item-mobile' do %>
                 <span class = 'field-label emphasis'> Zipcode </span>
               <% end %>
               <%= f.number_field :zipcode, class: 'form-control', placeholder: "Zipcode" %><br>
@@ -62,7 +62,7 @@
             <div class="payment-information">
               <h1 class="title-mobile">Card Information</h1>
               <div class="field card-information">
-                <label for="card-element" class="field-label emphasis">Enter credit or debit card</label>
+                <label for="card-element" class="field-label emphasis contact-form-item-mobile ">Enter credit or debit card</label>
                 <div id="card-element">
                   <!-- A Stripe Element will be inserted here. -->
                 </div>
