@@ -4,7 +4,7 @@
     <div class = "subscription-header pt-2">
       <div class = "row">
         <div class = "col-12 col-md-6 checkout-header">
-            <h1>Checkout</h1>
+            <h1 class="title-larger-mobile">Checkout</h1>
             <h4>Order Summary: $<%= @total_price %> </h4>
             <% @cart_items.each do |item| %>
               <div class = "row pb-3">
@@ -12,8 +12,8 @@
                       <%= image_tag item.thumbnail.variant(resize: "450x450"), class: "img-fluid" %>
                   </div>
                   <div class = "col-6">
-                      <h5><%= item.name %></h5>
-                      <%= item.description %>
+                      <h5 class="title-mobile"><%= item.name %></h5>
+                      <%= item.description, class: "subtitle-mobile" %>
                   </div>
               </div>
           <% end %>
