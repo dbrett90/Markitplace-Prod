@@ -748,5 +748,9 @@ iframe.terms-of-service
     background: unset;
     border-style:unset;
   }
+
+  .card-element{
+    height: 70px;
+  }
   
 }
