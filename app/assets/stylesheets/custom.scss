@@ -1,11 +1,11 @@
 // @import "bootstrap-sprockets";
 // @import "bootstrap";
 
-$grid-breakpoints: (
+@mixin grid-breakpoints: (
   mobile: 375px;
 );
 
-$container-max-widths: (
+@mixin container-max-widths: (
   mobile: 667px;
 );
 
