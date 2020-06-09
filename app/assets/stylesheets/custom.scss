@@ -3,15 +3,15 @@
 // @import "bootstrap/functions";
 // @import "bootstrap/variables";
 
-.mobile-across{
-  // @include make-col-ready();
-  @include media-breakpoint-up(xs) {
-    @include make-col(12);
-  }
-  @include media-breakpoint-up(md){
-    @include make-col(6)
-  }
-}
+// .mobile-across{
+//   @include make-col-ready();
+//   @include media-breakpoint-up(xs) {
+//     @include make-col(12);
+//   }
+//   @include media-breakpoint-up(md){
+//     @include make-col(6)
+//   }
+// }
 // $grid-breakpoints: (
 // mobile: 375px
 // ) !default;
