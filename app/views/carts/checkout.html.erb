@@ -3,7 +3,7 @@
   <section class= "container">
     <div class = "subscription-header pt-2">
       <div class = "row">
-        <div class = "col-6 checkout-header">
+        <div class = "col-12 col-md-6 checkout-header">
             <h1>Checkout</h1>
             <h4>Order Summary: $<%= @total_price %> </h4>
             <% @cart_items.each do |item| %>
@@ -19,10 +19,10 @@
           <% end %>
           <% @cart_items_subscriptions.each do |item| %>
             <div class = "row pb-3">
-                <div class = "col-6">
+                <div class = "col-12 col-md-6">
                     <%= image_tag item.thumbnail.variant(resize: "450x450"), class: "img-fluid" %>
                 </div>
-                <div class = "col-6">
+                <div class = "col-12 col-md-6">
                     <h5><%= item.name %></h5>
                     <%= item.description %>
                 </div>
@@ -30,7 +30,7 @@
         <% end %>
 
         </div>
-        <div class= "col-6 checkout-header">
+        <div class= "col-12 col-md-6 checkout-header">
           <%= form_for(:payment_shipping, url: checkout_path, html: {id: "payment-form"}) do |f| %>
             <div class="shipping-information">
               <h1>Shipping Information</h1>
