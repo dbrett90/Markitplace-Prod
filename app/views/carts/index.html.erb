@@ -4,7 +4,7 @@
         <div class="container" id="plan-offerings">
             <div class="row ml-3">
                 <div class = "col-12 pb-3 text-center">
-                    <h1>Your Cart </h1><br>
+                    <h1 class = "title-mobile">Your Cart </h1><br>
                     <%= link_to "Checkout", checkout_path, class: "btn btn-outline-success jumbo-button btn-mobile" %>
                 </div>
                 <%  @cart_items.each do |one_off_product| %>
@@ -20,7 +20,7 @@
                                 <h5 class="card-title text-center title-card-mobile"> <%= one_off_product.name %></h5>
                                 <h6 class="text-center title-mobile">$<%= one_off_product.price %></h6>
                                 <h6 class="card-subtitle mb-2 text-muted text-center subtitle-description-mobile pb-2"> <%= one_off_product.description %></h6>
-                                <%= link_to "Remove from Cart", cart_path(one_off_product: one_off_product.name), data: {confirm: "Are you sure you want to remove this from our cart?"}, method: :delete, class: "btn btn-danger" %> 
+                                <%= link_to "Remove from Cart", cart_path(one_off_product: one_off_product.name), data: {confirm: "Are you sure you want to remove this from our cart?"}, method: :delete, class: "btn btn-danger btn-mobile" %> 
                             </div>
                         </div>
                     </div>
