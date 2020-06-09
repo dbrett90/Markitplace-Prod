@@ -1,6 +1,13 @@
 // @import "bootstrap-sprockets";
 // @import "bootstrap";
 
+$grid-breakpoints: (
+  mobile: 375px;
+);
+
+$container-max-widths: (
+  mobile: 667px;
+);
 
 // /* RAILS TUTORIAL CSS*/
 // @mixin box_sizing {

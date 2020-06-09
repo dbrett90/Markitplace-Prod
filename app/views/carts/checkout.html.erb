@@ -8,10 +8,10 @@
             <h4>Order Summary: $<%= @total_price %> </h4>
             <% @cart_items.each do |item| %>
               <div class = "row pb-3">
-                  <div class = "col-6">
+                  <div class = "col-mobile-12 col-6">
                       <%= image_tag item.thumbnail.variant(resize: "450x450"), class: "img-fluid" %>
                   </div>
-                  <div class = "col-6">
+                  <div class = "col-mobile-12 col-6">
                       <h5 class="title-mobile"><%= item.name %></h5>
                       <p class="subtitle-mobile"> <%= item.description %></p>
                   </div>

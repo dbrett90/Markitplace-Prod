@@ -590,6 +590,7 @@ iframe.terms-of-service
   box-shadow: 0 0 25px rgba(0, 0, 0, .1);
 }
 
+
 /* MOBILE COMPATABILITY SECTION - May Need to Refactor Later On. Want as flexible as possible */
 /* IN FUTURE TRY TO AVOID !IMPORTANT. Not good practice */
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
