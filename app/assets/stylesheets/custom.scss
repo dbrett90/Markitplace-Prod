@@ -2,12 +2,12 @@
 // @import "bootstrap";
 
 $grid-breakpoints: (
-  mobile: 375px;
-);
+  mobile: 375px
+) !default;
 
 $container-max-widths: (
-  mobile: 667px;
-);
+  mobile: 667px
+) !default;
 
 // /* RAILS TUTORIAL CSS*/
 // @mixin box_sizing {
