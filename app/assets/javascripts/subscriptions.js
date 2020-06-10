@@ -28,7 +28,15 @@ document.addEventListener("turbolinks:load", function() {
         }
     };
 
+
     const card = elements.create('card', { style });
+    window.addEventListener('load', function(event) {
+        if (window.innerWidth <= 667) {
+          card.update({style: {base: {fontSize: '60px'}}});
+        } else {
+          card.update({style: {base: {fontSize: '60px'}}});
+        }
+      });
     //Need to check to see if the card exists elsewhere. Add this in at a later date.
     card.mount("#card-element");
 
@@ -56,14 +64,6 @@ document.addEventListener("turbolinks:load", function() {
             stripeTokenHandler(token);
         }
     });
-
-    window.addEventListener('load', function(event) {
-        if (window.innerWidth <= 667) {
-          card.update({style: {base: {fontSize: '60px'}}});
-        } else {
-          card.update({style: {base: {fontSize: '26px'}}});
-        }
-      });
 
     const stripeTokenHandler = (token) => {
         const form = document.getElementById('payment-form');
