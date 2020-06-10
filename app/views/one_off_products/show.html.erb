@@ -8,34 +8,46 @@
           <%= image_tag(@one_off_product.thumbnail, class:"img-fluid", alt: "Product Image") %>
         </div>
       </div>
-      <div class = "recipe-intro d-flex pt-3">
-        <ul class= "stats list-inline mx-auto justify-content-center">
-          <li class = "list-inline-item">
-            <div class="stats-item subtitle-description-mobile">
-              <%= @one_off_product.calories %>
-            </div>
-            <div class="stats-subitem nutrition-facts-mobile">
-              Calories 
-            </div>
-          </li>
-          <li class="list-inline-item">
-            <div class="stats-item subtitle-description-mobile">
-              <%= @one_off_product.fats %>
-            </div>
-            <div class="stats-subitem nutrition-facts-mobile">
-              Grams of Fat
-            </div>
-          </li>
-          <li class="list-inline-item">
-            <div class="stats-item subtitle-description-mobile">
-              <%= @one_off_product.servings %>
-            </div>
-            <div class="stats-subitem nutrition-facts-mobile">
-              Servings
-            </div>
-          </li>
-        </ul>
-      </div>  
+      <% if @one_off_product.calores != nil && one_off_product.fats != nil %>
+        <div class = "recipe-intro d-flex pt-3">
+          <ul class= "stats list-inline mx-auto justify-content-center">
+            <li class = "list-inline-item">
+              <div class="stats-item subtitle-description-mobile">
+                <%= @one_off_product.calories %>
+              </div>
+              <div class="stats-subitem nutrition-facts-mobile">
+                Calories 
+              </div>
+            </li>
+            <li class="list-inline-item">
+              <div class="stats-item subtitle-description-mobile">
+                <%= @one_off_product.fats %>
+              </div>
+              <div class="stats-subitem nutrition-facts-mobile">
+                Grams of Fat
+              </div>
+            </li>
+            <li class="list-inline-item">
+              <div class="stats-item subtitle-description-mobile">
+                <%= @one_off_product.servings %>
+              </div>
+              <div class="stats-subitem nutrition-facts-mobile">
+                Servings
+              </div>
+            </li>
+          </ul>
+        </div>  
+      <% else %>
+        <div class = "recipe-intro d-flex pt-3">
+          <ul class= "stats list-inline mx-auto justify-content-center">
+            <li class = "list-inline-item">
+              <div class="stats-item subtitle-description-mobile">
+                <%= @one_off_product.calories %>
+              </div>
+            </li>
+          </ul>
+        </div>
+      <% end %>
       <div class= "row align-items-center text-center">
         <div class = "col-12 col-lg-8">
             <p class="description-text subtitle-description-mobile"> <%= @one_off_product.description %></p>
