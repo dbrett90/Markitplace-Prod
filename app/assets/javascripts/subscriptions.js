@@ -59,9 +59,9 @@ document.addEventListener("turbolinks:load", function() {
 
     window.addEventListener('load', function(event) {
         if (window.innerWidth <= 667) {
-          cardElement.update({style: {base: {fontSize: '60px'}}});
+          card.update({style: {base: {fontSize: '60px'}}});
         } else {
-          cardElement.update({style: {base: {fontSize: '26px'}}});
+          card.update({style: {base: {fontSize: '26px'}}});
         }
       });
 
