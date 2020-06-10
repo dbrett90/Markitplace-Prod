@@ -87,7 +87,7 @@ window.addEventListener('resize', function(event) {
     if (window.innerWidth <= 667) {
       cardElement.update({style: {base: {fontSize: '26px'}}});
     } else {
-      cardElement.update({style: {base: {fontSize: '16px'}}});
+      cardElement.update({style: {base: {fontSize: '26px'}}});
     }
   });
 
