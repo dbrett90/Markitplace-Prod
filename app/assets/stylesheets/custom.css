@@ -749,8 +749,9 @@ iframe.terms-of-service
     border-style:unset;
   }
 
-  .card-element{
+  .card-element:after{
     height: 70px;
+    font-size: 50px;
   }
   
 }
