@@ -751,7 +751,7 @@ iframe.terms-of-service
 
   .card-element:after{
     height: 70px;
-    font-size: 50px;
+    font-size: 2em;
   }
   
 }
