@@ -57,7 +57,7 @@ document.addEventListener("turbolinks:load", function() {
         }
     });
 
-    window.addEventListener('resize', function(event) {
+    window.addEventListener('load', function(event) {
         if (window.innerWidth <= 667) {
           cardElement.update({style: {base: {fontSize: '60px'}}});
         } else {
