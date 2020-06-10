@@ -30,13 +30,20 @@ document.addEventListener("turbolinks:load", function() {
 
 
     const card = elements.create('card', { style });
-    window.addEventListener('load', function(event) {
+    // window.addEventListener('load', function(event) {
+    //     if (screen.width <= 667) {
+    //       card.update({style: {base: {fontSize: '40px'}}});
+    //     } else {
+    //       card.update({style: {base: {fontSize: '16px'}}});
+    //     }
+    //   });
+    $(document).on('turbolinks:load', function(){
         if (screen.width <= 667) {
-          card.update({style: {base: {fontSize: '40px'}}});
+            card.update({style: {base: {fontSize: '40px'}}});
         } else {
-          card.update({style: {base: {fontSize: '16px'}}});
+            card.update({style: {base: {fontSize: '16px'}}});
         }
-      });
+    });
     //Need to check to see if the card exists elsewhere. Add this in at a later date.
     card.mount("#card-element");
 
