@@ -749,7 +749,7 @@ iframe.terms-of-service
     border-style:unset;
   }
 
-  .card-element:after{
+  .StripeElement{
     height: 70px;
     font-size: 2em;
   }
