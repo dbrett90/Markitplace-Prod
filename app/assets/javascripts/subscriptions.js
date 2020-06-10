@@ -84,7 +84,7 @@ document.addEventListener("turbolinks:load", function() {
 
     // Dynamically change the styles of an element
 window.addEventListener('resize', function(event) {
-    if (window.innerWidth <= 320) {
+    if (window.innerWidth <= 667) {
       cardElement.update({style: {base: {fontSize: '26px'}}});
     } else {
       cardElement.update({style: {base: {fontSize: '16px'}}});
