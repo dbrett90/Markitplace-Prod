@@ -32,9 +32,9 @@ document.addEventListener("turbolinks:load", function() {
     const card = elements.create('card', { style });
     window.addEventListener('load', function(event) {
         if (window.innerWidth <= 667) {
-          card.update({style: {base: {fontSize: '60px'}}});
+          card.update({style: {base: {fontSize: '40px'}}});
         } else {
-          card.update({style: {base: {fontSize: '60px'}}});
+          card.update({style: {base: {fontSize: '16px'}}});
         }
       });
     //Need to check to see if the card exists elsewhere. Add this in at a later date.
