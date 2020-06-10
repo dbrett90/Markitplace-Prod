@@ -749,7 +749,10 @@ iframe.terms-of-service
     border-style:unset;
   }
   .alert{
-    font-size: 40px;
+    font-size: 50px;
+  }
+  .mobile-hide{
+    display: none;
   }
   
 }

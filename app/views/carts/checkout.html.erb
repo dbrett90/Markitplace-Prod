@@ -7,7 +7,7 @@
             <h1 class="title-larger-mobile">Checkout</h1>
             <h4>Order Summary: $<%= @total_price %> </h4>
             <% @cart_items.each do |item| %>
-              <div class = "row pb-3">
+              <div class = "row pb-3 mobile-hide">
                   <div class = "col-12 col-lg-6">
                       <%= image_tag item.thumbnail.variant(resize: "450x450"), class: "img-fluid" %>
                   </div>
@@ -18,7 +18,7 @@
               </div>
           <% end %>
           <% @cart_items_subscriptions.each do |item| %>
-            <div class = "row pb-3">
+            <div class = "row pb-3 mobile-hide">
                 <div class = "col-12 col-lg-6">
                     <%= image_tag item.thumbnail.variant(resize: "450x450"), class: "img-fluid" %>
                 </div>
