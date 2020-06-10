@@ -38,7 +38,8 @@ document.addEventListener("turbolinks:load", function() {
     //     }
     //   });
     $(document).on('turbolinks:load', function(){
-        if (screen.width <= 667) {
+        var windowWidth = $(window).width();
+        if (windowWidth <= 667) {
             card.update({style: {base: {fontSize: '40px'}}});
         } else {
             card.update({style: {base: {fontSize: '16px'}}});
