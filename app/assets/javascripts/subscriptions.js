@@ -82,6 +82,15 @@ document.addEventListener("turbolinks:load", function() {
         form.appendChild(hiddenInput);
     }
 
+    // Dynamically change the styles of an element
+window.addEventListener('resize', function(event) {
+    if (window.innerWidth <= 320) {
+      cardElement.update({style: {base: {fontSize: '26px'}}});
+    } else {
+      cardElement.update({style: {base: {fontSize: '16px'}}});
+    }
+  });
+
     // This may be something you remove
     // function determineCardType(card_number){
     //     let hiddenInput = document.createElement('input');
