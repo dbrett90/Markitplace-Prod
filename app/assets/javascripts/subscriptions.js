@@ -57,6 +57,14 @@ document.addEventListener("turbolinks:load", function() {
         }
     });
 
+    window.addEventListener('resize', function(event) {
+        if (window.innerWidth <= 667) {
+          cardElement.update({style: {base: {fontSize: '60px'}}});
+        } else {
+          cardElement.update({style: {base: {fontSize: '26px'}}});
+        }
+      });
+
     const stripeTokenHandler = (token) => {
         const form = document.getElementById('payment-form');
         const hiddenInput = document.createElement('input');
@@ -83,13 +91,6 @@ document.addEventListener("turbolinks:load", function() {
     }
 
     // Dynamically change the styles of an element
-window.addEventListener('resize', function(event) {
-    if (window.innerWidth <= 667) {
-      cardElement.update({style: {base: {fontSize: '26px'}}});
-    } else {
-      cardElement.update({style: {base: {fontSize: '26px'}}});
-    }
-  });
 
     // This may be something you remove
     // function determineCardType(card_number){

@@ -748,10 +748,5 @@ iframe.terms-of-service
     background: unset;
     border-style:unset;
   }
-
-  .StripeElement{
-    height: 70px;
-    font-size: 2em;
-  }
   
 }
