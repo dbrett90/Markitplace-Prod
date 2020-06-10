@@ -748,5 +748,8 @@ iframe.terms-of-service
     background: unset;
     border-style:unset;
   }
+  .flash{
+    font-size: 40px;
+  }
   
 }
