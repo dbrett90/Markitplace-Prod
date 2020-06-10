@@ -30,8 +30,8 @@ document.addEventListener("turbolinks:load", function() {
 
 
     const card = elements.create('card', { style });
-    window.addEventListener('load', function(event) {
-        if (window.innerWidth <= 667) {
+    screen.addEventListener('load', function(event) {
+        if (screen.innerWidth <= 667) {
           card.update({style: {base: {fontSize: '40px'}}});
         } else {
           card.update({style: {base: {fontSize: '16px'}}});
