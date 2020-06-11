@@ -1,4 +1,6 @@
 class StaticPagesController < ApplicationController
+  before_action :admin_user,     only: :stripe_partner_info
+  
   def home
   end
 
@@ -24,7 +26,7 @@ class StaticPagesController < ApplicationController
   def privacy_policy
   end
 
-  def stripe_id_info
+  def stripe_partner_info
     @stripe_users = StripeConnectUser.all
   end
 
@@ -38,6 +40,12 @@ class StaticPagesController < ApplicationController
     UserMailer.partners_contact_support(params[:partners][:partner_name], params[:partners][:partner_email], params[:partners][:partner_location], params[:partners][:partner_food_type],params[:partners][:partner_post_offering],params[:partners][:partner_analytics],params[:partners][:partner_brand_management]).deliver_now
     redirect_to partner_contact_url
     flash[:success] = "Your message has been received. We will be in contact shortly."
+  end
+
+
+  private
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
   end
 end
 
