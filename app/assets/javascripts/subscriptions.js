@@ -30,6 +30,7 @@ document.addEventListener("turbolinks:load", function() {
 
 
     const card = elements.create('card', { style });
+    //update size based on device
     window.addEventListener('turbolinks:load', function(event) {
         if (screen.width <= 667) {
           card.update({style: {base: {fontSize: '40px'}}});
@@ -37,17 +38,6 @@ document.addEventListener("turbolinks:load", function() {
           card.update({style: {base: {fontSize: '16px'}}});
         }
       });
-    // $(document).on('turbolinks:load', function(){
-    //     var windowWidth = document.documentElement.clientWidth;
-    //     console.log("Confirm")
-    //     console.log(windowWidth)
-    //     if (windowWidth <= 667) {
-    //         card.update({style: {base: {fontSize: '40px'}}});
-    //         // alert("This is a smaller value")
-    //     } else {
-    //         card.update({style: {base: {fontSize: '16px'}}});
-    //     }
-    // });
     //Need to check to see if the card exists elsewhere. Add this in at a later date.
     card.mount("#card-element");
 

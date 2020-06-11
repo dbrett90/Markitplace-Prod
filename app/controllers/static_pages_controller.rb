@@ -24,6 +24,10 @@ class StaticPagesController < ApplicationController
   def privacy_policy
   end
 
+  def stripe_id_info
+    @stripe_users = StripeConnectUser.all
+  end
+
   def create
     UserMailer.contact_support(params[:contact][:contact_name], params[:contact][:contact_email], params[:contact][:contact_how], params[:contact][:contact_help]).deliver_now
     redirect_to contact_url

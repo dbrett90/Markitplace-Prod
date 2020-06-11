@@ -1,0 +1,24 @@
+<div class = "container">
+    <div class="row">
+        <div class = "col-12 text-center"
+            <h1>Partner Account Lookup</h1>
+            <p>note that account numbers for stripe themselves are not compromsing</p>
+        </div> 
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Partner Email</th>
+                <th scope="col">Account ID </th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @stripe_users.each do |user| %>
+                <tr>
+                    <td><%= user.stripe_email %></td>
+                    <td><%= user.stripe_id %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
