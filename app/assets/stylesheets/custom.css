@@ -77,7 +77,7 @@ input[type=checkbox]
 
 .test-stack[data-count]:after{
   position:absolute;
-  right: 1.75%;
+  right: 2%;
   top: 15%;
   content: attr(data-count);
   font-size:40%;
