@@ -38,10 +38,10 @@ document.addEventListener("turbolinks:load", function() {
     //     }
     //   });
     $(document).on('turbolinks:load', function(){
-        var windowWidth = $(screen).width();
+        var windowWidth = document.documentElement.clientWidth;
         console.log("Confirm")
         console.log(windowWidth)
-        if (windowWidth <= 667) {
+        if (windowWidth <= 700) {
             card.update({style: {base: {fontSize: '40px'}}});
         } else {
             card.update({style: {base: {fontSize: '16px'}}});
