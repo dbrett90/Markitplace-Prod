@@ -43,8 +43,10 @@ document.addEventListener("turbolinks:load", function() {
         console.log(windowWidth)
         if (windowWidth <= 700) {
             card.update({style: {base: {fontSize: '40px'}}});
+            alert("This is a smaller value")
         } else {
             card.update({style: {base: {fontSize: '16px'}}});
+            alert("This is a test")
         }
     });
     //Need to check to see if the card exists elsewhere. Add this in at a later date.
