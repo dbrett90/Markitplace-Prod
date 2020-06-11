@@ -754,5 +754,9 @@ iframe.terms-of-service
   .mobile-hide{
     display: none;
   }
+
+  .strong-mobile{
+    font-weight: 500;
+  }
   
 }
