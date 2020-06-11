@@ -46,7 +46,6 @@ document.addEventListener("turbolinks:load", function() {
             alert("This is a smaller value")
         } else {
             card.update({style: {base: {fontSize: '16px'}}});
-            alert("This is a test")
         }
     });
     //Need to check to see if the card exists elsewhere. Add this in at a later date.
