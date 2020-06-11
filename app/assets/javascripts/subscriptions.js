@@ -37,7 +37,7 @@ document.addEventListener("turbolinks:load", function() {
     //       card.update({style: {base: {fontSize: '16px'}}});
     //     }
     //   });
-    $(document).on('turbolinks:load', function(){
+    $(document).on('scroll', function(){
         var windowWidth = $(window).width();
         console.log("TEST")
         if (windowWidth <= 667) {
