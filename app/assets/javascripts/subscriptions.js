@@ -38,7 +38,7 @@ document.addEventListener("turbolinks:load", function() {
     //     }
     //   });
     $(document).on('turbolinks:load', function(){
-        var windowWidth = $(window).width();
+        var windowWidth = $(screen).width();
         console.log("Confirm")
         console.log(windowWidth)
         if (windowWidth <= 667) {
