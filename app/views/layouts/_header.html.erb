@@ -16,10 +16,15 @@
                                 <%= link_to "View Plans", plan_types_path, class: "dropdown-item nav-link nav-text-mobile" %>
                                 <%= link_to "View Products", products_path, class: "dropdown-item nav-link nav-text-mobile" %>
                                 <%= link_to "View One Offs", one_off_products_path, class: "dropdown-item nav-link nav-text-mobile" %>
-                                <%= link_to "View Partner Info", partner_logos_path, class: "dropdown-item nav-link nav-text-mobile" %>
                                 <%= link_to "Add Plan", new_plan_type_path, class: "dropdown-item nav-link nav-text-mobile" %>
                                 <%= link_to "Add Product", new_product_path, class: "dropdown-item nav-link nav-text-mobile" %> 
                                 <%= link_to "Add One Off", new_one_off_product_path, class: "dropdown-item nav-link nav-text-mobile" %>
+                            </div>
+                        </li> 
+                        <li class= "nav-item dropdown" data-turbolinks="false">
+                            <a href="#" class="nav-link nav-text-mobile dropdown-toggle" id="navbarDropdown" style="color:black" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  data-turbolinks="false">Partner Info</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <%= link_to "View Partner Info", partner_logos_path, class: "dropdown-item nav-link nav-text-mobile" %>
                                 <%= link_to "Add Partner Info", new_partner_logo_path, class: "dropdown-item nav-link nav-text-mobile" %>
                                 <%= link_to "Stripe - Partners", stripe_partners_path, class: "dropdown-item nav-link nav-text-mobile" %>
                             </div>
