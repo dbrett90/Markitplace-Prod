@@ -26,7 +26,7 @@
                             <div class="d-flex flex-column card-body text-center">
                                 <h5 class="card-title text-center title-card-mobile"> <%= one_off_product.name %></h5>
                                 <h6 class="text-center title-mobile">$<%= one_off_product.price %></h6>
-                                <h6 class="card-subtitle mb-2 text-muted text-center subtitle-description-mobile"> <%= one_off_product.description %></h6>
+                                <h6 class="card-subtitle mb-2 text-center subtitle-description-mobile" style="color:green"> <%= one_off_product.description %></h6>
                                 <% if logged_in? %>
                                     <% if current_user.admin? %>
                                         <%= link_to "More Info", one_off_product_path(one_off_product), class:" mt-auto btn btn-success btn-mobile" %>
