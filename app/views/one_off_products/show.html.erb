@@ -69,7 +69,11 @@
       <% end %>
       <div class= "row align-items-center text-center">
         <div class = "col-12 col-lg-8">
-            <p class="description-text subtitle-description-mobile"> <%= @one_off_product.extended_description %></p>
+            <% if @one_off_product.extended_description != nil %>
+              <p class="description-text subtitle-description-mobile"> <%= @one_off_product.extended_description %></p>
+            <% else %>
+              <p class="description-text subtitle-description-mobile"> <%= @one_off_product.description %></p>
+            <% end %>
         </div>
         <div class = "col-12 col-lg-4 pb-3 text-center align-items-center text-center">
           <% if logged_in? %>
