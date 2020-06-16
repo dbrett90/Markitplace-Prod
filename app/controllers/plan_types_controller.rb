@@ -72,7 +72,7 @@ class PlanTypesController < ApplicationController
    respond_to do |format|
      if @plan_type.save
        flash[:success] = params
-       format.html { redirect_to plan-types_path, success: 'PLAN TYPE was successfully created.' }
+       format.html { redirect_to plan_types_path, success: 'PLAN TYPE was successfully created.' }
        format.json { render :index, status: :created, location: @plan_type }
        flash[:warning] = "Make sure you update the credentials file with plan ID"
       # @plan_type.plan_type_id = stripe_plan.id
