@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-  get '/plan-types', to: 'plan_types#index'
+  # get '/plan-types', to: 'plan_types#index'
   get '/mealkits', to: 'products#index'
   get '/additional-products', to: 'one_off_products#index'
   get '/partners', to: 'partner_logos#index'
