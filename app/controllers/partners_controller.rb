@@ -14,7 +14,7 @@ class PartnersController < ApplicationController
 
     private
     def find_one_off_by_name(item)
-        # item.gsub!('-', " ")
+        item.gsub!('-', " ")
         OneOffProduct.where(:partner_name.downcase => item)
     end
 
