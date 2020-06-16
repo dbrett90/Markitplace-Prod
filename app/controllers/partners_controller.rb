@@ -8,12 +8,13 @@ class PartnersController < ApplicationController
         name_downcase = params[:name].downcase
         flash[:success] = name_downcase
         @one_off = find_one_off_by_name(name_downcase)
-        flash[:danger] = @one_off.name
+        flash[:danger] = @one_off.price
+        flash[:warning] = @one_off
     end
 
     private
     def find_one_off_by_name(item)
-        item.gsub!('-', " ")
+        # item.gsub!('-', " ")
         OneOffProduct.where(:name.downcase => item)
     end
 
