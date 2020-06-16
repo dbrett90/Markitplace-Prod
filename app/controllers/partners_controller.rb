@@ -19,12 +19,10 @@ class PartnersController < ApplicationController
 
     private
     def find_one_off_by_name(item)
-        item = item.gsub!('-', " ")
         OneOffProduct.where("partner_name ILIKE ?", item)
     end
 
     def find_plan_type_by_name(item)
-        item = item.gsub!('-', " ")
         PlanType.where("partner_name ILIKE ?", item)
     end
 end
