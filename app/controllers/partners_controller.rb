@@ -15,7 +15,7 @@ class PartnersController < ApplicationController
     private
     def find_one_off_by_name(item)
         item.gsub!('-', " ")
-        OneOffProduct.where(:partner_name=> item)
+        OneOffProduct.where(:partner_name => item)
     end
 
     def find_plan_type_by_name(item)
