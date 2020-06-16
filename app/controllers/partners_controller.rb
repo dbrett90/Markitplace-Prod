@@ -7,13 +7,13 @@ class PartnersController < ApplicationController
     def show
         name_downcase = params[:name].downcase
         # flash[:success] = name_downcase
-        if name_downcase.include? "-"
+        if name_downcase.include?("-")
             name_downcase = name_downcase.gsub!('-', " ")
         end
         @name = name_downcase
-        # flash[:success] = @name
+        flash[:success] = params
         @one_off_products = find_one_off_by_name(name_downcase)
-        #flash[:danger] = @one_off.price
+        flash[:danger] = name_downcase
         # flash[:warning] = @one_offs.length
     end
 
