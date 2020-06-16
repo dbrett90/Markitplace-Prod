@@ -8,7 +8,7 @@ class PartnersController < ApplicationController
         name_downcase = params[:name].downcase
         flash[:success] = name_downcase
         @one_off = find_one_off_by_name(name_downcase)
-        flash[:danger] = @one_off.price
+        #flash[:danger] = @one_off.price
         flash[:warning] = @one_off
     end
 
@@ -20,6 +20,6 @@ class PartnersController < ApplicationController
 
     def find_plan_type_by_name(item)
         item.gsub!('-', " ")
-        PlanType.where(:partner_name.downcase => item)
+        PlanType.where(:partner_name => item)
     end
 end
