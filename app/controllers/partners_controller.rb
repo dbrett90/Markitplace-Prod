@@ -9,7 +9,7 @@ class PartnersController < ApplicationController
         flash[:success] = name_downcase
         @one_off = find_one_off_by_name(name_downcase)
         #flash[:danger] = @one_off.price
-        flash[:warning] = @one_off
+        flash[:warning] = @one_off.name
     end
 
     private
