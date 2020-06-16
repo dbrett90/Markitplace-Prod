@@ -6,10 +6,11 @@ class PartnersController < ApplicationController
 
     def show
         name_downcase = params[:name].downcase
-        flash[:success] = name_downcase
-        @one_offs = find_one_off_by_name(name_downcase)
+        # flash[:success] = name_downcase
+        @name = params[:name]
+        @one_off_products = find_one_off_by_name(name_downcase)
         #flash[:danger] = @one_off.price
-        flash[:warning] = @one_offs.length
+        # flash[:warning] = @one_offs.length
     end
 
     private
