@@ -11,9 +11,9 @@ class PartnersController < ApplicationController
             name_downcase = name_downcase.gsub!('-', " ")
         end
         @name = name_downcase
-        flash[:success] = params
+        # flash[:success] = params
         @one_off_products = find_one_off_by_name(name_downcase)
-        flash[:danger] = name_downcase
+        # flash[:danger] = name_downcase
         # flash[:warning] = @one_offs.length
     end
 
