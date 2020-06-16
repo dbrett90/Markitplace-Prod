@@ -15,11 +15,11 @@ class PartnersController < ApplicationController
     private
     def find_one_off_by_name(item)
         # item.gsub!('-', " ")
-        OneOffProduct.where(:name.downcase => item)
+        OneOffProduct.where(:partner_name.downcase => item)
     end
 
     def find_plan_type_by_name(item)
         item.gsub!('-', " ")
-        PlanType.where(:name => item)
+        PlanType.where(:partner_name.downcase => item)
     end
 end
