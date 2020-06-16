@@ -8,11 +8,10 @@ class PartnersController < ApplicationController
         name_downcase = params[:name].downcase
         # flash[:success] = name_downcase
         if name_downcase.include? "-"
-            @name = name_downcase.gsub!('-', " ")
-        else
-            @name = name_downcase
+            name_downcase = name_downcase.gsub!('-', " ")
         end
-        flash[:success] = @name
+        @name = name_downcase
+        # flash[:success] = @name
         @one_off_products = find_one_off_by_name(name_downcase)
         #flash[:danger] = @one_off.price
         # flash[:warning] = @one_offs.length
