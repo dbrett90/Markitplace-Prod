@@ -18,6 +18,7 @@ class PartnersController < ApplicationController
     end
 
     private
+    #ILIKE is crucial for case-insensitive search
     def find_one_off_by_name(item)
         OneOffProduct.where("partner_name ILIKE ?", item)
     end
