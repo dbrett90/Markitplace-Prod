@@ -28,8 +28,10 @@ class PlanTypesController < ApplicationController
  end
 
  def show
-  @products = @plan_type.products
-  @extended_list = parse_extended_field(@plan_type)
+
+  #Note that the code below is for the old way of showing products.
+  # @products = @plan_type.products
+  # @extended_list = parse_extended_field(@plan_type)
   # @products = Product.all
   # flash[:danger] = @products.count
  end
@@ -48,13 +50,15 @@ class PlanTypesController < ApplicationController
     Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
 
     @plan_type = current_user.plan_types.build(plan_type_params)
-    @products = Product.all 
-    @products.each do |product|
-      if product.plan_type_name.downcase == @plan_type.name.downcase 
-        product.plan_type = @plan_type 
-        @plan_type.products << product
-      end
-    end
+
+    #Code below is for the old way of showing a subscription model.
+    # @products = Product.all 
+    # @products.each do |product|
+    #   if product.plan_type_name.downcase == @plan_type.name.downcase 
+    #     product.plan_type = @plan_type 
+    #     @plan_type.products << product
+    #   end
+    # end
     stripe_plan = Stripe::Plan.create({
         #Might need to include a pricing input value here so it's dynamic and not hard-coded.
         #Also need to figure out what the billing period for this would be.
@@ -92,12 +96,13 @@ class PlanTypesController < ApplicationController
  def update
   Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
   @products = Product.all 
-  @products.each do |product|
-    if product.plan_type_name.downcase == @plan_type.name.downcase 
-      product.plan_type = @plan_type 
-      @plan_type.products << product
-    end
-  end
+  #Old code for showing
+  # @products.each do |product|
+  #   if product.plan_type_name.downcase == @plan_type.name.downcase 
+  #     product.plan_type = @plan_type 
+  #     @plan_type.products << product
+  #   end
+  # end
     respond_to do |format|
       if @plan_type.update(plan_type_params)
         flash[:success] = params

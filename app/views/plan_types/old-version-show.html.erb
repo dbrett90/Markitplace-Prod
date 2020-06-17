@@ -1,0 +1,63 @@
+<% provide(:title, "Meal Kits") %>
+<div class="product-homepage">
+    <div class="product-homepage-2019">
+        <section class="jumbotron jumbotron-fluid slim-jumbotron-mobile" id='jumbotron-products'>
+          <div class="container">
+            <div class="row justify-content-end">
+              <div class="col-5 col-lg-5 justify-content-end" id="jumbo-textbox">
+                <h1 class="homepage-text shadow-underscore jumbo-maintext title-mobile">Food Products and Meal Kits sourced directly from small businesses</h1>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="container" id="product-offerings">
+            <div class="row ml-3 jusify-content-center align-items">
+                <div class = "col-12 text-center">
+                    <h2 class = " title-mobile"><%= @plan_type.name.upcase %></h2><br>
+                </div>
+                <%  @products.each do |product| %>
+                    <div class="col-11 col-lg-4 pb-3 d-flex align-items-stretch card-padding-mobile">
+                        <div class="card see-cooking card-width">
+                            <div class="d-none d-lg-block ribbon-wrapper">
+                                <div class="d-none d-lg-block ribbon green subtitle-description-mobile"> <%= product.plan_type_name %> </div>
+                            </div>
+                            <%= link_to product_path(product) do %>
+                                <%= image_tag product.thumbnail.variant(resize: "450x450"), class:"card-img-top hover-gray", alt: "Meal Kit Image" %>
+                                <div class="textOverlay justify-content-center text-center align-middle">
+                                    <div class="showText align-middle subtitle-description-mobile">More Info</div>
+                                </div>
+                            <% end %>
+                            <div class="card-body text-center card-body-mobile">
+                                <h5 class="card-title text-center title-card-mobile"> <%= product.name %></h5>
+                                <h6 class="card-subtitle mb-2 text-muted text-center subtitle-mobile"> <%= product.partner_name %></h6>
+                                <p class="card-text text-center subtitle-description-mobile" id="overwrite-card-text"> <%= product.calories %> Calories, <%= product.protein %>g Protein, <%= product.servings %> Servings, <%=product.fats %>gFats </p>
+                                <% if logged_in? %>
+                                    <% if current_user.admin? %>
+                                        <%= link_to "More Info", product_path(product), class:"btn btn-success btn-mobile" %>
+                                        <%= link_to "Edit Product", edit_product_path(product), class: "btn btn-warning btn-mobile" %>
+                                        <%= link_to 'Delete Product', product_path(product), data: {confirm: "Are you sure you want to delete this product?"}, method: :delete, class: "btn btn-danger btn-mobile" %>
+                                    <% end %>
+                                <% end %> 
+                            </div>
+                        </div>
+                    </div>       
+                <% end %>
+            </div>
+            <div class = "container-fluid pb-5 inline-block">
+                <div class = "col-12 text-center mx-auto">
+                    <h4 class="subtitle-mobile"> What's In This Meal Kit:</h5>
+                    <% @extended_list.each do |item| %>
+                        <p class="subtitle-description-mobile"><%=item %> </p>
+                    <% end %>
+                </div>
+                <div class = "col-12 text-center mx-auto">
+                    <% if logged_in? %>
+                        <%= link_to "ADD TO CART", add_subscription_to_cart_path(plan_type: @plan_type.name), class: "btn btn-success jumbo-button btn-mobile" %>
+                    <% else %>
+                        <%= link_to "GET STARTED", signup_path, class: "btn btn-success jumbo-button btn-mobile" %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
