@@ -12,6 +12,16 @@
 
     <%= f.number_field :price, class: "form-control", placeholder: "Plan Price", required: true %><br>
 
+    <%= f.number_field :prep_time, class: "form-control", placeholder: "Prep Time", required: true %><br>
+
+    <%= f.number_field :servings, class: "form-control", placeholder: "Servings", required: true %><br>
+
+    <%= f.number_field :calories, class: "form-control", placeholder: "Calories" %><br>
+
+    <%= f.number_field :protein, class: "form-control", placeholder: "Protein" %><br>
+
+    <%= f.number_field :fats, class: "form-control", placeholder: "Fats" %><br>
+
     <%= f.text_field :is_trial, class: 'form-control', placeholder: "Is this a trial? No app fee - answer yes or no", required: true %><br>
 
     <%= f.text_field :stripe_id, class: 'form-control', placeholder: "Stripe ID of Partner", required: true %><br>

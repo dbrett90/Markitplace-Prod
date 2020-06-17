@@ -175,7 +175,7 @@ class PlanTypesController < ApplicationController
    # Never trust parameters from the scary internet, only allow the white list through.
     #Update with User ID?
    def plan_type_params
-     params.require(:plan_type).permit(:name, :description, :extended_description, :city_delivery, :created_at, :updated_at, :stripe_id, :price, :is_trial, :thumbnail)
+     params.require(:plan_type).permit(:name, :description, :extended_description, :city_delivery, :created_at, :updated_at, :stripe_id, :price, :is_trial, :calories, :protein, :fats, :servings, :prep_time, :thumbnail)
    end
 
    def admin_user

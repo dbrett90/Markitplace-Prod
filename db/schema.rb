@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_15_005709) do
+ActiveRecord::Schema.define(version: 2020_06_17_143401) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -66,6 +66,9 @@ ActiveRecord::Schema.define(version: 2020_06_15_005709) do
     t.text "description"
   end
 
+  create_table "partners_tables", force: :cascade do |t|
+  end
+
   create_table "plan_subscription_libraries", force: :cascade do |t|
     t.integer "plan_type_id"
     t.integer "user_id"
@@ -87,6 +90,11 @@ ActiveRecord::Schema.define(version: 2020_06_15_005709) do
     t.text "city_delivery"
     t.string "is_trial"
     t.integer "cart_id"
+    t.integer "calories"
+    t.integer "protein"
+    t.integer "servings"
+    t.integer "fats"
+    t.integer "prep_time"
   end
 
   create_table "product_subscription_libraries", force: :cascade do |t|
