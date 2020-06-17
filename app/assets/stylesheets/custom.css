@@ -521,6 +521,11 @@ TOP WAS 33% */
   size: 2.0em;
 }
 
+.black-text{
+  color: black;
+  text-decoration: none;
+}
+
 /* GET RID OF ANNOYING OUTLINES */
 .btn:focus,.btn:active {
    outline: none !important;
