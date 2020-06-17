@@ -8,7 +8,7 @@
                     <%= link_to "Checkout", checkout_path, class: "btn btn-outline-success jumbo-button btn-mobile" %>
                 </div>
                 <%  @cart_items.each do |one_off_product| %>
-                    <div class="col-12 col-lg-4 pb-3 align-items-stretch card-padding-mobile">
+                    <div class="d-flex col-12 col-lg-4 pb-3 align-items-stretch card-padding-mobile">
                         <div class="card see-cooking card-width">
                             <%= link_to one_off_product_path(one_off_product) do %>
                                 <%= image_tag one_off_product.thumbnail.variant(resize: "450x450"), class:"card-img-top hover-gray", alt: "Meal Kit Plan Image" %>
@@ -26,7 +26,7 @@
                     </div>
                 <% end %>
                 <% @cart_items_subscriptions.each do |subscription| %>
-                    <div class="col-12 col-lg-4 pb-3 align-items-stretch card-padding-mobile">
+                    <div class="d-flex col-12 col-lg-4 pb-3 align-items-stretch card-padding-mobile">
                         <div class="card see-cooking card-width">
                             <%= link_to plan_type_path(subscription) do %>
                                 <%= image_tag subscription.thumbnail.variant(resize: "450x450"), class:"card-img-top hover-gray", alt: "Meal Kit Plan Image" %>
