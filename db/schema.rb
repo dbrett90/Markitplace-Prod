@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_17_143401) do
+ActiveRecord::Schema.define(version: 2020_06_18_004538) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 2020_06_17_143401) do
     t.integer "protein"
     t.integer "servings"
     t.integer "fats"
-    t.integer "prep_time"
+    t.string "prep_time"
   end
 
   create_table "product_subscription_libraries", force: :cascade do |t|
