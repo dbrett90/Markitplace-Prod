@@ -1,7 +1,7 @@
 class StripeConnectUserController < ApplicationController
 
     def new
-        Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
+        Stripe.api_key = Rails.application.credentials.production[:stripe_api_key]
         auth_code = params[:code]
         response = Stripe::OAuth.token({
           grant_type: 'authorization_code',
