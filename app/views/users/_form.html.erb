@@ -13,9 +13,9 @@
     <%= f.password_field :password_confirmation, class: 'form-control form-control-mobile', placeholder: "Password Confirmation",  required: true %><br>
 
     <%= f.label :thumbail do %>
-        <span class = 'field-label emphasis'> Avatar Image (Optional) </span><br>
+        <span class = 'field-label subtitle-mobile emphasis'> Avatar Image (Optional) </span><br>
     <% end %><br>
-    <%= f.file_field :thumbnail, multiple: false %> <br>
+    <%= f.file_field :thumbnail, class: "form-control-mobile", multiple: false %> <br>
     <br>
 
     <%= f.submit "Submit", class: "btn btn-success btn-block btn-mobile" %><br>
