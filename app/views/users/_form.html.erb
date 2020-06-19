@@ -4,13 +4,13 @@
     contain at least one uppercase character,
     one lowercase character & a symbol. </p>
 
-    <%= f.text_field :name, class: 'form-control form-control-mobile', placeholder: "Name" %><br>
+    <%= f.text_field :name, class: 'form-control form-control-mobile', placeholder: "Name",  required: true %><br>
 
-    <%= f.email_field :email, class: 'form-control form-control-mobile', placeholder: "Email" %><br>
+    <%= f.email_field :email, class: 'form-control form-control-mobile', placeholder: "Email",  required: true %><br>
 
-    <%= f.password_field :password, class: 'form-control form-control-mobile', placeholder: "Password" %><br>
+    <%= f.password_field :password, class: 'form-control form-control-mobile', placeholder: "Password",  required: true %><br>
 
-    <%= f.password_field :password_confirmation, class: 'form-control form-control-mobile', placeholder: "Password Confirmation" %><br>
+    <%= f.password_field :password_confirmation, class: 'form-control form-control-mobile', placeholder: "Password Confirmation",  required: true %><br>
 
     <%= f.label :thumbail do %>
         <span class = 'field-label emphasis'> Avatar Image (Optional) </span><br>
