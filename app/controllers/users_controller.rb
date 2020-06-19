@@ -43,6 +43,7 @@ class UsersController < ApplicationController
     end
   end
 
+
   #This is for the admin to destroy users - may need to change this at some point though. 
   def destroy
     User.find(params[:id]).destroy
@@ -72,7 +73,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password,
-                                 :password_confirmation)
+                                 :password_confirmation, :thumbnail)
   end
 
   def logged_in_user

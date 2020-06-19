@@ -1,31 +1,22 @@
 class SubscriptionsController < ApplicationController    
     def new
-        # flash[:danger] = params
         @plans = PlanType.all
-        # flash[:warning] = params
     end
 
-    #Need to add a mailer after an account has been created... ADD THIS IN
-    #But of an ugly controller - might need to change this to make it more concise
+    #Bit of an ugly controller - might need to change this to make it more concise
     def create
         #Make sure we change this to production when the time comes
         Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
 
-        #Retrieve plan detais
-        #Make sure that the credentials file has the appropriate plan_ids. Pulling this from PLATFORM account. Making sure we pull this info from connected account.
-        # plan_id = params[:plan_type_id]
-        # flash[:warning] = params
         plan_name = params[:plan_name]
         token = params[:stripeToken]
         #Let's add subscription value to the Library.
         subscription_plans = PlanType.all
 
-        #calling private function find_plan
         plan_type = find_plan(plan_name, subscription_plans)
         fee_value = dyanmic_app_fee(plan_type)
         plan_id = plan_type.plan_type_id
-        # flash[:success] = plan_type
-        # flash[:danger] = plan_id
+        
         plan = Stripe::Plan.retrieve(plan_id, {stripe_account: plan_type.stripe_id})
         connected_acct = plan_type.stripe_id
         zipcode_val = params[:payment_shipping][:zipcode]

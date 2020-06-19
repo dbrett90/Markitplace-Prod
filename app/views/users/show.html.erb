@@ -1,11 +1,17 @@
 <% provide(:title, @user.name) %>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-    </section>
-  </aside>
+<div class = "container justify-content-center">
+  <div class="row">
+    <div class="col-6 justify-content-center text-center">
+      <% if @user.thumbnail != nil %>
+        <%= image_tag(@user.thumbnail), class: "img-rounded img-fluid headshot-border hover-green", alt:"User Avatar") %>
+        <h3><%= @user.name %></h4>
+        <p>Email & username: <%= @user.email %></p>
+        <p>Account activated: <%= @user.created_at %></p>
+      <% else %>
+        <h3><%= @user.name %></h4>
+        <p>Email & username: <%= @user.email %></p>
+        <p>Account activated: <%= @user.created_at %></p>
+      <% end %>
+    </div>
+  </div>
 </div>
