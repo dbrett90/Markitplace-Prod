@@ -1,6 +1,9 @@
 <% provide(:title, @user.name) %>
 <div class = "container justify-content-center">
   <div class="row">
+    <div class = "col-3">
+    <span></span>
+    </div>
     <div class="col-6 justify-content-center text-center">
       <% if @user.thumbnail.attached? %>
         <%= image_tag(@user.thumbnail, class: "img-rounded img-fluid headshot-border hover-green", alt:"User Avatar") %>
