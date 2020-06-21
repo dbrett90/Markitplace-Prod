@@ -95,6 +95,7 @@ class UsersController < ApplicationController
   end
 
   def substring_parse(string)
+    string = string.to_s
     string_array = string.split(" ")
     return string_array[0]
   end
