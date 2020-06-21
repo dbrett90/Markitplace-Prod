@@ -4,12 +4,18 @@
     <div class = "col-4">
     <span></span>
     </div>
-    <div class="col-4 justify-content-center text-center border-shadow margin-nonmobile-right">
+    <div class="col-4 our-team-descr justify-content-center text-center border-shadow margin-nonmobile-right">
       <% if @user.thumbnail.attached? %>
-        <%= image_tag(@user.thumbnail, class: "img-rounded img-fluid headshot-border hover-green", alt:"User Avatar") %>
-        <h3><%= @user.name %></h4>
-        <p>Email & username: <%= @user.email %></p>
-        <p>Account activated: <%= @user.created_at %></p>
+        <span class="image-overlay">
+          <%= image_tag(@user.thumbnail, class: "img-rounded img-fluid headshot-border hover-green", alt:"User Avatar") %>
+          <div class="textOverlay>
+            <div class="showTextOurTeam">
+              <h3 class= "founder-description-mobile"><%= @user.name %></h4>
+              <p class="about-description-mobile">Email & username: <%= @user.email %></p>
+              <p class="about-description-mobile">Account activated: <%= @user.created_at %></p>
+            </div>
+          </div>
+        </span>
       <% else %>
         <h3><%= @user.name %></h4>
         <p>Email & username: <%= @user.email %></p>
