@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     redirect_to root_path and return unless @user.activated?
+    @created_at = substring_parse(@user.created_at)
   end
 
   def create
@@ -91,6 +92,11 @@ class UsersController < ApplicationController
 
   def admin_user
     redirect_to(root_url) unless current_user.admin?
+  end
+
+  def substring_parse(string)
+    string_array = string.split(" ")
+    return string_array[0]
   end
 
   
