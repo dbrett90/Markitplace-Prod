@@ -12,3 +12,11 @@
           </span>
         </div>
       </div>
+    
+
+      <%= form_for(:quantity, url: one_off_product_path) do |f| %>
+        <%= f.label :quantity, class: 'field-label emphasis contact-form-item-mobile' do %>
+          <span class = 'field-label emphasis'> Quantity </span>
+        <% end %>
+        <%= f.number_field :quantity, class: 'form-control form-control-mobile', placeholder: "1" %><br>
+      <% end %>

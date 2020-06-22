@@ -77,12 +77,6 @@
         </div>
         <div class = "col-12 col-lg-4 pb-3 text-center align-items-center text-center">
           <% if logged_in? %>
-            <%= form_for(:quantity, url: one_off_product_path) do |f| %>
-              <%= f.label :quantity, class: 'field-label emphasis contact-form-item-mobile' do %>
-                <span class = 'field-label emphasis'> Quantity </span>
-              <% end %>
-              <%= f.number_field :quantity, class: 'form-control form-control-mobile', placeholder: "1" %><br>
-            <% end %>
             <%= link_to 'ADD TO CART', add_to_cart_path(one_off_product: @one_off_product.name), class: "btn btn-outline-success jumbo-button btn-mobile" %>
           <% else %>
             <%= link_to 'START COOKING', new_user_path, class:"btn btn-outline-success jumbo-button btn-mobile" %>
