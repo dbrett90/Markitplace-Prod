@@ -4,8 +4,8 @@
     <div class = "col-4">
     <span></span>
     </div>
+    <h1 class = "pb-2"> Account Information </h1>
     <div class="col-4 our-team-descr justify-content-center text-center border-shadow margin-nonmobile-right">
-      <h1 class = "pb-2"> Account Information </h1>
       <% if @user.thumbnail.attached? %>
         <span class="image-overlay">
           <%= image_tag(@user.thumbnail, class: "img-rounded img-fluid headshot-border hover-green", alt:"User Avatar") %>
