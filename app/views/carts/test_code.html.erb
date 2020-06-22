@@ -9,3 +9,11 @@
         </div>
     </div>
 <% end %>
+
+<%= form_for(:product_name, url: cart_path), html: {id: "quantity-form"}) do |f| %>
+    <%= f.label :quantity, class: 'field-label emphasis contact-form-item-mobile' do %>
+        <span class = 'field-label emphasis'> Quantity </span>
+    <% end %>
+    <%= f.number_field :quantity, class: 'form-control form-control-mobile', placeholder: "Quantity" %><br>
+<% end %>
+<%= f.number_field :quantity, class: 'form-control form-control-mobile', placeholder: "Zipcode" %><br>

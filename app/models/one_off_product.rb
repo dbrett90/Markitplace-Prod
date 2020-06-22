@@ -6,6 +6,10 @@ class OneOffProduct < ApplicationRecord
     #belongs_to :user, through: :cart
     has_many :carts
     has_many :users, through: :carts
+    #See if this works
+    has_many :quantities
+    #For the quantity - need a nested attribute?
+    #accepts_nested_attributes_for :brands
     #Again what you're doing here is linking each product to a user 
     #via the subscription libraries. Can think of it as a massive join. 
     #may need to rethink the relationship between product and subscription libraries

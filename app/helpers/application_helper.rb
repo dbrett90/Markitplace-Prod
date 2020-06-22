@@ -18,6 +18,7 @@ module ApplicationHelper
   end
 
   #Implement 9+ as according to Sof
+  #Modified for new users so that cart shows 0 when they first log on
   def get_cart_length
     if current_user.cart == nil
       return 0

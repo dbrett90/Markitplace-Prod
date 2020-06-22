@@ -1,5 +1,6 @@
 class CartsController < ApplicationController
 
+    #Need to build in code to modify the number of items you want in a cart
     def checkout
         @cart_items = current_user.cart.one_off_products
         @cart_items_subscriptions = current_user.cart.plan_types
@@ -27,7 +28,7 @@ class CartsController < ApplicationController
     def add_to_cart
         item = params[:one_off_product]
         one_off = find_one_off_by_name(item)
-        # flash[:danger] = item
+        flash[:danger] = params[:quantity]
         if cart_not_created?
             # empty_cart = Cart.create(products: [])
             testCart = Cart.new()
@@ -63,6 +64,9 @@ class CartsController < ApplicationController
         # flash[:danger] = params
         redirect_to plan_types_path
 
+    end
+
+    def update_quantity
     end
 
     def destroy

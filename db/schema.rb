@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_18_004538) do
+ActiveRecord::Schema.define(version: 2020_06_22_185613) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -118,6 +118,10 @@ ActiveRecord::Schema.define(version: 2020_06_18_004538) do
     t.integer "fats"
     t.integer "user_id"
     t.integer "plan_type_id"
+  end
+
+  create_table "quantities", force: :cascade do |t|
+    t.integer "quantity"
   end
 
   create_table "stripe_connect_users", force: :cascade do |t|

@@ -5,6 +5,7 @@ class PlanType < ApplicationRecord
     has_one_attached :thumbnail
     has_many :carts
     has_many :users, through: :carts
+    # has_one :quantity
 
     #This is for linking and then showing those plans
     #Again what you're doing here is linking each product to a user 
