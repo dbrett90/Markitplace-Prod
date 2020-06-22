@@ -19,19 +19,23 @@ module ApplicationHelper
 
   #Implement 9+ as according to Sof
   def get_cart_length
-    one_offs = current_user.cart.one_off_products.length
-    subscriptions = current_user.cart.plan_types.length
-    if one_offs == nil
-      one_offs = 0
+    if current_user.cart == nil
+      return 0
+    else
+      one_offs = current_user.cart.one_off_products.length
+      subscriptions = current_user.cart.plan_types.length
+      if one_offs == nil
+        one_offs = 0
+      end
+      if subscriptions == nil
+        subscriptions = 0
+      end
+      sum = one_offs + subscriptions
+      if sum > 9
+        sum = "9+"
+        return sum
+      end
+      sum.to_s
     end
-    if subscriptions == nil
-      subscriptions = 0
-    end
-    sum = one_offs + subscriptions
-    if sum > 9
-      sum = "9+"
-      return sum
-    end
-    sum.to_s
   end  
 end
