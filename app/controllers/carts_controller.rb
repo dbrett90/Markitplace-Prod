@@ -28,7 +28,7 @@ class CartsController < ApplicationController
     def add_to_cart
         item = params[:one_off_product]
         one_off = find_one_off_by_name(item)
-        flash[:danger] = one_off.out_of_stock
+        flash[:danger] = one_off.name
         # if one_off.out_of_stock.downcase == "yes"
         #     flash[:warning] = "Unfortunately this item is out of stock. Please try another!"
         #     redirect_to one_off_products_path
