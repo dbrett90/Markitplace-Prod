@@ -81,9 +81,9 @@
                 <%= f.label :quantity, class: 'field-label emphasis contact-form-item-mobile' do %>
                 <span class = 'field-label emphasis'> Quantity </span>
                 <% end %>
-                <%= f.number_field :quantity, class: 'form-control form-control-mobile', placeholder: "1" %><br>
+                <%= f.number_field :quantity, class: 'form-control form-control-mobile', placeholder: "1" %>
                 <%= hidden_field_tag(:one_off_product, @one_off_product.name) %>
-                <%= f.submit "ADD TP CART", class: "btn btn-outline-success jumbo-button mt-2 btn-mobile" %><br>
+                <%= f.submit "ADD TO CART", class: "btn btn-outline-success jumbo-button mt-2 btn-mobile" %><br>
             <% end %>
           <% else %>
             <%= link_to 'START COOKING', new_user_path, class:"btn btn-outline-success jumbo-button btn-mobile" %>
