@@ -67,6 +67,7 @@ class CartsController < ApplicationController
 
     def post_add_to_cart
         flash[:danger] = params
+        flash[:warning] = params[:one_off_product]
         redirect_to test_path
     end
 
