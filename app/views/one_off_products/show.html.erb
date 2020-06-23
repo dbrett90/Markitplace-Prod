@@ -77,7 +77,7 @@
         </div>
         <div class = "col-12 col-lg-4 pb-3 text-center align-items-center text-center">
           <% if logged_in? %>
-            <%= form_for(:quantity, url: one_off_product_path) do |f| %>
+            <%= form_for(:quantity, url: add_to_cart_path) do |f| %>
               <%= f.label :quantity, class: 'field-label emphasis contact-form-item-mobile' do %>
                 <span class = 'field-label emphasis'> Quantity </span>
               <% end %>
