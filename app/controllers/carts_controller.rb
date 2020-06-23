@@ -28,11 +28,11 @@ class CartsController < ApplicationController
     def add_to_cart
         item = (params[:one_off_product]).downcase
         one_off = find_one_off(item)
-        flash[:danger] = one_off.out_of_stock
-        # if one_off.out_of_stock.downcase == "yes"
-        #     flash[:warning] = "Unfortunately this item is out of stock. Please try another!"
-        #     redirect_to one_off_products_path
-        # else
+        #flash[:danger] = one_off.out_of_stock
+        if one_off.out_of_stock.downcase == "yes"
+            flash[:warning] = "Unfortunately this item is out of stock. Please try another!"
+            redirect_to one_off_products_path
+        else
             if cart_not_created?
                 # empty_cart = Cart.create(products: [])
                 testCart = Cart.new()
@@ -47,7 +47,7 @@ class CartsController < ApplicationController
             flash[:success] = "Item has been added to your shopping cart!"
             # flash[:danger] = params
             redirect_to one_off_products_path
-        # end
+        end
     end
 
     def add_to_cart_subscription
