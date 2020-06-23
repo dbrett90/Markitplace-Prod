@@ -8,6 +8,10 @@ class OneOffProductsController < ApplicationController
         @one_off_products = OneOffProduct.all
     end
 
+    def test_item
+        @one_off_product = OneOffProduct.find(13)
+    end
+
     def new
         @one_off_product = current_user.one_off_products.build
     end
