@@ -67,23 +67,24 @@ class CartsController < ApplicationController
 
     def post_add_to_cart
         item = (params[:one_off_product]).downcase
+        quantity = params[:quantity].to_i
         one_off = find_one_off(item)
-        flash[:danger] = params[:quantity]
-        flash[:warning] = params[:one_off_product]
         if one_off.out_of_stock == nil
             if cart_not_created?
                 # empty_cart = Cart.create(products: [])
                 testCart = Cart.new()
                 current_user.cart = testCart
                 current_user.cart.one_off_products << one_off
+                one_off.quantity = quantity
                 # flash[:warning]= "Went through the right way"
             else
                 current_user.cart.one_off_products << one_off
+                one_off.quantity = quantity
                 # flash[:warning] = "Adding Item!"
             end
             current_user.cart.save
             flash[:success] = "Item has been added to your shopping cart!"
-            # flash[:danger] = params
+            flash[:danger] = one_off.quantity
             redirect_to one_off_products_path
         elsif one_off.out_of_stock.downcase == "yes"
             flash[:warning] = "Unfortunately this item is out of stock. Please try another!"
