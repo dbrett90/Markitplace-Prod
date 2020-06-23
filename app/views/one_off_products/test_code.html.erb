@@ -20,3 +20,5 @@
         <% end %>
         <%= f.number_field :quantity, class: 'form-control form-control-mobile', placeholder: "1" %><br>
       <% end %>
+
+      <%= link_to 'ADD TO CART', add_to_cart_path(one_off_product: @one_off_product.name), class: "btn btn-outline-success jumbo-button btn-mobile" %>
