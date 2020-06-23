@@ -67,7 +67,7 @@ class CartsController < ApplicationController
 
     def post_add_to_cart
         flash[:danger] = params
-        redirect to test_path
+        redirect_to test_path
     end
 
     def add_to_cart_subscription
