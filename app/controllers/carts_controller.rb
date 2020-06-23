@@ -28,7 +28,7 @@ class CartsController < ApplicationController
     def add_to_cart
         item = (params[:one_off_product]).downcase
         one_off = find_one_off(item)
-        flash[:danger] = params
+        flash[:danger] = params[:quantity]
         if one_off.out_of_stock == nil
             if cart_not_created?
                 # empty_cart = Cart.create(products: [])
