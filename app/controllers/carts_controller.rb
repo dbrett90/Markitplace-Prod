@@ -111,7 +111,7 @@ class CartsController < ApplicationController
     def post_destroy
         product_id = params[:product_id]
         product_type = params[:product_type]
-        line_item = line_items.where(product_id: product_id).where(product_type: product_type)
+        line_item = LineItems.where(product_id: product_id).where(product_type: product_type)
         current_user.cart.line_items.delete(line_item)
         redirect_to test_index_path
     end
