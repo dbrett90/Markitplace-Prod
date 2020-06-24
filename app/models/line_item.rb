@@ -1,4 +1,4 @@
-class Cart < ApplicationRecord
+class LineItem < ApplicationRecord
     belongs_to :cart
     has_many :one_off_products
     has_many :plan_types
