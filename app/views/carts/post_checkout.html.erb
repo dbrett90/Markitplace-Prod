@@ -16,6 +16,7 @@
                         <div class = "col-12 col-lg-6">
                             <h5><%= item.name %></h5>
                             <p> <%= item.description %></p>
+                            <p><% = line_item.quantity %></p>
                         </div>
                     </div>
                 <% else %>
@@ -33,7 +34,7 @@
             <% end %>
         </div>
         <div class= "col-12 col-lg-6 checkout-header">
-          <%= form_for(:payment_shipping, url: post_checkout_path, html: {id: "payment-form"}) do |f| %>
+          <%= form_for(:payment_shipping, url: test_checkout_path, html: {id: "payment-form"}) do |f| %>
             <div class="shipping-information">
               <h1 class="title-mobile">Shipping Information</h1>
               <%= f.label :recipient_name, class: 'field-label emphasis contact-form-item-mobile' do %>
