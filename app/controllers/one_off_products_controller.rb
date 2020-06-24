@@ -5,7 +5,7 @@ class OneOffProductsController < ApplicationController
 
     def index
         #Show all the one-offs
-        @one_off_products = OneOffProduct.all
+        @one_off_products = OneOffProduct.order(:out_of_stock)
     end
 
     def test_item
