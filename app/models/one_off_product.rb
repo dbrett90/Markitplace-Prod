@@ -7,7 +7,7 @@ class OneOffProduct < ApplicationRecord
     has_many :carts
     has_many :users, through: :carts
     #See if this works
-    has_many :quantities
+    #has_many :quantities
     #Try Line Items
     has_many :line_items
     #For the quantity - need a nested attribute?
