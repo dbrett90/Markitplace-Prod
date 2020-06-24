@@ -4,6 +4,6 @@ class Cart < ApplicationRecord
     has_many :plan_types
     serialize :products, Array
     # #Proper Checkout - institute checkout?
-    # has_many :line_items
+    has_many :line_items
 
 end

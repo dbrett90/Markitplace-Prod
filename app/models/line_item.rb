@@ -1,5 +1,6 @@
 class LineItem < ApplicationRecord
-    belongs_to :cart
+    has_many :carts
+    has_many :users, through: :carts
     has_many :one_off_products
     has_many :plan_types
     # serialize :products, Array
