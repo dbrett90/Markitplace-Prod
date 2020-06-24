@@ -20,7 +20,7 @@
                         </div>
                     </div>
                 <% else %>
-                    <% item = find_plan_type_by_id(line_item.id) %>
+                    <% item = find_plan_type_by_id(line_item.product_id) %>
                     <div class = "row pb-3 mobile-hide">
                         <div class = "col-12 col-lg-6">
                             <%= image_tag item.thumbnail.variant(resize: "450x450"), class: "img-fluid" %>
