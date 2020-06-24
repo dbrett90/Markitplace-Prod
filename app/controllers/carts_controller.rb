@@ -75,7 +75,8 @@ class CartsController < ApplicationController
                 testCart = Cart.new()
                 current_user.cart = testCart
                 current_user.cart.one_off_products << one_off
-                one_off.quantity = quantity
+                testQuantity = Quantity.new()
+                one_off.quantity = testQuantity
                 # flash[:warning]= "Went through the right way"
             else
                 current_user.cart.one_off_products << one_off

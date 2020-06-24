@@ -8,6 +8,8 @@ class OneOffProduct < ApplicationRecord
     has_many :users, through: :carts
     #See if this works
     has_many :quantities
+    #Try Line Items
+    has_many :line_items
     #For the quantity - need a nested attribute?
     #accepts_nested_attributes_for :brands
     #Again what you're doing here is linking each product to a user 
