@@ -123,7 +123,7 @@ class CartsController < ApplicationController
 
     def post_complete_checkout
         #Make sure we change this to production when the time comes
-        Stripe.api_key = Rails.application.credentials.production[:stripe_api_key]
+        Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
         @cart_items = current_user.cart.line_items
         token = params[:stripeToken]
 
