@@ -67,7 +67,7 @@ class CartsController < ApplicationController
 
     def post_add_to_cart
         item_id = params[:one_off_product]
-        quantity = (params[:quantity]).to_i
+        quantity = params[:quantity]
         one_off = find_one_off_by_id(item_id)
         if one_off.out_of_stock == nil
             if cart_not_created?
