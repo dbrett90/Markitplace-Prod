@@ -374,6 +374,7 @@ class CartsController < ApplicationController
     def find_one_off_by_id(id)
         OneOffProduct.find(id)
     end
+    helper_method :find_one_off_by_id
 
     def find_plan_type_by_name(item)
         PlanType.where(:name => item)
