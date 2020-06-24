@@ -7,8 +7,8 @@
                     <h1 class = "title-larger-mobile">Your Cart </h1><br>
                     <%= link_to "Checkout", checkout_path, class: "btn btn-outline-success jumbo-button btn-mobile" %>
                 </div>
-                <%  @cart_items.each do |one_off_product_id.product_id| %>
-                    <% one_off_product = find_one_off_by_id(one_off_product_id) %>
+                <%  @cart_items.each do |line_item| %>
+                    <% one_off_product = find_one_off_by_id(line_item.product_id) %>
                     <div class="d-flex col-12 col-lg-4 pb-3 align-items-stretch card-padding-mobile">
                         <div class="card see-cooking card-width">
                             <%= link_to one_off_product_path(one_off_product) do %>
@@ -21,7 +21,6 @@
                                 <h5 class="card-title text-center title-card-mobile"> <%= one_off_product.name %></h5>
                                 <h6 class="text-center title-mobile">$<%= one_off_product.price %></h6>
                                 <h6 class="card-subtitle mb-2 text-muted text-center subtitle-description-mobile pb-2"> <%= one_off_product.description %></h6>
-                                <%= link_to "Remove from Cart", cart_path(one_off_product: one_off_product.name), data: {confirm: "Are you sure you want to remove this from our cart?"}, method: :delete, class: "btn btn-danger btn-mobile mt-auto" %> 
                             </div>
                         </div>
                     </div>
