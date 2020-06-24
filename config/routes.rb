@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   delete '/test', to: 'carts#post_destroy'
   get '/test-index', to:'carts#post_index'
   get '/test-checkout', to: 'carts#post_checkout'
+  post '/test-checkout', to: 'carts#post_complete_checkout'
   get '/home-signup-successful', to: 'stripe_connect_user#new'
   get '/our-team', to: 'static_pages#our_team'
   get '/add-to-cart', to: 'carts#add_to_cart'
