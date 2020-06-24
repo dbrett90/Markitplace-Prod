@@ -116,6 +116,11 @@ class CartsController < ApplicationController
         redirect_to test_index_path
     end
 
+    def post_checkout
+        @cart_line_items = current_user.cart.line_items
+        @total_price = sum_line_item_price(current_user.cart.line_items)
+    end
+
     def add_to_cart_subscription
         item = params[:plan_type]
         plan_type = find_plan_type_by_name(item)
@@ -406,6 +411,21 @@ class CartsController < ApplicationController
             sum_price += item.price 
         end
         return sum_price
+    end
+
+    def sum_line_item_price(line_items)
+        sum_price = 0
+        line_items.each do |line_item|
+            #Parameterize One Off Product? Spelling issue here breaks everything
+            if line_item.product_type == "One Off Product"
+                one_off = OneOffProduct.find(line_item.product_id)
+                sum_price += one_off.price
+            else
+                subscription = PlanType.find(line_item.product_id)
+                sum += subscription.price
+            end
+        end
+        sum_price
     end
 
     def dyanmic_app_fee(one_off)
