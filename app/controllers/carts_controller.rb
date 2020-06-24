@@ -288,9 +288,6 @@ class CartsController < ApplicationController
             #     params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
             #     params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
             # end 
-            # OrderConfirmationMailer.vendor_confirmation(current_user, sc_user_email, plan_type, params[:payment_shipping][:recipient_name], params[:payment_shipping][:street_address_1],
-            #     params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
-            #     params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
 
 
             #Confirm that the orders were made and notify customers on webpage
@@ -478,12 +475,6 @@ class CartsController < ApplicationController
                 })
             end
 
-            # flash[:success] = payment_intent
-            #Confirm that the ID is indeed coming through this way
-            #flash[:danger] = payment_intent.id
-            # card_method_payment = 'pm_card_'+params[:user][:card_brand]
-            # flash[:danger] = card_method_payment
-            # flash[:warning] = params[:user]
             card_brand = (params[:user][:card_brand]).downcase
             payment_method_card = 'pm_card_' + card_brand
             # flash[:danger] = payment_method_card
@@ -516,9 +507,6 @@ class CartsController < ApplicationController
             params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
             params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
         end 
-        # OrderConfirmationMailer.vendor_confirmation(current_user, sc_user_email, plan_type, params[:payment_shipping][:recipient_name], params[:payment_shipping][:street_address_1],
-        #     params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
-        #     params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
 
 
         #Confirm that the orders were made and notify customers on webpage
