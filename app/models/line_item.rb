@@ -1,5 +1,5 @@
 class LineItem < ApplicationRecord
-    has_many :carts
+    belongs_to :cart
     has_many :users, through: :carts
     has_many :one_off_products
     has_many :plan_types
