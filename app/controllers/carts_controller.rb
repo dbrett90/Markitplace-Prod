@@ -113,6 +113,7 @@ class CartsController < ApplicationController
         product_type = params[:product_type]
         line_item = line_items.where(product_id: product_id).where(product_type: product_type)
         current_user.cart.line_items.delete(line_item)
+        redirect_to test_index_path
     end
 
     def add_to_cart_subscription
