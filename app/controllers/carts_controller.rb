@@ -74,10 +74,10 @@ class CartsController < ApplicationController
                 testCart = Cart.new()
                 current_user.cart = testCart
             end
-        elsif one_off.out_of_stock.downcase == "yes"
-            flash[:warning] = "Unfortunately this item is out of stock. Please try another!"
-            redirect_to one_off_products_path
-            return
+        # elsif one_off.out_of_stock.downcase == "yes"
+        #     flash[:warning] = "Unfortunately this item is out of stock. Please try another!"
+        #     redirect_to one_off_products_path
+        #     return
         else
             if cart_not_created?
                 # empty_cart = Cart.create(products: [])
