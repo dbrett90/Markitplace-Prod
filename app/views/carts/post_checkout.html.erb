@@ -7,7 +7,7 @@
             <h1 class="title-larger-mobile">Checkout</h1>
             <h4 class = "title-mobile strong-mobile">Order Summary: $<%= @total_price %> </h4>
             <% @cart_items.each do |line_item| %>
-                <% if line_item.product_type = "One Off Product" %>
+                <% if line_item.product_type == "One Off Product" %>
                     <% item = find_one_off_by_id(line_item.id) %>
                     <div class = "row pb-3 mobile-hide">
                         <div class = "col-12 col-lg-6">
