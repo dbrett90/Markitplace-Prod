@@ -67,7 +67,11 @@ class CartsController < ApplicationController
 
     def post_add_to_cart
         item_id = params[:one_off_product]
-        quantity = (params[:quantity][:quantity]).to_i
+        if params[:quantity][:quantity] == nil
+            quantity = 1
+        else
+            quantity = (params[:quantity][:quantity]).to_i
+        end
         # quantity = quantity.to_i
         # flash[:danger] = quantity
         one_off = find_one_off_by_id(item_id)
@@ -103,6 +107,14 @@ class CartsController < ApplicationController
         @cart_items = current_user.cart.line_items
     end
 
+    #When subscriptions come into play need to update?
+    def post_destroy
+        product_id = params[:product_id]
+        product_type = params[:product_type]
+        line_item = line_items.where(product_id: product_id).where(product_type: product_type)
+        current_user.cart.line_items.delete(line_item)
+    end
+
     def add_to_cart_subscription
         item = params[:plan_type]
         plan_type = find_plan_type_by_name(item)
@@ -124,8 +136,6 @@ class CartsController < ApplicationController
 
     end
 
-    def update_quantity
-    end
 
     def destroy
         if params[:one_off_product] == nil
