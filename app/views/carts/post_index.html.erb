@@ -22,7 +22,7 @@
                                 <h6 class="text-center title-mobile">$<%= one_off_product.price %></h6>
                                 <h6 class="text-center title-mobile">Quantity: <%= line_item.quantity %></h6>
                                 <h6 class="card-subtitle pb-2 text-muted text-center subtitle-description-mobile pb-2"> <%= one_off_product.description %></h6>
-                                <%= link_to "Remove from Cart", cart_path(product_id: line_item.product_id, product_type: line_item.product_type), data: {confirm: "Are you sure you want to remove this from our cart?"}, method: :delete, class: "btn btn-danger btn-mobile mt-auto" %> 
+                                <%= link_to "Remove from Cart", test_path(product_id: line_item.product_id, product_type: line_item.product_type), data: {confirm: "Are you sure you want to remove this from our cart?"}, method: :delete, class: "btn btn-danger btn-mobile mt-auto" %> 
                             </div>
                         </div>
                     </div>
