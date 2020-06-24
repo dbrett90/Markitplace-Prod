@@ -66,46 +66,35 @@ class CartsController < ApplicationController
     end
 
     def post_add_to_cart
-        item = (params[:one_off_product]).downcase
+        item_id = params[:one_off_product]
         quantity = params[:quantity].to_i
-        one_off = find_one_off(item)
+        one_off = find_one_off_by_id(item_id)
         if one_off.out_of_stock == nil
             if cart_not_created?
-                # empty_cart = Cart.create(products: [])
                 testCart = Cart.new()
                 current_user.cart = testCart
-                current_user.cart.one_off_products << one_off
-                testQuantity = Quantity.new()
-                one_off.quantity = testQuantity
-                # flash[:warning]= "Went through the right way"
-            else
-                current_user.cart.one_off_products << one_off
-                one_off.quantity = quantity
-                # flash[:warning] = "Adding Item!"
             end
-            current_user.cart.save
-            flash[:success] = "Item has been added to your shopping cart!"
-            flash[:danger] = one_off.quantity
-            redirect_to one_off_products_path
         elsif one_off.out_of_stock.downcase == "yes"
             flash[:warning] = "Unfortunately this item is out of stock. Please try another!"
             redirect_to one_off_products_path
+            return
         else
             if cart_not_created?
                 # empty_cart = Cart.create(products: [])
                 testCart = Cart.new()
                 current_user.cart = testCart
-                current_user.cart.one_off_products << one_off
-                # flash[:warning]= "Went through the right way"
-            else
-                current_user.cart.one_off_products << one_off
-                # flash[:warning] = "Adding Item!"
-            end
-            current_user.cart.save
-            flash[:success] = "Item has been added to your shopping cart!"
-            # flash[:danger] = params
-            redirect_to one_off_products_path
+            end 
         end
+        #Instantiate Line Item
+        line_item = LineItem.new()
+        line_item.product_id = item_id
+        line_item.quantity = quantity
+        line_item.product_type = "One Off Product"
+        #Add Line Item to Cart & Save
+        current_user.cart.line_items << line_item
+        current_user.cart.save
+        flash[:success] = "Item has been added to your shopping cart!"
+        redirect_to one_off_products_path
     end
 
     def add_to_cart_subscription
@@ -374,6 +363,10 @@ class CartsController < ApplicationController
 
     def find_one_off_by_name(item)
         OneOffProduct.where(:name => item)
+    end
+
+    def find_one_off_by_id(id)
+        OneOffProduct.find(id)
     end
 
     def find_plan_type_by_name(item)
