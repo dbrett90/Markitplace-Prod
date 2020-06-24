@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'sessions/new'
   root 'static_pages#home'
   get '/test', to: 'one_off_products#test_item'
+  get '/test-index', to:'carts#post_index'
   get '/home-signup-successful', to: 'stripe_connect_user#new'
   get '/our-team', to: 'static_pages#our_team'
   get '/add-to-cart', to: 'carts#add_to_cart'

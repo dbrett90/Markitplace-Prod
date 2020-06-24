@@ -99,6 +99,10 @@ class CartsController < ApplicationController
         redirect_to one_off_products_path
     end
 
+    def post_index
+        @cart_items = current_user.cart.line_items
+    end
+
     def add_to_cart_subscription
         item = params[:plan_type]
         plan_type = find_plan_type_by_name(item)
