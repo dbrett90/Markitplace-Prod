@@ -1,1 +1,85 @@
-<h1><%= @total_price %></h2>
+<% provide(:title, 'Checkout') %>
+<div class = "container subscription-overview  mt-4 justify-content-center">
+  <section class= "container">
+    <div class = "subscription-header pt-2">
+      <div class = "row">
+        <div class = "col-12 col-lg-6 checkout-header">
+            <h1 class="title-larger-mobile">Checkout</h1>
+            <h4 class = "title-mobile strong-mobile">Order Summary: $<%= @total_price %> </h4>
+            <% @cart_items.each do |line_item| %>
+                <% if line_item.product_type = "One Off Product" %>
+                    <% item = find_one_off_by_id(line_item.id) %>
+                    <div class = "row pb-3 mobile-hide">
+                        <div class = "col-12 col-lg-6">
+                            <%= image_tag item.thumbnail.variant(resize: "450x450"), class: "img-fluid" %>
+                        </div>
+                        <div class = "col-12 col-lg-6">
+                            <h5><%= item.name %></h5>
+                            <p> <%= item.description %></p>
+                        </div>
+                    </div>
+                <% else %>
+                    <% item = find_plan_type_by_id(line_item.id) %>
+                    <div class = "row pb-3 mobile-hide">
+                        <div class = "col-12 col-lg-6">
+                            <%= image_tag item.thumbnail.variant(resize: "450x450"), class: "img-fluid" %>
+                        </div>
+                        <div class = "col-12 col-lg-6">
+                            <h5><%= item.name %></h5>
+                            <p> <%= item.description %></p>
+                        </div>
+                    </div>
+            <% end %>
+        </div>
+        <div class= "col-12 col-lg-6 checkout-header">
+          <%= form_for(:payment_shipping, url: checkout_path, html: {id: "payment-form"}) do |f| %>
+            <div class="shipping-information">
+              <h1 class="title-mobile">Shipping Information</h1>
+              <%= f.label :recipient_name, class: 'field-label emphasis contact-form-item-mobile' do %>
+                <span class = 'field-label emphasis'> Name </span>
+              <% end %>
+              <%= f.text_field :recipient_name, class: 'form-control form-control-mobile', placeholder: "Name" %>
+              <%= f.label :street_address_1, class: 'field-label emphasis contact-form-item-mobile' do %>
+                <span class = 'field-label emphasis'> Street Address 1 </span>
+              <% end %>
+              <%= f.text_field :street_address_1, class: 'form-control form-control-mobile', placeholder: "Street Address" %>
+              <%= f.label :street_address_2, class: 'field-label emphasis contact-form-item-mobile' do %>
+                <span class = 'field-label emphasis'> Street Address (Room/Apt Number) </span>
+              <% end %>
+              <%= f.text_field :street_address_2, class: 'form-control form-control-mobile', placeholder: "Street Address" %>
+              <%= f.label :city, class: 'field-label emphasis contact-form-item-mobile' do %>
+                <span class = 'field-label emphasis'> City </span>
+              <% end %>
+              <%= f.text_field :city, class: 'form-control form-control-mobile', placeholder: "City" %>
+              <%= f.label :state, class: 'field-label emphasis contact-form-item-mobile' do %>
+                <span class = 'field-label emphasis'> State </span>
+              <% end %>
+              <%= f.text_field :state, class: 'form-control form-control-mobile', placeholder: "State" %>
+              <%= f.label :zipcode, class: 'field-label emphasis contact-form-item-mobile' do %>
+                <span class = 'field-label emphasis'> Zipcode </span>
+              <% end %>
+              <%= f.number_field :zipcode, class: 'form-control form-control-mobile', placeholder: "Zipcode" %><br>
+            </div>
+            <div class="payment-information">
+              <h1 class="title-mobile">Card Information</h1>
+              <div class="field card-information">
+                <label for="card-element" class="field-label emphasis contact-form-item-mobile ">Enter credit or debit card</label>
+                <div id="card-element">
+                  <!-- A Stripe Element will be inserted here. -->
+                </div>
+                <br>
+      
+                <div id="card-errors" role="alert"></div>
+      
+                <%= hidden_field_tag :plan_id, params[:plan_id] %>
+                <%= hidden_field_tag :plan_name, params[:plan_name] %>
+      
+                <button class="btn btn-outline-success btn-mobile">Submit</button>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
