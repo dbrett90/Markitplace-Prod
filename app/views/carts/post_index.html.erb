@@ -5,7 +5,7 @@
             <div class="row ml-3">
                 <div class = "col-12 pb-3 text-center">
                     <h1 class = "title-larger-mobile">Your Cart </h1><br>
-                    <%= link_to "Checkout", test_checkout_path, class: "btn btn-outline-success jumbo-button btn-mobile" %>
+                    <%= link_to "Checkout", post_checkout_path, class: "btn btn-outline-success jumbo-button btn-mobile" %>
                 </div>
                 <%  @cart_items.each do |line_item| %>
                     <% one_off_product = find_one_off_by_id(line_item.product_id) %>
