@@ -69,7 +69,7 @@ class CartsController < ApplicationController
         item_id = params[:one_off_product]
         quantity = (params[:quantity][:quantity]).to_i
         # quantity = quantity.to_i
-        flash[:danger] = quantity
+        # flash[:danger] = quantity
         one_off = find_one_off_by_id(item_id)
         if one_off.out_of_stock == nil
             if cart_not_created?
