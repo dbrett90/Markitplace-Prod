@@ -7,7 +7,7 @@ class PurchaseOneOffsController < ApplicationController
 
     def create
         #Make sure we change this to production when the time comes
-        Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
+        Stripe.api_key = Rails.application.credentials.production[:stripe_api_key]
         one_off_product_name = params[:one_off_product_name]
         token = params[:stripeToken]
         #Going to correctly identify the proper plan here

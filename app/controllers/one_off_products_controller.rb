@@ -26,7 +26,7 @@ class OneOffProductsController < ApplicationController
     #SKU only letting us set a certain amount... need to think about this
     def create
         #Going to create the plan on behalf of the client - need key
-        Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
+        Stripe.api_key = Rails.application.credentials.production[:stripe_api_key]
         @one_off_product = current_user.one_off_products.build(one_off_product_params)
         #Create a new product and a new SKU
         stripe_product = Stripe::Product.create({
@@ -69,7 +69,7 @@ class OneOffProductsController < ApplicationController
 
     def update
         #Going to create the plan on behalf of the client - need key
-        Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
+        Stripe.api_key = Rails.application.credentials.production[:stripe_api_key]
         #@one_off_product = current_user.one_off_products.build(one_off_product_params)
         #Create a new product and a new SKU
 
