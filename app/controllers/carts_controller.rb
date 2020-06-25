@@ -495,7 +495,7 @@ class CartsController < ApplicationController
             #     }
             # )
             payment_method_card = params[:user][:card_id]
-            payment_method = params[:user][payment_method]
+            payment_method = params[:user][:payment_method]
             # source = Stripe::Customer.retrieve_source(
             #     customer.id,
             #     payment_method,
