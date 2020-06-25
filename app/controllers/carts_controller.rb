@@ -1,4 +1,5 @@
 class CartsController < ApplicationController
+    layout "test", only: [:post_checkout]
 
     #Need to build in code to modify the number of items you want in a cart
     def checkout
@@ -117,7 +118,6 @@ class CartsController < ApplicationController
     end
 
     def post_checkout
-        render :layout => "test_layout"
         @cart_items = current_user.cart.line_items
         @total_price = sum_line_item_price(current_user.cart.line_items)
     end
