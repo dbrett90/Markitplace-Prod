@@ -6,6 +6,7 @@ class CartsController < ApplicationController
         @cart_items = current_user.cart.one_off_products
         @cart_items_subscriptions = current_user.cart.plan_types
         @total_price = sum_price(current_user.cart.one_off_products) + sum_price(current_user.cart.plan_types)
+        # @intent = 
     end
 
     def index
@@ -253,12 +254,15 @@ class CartsController < ApplicationController
                         currency: 'usd',
                         capture_method: 'automatic',
                         confirmation_method: 'automatic',
-                        # customer: customer,
+                        #customer: customer,
                         transfer_data: {
                             destination: item.stripe_id,
                         },
                     })
                 end
+                #Make it available to the user
+                # @intent = payment_intent
+                flash[:danger] = payment_intent.customer
                 card_brand = (params[:user][:card_brand]).downcase
                 flash[:warning] = params[:user]
                 payment_method_card = 'pm_card_' + card_brand
@@ -341,7 +345,7 @@ class CartsController < ApplicationController
         @cart_items = current_user.cart.one_off_products
         @cart_items_subscriptions = current_user.cart.plan_types
         token = params[:stripeToken]
-        source = paras[:stripeSource]
+        # source = paras[:stripeSource]
 
         #Complete Checkout for Subscriptions
         @cart_items_subscriptions.each do |plan_type|
@@ -468,7 +472,7 @@ class CartsController < ApplicationController
                     currency: 'usd',
                     capture_method: 'automatic',
                     confirmation_method: 'automatic',
-                    # customer: customer,
+                    customer: customer.id,
                     transfer_data: {
                         destination: item.stripe_id,
                     },
@@ -487,12 +491,11 @@ class CartsController < ApplicationController
             #         stripe_account: item.stripe_id,
             #     }
             # )
-            # payment_method_card = params[:user][:card_id]
-            # confirm_payment = Stripe::PaymentIntent.confirm(
-            #     payment_intent.id,
-            #     {payment_method: payment_method_card},
-            # )
-            flash[:danger] = source
+            payment_method_card = params[:user][:card_id]
+            confirm_payment = Stripe::PaymentIntent.confirm(
+                payment_intent.id,
+                {payment_method: payment_method_card},
+            )
     
             ##NEED TO CONFIRM THE PAYMENT AFTER THE FACT! CHECK THE DOCS FOR THIS
     

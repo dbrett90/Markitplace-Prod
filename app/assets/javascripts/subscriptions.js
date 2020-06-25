@@ -53,18 +53,18 @@ document.addEventListener("turbolinks:load", function() {
 
     const form = document.getElementById('payment-form');
 
-    var ownerInfo = {
-        owner: {
-          name: 'Dan Brett',
-          address: {
-            line1: '101 Monmouth Street',
-            city: 'Brookling',
-            postal_code: '02446',
-            country: 'US',
-          },
-          email: 'dbrett14@gmail.com'
-        },
-      };
+    // var ownerInfo = {
+    //     owner: {
+    //       name: 'Dan Brett',
+    //       address: {
+    //         line1: '101 Monmouth Street',
+    //         city: 'Brookling',
+    //         postal_code: '02446',
+    //         country: 'US',
+    //       },
+    //       email: 'dbrett14@gmail.com'
+    //     },
+    //   };
 
     form.addEventListener('submit', async(event) => {
         event.preventDefault();
@@ -78,17 +78,6 @@ document.addEventListener("turbolinks:load", function() {
         else{
             stripeTokenHandler(token);
         }
-
-        stripe.createSource(card, ownerInfo).then(function(result) {
-            if (result.error) {
-              // Inform the user if there was an error
-              var errorElement = document.getElementById('card-errors');
-              errorElement.textContent = result.error.message;
-            } else {
-              // Send the source to your server
-              stripeSourceHandler(result.source);
-            }
-          });
     });
 
     //Focus on getting JS secret in. 
@@ -121,8 +110,6 @@ document.addEventListener("turbolinks:load", function() {
         hiddenInput.setAttribute('type', 'hidden');
         hiddenInput.setAttribute('name', 'stripeToken');
         hiddenInput.setAttribute('value', token.id);
-        hiddenInput.setAttribute('name', 'stripeSource');
-        hiddenInput.setAttribute('value', source.id);
         form.appendChild(hiddenInput);
 
         ["brand", "last4", "exp_month", "exp_year", "id"].forEach(function(field){
