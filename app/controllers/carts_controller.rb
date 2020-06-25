@@ -510,6 +510,7 @@ class CartsController < ApplicationController
             confirm_payment = Stripe::PaymentIntent.confirm(
                 payment_intent.id,
                 {payment_method: payment_method},
+                {stripe_account: item.stripe_id}
             )
     
             ##NEED TO CONFIRM THE PAYMENT AFTER THE FACT! CHECK THE DOCS FOR THIS
