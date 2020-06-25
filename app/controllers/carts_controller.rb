@@ -480,7 +480,8 @@ class CartsController < ApplicationController
             payment_method_card = 'pm_card_' + card_brand
             # flash[:danger] = payment_method_card
             confirm_payment = Stripe::PaymentIntent.confirm(
-                payment_intent.id
+                payment_intent.id,
+                {payment_method: payment_method_card},
             )
     
             ##NEED TO CONFIRM THE PAYMENT AFTER THE FACT! CHECK THE DOCS FOR THIS
