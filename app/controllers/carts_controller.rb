@@ -5,12 +5,7 @@ class CartsController < ApplicationController
     def checkout
         @cart_items = current_user.cart.one_off_products
         @cart_items_subscriptions = current_user.cart.plan_types
-        # flash[:success] = @cart_items
-        # @item_price = sum_price(current_user.cart.one_off_products)
-        # @sub_price = sum_price(current_user.cart.plan_types)
-        #Calculate the total price of the items
         @total_price = sum_price(current_user.cart.one_off_products) + sum_price(current_user.cart.plan_types)
-        #flash[:success] = total_price
     end
 
     def index
@@ -478,9 +473,9 @@ class CartsController < ApplicationController
                     },
                 })
             end
-            get '/secret' do
-                {client_secret: payment_intent.client_secret}.to_json
-              end
+            # get '/secret' do
+            #     {client_secret: payment_intent.client_secret}.to_json
+            # end
 
             # card_brand = (params[:user][:card_brand]).downcase
             ####RETURN TO THIS
