@@ -462,6 +462,7 @@ class CartsController < ApplicationController
                     capture_method: 'automatic',
                     confirmation_method: 'automatic',
                     customer: customer.id,
+                    #on_behalf_of: item.stripe_id,
                     transfer_data: {
                         destination: item.stripe_id,
                     },
@@ -474,10 +475,12 @@ class CartsController < ApplicationController
                     capture_method: 'automatic',
                     confirmation_method: 'automatic',
                     customer: customer.id,
-                    on_behalf_of: item.stripe_id,
-                    transfer_data: {
-                        destination: item.stripe_id,
-                    },
+                    }, {
+                        stripe_account: item.stripe_id, 
+                    #on_behalf_of: item.stripe_id,
+                    # transfer_data: {
+                    #     destination: item.stripe_id,
+                    # },
                     #stripe_account: item.stripe_id}
                 })
             end
