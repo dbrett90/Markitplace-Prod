@@ -341,6 +341,7 @@ class CartsController < ApplicationController
         @cart_items = current_user.cart.one_off_products
         @cart_items_subscriptions = current_user.cart.plan_types
         token = params[:stripeToken]
+        source = paras[:stripeSource]
 
         #Complete Checkout for Subscriptions
         @cart_items_subscriptions.each do |plan_type|
@@ -359,7 +360,7 @@ class CartsController < ApplicationController
                     #Create customer in connected accounts environment.
                     Stripe::Customer.create({
                         email: current_user.email, 
-                        source:token,
+                        source: token,
                     },
                     {
                         stripe_account: plan_type.stripe_id,
@@ -486,11 +487,12 @@ class CartsController < ApplicationController
             #         stripe_account: item.stripe_id,
             #     }
             # )
-            payment_method_card = params[:user][:card_id]
-            confirm_payment = Stripe::PaymentIntent.confirm(
-                payment_intent.id,
-                {payment_method: payment_method_card},
-            )
+            # payment_method_card = params[:user][:card_id]
+            # confirm_payment = Stripe::PaymentIntent.confirm(
+            #     payment_intent.id,
+            #     {payment_method: payment_method_card},
+            # )
+            flash[:danger] = source
     
             ##NEED TO CONFIRM THE PAYMENT AFTER THE FACT! CHECK THE DOCS FOR THIS
     
