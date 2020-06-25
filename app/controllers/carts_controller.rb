@@ -122,6 +122,8 @@ class CartsController < ApplicationController
     end
 
     def post_complete_checkout
+        #Need to update the test layout here
+        render :layout => 'test_layout'
         #Make sure we change this to production when the time comes
         Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
         @cart_items = current_user.cart.line_items
