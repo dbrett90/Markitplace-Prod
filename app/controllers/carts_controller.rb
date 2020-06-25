@@ -478,9 +478,19 @@ class CartsController < ApplicationController
                     },
                 })
             end
+            get '/secret' do
+                {client_secret: payment_intent.client_secret}.to_json
+              end
 
             # card_brand = (params[:user][:card_brand]).downcase
             ####RETURN TO THIS
+            # customer = Stripe::Customer.update(
+            #     customer.id,
+            #     source: token,
+            #     {
+            #         stripe_account: item.stripe_id,
+            #     }
+            # )
             payment_method_card = params[:user][:card_id]
             confirm_payment = Stripe::PaymentIntent.confirm(
                 payment_intent.id,

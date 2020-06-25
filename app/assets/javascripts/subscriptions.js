@@ -52,6 +52,7 @@ document.addEventListener("turbolinks:load", function() {
     });
 
     const form = document.getElementById('payment-form');
+
     form.addEventListener('submit', async(event) => {
         event.preventDefault();
 
@@ -65,6 +66,30 @@ document.addEventListener("turbolinks:load", function() {
             stripeTokenHandler(token);
         }
     });
+
+    //Focus on getting JS secret in. 
+
+    // form.addEventListener('submit', function(ev) {
+    //     ev.preventDefault();
+    //     stripe.confirmCardPayment(clientSecret, {
+    //       payment_method: {
+    //         card: card,
+    //         billing_details: {
+    //           name: 'Jenny Rosen'
+    //         }
+    //       }
+    //     }).then(function(result) {
+    //       if (result.error) {
+    //         // Show error to your customer (e.g., insufficient funds)
+    //         console.log(result.error.message);
+    //       } else {
+    //         // The payment has been processed!
+    //         if (result.paymentIntent.status === 'succeeded') {
+    //           console.log("THIS HAS SUCCEEDED")
+    //         }
+    //       }
+    //     });
+    //   });
 
     const stripeTokenHandler = (token) => {
         const form = document.getElementById('payment-form');
@@ -90,6 +115,39 @@ document.addEventListener("turbolinks:load", function() {
         hiddenInput.setAttribute('value', token.card[field]);
         form.appendChild(hiddenInput);
     }
+
+    var response = fetch('/secret').then(function(response) {
+        return response.json();
+      }).then(function(responseJson) {
+        var clientSecret = responseJson.client_secret;
+        // Call stripe.confirmCardPayment() with the client secret.
+      });
+
+      form.addEventListener('submit', function(ev) {
+        ev.preventDefault();
+        stripe.confirmCardPayment(clientSecret, {
+          payment_method: {
+            card: card,
+            billing_details: {
+              name: 'Daniel Michael'
+            }
+          }
+        }).then(function(result) {
+          if (result.error) {
+            // Show error to your customer (e.g., insufficient funds)
+            console.log(result.error.message);
+          } else {
+            // The payment has been processed!
+            if (result.paymentIntent.status === 'succeeded') {
+              // Show a success message to your customer
+              // There's a risk of the customer closing the window before callback
+              // execution. Set up a webhook or plugin to listen for the
+              // payment_intent.succeeded event that handles any business critical
+              // post-payment actions.
+            }
+          }
+        });
+      });
 
     // Dynamically change the styles of an element
 
