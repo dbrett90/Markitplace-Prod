@@ -86,10 +86,10 @@ document.addEventListener("turbolinks:load", function() {
     });
 
     let hiddenInputPayment = document.createElement('input');
-        hiddenInputPayment.setAttribute('type', 'hidden');
-        hiddenInputPayment.setAttribute('name', "user[payment_method]");
-        hiddenInputPayment.setAttribute('value', payment_method.id);
-        form.appendChild(hiddenInputPayment);
+    hiddenInputPayment.setAttribute('type', 'hidden');
+    hiddenInputPayment.setAttribute('name', "user[payment_method]");
+    hiddenInputPayment.setAttribute('value', payment_method.id);
+    form.appendChild(hiddenInputPayment);
 
     //Focus on getting JS secret in. 
 

@@ -467,17 +467,17 @@ class CartsController < ApplicationController
                         destination: item.stripe_id,
                     },
                 })
-            else
-                payment_intent = Stripe::PaymentIntent.create({
-                    payment_method_types: ['card'],
-                    amount: (item.price*100).to_i,
-                    currency: 'usd',
-                    capture_method: 'automatic',
-                    confirmation_method: 'automatic',
-                    customer: customer.id,
-                    }, {
-                        stripe_account: item.stripe_id, 
-                })
+            # else
+            #     payment_intent = Stripe::PaymentIntent.create({
+            #         payment_method_types: ['card'],
+            #         amount: (item.price*100).to_i,
+            #         currency: 'usd',
+            #         capture_method: 'automatic',
+            #         confirmation_method: 'automatic',
+            #         customer: customer.id,
+            #         }, {
+            #             stripe_account: item.stripe_id, 
+            #     })
             end
             @payment_intent = payment_intent.client_secret
             @js_user_name = params[:payment_shipping][:recipient_name]
@@ -507,11 +507,11 @@ class CartsController < ApplicationController
             # }, {
             #     stripe_account: item.stripe_id
             # })
-            confirm_payment = Stripe::PaymentIntent.confirm(
-                payment_intent.id,
-                {payment_method: payment_method},
-                {stripe_account: item.stripe_id}
-            )
+            # confirm_payment = Stripe::PaymentIntent.confirm(
+            #     payment_intent.id,
+            #     {payment_method: payment_method},
+            #     {stripe_account: item.stripe_id},
+            # )
     
             ##NEED TO CONFIRM THE PAYMENT AFTER THE FACT! CHECK THE DOCS FOR THIS
     
