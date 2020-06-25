@@ -500,7 +500,7 @@ class CartsController < ApplicationController
             #     customer.id,
             #     payment_method,
             # )
-            flash[:warning] = source
+            flash[:warning] = payment_method
             # payment_method = Stripe::PaymentMethod.create({
             #     customer: customer.id,
             #     payment_method: payment_method_card,
