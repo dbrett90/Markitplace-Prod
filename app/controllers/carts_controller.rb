@@ -498,10 +498,15 @@ class CartsController < ApplicationController
             #     }
             # )
             payment_method_card = params[:user][:card_id]
+            payment_method = Stripe::PaymentMethod.create({
+                customer: customer.id,
+                payment_method: payment_method_card,
+            }, {
+                stripe_account: item.stripe_id
+            })
             confirm_payment = Stripe::PaymentIntent.confirm(
                 payment_intent.id,
-                {payment_method: payment_method_card},
-                {stripe_account: item.stripe_id},
+                {payment_method: payment_method},
             )
     
             ##NEED TO CONFIRM THE PAYMENT AFTER THE FACT! CHECK THE DOCS FOR THIS
