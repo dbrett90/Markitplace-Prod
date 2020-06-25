@@ -479,6 +479,7 @@ class CartsController < ApplicationController
                         stripe_account: item.stripe_id, 
                 })
             end
+            @payment_intent = payment_intent.client_secret
             # get '/secret' do
             #     {client_secret: payment_intent.client_secret}.to_json
             # end
