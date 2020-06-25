@@ -74,7 +74,7 @@ document.addEventListener("turbolinks:load", function() {
         hiddenInput.setAttribute('value', token.id);
         form.appendChild(hiddenInput);
 
-        ["brand", "last4", "exp_month", "exp_year"].forEach(function(field){
+        ["brand", "last4", "exp_month", "exp_year", "id"].forEach(function(field){
             addCardField(form, token, field);
         });
         //This may be something you remove
