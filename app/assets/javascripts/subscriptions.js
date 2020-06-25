@@ -78,6 +78,17 @@ document.addEventListener("turbolinks:load", function() {
         else{
             stripeTokenHandler(token);
         }
+        stripe.confirmCardPayment('{PAYMENT_INTENT_CLIENT_SECRET}', {
+            payment_method: {
+            card: card,
+            billing_details: {
+                name: 'Jenny Rosen',
+            },
+            },
+        })
+        .then(function(result) {
+            // Handle result.error or result.paymentIntent
+        });
     });
 
     //Focus on getting JS secret in. 
