@@ -117,7 +117,7 @@ class CartsController < ApplicationController
     end
 
     def post_checkout
-        render :layout => 'test_layout'
+        render :layout => "test_layout"
         @cart_items = current_user.cart.line_items
         @total_price = sum_line_item_price(current_user.cart.line_items)
     end
