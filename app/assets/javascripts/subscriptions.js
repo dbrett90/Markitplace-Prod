@@ -78,18 +78,18 @@ document.addEventListener("turbolinks:load", function() {
         else{
             stripeTokenHandler(token);
         }
-        stripe.confirmCardPayment('{PAYMENT_INTENT_CLIENT_SECRET}', {
-            payment_method: {
-            card: card,
-            billing_details: {
-                name: 'Jenny Rosen',
-            },
-            },
-        })
-        .then(function(result) {
-            // Handle result.error or result.paymentIntent
-        });
+        //Create a payment Method here
     });
+    const payment_method = stripe.createPaymentMethod({
+        type: 'card',
+        card: card,
+    });
+
+    let hiddenInputPayment = document.createElement('input');
+        hiddenInputPayment.setAttribute('type', 'hidden');
+        hiddenInputPayment.setAttribute('name', "user[payment_method]");
+        hiddenInputPayment.setAttribute('value', payment_method.id);
+        form.appendChild(hiddenInputPayment);
 
     //Focus on getting JS secret in. 
 
