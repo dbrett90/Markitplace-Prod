@@ -431,7 +431,7 @@ class CartsController < ApplicationController
                 #Create customer in connected accounts environment.
                 Stripe::Customer.create({
                     email: current_user.email, 
-                    source:token,
+                    source: token,
                 },
                 {
                     stripe_account: item.stripe_id,
@@ -479,7 +479,7 @@ class CartsController < ApplicationController
                 })
             end
 
-            card_brand = (params[:user][:card_brand]).downcase
+            # card_brand = (params[:user][:card_brand]).downcase
             ####RETURN TO THIS
             payment_method_card = params[:user][:card_id]
             confirm_payment = Stripe::PaymentIntent.confirm(

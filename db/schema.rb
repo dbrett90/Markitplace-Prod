@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_24_030112) do
+ActiveRecord::Schema.define(version: 2020_06_25_125711) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 2020_06_24_030112) do
     t.string "prep_time"
     t.text "extended_description"
     t.string "out_of_stock"
+    t.string "hide?"
   end
 
   create_table "partner_logos", force: :cascade do |t|
