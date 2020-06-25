@@ -460,7 +460,7 @@ class CartsController < ApplicationController
                     application_fee_amount: fee_amount,
                     capture_method: 'automatic',
                     confirmation_method: 'automatic',
-                    # customer: customer,
+                    customer: customer.id,
                     transfer_data: {
                         destination: item.stripe_id,
                     },
