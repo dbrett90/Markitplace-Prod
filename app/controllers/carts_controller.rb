@@ -479,7 +479,7 @@ class CartsController < ApplicationController
                         destination: item.stripe_id,
                     },
                     #stripe_account: item.stripe_id}
-                )
+                })
             end
             # get '/secret' do
             #     {client_secret: payment_intent.client_secret}.to_json
