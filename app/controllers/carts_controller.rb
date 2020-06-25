@@ -262,6 +262,7 @@ class CartsController < ApplicationController
                     })
                 end
                 card_brand = (params[:user][:card_brand]).downcase
+                flash[:warning] = params[:user]
                 payment_method_card = 'pm_card_' + card_brand
                 # flash[:danger] = payment_method_card
                 confirm_payment = Stripe::PaymentIntent.confirm(
@@ -478,7 +479,6 @@ class CartsController < ApplicationController
             card_brand = (params[:user][:card_brand]).downcase
             ####RETURN TO THIS
             payment_method_card = 'pm_card_' + card_brand
-            # flash[:danger] = payment_method_card
             confirm_payment = Stripe::PaymentIntent.confirm(
                 payment_intent.id,
                 {payment_method: payment_method_card},
