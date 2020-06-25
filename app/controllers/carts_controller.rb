@@ -372,6 +372,7 @@ class CartsController < ApplicationController
                     # Stripe::Customer.create(description: 'Test Customer')
                     #Save the stripe id to the database
                 end
+                #Link the platform IDs here.
                 current_user.stripe_id[connected_acct] = customer.id
                 options = {
                     subscribed: true
@@ -472,11 +473,12 @@ class CartsController < ApplicationController
                     currency: 'usd',
                     capture_method: 'automatic',
                     confirmation_method: 'automatic',
-                    customer: customer.id,
-                    transfer_data: {
-                        destination: item.stripe_id,
-                    },
-                })
+                    customer: customer.id,},{
+                    # transfer_data: {
+                    #     destination: item.stripe_id,
+                    # },
+                    stripe_account: item.stripe_id}
+                )
             end
             # get '/secret' do
             #     {client_secret: payment_intent.client_secret}.to_json
