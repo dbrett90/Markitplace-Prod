@@ -515,8 +515,8 @@ class CartsController < ApplicationController
     
             ##NEED TO CONFIRM THE PAYMENT AFTER THE FACT! CHECK THE DOCS FOR THIS
     
-            #May need to change one_off_id for naming convention
-            current_user.one_off_id[item.name.downcase] = payment_intent.id
+            #May need to change one_off_id for naming conventionRENAME
+            # current_user.one_off_id[item.name.downcase] = payment_intent.id
             current_user.update(options)
             #For the hash portion
             current_user.save
