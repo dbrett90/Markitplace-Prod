@@ -474,7 +474,7 @@ class CartsController < ApplicationController
                     capture_method: 'automatic',
                     confirmation_method: 'automatic',
                     customer: customer.id,
-                    one_behalf_of: item.stripe_id,
+                    on_behalf_of: item.stripe_id,
                     transfer_data: {
                         destination: item.stripe_id,
                     },
