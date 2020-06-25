@@ -473,11 +473,12 @@ class CartsController < ApplicationController
                     currency: 'usd',
                     capture_method: 'automatic',
                     confirmation_method: 'automatic',
-                    customer: customer.id,},{
-                    # transfer_data: {
-                    #     destination: item.stripe_id,
-                    # },
-                    stripe_account: item.stripe_id}
+                    customer: customer.id,
+                    one_behalf_of: item.stripe_id,
+                    transfer_data: {
+                        destination: item.stripe_id,
+                    },
+                    #stripe_account: item.stripe_id}
                 )
             end
             # get '/secret' do
