@@ -477,11 +477,6 @@ class CartsController < ApplicationController
                     customer: customer.id,
                     }, {
                         stripe_account: item.stripe_id, 
-                    #on_behalf_of: item.stripe_id,
-                    # transfer_data: {
-                    #     destination: item.stripe_id,
-                    # },
-                    #stripe_account: item.stripe_id}
                 })
             end
             # get '/secret' do
@@ -498,16 +493,21 @@ class CartsController < ApplicationController
             #     }
             # )
             payment_method_card = params[:user][:card_id]
-            payment_method = Stripe::PaymentMethod.create({
-                customer: customer.id,
-                payment_method: payment_method_card,
-            }, {
-                stripe_account: item.stripe_id
-            })
-            confirm_payment = Stripe::PaymentIntent.confirm(
-                payment_intent.id,
-                {payment_method: payment_method},
+            source = Stripe::Customer.retrieve_source(
+                customer.id,
+                payment_method_card,
             )
+            flash[:warning] = source
+            # payment_method = Stripe::PaymentMethod.create({
+            #     customer: customer.id,
+            #     payment_method: payment_method_card,
+            # }, {
+            #     stripe_account: item.stripe_id
+            # })
+            # confirm_payment = Stripe::PaymentIntent.confirm(
+            #     payment_intent.id,
+            #     {payment_method: payment_method},
+            # )
     
             ##NEED TO CONFIRM THE PAYMENT AFTER THE FACT! CHECK THE DOCS FOR THIS
     
