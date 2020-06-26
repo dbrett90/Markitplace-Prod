@@ -483,7 +483,7 @@ class CartsController < ApplicationController
             @js_user_name = params[:payment_shipping][:recipient_name]
             gon.payment_intent_id = @payment_intent_id
             gon.js_user_name = @js_user_name
-            flash[:warning] = gon.payment_intent_id
+            # flash[:warning] = gon.payment_intent_id
             # get '/secret' do
             #     {client_secret: payment_intent.client_secret}.to_json
             # end
