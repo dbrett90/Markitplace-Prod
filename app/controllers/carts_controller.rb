@@ -479,8 +479,8 @@ class CartsController < ApplicationController
             #             stripe_account: item.stripe_id, 
             #     })
             end
-            @payment_intent = payment_intent.client_secret
-            @js_user_name = params[:payment_shipping][:recipient_name]
+            # @payment_intent = payment_intent.client_secret
+            # @js_user_name = params[:payment_shipping][:recipient_name]
             # get '/secret' do
             #     {client_secret: payment_intent.client_secret}.to_json
             # end
@@ -501,6 +501,7 @@ class CartsController < ApplicationController
             #     payment_method,
             # )
             flash[:warning] = payment_method
+            flash[:danger] = params[:user]
             # payment_method = Stripe::PaymentMethod.create({
             #     customer: customer.id,
             #     payment_method: payment_method_card,
