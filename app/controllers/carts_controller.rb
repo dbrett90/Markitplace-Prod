@@ -467,19 +467,19 @@ class CartsController < ApplicationController
                         destination: item.stripe_id,
                     },
                 })
-            # else
-            #     payment_intent = Stripe::PaymentIntent.create({
-            #         payment_method_types: ['card'],
-            #         amount: (item.price*100).to_i,
-            #         currency: 'usd',
-            #         capture_method: 'automatic',
-            #         confirmation_method: 'automatic',
-            #         customer: customer.id,
-            #         }, {
-            #             stripe_account: item.stripe_id, 
-            #     })
+            else
+                payment_intent = Stripe::PaymentIntent.create({
+                    payment_method_types: ['card'],
+                    amount: (item.price*100).to_i,
+                    currency: 'usd',
+                    capture_method: 'automatic',
+                    confirmation_method: 'automatic',
+                    customer: customer.id,
+                    }, {
+                        stripe_account: item.stripe_id, 
+                })
             end
-            # @payment_intent = payment_intent.client_secret
+            @payment_intent = payment_intent.client_secret
             @js_user_name = params[:payment_shipping][:recipient_name]
             # get '/secret' do
             #     {client_secret: payment_intent.client_secret}.to_json
@@ -500,7 +500,7 @@ class CartsController < ApplicationController
             #     customer.id,
             #     payment_method,
             # )
-            flash[:warning] = payment_method
+            flash[:warning] = @payment_intent
             flash[:danger] = params[:user]
             # payment_method = Stripe::PaymentMethod.create({
             #     customer: customer.id,
