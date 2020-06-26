@@ -66,16 +66,16 @@ document.addEventListener("turbolinks:load", function() {
         }
         // # var test = <%= @payment_intent_id %>;
         // alert(gon.payment_intent_id);
-        alert("TEST");
-        // alert(gon.js_user_name);
-        stripe.confirmCardPayment(gon.payment_intent_id, {
-            payment_method: {
-                card: card,
-                billing_details: {
-                    name: gon.js_user_name,
-                },
-            },
-        })  
+        // alert("TEST");
+        // // alert(gon.js_user_name);
+        // stripe.confirmCardPayment(gon.payment_intent_id, {
+        //     payment_method: {
+        //         card: card,
+        //         billing_details: {
+        //             name: gon.js_user_name,
+        //         },
+        //     },
+        // })  
     });
 
    
