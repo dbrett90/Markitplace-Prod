@@ -64,8 +64,8 @@ document.addEventListener("turbolinks:load", function() {
         else{
             stripeTokenHandler(token);
         }
-        var test = <%= @payment_intent_id %>;
-        alert(test);
+        // # var test = <%= @payment_intent_id %>;
+        // alert(test);
         stripe.confirmCardPayment("<%= @payment_intent_id %>", {
             payment_method: {
                 card: card,
