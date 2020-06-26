@@ -65,12 +65,13 @@ document.addEventListener("turbolinks:load", function() {
             stripeTokenHandler(token);
         }
 
-    
-        stripe.confirmCardPayment( <%= @payment_intent_id %>, {
+        // var payment_method_id = <%= payment_intent_id %>
+        // let user_name = <%= @js_user_name %>
+        stripe.confirmCardPayment(payment_method_id, {
             payment_method: {
                 card: card,
                 billing_details: {
-                    name: <%= @js_user_name %>,
+                    name: js_user_name,
                 },
             },
         })  
