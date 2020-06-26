@@ -76,6 +76,8 @@ document.addEventListener("turbolinks:load", function() {
             },
         })  
     });
+    console.log(payment_intent_id);
+    console.log(js_user_name);
 
    
 
