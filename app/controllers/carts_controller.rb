@@ -470,8 +470,11 @@ class CartsController < ApplicationController
             else
                 payment_intent = Stripe::PaymentIntent.create({
                     payment_method_types: ['card'],
+                    payment_method: params[:user][:card_id]
                     amount: (item.price*100).to_i,
                     currency: 'usd',
+                    #Confirm set to true
+                    confirm: true;
                     capture_method: 'automatic',
                     confirmation_method: 'automatic',
                     customer: customer.id,
