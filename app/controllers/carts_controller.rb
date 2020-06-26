@@ -474,7 +474,7 @@ class CartsController < ApplicationController
                     amount: (item.price*100).to_i,
                     currency: 'usd',
                     #Confirm set to true
-                    confirm: true;
+                    confirm: true,
                     capture_method: 'automatic',
                     confirmation_method: 'automatic',
                     customer: customer.id,
