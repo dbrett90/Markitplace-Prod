@@ -83,8 +83,12 @@ document.addEventListener("turbolinks:load", function() {
     const payment_method = stripe.createPaymentMethod({
         type: 'card',
         card: card,
+        billing_details: {
+            name: 'Dan Brett',
+        }
     });
 
+    $('button[data-user-id')
     let hiddenInputPayment = document.createElement('input');
     hiddenInputPayment.setAttribute('type', 'hidden');
     hiddenInputPayment.setAttribute('name', "user[payment_method]");
