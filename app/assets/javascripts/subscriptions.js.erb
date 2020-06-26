@@ -65,8 +65,6 @@ document.addEventListener("turbolinks:load", function() {
             stripeTokenHandler(token);
         }
 
-        # // var payment_method_id = <%= payment_intent_id %>
-        # // let user_name = <%= @js_user_name %>
         stripe.confirmCardPayment("<%= @payment_intent_id %>", {
             payment_method: {
                 card: card,
@@ -76,8 +74,8 @@ document.addEventListener("turbolinks:load", function() {
             },
         })  
     });
-    console.log(payment_intent_id);
-    console.log(js_user_name);
+    # console.log(payment_intent_id);
+    # console.log(js_user_name);
 
    
 
