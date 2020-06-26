@@ -481,6 +481,8 @@ class CartsController < ApplicationController
             end
             @payment_intent_id = payment_intent.client_secret
             @js_user_name = params[:payment_shipping][:recipient_name]
+            gon.payment_intent_id = @payment_intent
+            gon.js_user_name = @js_user_name
             # get '/secret' do
             #     {client_secret: payment_intent.client_secret}.to_json
             # end

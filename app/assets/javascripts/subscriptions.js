@@ -65,12 +65,12 @@ document.addEventListener("turbolinks:load", function() {
             stripeTokenHandler(token);
         }
         // # var test = <%= @payment_intent_id %>;
-        // alert(test);
-        stripe.confirmCardPayment("<%= @payment_intent_id %>", {
+        alert(gon.payment_intent_id);
+        stripe.confirmCardPayment(gon.payment_int_id, {
             payment_method: {
                 card: card,
                 billing_details: {
-                    name: "<%= @js_user_name %>",
+                    name: gon.js_user_name,
                 },
             },
         })  
