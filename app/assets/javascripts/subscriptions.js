@@ -65,9 +65,9 @@ document.addEventListener("turbolinks:load", function() {
             stripeTokenHandler(token);
         }
         // # var test = <%= @payment_intent_id %>;
-        alert(gon.payment_intent_id);
+        // alert(gon.payment_intent_id);
         alert("TEST");
-        alert(gon.js_user_name);
+        // alert(gon.js_user_name);
         stripe.confirmCardPayment(gon.payment_int_id, {
             payment_method: {
                 card: card,
