@@ -479,7 +479,7 @@ class CartsController < ApplicationController
                         stripe_account: item.stripe_id, 
                 })
             end
-            @payment_intent = payment_intent.client_secret
+            @payment_intent_id = payment_intent.client_secret
             @js_user_name = params[:payment_shipping][:recipient_name]
             # get '/secret' do
             #     {client_secret: payment_intent.client_secret}.to_json
