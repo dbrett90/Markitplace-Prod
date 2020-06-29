@@ -131,7 +131,7 @@ class CartsController < ApplicationController
             if item.product_type != "One Off Product"
                 #Declare Variables up front
                 plan_type = find_plan_type_by_id(item.product_id)
-                fee_value = dyanmic_app_fee(plan_type)
+                fee_value = dynamic_app_fee(plan_type)
                 plan_id = plan_type.plan_type_id
                 plan = Stripe::Plan.retrieve(plan_id, {stripe_account: plan_type.stripe_id})
                 connected_acct = plan_type.stripe_id
@@ -196,7 +196,7 @@ class CartsController < ApplicationController
                 end
             else 
                 item = find_one_off_by_id(item.product_id)
-                fee_amount = dyanmic_app_fee(item)
+                fee_amount = dynamic_app_fee(item)
                 changed_price = item.price * 100
                 unless fee_amount == 0
                     fee_amount = (changed_price / fee_amount).to_i
@@ -349,7 +349,7 @@ class CartsController < ApplicationController
 
         #Complete Checkout for Subscriptions
         @cart_items_subscriptions.each do |plan_type|
-            fee_value = dyanmic_app_fee(plan_type)
+            fee_value = dynamic_app_fee(plan_type)
             plan_id = plan_type.plan_type_id
             plan = Stripe::Plan.retrieve(plan_id, {stripe_account: plan_type.stripe_id})
             connected_acct = plan_type.stripe_id
@@ -415,7 +415,7 @@ class CartsController < ApplicationController
         end
         # flash[:success] = @cart_items
         @cart_items.each do |item|
-            fee_amount = dyanmic_app_fee(item)
+            fee_amount = dynamic_app_fee(item)
             changed_price = item.price * 100
             unless fee_amount == 0
                 fee_amount = (changed_price / fee_amount).to_i
@@ -457,6 +457,7 @@ class CartsController < ApplicationController
                 payment_intent = Stripe::PaymentIntent.create({
                     payment_method_types: ['card'],
                     amount: (item.price*100).to_i,
+                    confirm: true,
                     currency: 'usd',
                     application_fee_amount: fee_amount,
                     capture_method: 'automatic',
@@ -639,12 +640,12 @@ class CartsController < ApplicationController
         sum_price
     end
 
-    def dyanmic_app_fee(one_off)
+    def dynamic_app_fee(one_off)
         fee_binary = one_off.is_trial.downcase
         if fee_binary == "yes"
             fee_value = 0.0
         else
-            fee_value = 10.0
+            fee_value = 5.0
         end
     end
 
