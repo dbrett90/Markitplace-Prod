@@ -6,7 +6,7 @@
       <div class = "row">
         <div class = "col-12 col-lg-6 checkout-header">
             <h1 class="title-larger-mobile">Checkout</h1>
-            <h4 class = "title-mobile strong-mobile">Order Summary: $<%= @total_price %> </h4>
+            <h4 class = "title-mobile strong-mobile">Order Summary: $<%= number_with_precision(@total_price, precision: 2) %> </h4>
             <% @cart_items.each do |item| %>
               <div class = "row pb-3 mobile-hide">
                   <div class = "col-12 col-lg-6">
