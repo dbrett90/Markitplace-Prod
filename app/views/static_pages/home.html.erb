@@ -9,7 +9,7 @@
                 <h3 class ="homepage-text pt-3 pb-3" id ="jumbo-subtext">We partner with food prep companies to offer
                 you the greatest variety of food products while supporting socially responsible initiatives.</h3>
                 <% if !logged_in? %>
-                  <%= link_to "GET STARTED", signup_path, class: "btn btn-outline-success jumbo-button btn-mobile" %>
+                  <%= link_to "SIGN UP", signup_path, class: "btn btn-outline-success jumbo-button btn-mobile" %>
                 <% else %>
                   <%= link_to "GET STARTED", plan_types_path, class: "btn btn-outline-success jumbo-button btn-mobile" %>
                 <% end %>
@@ -67,7 +67,7 @@
               </div>
               <div class="col-12 text-center pt-3">
                 <% if !logged_in? %>
-                  <%= link_to "GET STARTED!", signup_path, class: "btn btn-success jumbo-button btn-mobile" %>
+                  <%= link_to "SIGN UP", signup_path, class: "btn btn-success jumbo-button btn-mobile" %>
                 <% else %>
                   <%= link_to "SEE OFFERINGS", plan_types_path, class: "btn btn-success jumbo-button btn-mobile" %>
                 <% end %>
