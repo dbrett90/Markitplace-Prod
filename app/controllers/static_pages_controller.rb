@@ -26,6 +26,9 @@ class StaticPagesController < ApplicationController
   def privacy_policy
   end
 
+  def beta_test_list
+  end
+
   def stripe_partner_info
     @stripe_users = StripeConnectUser.all
   end
