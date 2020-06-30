@@ -1,6 +1,8 @@
 <h1>Markitplace</h1>
 
-<p> Hi, customer has completed a purchase order. The customer & product information is as follows:</p>
+<p> Hi, a customer has completed a purchase order. The customer & product information is as follows:</p><br>
+<p>Customer Name: <%= @customer_name %></p>
+<p>Customer Email: <%= @customer_email %> </p>
 <ul>
 <% @products.each do |product| %>
     <li><strong><%= product %></strong></li>
