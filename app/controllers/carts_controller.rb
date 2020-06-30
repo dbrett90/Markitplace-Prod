@@ -199,7 +199,7 @@ class CartsController < ApplicationController
                 fee_amount = dynamic_app_fee(item)
                 changed_price = item.price * 100
                 unless fee_amount == 0
-                    fee_amount = (changed_price / fee_amount).to_i
+                    fee_amount = (changed_price * fee_amount).to_i
                 else
                     fee_amount = 0
                 end
@@ -418,7 +418,7 @@ class CartsController < ApplicationController
             fee_amount = dynamic_app_fee(item)
             changed_price = item.price * 100
             unless fee_amount == 0
-                fee_amount = (changed_price / fee_amount).to_i
+                fee_amount = (changed_price * fee_amount).to_i
             else
                 fee_amount = 0
             end
@@ -643,9 +643,9 @@ class CartsController < ApplicationController
     def dynamic_app_fee(one_off)
         fee_binary = one_off.is_trial.downcase
         if fee_binary == "yes"
-            fee_value = 0.0
+            fee_value = 0.00
         else
-            fee_value = 5.0
+            fee_value = 0.05
         end
     end
 
