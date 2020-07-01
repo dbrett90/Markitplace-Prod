@@ -8,11 +8,7 @@
                 <h1 class="homepage-text shadow-underscore jumbo-maintext title-mobile">Food Products and Meal Kits sourced directly from small businesses</h1>
                 <h3 class ="homepage-text pt-3 pb-3" id ="jumbo-subtext">We partner with food prep companies to offer
                 you the greatest variety of food products while supporting socially responsible initiatives.</h3>
-                <% if !logged_in? %>
-                  <%= link_to "GET STARTUP", signup_path, class: "btn btn-outline-success jumbo-button btn-mobile" %>
-                <% else %>
-                  <%= link_to "GET STARTED", one_off_products_path, class: "btn btn-outline-success jumbo-button btn-mobile" %>
-                <% end %>
+                <%= link_to "START SHOPPING", one_off_products_path, class: "btn btn-outline-success jumbo-button btn-mobile" %>
               </div>
             </div>
           </div>
@@ -34,8 +30,8 @@
               <div class="col-12 col-lg-8" data-aos="fade-right" data-aos-easing="ease-in-sine">
                 <h3>Choose</h3>
                 <p class="description-text-mobile">
-                    Choose the type of meal you want and see the best offerings available from our partners. You'll get the meal you want for an 
-                    affordable price while simultaneously supporting our small business partners. Products will be sent directly to your door.
+                    Markitplace acts as your search engine for meal kits and prepared meals from small
+                    businesses in your area. <strong>Choose</strong> your meal and read about the small business that you&apos;re supporting.
                 </p>
               </div>
               <div class="d-none d-lg-block col-lg-4">
@@ -49,7 +45,7 @@
               <div class="col-12 col-lg-8" data-aos="fade-left" data-aos-easing="ease-in-sine">
                 <h3>Unpack</h3>
                 <p class="description-text-mobile">
-                    Unpack your box with premium, pre-prepared and certifiably fresh food products. Simply follow the included
+                    Our partners will deliver or ship your kit directly to your door. <strong>Unpack</strong> your box with premium, pre-prepared and certifiably fresh food products. Simply follow the included
                     instructions and you'll have a delicious, home cooked meal fully prepared.
                 </p>
               </div>
@@ -58,51 +54,20 @@
               <div class="col-12 col-lg-8" data-aos="fade-right" data-aos-easing="ease-in-sine">
                 <h3>Eat & Enjoy!</h3>
                 <p class="description-text-mobile">
-                    Enjoy restaurant-quality food in the comfort of your home. With new, affordable meals
-                    every week you'll have access to delicious offerings whenever you want.
+                    <strong>Enjoy</strong> restaurant-quality food in the comfort of your home. With new, affordable meals
+                    every week from our network of partners you&apos;ll not only have access to a wide variety of meals, but you&apos;ll
+                    also be supporting your community. 
                 </p>
               </div>
               <div class="d-none d-lg-block col-lg-4">
                 <%= image_tag("enjoy.png", class: "img-fluid", alt:"Mealkit-enjoy") %>
               </div>
               <div class="col-12 text-center pt-3">
-                <% if !logged_in? %>
-                  <%= link_to "GET STARTED!", signup_path, class: "btn btn-success jumbo-button btn-mobile" %>
-                <% else %>
-                  <%= link_to "SEE OFFERINGS", plan_types_path, class: "btn btn-success jumbo-button btn-mobile" %>
-                <% end %>
+              <%= link_to "START SHOPPING", plan_types_path, class: "btn btn-success jumbo-button btn-mobile" %>
               </div>
             </div>
+          </div<
         </div>
-        <section class="jumbotron jumbotron-fluid jumbotron-mobil" id="jumbotron-food">
-          <div class="container container-fluid">
-            <div class="row">
-              <div class="d-none d-lg-block col-lg-3">
-                <span></span>
-              </div>
-              <div class="col-12 col-lg-6 text-center box-opaque justfy-content-center" style="border: 4px solid white" data-aos="fade-up" data-aos-easing="ease-in-sine">
-                <!-- <span style = "color: #449900"></span> -->
-                <h2 class= "pt-2 h2-underline jumbo-header-mobile" style="color: white" id="outline">Markitplace is Simple & Easy to Use</h1>
-                  <hr id= "hr-id" >
-                  <br>
-                    <p class= "description-text-food-mobile text-center" style="font-weight:550">
-                      We act as your kit search engine and connect you with our partners so you get the food
-                      you want direct from small businesses.
-                    </p>
-                    <p class= "description-text-food-mobile text-center" style="font-weight:550" >
-                      Once you order, food products are shipped directly to your door. Just follow
-                      the included instructions and you'll have a delicious meal ready to go!
-                    </p>
-                    <p class= "description-text-food-mobile text-center" style="font-weight:550">
-                      No grocery shopping, no measuring ingredients, no guesswork necessary. Cook and enjoy!
-                    </p>
-                  </ul>
-              </div>
-              <div class="col-md-3">
-                <span></span>
-              </div>
-            </div>
-          </div>
-        </section>
       </div>
     </div>
+</div>
