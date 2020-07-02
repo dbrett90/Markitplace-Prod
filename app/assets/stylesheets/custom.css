@@ -417,9 +417,9 @@ TOP WAS 33% */
   color: white;
   font-size: 20px;
   position: absolute;
-  top: 25%; 
+  top: 20%; 
   left: 50%;
-  transform: translate(-50%, -17%);
+  transform: translate(-50%, -20%);
   text-align: center;
 }
 
