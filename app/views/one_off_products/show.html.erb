@@ -6,7 +6,6 @@
         <div class = "col-12 text-center pb-2">
           <h1 class "pb-1 title-mobile"><%= @one_off_product.name %> </h1>
         </div>
-        <%= link_to 'ADD TO CART', add_to_cart_path(one_off_product: @one_off_product.name), class: "btn btn-outline-success jumbo-button btn-mobile" %>
         <div class= "col-7 text-center recipe-header-button pb-2">
           <%= image_tag(@one_off_product.thumbnail, class:"img-fluid", alt: "Product Image") %>
         </div>
