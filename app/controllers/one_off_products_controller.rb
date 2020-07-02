@@ -8,10 +8,15 @@ class OneOffProductsController < ApplicationController
         @one_off_products = OneOffProduct.order(:out_of_stock)
     end
 
+    #Actions and methods for testing items
     def test_item
         @one_off_product = OneOffProduct.find(13)
     end
 
+    def test_index
+        @one_off_products = OneOffProduct.order(:out_of_stock)
+    end
+    #Regular methods again
     def new
         @one_off_product = current_user.one_off_products.build
     end
