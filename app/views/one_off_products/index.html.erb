@@ -25,9 +25,9 @@
                                     </div>
                                 <% end %>
                                 <div class="d-flex flex-column card-body text-center">
-                                    <h4 class="card-title text-center title-card-mobile"> <%= one_off_product.name %></h4>
-                                    <p class="card-subtitle mb-2 text-center subtitle-description-mobile" style="color:black"> <%= one_off_product.description %></p>
-                                    <h5 class="text-center title-mobile">$<%= number_with_precision(one_off_product.price, precision: 2) %></h5>
+                                    <h4 class="card-title text-center title-card-mobile mt-auto"> <%= one_off_product.name %></h4>
+                                    <p class="card-subtitle mb-2 text-center subtitle-description-mobile mt-auto" style="color:black"> <%= one_off_product.description %></p>
+                                    <h5 class="text-center title-mobile mt-auto">$<%= number_with_precision(one_off_product.price, precision: 2) %></h5>
                                     <% if logged_in? %>
                                         <% if current_user.admin? %>
                                             <%= link_to "Edit Product", edit_one_off_product_path(one_off_product), class: " mt-auto btn btn-warning btn-mobile" %>
