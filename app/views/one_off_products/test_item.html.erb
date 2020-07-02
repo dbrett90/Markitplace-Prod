@@ -79,7 +79,7 @@
                 <%= f.label :quantity, class: 'field-label emphasis contact-form-item-mobile' do %>
                 <span class = 'field-label emphasis'> Quantity </span>
                 <% end %>
-                <%= f.number_field :quantity, class: 'form-control form-control-width form-control-mobile', placeholder: "1" %>
+                <%= f.number_field :quantity, class: 'form-control mx-auto form-control-mobile', placeholder: "1" %>
                 <%= hidden_field_tag(:one_off_product, @one_off_product.id) %>
                 <%= f.submit "ADD TO CART", class: "btn btn-outline-success jumbo-button mt-2 btn-mobile" %><br>
             <% end %>
