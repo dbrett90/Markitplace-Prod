@@ -30,16 +30,9 @@
                                     <h6 class="card-subtitle mb-2 text-center subtitle-description-mobile" style="color:black"> <%= one_off_product.description %></h6>
                                     <% if logged_in? %>
                                         <% if current_user.admin? %>
-                                            <%= link_to "More Info", one_off_product_path(one_off_product), class:" mt-auto btn btn-success btn-mobile mt-auto" %>
                                             <%= link_to "Edit Product", edit_one_off_product_path(one_off_product), class: " mt-auto btn btn-warning btn-mobile" %>
                                             <%= link_to 'Delete Product', one_off_product_path(one_off_product), data: {confirm: "mt-auto Are you sure you want to delete this product?"}, method: :delete, class: "btn btn-danger btn-mobile" %>
-                                        <% elsif current_user.is_subscribed? %>
-                                            <%= link_to "More Info", one_off_product_path(one_off_product), class:"mt-auto btn btn-success btn-mobile mt-auto" %>
-                                        <% else %>
-                                            <%= link_to "More Info", one_off_product_path(one_off_product), class:"mt-auto btn btn-success btn-mobile mt-auto" %>
                                         <% end %>
-                                    <% else %>
-                                        <%= link_to "More Info", one_off_product_path(one_off_product), class:"mt-auto btn btn-success btn-mobile" %>
                                     <% end %>
                                 </div>
                             </div>
