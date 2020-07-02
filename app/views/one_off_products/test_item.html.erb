@@ -3,11 +3,13 @@
   <section class= "container">
     <div class = "recipe-header pt-2">
       <div class = "row">
-        <div class= "col-6 text-center recipe-header-button pb-2">
+        <div class = "col-12 text-center">
           <h1 class "pb-1 title-mobile"><%= @one_off_product.name %> </h1>
+        </div>
+        <div class= "col-6 text-center recipe-header-button pb-2">
           <%= image_tag(@one_off_product.thumbnail, class:"img-fluid", alt: "Product Image") %>
         </div>
-        <div class = "col-6 text-center">
+        <div class = "col-6 text-center mt-auto">
           <% if @one_off_product.calories != nil && one_off_product.fats != nil %>
             <div class = "recipe-intro d-flex pt-3">
               <ul class= "stats list-inline mx-auto justify-content-center">
