@@ -46,10 +46,6 @@ module SessionsHelper
         @cart = Cart.create
         session[:cart] = @cart.id
         @cart
-        # flash[:danger] = 'New session cart'
-        # flash[:warning] = session[:cart]
-        # flash[:success] = @cart.id
-        # return @cart
       end
     end
 

@@ -26,6 +26,12 @@ class CartsController < ApplicationController
         end
     end
 
+    #Let's test the guest checkout
+    def guest_checkout
+        @cart_items = guest_cart.one_off_products
+        @total_price  sum_price(guest_cart.one_off_products)
+    end
+
     def index
         if cart_not_created?
             redirect_to root_path
