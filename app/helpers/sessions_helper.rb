@@ -40,10 +40,13 @@ module SessionsHelper
     def get_guest_cart
       if session[:cart]
         @cart = Cart.find(session[:cart])
+        flash[:success] = "Older cart found"
+        return @cart
       else
         #Create a new guest cart
         @cart = Cart.new()
         session[:cart] = @cart.id
+        flash[:danger] = 'New session cart'
         return @cart
       end
     end
