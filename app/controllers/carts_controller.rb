@@ -9,6 +9,24 @@ class CartsController < ApplicationController
         # @intent = 
     end
 
+    def test_index
+        if logged_in?
+            if cart_not_created?
+                redirect_to root_path
+                flash[:warning] = "Your Cart is currently empty!"
+            elsif cart_empty?
+                redirect_to root_path
+                flash[:warning] = "Your Cart is currently empty!"
+            else
+                @cart_items = current_user.cart.one_off_products
+                @cart_items_subscriptions = current_user.cart.plan_types
+            end 
+        else
+            @cart = get_guest_cart
+            @cart_items = @cart.one_off_products
+        end
+    end
+
     def index
         if cart_not_created?
             redirect_to root_path
