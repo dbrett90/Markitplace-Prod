@@ -22,7 +22,7 @@ class CartsController < ApplicationController
                 @cart_items_subscriptions = current_user.cart.plan_types
             end 
         else
-            @cart_items = .one_off_products
+            @cart_items = guest_cart.one_off_products
         end
     end
 

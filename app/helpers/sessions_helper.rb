@@ -42,7 +42,7 @@ module SessionsHelper
         @cart = Cart.find(session[:cart])
         flash[:success] = "Older cart found"
       else
-        @cart = Cart.create()
+        @cart = Cart.create
         session[:cart] = @cart.id
         flash[:danger] = 'New session cart'
         flash[:warning] = session[:cart]
