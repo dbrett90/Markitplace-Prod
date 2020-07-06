@@ -43,8 +43,9 @@ class CartsController < ApplicationController
     def guest_add_to_cart
         item = (params[:one_off_product]).downcase
         one_off = find_one_off(item)
-        flash[:success] = session[:cart]
-        flash[:danger] = params[:session]
+        flash[:success] = guest_cart
+        # flash[:success] = session[:cart]
+        # flash[:danger] = params[:session]
         redirect_to one_off_products_path
         # @cart guest_cart
         # if one_off.out_of_stock == nil || one_off.out_of_stock != "yes"
