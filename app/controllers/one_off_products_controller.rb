@@ -12,7 +12,7 @@ class OneOffProductsController < ApplicationController
     def test_item
         flash[:success] = params[:session]
         params[:session][:test] = "THIS IS A TEST"
-        flash[:danger] - params[:session]
+        flash[:danger] = params[:session]
         @one_off_product = OneOffProduct.find(13)
     end
 
