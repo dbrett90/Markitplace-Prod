@@ -76,7 +76,6 @@
                 <%= f.submit "ADD TO CART", class: "btn btn-outline-success jumbo-button mt-2 btn-mobile" %><br>
             <% end %>
           <% else %>
-
             <%= link_to 'START COOKING', guest_add_to_cart_path(one_off_product: @one_off_product.name), class:"btn btn-outline-success jumbo-button btn-mobile" %>
           <% end %>
         </div>
