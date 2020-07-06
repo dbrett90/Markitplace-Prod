@@ -12,9 +12,9 @@ class OneOffProductsController < ApplicationController
     def test_item
         @one_off_product = OneOffProduct.find(13)
         unless logged_in?
-            get_guest_cart
+            @cart = get_guest_cart
+            flash[:success] = @cart
         end
-        flash[:success] = session[:cart]
         flash[:danger] = params
     end
 
