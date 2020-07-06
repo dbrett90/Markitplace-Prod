@@ -46,6 +46,7 @@ module SessionsHelper
         #Create a new guest cart
         @cart = Cart.new()
         session[:cart] = @cart.id
+        session.save
         flash[:danger] = 'New session cart'
         return @cart
       end
