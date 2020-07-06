@@ -28,12 +28,12 @@
                             </div>
                         </li> 
                     <% else %>
-                        <li class= "nav-item dropdown">
+                        <li class= "nav-item nav-text-mobile active n-homepage">
                             <%= link_to "Kits", one_off_products_path, class: "nav-link nav-text-mobile" %>
                         </li>
                     <% end %>
                 <% else %>
-                <li class= "nav-item dropdown" data-turbolinks="false">
+                <li class= "nav-item nav-text-mobile active n-homepage">
                         <%= link_to "Kits", one_off_products_path, class: "nav-link nav-text-mobile" %>
                 </li>
                 <% end %>
