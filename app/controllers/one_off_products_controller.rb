@@ -1,7 +1,7 @@
 class OneOffProductsController < ApplicationController
     #May need to add library type to before action for set_product
     before_action :set_product_type, only: [:edit, :show, :update, :destroy]
-    before_action :admin_user, except: [:index, :show]
+    before_action :admin_user, except: [:index, :show, :test_index]
 
     def index
         #Show all the one-offs
