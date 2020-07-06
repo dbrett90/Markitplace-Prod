@@ -14,7 +14,7 @@ class OneOffProductsController < ApplicationController
         unless logged_in?
             get_guest_cart
         end
-        flash[:success] = params[:session]
+        flash[:success] = session[:cart]
         flash[:danger] = params
     end
 
