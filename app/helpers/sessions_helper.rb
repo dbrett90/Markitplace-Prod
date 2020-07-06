@@ -44,6 +44,7 @@ module SessionsHelper
         #Create a new guest cart
         @cart = Cart.new()
         session[:cart] = @cart.id
+        return @cart
       end
     end
 
