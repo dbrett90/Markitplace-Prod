@@ -39,8 +39,9 @@ module SessionsHelper
     #Specifically for guest checkout
     def guest_cart
       if session[:cart] != nil
-        @cart = Cart.find(session[:cart])
         flash[:danger] = "Older cart found"
+        @cart = Cart.find(session[:cart])
+        # flash[:danger] = "Older cart found"
       else
         @cart = Cart.create
         session[:cart] = @cart.id
