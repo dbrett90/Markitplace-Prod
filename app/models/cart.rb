@@ -1,6 +1,6 @@
 class Cart < ApplicationRecord
-    belongs_to :user
-    belongs_to :guest_user
+    belongs_to :user, optional: true
+    belongs_to :guest_user, optional: true
     has_many :one_off_products
     has_many :plan_types
     serialize :products, Array

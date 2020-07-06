@@ -36,6 +36,17 @@ module SessionsHelper
         @current_user = nil
     end
 
+    #Specifically for guest checkout
+    def get_guest_cart
+      if session[:cart]
+        @cart = Cart.find(session[:cart])
+      else
+        #Create a new guest cart
+        @cart = Cart.new()
+        session[:cart] = @cart.id
+      end
+    end
+
     def remember(user)
         user.remember
         cookies.permanent.signed[:user_id] = user.id

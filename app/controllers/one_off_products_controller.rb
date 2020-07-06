@@ -10,10 +10,12 @@ class OneOffProductsController < ApplicationController
 
     #Actions and methods for testing items
     def test_item
-        flash[:success] = params[:session]
-        # params[:session][:test] = "THIS IS A TEST"
-        # flash[:danger] = params[:session]
         @one_off_product = OneOffProduct.find(13)
+        unless logged_in?
+            get_guest_cart
+        end
+        flash[:success] = params[:session]
+        flash[:danger] = params
     end
 
     def test_index
