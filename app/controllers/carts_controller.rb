@@ -22,6 +22,22 @@ class CartsController < ApplicationController
         end 
     end
 
+    #Method specifically for guests adding to cart
+    def guest_add_to_cart
+        item = (params[:one_off_product]).downcase
+        one_off = find_one_off(item)
+        @cart = get_guest_cart
+        if one_off.out_of_stock == nil || one_off.out_of_stock != "yes"
+            @cart.one_off_products << one_off
+            @cart.save
+            flash[:success] = "Item has been added to your shopping cart!"
+            redirect_to one_off_products_path
+        else
+            flash[:warning] = "Unfortunately this item is out of stock. Please try another!"
+            redirect_to one_off_products_path
+        end
+    end
+
     def add_to_cart
         item = (params[:one_off_product]).downcase
         one_off = find_one_off(item)

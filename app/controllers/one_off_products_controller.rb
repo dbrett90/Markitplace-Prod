@@ -11,11 +11,7 @@ class OneOffProductsController < ApplicationController
     #Actions and methods for testing items
     def test_item
         @one_off_product = OneOffProduct.find(13)
-        unless logged_in?
-            @cart = get_guest_cart
-            flash[:success] = @cart
-        end
-        flash[:danger] = params
+        # flash[:danger] = params
     end
 
     def test_index
