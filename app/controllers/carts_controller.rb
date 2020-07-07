@@ -681,11 +681,11 @@ class CartsController < ApplicationController
         #  # #Hit the order confirmation and send over to the vendor(s)... Sends them a confirmation email about the order type. Can also view it in the stripe dashboard
         #Test the guest checkout 
         stripe_connect_users = StripeConnectUser.all
-         sc_user_email_hash = guest_find_sc_user_email(stripe_connect_users, guest_cart.one_off_products)
-         sc_user_email_hash.each do |vendor_email, product_array|
-             OrderConfirmationMailer.guest_vendor_order_confirmation(params[:payment_shipping][:recipient_first_name], params[:payment_shipping][:recipient_last_name], params[:payment_shipping][:recipient_email], vendor_email, guest_cart.one_off_products, params[:payment_shipping][:street_address_1],
-             params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
-             params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
+        sc_user_email_hash = guest_find_sc_user_email(stripe_connect_users, guest_cart.one_off_products)
+        sc_user_email_hash.each do |vendor_email, product_array|
+            OrderConfirmationMailer.guest_vendor_order_confirmation(params[:payment_shipping][:recipient_first_name], params[:payment_shipping][:recipient_last_name], params[:payment_shipping][:recipient_email], vendor_email, guest_cart.one_off_products, params[:payment_shipping][:street_address_1],
+            params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
+            params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
          end 
  
  
@@ -854,25 +854,25 @@ class CartsController < ApplicationController
         email_list
     end
 
-    def post_find_sc_user_email(sc_users, line_items)
-        email_list = Hash.new{|hsh,key| hsh[key] = [] }
-        sc_users.each do |sc_user|
-            line_items.each do |line_item|
-                if line_item.product_type == "One Off Product"
-                    one_off = OneOffProduct.find(line_item.product_id)
-                    if sc_user.stripe_id == one_off.stripe_id
-                        email_list[sc_user.stripe_email] <<  one_off.name
-                    end 
-                else 
-                    plan_type = PlanType.find(line_item.product_id)
-                    if sc_user.stripe_id == plan_type.stripe_id
-                        combined_string = plan_type.name + " recurring subscription"
-                        email_list[sc_user.stripe_email] << combined_string
-                    end
-                end
-            end
-        end
-        email_list
-    end
+    # def post_find_sc_user_email(sc_users, line_items)
+    #     email_list = Hash.new{|hsh,key| hsh[key] = [] }
+    #     sc_users.each do |sc_user|
+    #         line_items.each do |line_item|
+    #             if line_item.product_type == "One Off Product"
+    #                 one_off = OneOffProduct.find(line_item.product_id)
+    #                 if sc_user.stripe_id == one_off.stripe_id
+    #                     email_list[sc_user.stripe_email] <<  one_off.name
+    #                 end 
+    #             else 
+    #                 plan_type = PlanType.find(line_item.product_id)
+    #                 if sc_user.stripe_id == plan_type.stripe_id
+    #                     combined_string = plan_type.name + " recurring subscription"
+    #                     email_list[sc_user.stripe_email] << combined_string
+    #                 end
+    #             end
+    #         end
+    #     end
+    #     email_list
+    # end
 
 end
