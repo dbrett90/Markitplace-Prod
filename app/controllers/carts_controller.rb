@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-    layout "test", only: [:post_checkout, :guest_checkout]
+    layout "test", only: [:post_checkout]
 
     #Need to build in code to modify the number of items you want in a cart
     def checkout
@@ -615,10 +615,10 @@ class CartsController < ApplicationController
         #Must ensure that the proper layout with development keys are used. Check the post
         #checkout headers for example
         #Make sure we change this to production when the time comes
-        Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
+        Stripe.api_key = Rails.application.credentials.production[:stripe_api_key]
         @cart_items = guest_cart.one_off_products
         token = params[:stripeToken]
-        #Save values to gues db
+        #Save values to guest db
         guest_name = params[:payment_shipping][:recipient_first_name] + " " + params[:payment_shipping][:recipient_last_name]
         guest_user = GuestUser.new
         guest_user.name = guest_name
@@ -628,54 +628,54 @@ class CartsController < ApplicationController
         
 
          # flash[:success] = @cart_items
-        # @cart_items.each do |item|
-        #     fee_amount = dynamic_app_fee(item)
-        #     changed_price = item.price * 100
-        #     unless fee_amount == 0
-        #         fee_amount = (changed_price * fee_amount).to_i
-        #     else
-        #         fee_amount = 0
-        #     end
-        #     connected_acct = item.stripe_id
+        @cart_items.each do |item|
+            fee_amount = dynamic_app_fee(item)
+            changed_price = item.price * 100
+            unless fee_amount == 0
+                fee_amount = (changed_price * fee_amount).to_i
+            else
+                fee_amount = 0
+            end
+            connected_acct = item.stripe_id
             
-        #     #No customer exists, needs to create a new one
-        #     customer = Stripe::Customer.create({
-        #         email: params[:payment_shipping][:recipient_email], 
-        #         source: token,
-        #     },
-        #     {
-        #         stripe_account: item.stripe_id,
-        #     })
+            #No customer exists, needs to create a new one
+            customer = Stripe::Customer.create({
+                email: params[:payment_shipping][:recipient_email], 
+                source: token,
+            },
+            {
+                stripe_account: item.stripe_id,
+            })
      
-        #     if charge_app_fee?(fee_amount)
-        #         payment_intent = Stripe::PaymentIntent.create({
-        #             payment_method_types: ['card'],
-        #             amount: (item.price*100).to_i,
-        #             confirm: true,
-        #             currency: 'usd',
-        #             application_fee_amount: fee_amount,
-        #             capture_method: 'automatic',
-        #             confirmation_method: 'automatic',
-        #             customer: customer.id,
-        #             transfer_data: {
-        #                 destination: item.stripe_id,
-        #             },
-        #         })
-        #     else
-        #         payment_intent = Stripe::PaymentIntent.create({
-        #             payment_method_types: ['card'],
-        #             amount: (item.price*100).to_i,
-        #             currency: 'usd',
-        #             #Confirm set to true
-        #             confirm: true,
-        #             capture_method: 'automatic',
-        #             confirmation_method: 'automatic',
-        #             customer: customer.id,
-        #             }, {
-        #                 stripe_account: item.stripe_id, 
-        #         })
-        #     end
-        # end
+            if charge_app_fee?(fee_amount)
+                payment_intent = Stripe::PaymentIntent.create({
+                    payment_method_types: ['card'],
+                    amount: (item.price*100).to_i,
+                    confirm: true,
+                    currency: 'usd',
+                    application_fee_amount: fee_amount,
+                    capture_method: 'automatic',
+                    confirmation_method: 'automatic',
+                    customer: customer.id,
+                    transfer_data: {
+                        destination: item.stripe_id,
+                    },
+                })
+            else
+                payment_intent = Stripe::PaymentIntent.create({
+                    payment_method_types: ['card'],
+                    amount: (item.price*100).to_i,
+                    currency: 'usd',
+                    #Confirm set to true
+                    confirm: true,
+                    capture_method: 'automatic',
+                    confirmation_method: 'automatic',
+                    customer: customer.id,
+                    }, {
+                        stripe_account: item.stripe_id, 
+                })
+            end
+        end
 
         #REVISIT HERE - ORDER CONFIRMATION
  
