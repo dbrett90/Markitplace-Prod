@@ -618,6 +618,14 @@ class CartsController < ApplicationController
         Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
         @cart_items = guest_cart.one_off_products
         token = params[:stripeToken]
+        #Save values to gues db
+        guest_name = params[:payment_shipping][:recipient_first_name] + params[:payment_shipping][:recipient_last_name]
+        guest_user = GuestUser.new
+        guest_user.name = guest_name
+        guest_user.email = params[:payment_shipping][:recipient_email]
+        guest_user.phone_number = params[:payment_shipping][:recipient_phone_number]
+        guest_user.save
+        
 
          # flash[:success] = @cart_items
         # @cart_items.each do |item|
