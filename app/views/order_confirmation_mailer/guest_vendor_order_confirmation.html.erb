@@ -1,9 +1,10 @@
 <h1>Markitplace</h1>
 
 <p> Hi, a customer has completed a purchase order. The customer & product information is as follows:</p><br>
-<p>Customer Name: <%= @recipient_first_name %> <%= @recipient_last_name %> </p><br>
-<p>Customer Email: <%= @recipient_email %> </p><br>
-<p>Customer Phone Number: <%= @recipient_phone_number %></p>
+<p>Customer Name: <%= @recipient_first_name %> <%= @recipient_last_name %> </p>
+<p>Customer Email: <%= @recipient_email %> </p>
+<p>Customer Phone Number: <%= @recipient_phone_number %></p><br>
+<p>Product(s) Ordered: </p>
 <ul>
 <% @cart_items.each do |product| %>
     <li><strong><%= product.name %></strong></li>
