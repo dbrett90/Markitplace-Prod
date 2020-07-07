@@ -696,7 +696,7 @@ class CartsController < ApplicationController
             params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
          end 
  
- 
+        guest_cart.one_off_products.delete_all 
          #Confirm that the orders were made and notify customers on webpage
         flash[:success] = "Thank you for your Purchase! You will receive an email with a confirmation notice shortly."
         #NEED TO WIPE THE GUEST CART CLEAN HERE... @CART = nil?
