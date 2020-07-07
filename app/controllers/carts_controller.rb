@@ -9,7 +9,7 @@ class CartsController < ApplicationController
         # @intent = 
     end
 
-    def test_index
+    def guest_cart
         if logged_in?
             if cart_not_created?
                 redirect_to root_path
@@ -22,7 +22,12 @@ class CartsController < ApplicationController
                 @cart_items_subscriptions = current_user.cart.plan_types
             end 
         else
-            @cart_items = guest_cart.one_off_products
+            if guest_cart_empty?
+                redirect_to root_path
+                flash[:warning] = "Your Cart is currently empty!"
+            else
+                @cart_items = guest_cart.one_off_products
+            end
         end
     end
 
@@ -732,6 +737,15 @@ class CartsController < ApplicationController
         product_length = current_user.cart.one_off_products.length 
         subscription_length = current_user.cart.plan_types.length
         if product_length < 1 && subscription_length < 1
+            return true
+        else
+            return false
+        end
+    end
+
+    def guest_cart_empty?
+        num_items = guest_cart.one_off_products.length 
+        if num_items <1 
             return true
         else
             return false
