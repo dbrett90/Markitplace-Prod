@@ -363,6 +363,21 @@ class CartsController < ApplicationController
 
     end
 
+    def guest_destroy
+        if params[:one_off_product] == nil
+            item = params[:plan_type]
+            plan_type = find_plan_type_by_name(item)
+            guest_cart.plan_types.delete(plan_type)
+        else
+            item = params[:one_off_product]
+            one_off_by_name = find_one_off_by_name(item)
+            guest_cart.one_off_products.delete(one_off_by_name)
+        end
+        #It's pulling all the items in the cart here.
+        flash[:success] = "Item has been removed from your cart"
+        redirect_to cart_path
+    end
+
 
     def destroy
         if params[:one_off_product] == nil
