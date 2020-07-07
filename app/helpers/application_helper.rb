@@ -39,4 +39,17 @@ module ApplicationHelper
       sum.to_s
     end
   end  
+
+  def get_guest_cart_length
+    if guest_cart.one_off_products == nil
+      val = 0
+    else
+      if guest_cart.one_off_products.length > 9
+        val = "9+"
+      else
+        val = guest_cart.one_off_products.length
+      end
+    end
+    val.to_s
+  end
 end
