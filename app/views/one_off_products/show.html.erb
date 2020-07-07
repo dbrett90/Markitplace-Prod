@@ -69,7 +69,7 @@
           <% if logged_in? %>
             <%= link_to 'ADD TO CART', add_to_cart_path(one_off_product: @one_off_product.name), class: "btn btn-outline-success jumbo-button btn-mobile" %>
           <% else %>
-            <%= link_to 'START COOKING', new_user_path, class:"btn btn-outline-success jumbo-button btn-mobile" %>
+            <%= link_to 'ADD TO CART', guest_add_to_cart_path(one_off_product: @one_off_product.name), class:"btn btn-outline-success jumbo-button btn-mobile" %>
           <% end %>
         </div>
       </div>
