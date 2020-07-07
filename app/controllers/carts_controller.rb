@@ -619,7 +619,7 @@ class CartsController < ApplicationController
         @cart_items = guest_cart.one_off_products
         token = params[:stripeToken]
         #Save values to gues db
-        guest_name = params[:payment_shipping][:recipient_first_name] + params[:payment_shipping][:recipient_last_name]
+        guest_name = params[:payment_shipping][:recipient_first_name] + " " + params[:payment_shipping][:recipient_last_name]
         guest_user = GuestUser.new
         guest_user.name = guest_name
         guest_user.email = params[:payment_shipping][:recipient_email]
