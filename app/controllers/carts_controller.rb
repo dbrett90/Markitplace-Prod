@@ -664,13 +664,13 @@ class CartsController < ApplicationController
          params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
  
         #  # #Hit the order confirmation and send over to the vendor(s)... Sends them a confirmation email about the order type. Can also view it in the stripe dashboard
-        #  stripe_connect_users = StripeConnectUser.all
-        #  sc_user_email_hash = find_sc_user_email(stripe_connect_users, current_user.cart.one_off_products, current_user.cart.plan_types)
-        #  sc_user_email_hash.each do |vendor_email, product_array|
-        #      OrderConfirmationMailer.vendor_order_confirmation(current_user, params[:payment_shipping][:recipient_name], vendor_email, product_array, params[:payment_shipping][:street_address_1],
-        #      params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
-        #      params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
-        #  end 
+         stripe_connect_users = StripeConnectUser.all
+         sc_user_email_hash = post_find_sc_user_email(stripe_connect_users, guest_cart.one_off_products)
+         sc_user_email_hash.each do |vendor_email, product_array|
+             OrderConfirmationMailer.guest_vendor_order_confirmation(params[:payment_shipping][:recipient_first_name], params[:payment_shipping][:recipient_last_name], params[:payment_shipping][:recipient_email], vendor_email, guest_cart.one_off_products, params[:payment_shipping][:street_address_1],
+             params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
+             params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
+         end 
  
  
          #Confirm that the orders were made and notify customers on webpage

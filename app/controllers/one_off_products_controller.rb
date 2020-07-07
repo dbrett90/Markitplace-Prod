@@ -10,7 +10,7 @@ class OneOffProductsController < ApplicationController
 
     #Actions and methods for testing items
     def test_item
-        @one_off_product = OneOffProduct.find(13)
+        @one_off_product = OneOffProduct.find(19)
         # flash[:danger] = params
     end
 

@@ -47,6 +47,7 @@ class OrderConfirmationMailer < ApplicationMailer
         mail to: vendor_email, bcc: "admin@markitplace.io", subject: "Customer has bought from you on Markitplace"
     end
 
+    #Guest specific mailers for when people check out as guests
     def guest_customer_order_confirmation(recipient_first_name, recipient_last_name, recipient_email, cart_items, street_address_1, street_address_2, city, state, zipcode)
         @recipient_first_name = recipient_first_name 
         @recipient_last_name = recipient_last_name
@@ -58,6 +59,20 @@ class OrderConfirmationMailer < ApplicationMailer
         @state = state
         @zipcode = zipcode
         mail to: @recipient_email, bcc: "admin@markitplace.io", subject: "Markitplace Order Confirmation"
+    end
+
+    #Vendor confirmation emails 
+    def guest_vendor_order_confirmation(recipient_first_name, recipient_last_name, recipient_email, vendor_email, cart_items, street_address_1, street_address_2, city, state, zipcode)
+        @recipient_first_name = recipient_first_name 
+        @recipient_last_name = recipient_last_name
+        @recipient_email = recipient_email
+        @cart_items = cart_items
+        @street_address_1 = street_address_1
+        @street_address_2 = street_address_2
+        @city = city
+        @state = state
+        @zipcode = zipcode
+        mail to: vendor_email, bcc: "admin@markitplace.io", subject: "Customer has purchased a product from you on Markitplace"
     end
 
     #Where are you pulling the vendor_email from?
