@@ -52,7 +52,6 @@ class OrderConfirmationMailer < ApplicationMailer
         @recipient_last_name = recipient_last_name
         @recipient_email = recipient_email
         @cart_items = cart_items
-        @recipient_name = recipient_name
         @street_address_1 = street_address_1
         @street_address_2 = street_address_2
         @city = city
