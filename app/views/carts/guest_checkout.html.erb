@@ -20,13 +20,25 @@
           <% end %>
         </div>
         <div class= "col-12 col-lg-6 checkout-header">
-          <%= form_for(:payment_shipping, url: checkout_path, html: {id: "payment-form"}) do |f| %>
+          <%= form_for(:payment_shipping, url: guest_checkout_path, html: {id: "payment-form"}) do |f| %>
             <div class="shipping-information">
               <h1 class="title-mobile">Shipping Information</h1>
-              <%= f.label :recipient_name, class: 'field-label emphasis contact-form-item-mobile' do %>
-                <span class = 'field-label emphasis'> Name </span>
+              <%= f.label :recipient_first_name, class: 'field-label emphasis contact-form-item-mobile' do %>
+                <span class = 'field-label emphasis'> First Name </span>
               <% end %>
-              <%= f.text_field :recipient_name, class: 'form-control form-control-mobile', placeholder: "Name" %>
+              <%= f.text_field :recipient_first_name, class: 'form-control form-control-mobile', placeholder: "First Name" %>
+              <%= f.label :recipient_last_name, class: 'field-label emphasis contact-form-item-mobile' do %>
+                <span class = 'field-label emphasis'> Last Name </span>
+              <% end %>
+              <%= f.text_field :recipient_last_name, class: 'form-control form-control-mobile', placeholder: "Last Name" %>
+              <%= f.label :recipient_email, class: 'field-label emphasis contact-form-item-mobile' do %>
+                <span class = 'field-label emphasis'> Email </span>
+              <% end %>
+              <%= f.email_field :recipient_email, class: 'form-control form-control-mobile', placeholder: "Email" %>
+              <%= f.label :recipient_phone_number, class: 'field-label emphasis contact-form-item-mobile' do %>
+                <span class = 'field-label emphasis'> Phone Number </span>
+              <% end %>
+              <%= f.text_field :recipient_phone_number, class: 'form-control form-control-mobile', placeholder: "Phone Number" %>
               <%= f.label :street_address_1, class: 'field-label emphasis contact-form-item-mobile' do %>
                 <span class = 'field-label emphasis'> Street Address 1 </span>
               <% end %>

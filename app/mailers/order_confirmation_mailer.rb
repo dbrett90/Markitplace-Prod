@@ -47,6 +47,20 @@ class OrderConfirmationMailer < ApplicationMailer
         mail to: vendor_email, bcc: "admin@markitplace.io", subject: "Customer has bought from you on Markitplace"
     end
 
+    def guest_customer_order_confirmation(recipient_first_name, recipient_last_name, recipient_email, cart_items, street_address_1, street_address_2, city, state, zipcode)
+        @recipient_first_name = recipient_first_name 
+        @recipient_last_name = recipient_last_name
+        @recipient_email = recipient_email
+        @cart_items = cart_items
+        @recipient_name = recipient_name
+        @street_address_1 = street_address_1
+        @street_address_2 = street_address_2
+        @city = city
+        @state = state
+        @zipcode = zipcode
+        mail to: @recipient_email, bcc: "admin@markitplace.io", subject: "Markitplace Order Confirmation"
+    end
+
     #Where are you pulling the vendor_email from?
     #Take a look at this tomorrow. Going to need to pull it from Stripe Id for connect
     def vendor_confirmation(current_user, vendor_email, plan_type, recipient_name, street_address_1, street_address_2, city, state, zipcode)

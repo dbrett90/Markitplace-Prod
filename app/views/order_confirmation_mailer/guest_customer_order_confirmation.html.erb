@@ -1,0 +1,24 @@
+<h1>Markitplace</h1>
+
+
+<p>Hi, <%= @recipient_first_name %> <%= @recipient_last_name %>, thank you for your purchase. This email will serve as a receipt
+& confirmation for your order for the following item(s): </p><br>
+
+
+<ul>
+    <% @cart_items.each do |product| %>
+        <li><strong><%= product.name %></strong></li>
+    <% end %>
+</ul>
+<br>
+
+<p>Your Order will be delivered to the following address:</p>
+<p><%= @recipient_first_name %> <%= @recipient_last_name ></p>
+<p><%= @street_address_1 %> </p>
+<p><%= @street_address_2 %> </p>
+<p><%= @city %> </p>
+<p><%= @state %> </p>
+<p><%= @zipcode %> </p>
+
+<p>Should you have any questions please use our contact page and a support
+specialist will get in touch with you shortly.</p>
