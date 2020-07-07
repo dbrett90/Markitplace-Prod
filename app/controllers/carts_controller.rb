@@ -683,7 +683,7 @@ class CartsController < ApplicationController
         stripe_connect_users = StripeConnectUser.all
         sc_user_email_hash = guest_find_sc_user_email(stripe_connect_users, guest_cart.one_off_products)
         sc_user_email_hash.each do |vendor_email, product_array|
-            OrderConfirmationMailer.guest_vendor_order_confirmation(params[:payment_shipping][:recipient_first_name], params[:payment_shipping][:recipient_last_name], params[:payment_shipping][:recipient_email], vendor_email, guest_cart.one_off_products, params[:payment_shipping][:street_address_1],
+            OrderConfirmationMailer.guest_vendor_order_confirmation(params[:payment_shipping][:recipient_first_name], params[:payment_shipping][:recipient_last_name], params[:payment_shipping][:recipient_email], params[:payment_shipping][:recipient_phone_number], vendor_email, guest_cart.one_off_products, params[:payment_shipping][:street_address_1],
             params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
             params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
          end 

@@ -62,10 +62,11 @@ class OrderConfirmationMailer < ApplicationMailer
     end
 
     #Vendor confirmation emails 
-    def guest_vendor_order_confirmation(recipient_first_name, recipient_last_name, recipient_email, vendor_email, cart_items, street_address_1, street_address_2, city, state, zipcode)
+    def guest_vendor_order_confirmation(recipient_first_name, recipient_last_name, recipient_email, recipient_phone_number, vendor_email, cart_items, street_address_1, street_address_2, city, state, zipcode)
         @recipient_first_name = recipient_first_name 
         @recipient_last_name = recipient_last_name
         @recipient_email = recipient_email
+        @recipient_phone_number = recipient_phone_number
         @cart_items = cart_items
         @street_address_1 = street_address_1
         @street_address_2 = street_address_2
