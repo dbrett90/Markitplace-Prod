@@ -9,7 +9,7 @@ class CartsController < ApplicationController
         # @intent = 
     end
 
-    def guest_cart
+    def guest_cart_index
         if logged_in?
             if cart_not_created?
                 redirect_to root_path
