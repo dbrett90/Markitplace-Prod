@@ -6,7 +6,7 @@
 <p>Customer Phone Number: <%= @recipient_phone_number %></p>
 <ul>
 <% @cart_items.each do |product| %>
-    <li><strong><%= product %></strong></li>
+    <li><strong><%= product.name %></strong></li>
 <% end %>
 </ul>
 
