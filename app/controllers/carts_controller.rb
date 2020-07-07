@@ -375,7 +375,7 @@ class CartsController < ApplicationController
         end
         #It's pulling all the items in the cart here.
         flash[:success] = "Item has been removed from your cart"
-        redirect_to cart_path
+        redirect_to guest_cart_path
     end
 
 
