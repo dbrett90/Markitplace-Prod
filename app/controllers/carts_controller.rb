@@ -27,7 +27,9 @@ class CartsController < ApplicationController
             #     flash[:warning] = "Your Cart is currently empty!"
             #     return
             # else
-                @cart_items = guest_cart.one_off_products
+                # @cart_items = guest_cart.one_off_products
+            redirect_to root_path
+            flash[:warning] = "Guest!"
             # end
         end
     end
