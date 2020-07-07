@@ -744,8 +744,13 @@ class CartsController < ApplicationController
     end
 
     def guest_cart_empty?
-        num_items = guest_cart.one_off_products.length 
-        if num_items <1 
+        num_items = guest_cart.one_off_products
+        if num_items != nil 
+            num_items = num_items.length
+        else
+            num_items = 0
+        end
+        if num_items < 1 
             return true
         else
             return false
