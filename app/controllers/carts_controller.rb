@@ -33,7 +33,7 @@ class CartsController < ApplicationController
                 return
             elsif guest_cart.one_off_products.length < 1
                 redirect_to root_path
-                flash[warning] = "Cart is empty!"
+                flash[:warning] = "Cart is empty!"
             else
                 @cart_items = guest_cart.one_off_products
             end
