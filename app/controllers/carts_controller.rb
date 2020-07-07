@@ -22,13 +22,13 @@ class CartsController < ApplicationController
                 @cart_items_subscriptions = current_user.cart.plan_types
             end 
         else
-            if guest_cart_empty?
-                redirect_to root_path
-                flash[:warning] = "Your Cart is currently empty!"
-                return
-            else
+            # if guest_cart_empty?
+            #     redirect_to root_path
+            #     flash[:warning] = "Your Cart is currently empty!"
+            #     return
+            # else
                 @cart_items = guest_cart.one_off_products
-            end
+            # end
         end
     end
 
