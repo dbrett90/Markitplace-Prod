@@ -635,6 +635,9 @@ class CartsController < ApplicationController
         Stripe.api_key = Rails.application.credentials.production[:stripe_api_key]
         @cart_items = guest_cart.one_off_products
         token = params[:stripeToken]
+
+     
+        
         #Save values to guest db
         guest_name = params[:payment_shipping][:recipient_first_name] + " " + params[:payment_shipping][:recipient_last_name]
         guest_user = GuestUser.new
@@ -646,78 +649,88 @@ class CartsController < ApplicationController
 
          # flash[:success] = @cart_items
         @cart_items.each do |item|
-            fee_amount = dynamic_app_fee(item)
-            changed_price = item.price * 100
-            unless fee_amount == 0
-                fee_amount = (changed_price * fee_amount).to_i
-            else
-                fee_amount = 0
-            end
-            connected_acct = item.stripe_id
-            
-            #No customer exists, needs to create a new one
-            customer = Stripe::Customer.create({
-                email: params[:payment_shipping][:recipient_email], 
-                source: token,
-            },
-            {
-                stripe_account: item.stripe_id,
-            })
-     
-            if charge_app_fee?(fee_amount)
-                payment_intent = Stripe::PaymentIntent.create({
-                    payment_method_types: ['card'],
-                    amount: (item.price*100).to_i,
-                    confirm: true,
-                    currency: 'usd',
-                    application_fee_amount: fee_amount,
-                    capture_method: 'automatic',
-                    confirmation_method: 'automatic',
-                    customer: customer.id,
-                    transfer_data: {
-                        destination: item.stripe_id,
-                    },
+
+            #Do zip code validation
+            city_list = parse_list(item.available_cities)
+            if delivery_city_ok?(city_list, params[:payment_shipping][:city])
+
+                fee_amount = dynamic_app_fee(item)
+                changed_price = item.price * 100
+                unless fee_amount == 0
+                    fee_amount = (changed_price * fee_amount).to_i
+                else
+                    fee_amount = 0
+                end
+                connected_acct = item.stripe_id
+                
+                #No customer exists, needs to create a new one
+                customer = Stripe::Customer.create({
+                    email: params[:payment_shipping][:recipient_email], 
+                    source: token,
+                },
+                {
+                    stripe_account: item.stripe_id,
                 })
+
+                if charge_app_fee?(fee_amount)
+                    payment_intent = Stripe::PaymentIntent.create({
+                        payment_method_types: ['card'],
+                        amount: (item.price*100).to_i,
+                        confirm: true,
+                        currency: 'usd',
+                        application_fee_amount: fee_amount,
+                        capture_method: 'automatic',
+                        confirmation_method: 'automatic',
+                        customer: customer.id,
+                        transfer_data: {
+                            destination: item.stripe_id,
+                        },
+                    })
+                else
+                    payment_intent = Stripe::PaymentIntent.create({
+                        payment_method_types: ['card'],
+                        amount: (item.price*100).to_i,
+                        currency: 'usd',
+                        #Confirm set to true
+                        confirm: true,
+                        capture_method: 'automatic',
+                        confirmation_method: 'automatic',
+                        customer: customer.id,
+                        }, {
+                            stripe_account: item.stripe_id, 
+                    })
+                end
+
+                #REVISIT HERE - ORDER CONFIRMATION
+        
+                #Send out the confirmation emails - need to modify for guests
+                #Trigger Flash & The action mailers for confirmation
+                OrderConfirmationMailer.guest_customer_order_confirmation(params[:payment_shipping][:recipient_first_name],
+                params[:payment_shipping][:recipient_last_name], params[:payment_shipping][:recipient_email], @cart_items, params[:payment_shipping][:street_address_1],
+                params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
+                params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
+        
+                #  # #Hit the order confirmation and send over to the vendor(s)... Sends them a confirmation email about the order type. Can also view it in the stripe dashboard
+                #Test the guest checkout 
+                stripe_connect_users = StripeConnectUser.all
+                sc_user_email_hash = guest_find_sc_user_email(stripe_connect_users, guest_cart.one_off_products)
+                sc_user_email_hash.each do |vendor_email, product_array|
+                    OrderConfirmationMailer.guest_vendor_order_confirmation(params[:payment_shipping][:recipient_first_name], params[:payment_shipping][:recipient_last_name], params[:payment_shipping][:recipient_email], params[:payment_shipping][:recipient_phone_number], vendor_email, guest_cart.one_off_products, params[:payment_shipping][:street_address_1],
+                    params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
+                    params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
+                end 
+        
+                guest_cart.one_off_products.delete_all 
+                #Confirm that the orders were made and notify customers on webpage
+                flash[:success] = "Thank you for your Purchase! You will receive an email with a confirmation notice shortly."
+                #NEED TO WIPE THE GUEST CART CLEAN HERE... @CART = nil?
+                redirect_to root_path
             else
-                payment_intent = Stripe::PaymentIntent.create({
-                    payment_method_types: ['card'],
-                    amount: (item.price*100).to_i,
-                    currency: 'usd',
-                    #Confirm set to true
-                    confirm: true,
-                    capture_method: 'automatic',
-                    confirmation_method: 'automatic',
-                    customer: customer.id,
-                    }, {
-                        stripe_account: item.stripe_id, 
-                })
+                redirect_to guest_cart_path 
+                flash[:warning] = "There is an item in your cart that does not deliver to the provided address. Please remove it"
+                return
             end
         end
-
-        #REVISIT HERE - ORDER CONFIRMATION
- 
-         #Send out the confirmation emails - need to modify for guests
-         #Trigger Flash & The action mailers for confirmation
-         OrderConfirmationMailer.guest_customer_order_confirmation(params[:payment_shipping][:recipient_first_name],
-         params[:payment_shipping][:recipient_last_name], params[:payment_shipping][:recipient_email], @cart_items, params[:payment_shipping][:street_address_1],
-         params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
-         params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
- 
-        #  # #Hit the order confirmation and send over to the vendor(s)... Sends them a confirmation email about the order type. Can also view it in the stripe dashboard
-        #Test the guest checkout 
-        stripe_connect_users = StripeConnectUser.all
-        sc_user_email_hash = guest_find_sc_user_email(stripe_connect_users, guest_cart.one_off_products)
-        sc_user_email_hash.each do |vendor_email, product_array|
-            OrderConfirmationMailer.guest_vendor_order_confirmation(params[:payment_shipping][:recipient_first_name], params[:payment_shipping][:recipient_last_name], params[:payment_shipping][:recipient_email], params[:payment_shipping][:recipient_phone_number], vendor_email, guest_cart.one_off_products, params[:payment_shipping][:street_address_1],
-            params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
-            params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
-         end 
- 
-        guest_cart.one_off_products.delete_all 
-         #Confirm that the orders were made and notify customers on webpage
-        flash[:success] = "Thank you for your Purchase! You will receive an email with a confirmation notice shortly."
-        #NEED TO WIPE THE GUEST CART CLEAN HERE... @CART = nil?
-        redirect_to root_path
     end
 
 
