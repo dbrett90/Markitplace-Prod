@@ -893,25 +893,55 @@ class CartsController < ApplicationController
         email_list
     end
 
-    # def post_find_sc_user_email(sc_users, line_items)
-    #     email_list = Hash.new{|hsh,key| hsh[key] = [] }
-    #     sc_users.each do |sc_user|
-    #         line_items.each do |line_item|
-    #             if line_item.product_type == "One Off Product"
-    #                 one_off = OneOffProduct.find(line_item.product_id)
-    #                 if sc_user.stripe_id == one_off.stripe_id
-    #                     email_list[sc_user.stripe_email] <<  one_off.name
-    #                 end 
-    #             else 
-    #                 plan_type = PlanType.find(line_item.product_id)
-    #                 if sc_user.stripe_id == plan_type.stripe_id
-    #                     combined_string = plan_type.name + " recurring subscription"
-    #                     email_list[sc_user.stripe_email] << combined_string
-    #                 end
-    #             end
-    #         end
-    #     end
-    #     email_list
-    # end
+    def post_find_sc_user_email(sc_users, line_items)
+        email_list = Hash.new{|hsh,key| hsh[key] = [] }
+        sc_users.each do |sc_user|
+            line_items.each do |line_item|
+                if line_item.product_type == "One Off Product"
+                    one_off = OneOffProduct.find(line_item.product_id)
+                    if sc_user.stripe_id == one_off.stripe_id
+                        email_list[sc_user.stripe_email] <<  one_off.name
+                    end 
+                else 
+                    plan_type = PlanType.find(line_item.product_id)
+                    if sc_user.stripe_id == plan_type.stripe_id
+                        combined_string = plan_type.name + " recurring subscription"
+                        email_list[sc_user.stripe_email] << combined_string
+                    end
+                end
+            end
+        end
+        email_list
+    end
+
+    #This will work in the short term, but issue if there is a city long term
+    #That has some name as one in NY that is not in NY (as example). Zipcode 
+    #prefferred validation metric at some point in time
+
+    #First parse the available cities, noting that they need to be separated
+    #by commas in the form itself
+    def parse_list(one_off_product)
+        city_list = one_off_product.available_cities
+        if city_list.nil?
+            return []
+        else 
+            city_list = city_list.split(',')
+            city_list= city_list.map do |city|
+                city.gsub(/\s+/, '')
+            end
+            return city_list
+        end
+    end
+
+    def delivery_city_ok?(available_cities_list, shipping_address_city)
+        if available_cities_list.length == 0
+            return true
+        else
+            #Assumes the cities input are lowercase
+            shipping_address_city = shipping_address_city.downcase
+            available_cities_list.include?(shipping_address_city)
+        end
+
+    end
 
 end
