@@ -651,7 +651,7 @@ class CartsController < ApplicationController
         @cart_items.each do |item|
 
             #Do zip code validation
-            city_list = parse_list(item.available_cities)
+            city_list = parse_list(item)
             if delivery_city_ok?(city_list, params[:payment_shipping][:city])
 
                 fee_amount = dynamic_app_fee(item)
