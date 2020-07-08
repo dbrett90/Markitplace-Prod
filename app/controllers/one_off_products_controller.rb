@@ -47,15 +47,6 @@ class OneOffProductsController < ApplicationController
           {stripe_account: @one_off_product.stripe_id})
           @one_off_product.update_attribute(:product_id, stripe_product.id)
 
-        # #Should you be creating SKUs here?
-        #   stripe_sku = Stripe::SKU.create({
-        #       price: (@one_off_product.price * 100).to_i,
-        #       currency: 'usd',
-        #       inventory: {type: 'finite', quantity: 100},
-        #       product: stripe_product.id,
-        #     },
-        #     {stripe_account: @one_off_product.stripe_id})
-
         respond_to do |format|
             if @one_off_product.save
                 flash[:success] = params
