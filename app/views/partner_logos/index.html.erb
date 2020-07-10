@@ -14,7 +14,12 @@
                         </div>
                         <div class = "col-12">
                             <% dedicated_button = logo.name + " Kits" %>
-                            <%= link_to dedicated_button, logo.dedicated_link, class: "btn btn-outline-success jumbo-button btn-mobile" %>
+                            <% if logo.dedicated_link != nil %>
+                                <%= link_to dedicated_button, logo.dedicated_link, class: "btn btn-outline-success jumbo-button btn-mobile" %>
+                            <% else %>
+                                <%= link_to dedicated_button, partner_path, class: "btn btn-outline-success jumbo-button btn-mobile" %>
+                                <%= flash[:warning] = "These Kits are currently out of stock" %>
+                            <% end %>
                         </div>
                     </div>
                     <div class = "col-12">
