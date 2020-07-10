@@ -17,7 +17,7 @@
                 <%  @partners.each do |partner| %>
                         <div class="col-12 col-lg-4 pb-3 d-flex align-items-stretch card-padding-mobile">
                             <div class="card see-cooking card-width">
-                                <%= link_to one_off_product_path(one_off_product) do %>
+                                <%= link_to partner.dedicated_link do %>
                                     <%= image_tag partner.thumbnail.variant(resize: "450x450"), class:"card-img-top hover-gray", alt: "Meal Kit Plan Image" %>
                                     <div class="textOverlay align-middle text-center subtitle-description-mobile">
                                         <div class="showTextIndex align-middle text-center subtitle-mobile">See what&#39;s cooking</div>
