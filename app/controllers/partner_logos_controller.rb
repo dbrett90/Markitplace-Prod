@@ -61,7 +61,7 @@ class PartnerLogosController < ApplicationController
     end
 
     def warning
-        flash.now.warning = "Kits from this partner are no longer available"
+        flash.now[:warning] = "Kits from this partner are no longer available"
     end
     helper_method :warning
 
