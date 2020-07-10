@@ -3,33 +3,31 @@
     <div class="partners-homepage-2019">
         <div class="container-fluid" id="partner-offerings">
             <%  @partner_logos.each do |logo| %>
-                <div class = "row shadow-bottom pb-2 pt-2">
-                    <div class = "col- 12 col-md-4 img-fluid my-auto mb-2">
-                        <%= image_tag logo.thumbnail.variant(resize: "250x250"), class: "img-fluid align-items-center" %>
-                    </div>
-                    <div class = "col-12 col-md-8 my-auto mx-auto mb-2">
-                        <div class = "col-12 mb-2">
-                            <h3> <%= logo.name %>
-                            <p class = "logo-text subtitle-description-mobile"> <%= logo.description %>
+                <% if logo.hide?.lowercase != "yes" %>
+                    <div class = "row shadow-bottom pb-2 pt-2">
+                        <div class = "col- 12 col-md-4 img-fluid my-auto mb-2">
+                            <%= image_tag logo.thumbnail.variant(resize: "250x250"), class: "img-fluid align-items-center" %>
+                        </div>
+                        <div class = "col-12 col-md-8 my-auto mx-auto mb-2">
+                            <div class = "col-12 mb-2">
+                                <h3> <%= logo.name %>
+                                <p class = "logo-text subtitle-description-mobile"> <%= logo.description %>
+                            </div>
+                            <div class = "col-12">
+                                <% dedicated_button = logo.name + " Kits" %>
+                                <%= link_to dedicated_button, logo.dedicated_link, class: "btn btn-outline-success jumbo-button btn-mobile" %>
+                            </div>
                         </div>
                         <div class = "col-12">
-                            <% dedicated_button = logo.name + " Kits" %>
-                            <% if logo.dedicated_link != nil %>
-                                <%= link_to dedicated_button, logo.dedicated_link, class: "btn btn-outline-success jumbo-button btn-mobile" %>
-                            <% else %>
-                                <%= link_to dedicated_button, partners_path, warning: "Kits from this partner are no longer available", class: "btn btn-outline-success jumbo-button btn-mobile" %>
+                            <% if logged_in? %>
+                                <% if current_user.admin? %>
+                                    <%= link_to "Edit Logo", edit_partner_logo_path(logo), class: "btn btn-warning btn-mobile" %>
+                                    <%= link_to "Delete Logo", partner_logo_path(logo), method: :delete, class: "btn btn-danger btn-mobile" %>
+                                <% end %>
                             <% end %>
                         </div>
                     </div>
-                    <div class = "col-12">
-                        <% if logged_in? %>
-                            <% if current_user.admin? %>
-                                <%= link_to "Edit Logo", edit_partner_logo_path(logo), class: "btn btn-warning btn-mobile" %>
-                                <%= link_to "Delete Logo", partner_logo_path(logo), method: :delete, class: "btn btn-danger btn-mobile" %>
-                            <% end %>
-                        <% end %>
-                    </div>
-                </div>
+                <% end %>
             <% end %>
         </div>
     </div>
