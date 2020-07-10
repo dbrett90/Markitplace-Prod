@@ -44,6 +44,8 @@ Rails.application.routes.draw do
   get '/mealkits', to: 'products#index'
   get '/additional-products', to: 'one_off_products#index'
   get '/partners', to: 'partner_logos#index'
+  get 'mealkit-playbook', to: 'partner_logos#playbook'
+  post 'mealkit-playbook', to: 'partner_logos#download_playbook'
   resources :users
   resources :stripe_connect_users
   #Below routes specifically for product library
