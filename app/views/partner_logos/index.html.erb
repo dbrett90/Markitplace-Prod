@@ -17,8 +17,7 @@
                             <% if logo.dedicated_link != nil %>
                                 <%= link_to dedicated_button, logo.dedicated_link, class: "btn btn-outline-success jumbo-button btn-mobile" %>
                             <% else %>
-                                <%= link_to dedicated_button, partners_path, class: "btn btn-outline-success jumbo-button btn-mobile" %>
-                                <% warning %>
+                                <%= link_to dedicated_button, partners_path, warning: "Kits from this partner are no longer available", class: "btn btn-outline-success jumbo-button btn-mobile" %>
                             <% end %>
                         </div>
                     </div>
