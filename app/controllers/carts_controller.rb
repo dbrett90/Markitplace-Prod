@@ -705,10 +705,10 @@ class CartsController < ApplicationController
         
                 #Send out the confirmation emails - need to modify for guests
                 #Trigger Flash & The action mailers for confirmation
-                # OrderConfirmationMailer.guest_customer_order_confirmation(params[:payment_shipping][:recipient_first_name],
-                # params[:payment_shipping][:recipient_last_name], params[:payment_shipping][:recipient_email], @cart_items, params[:payment_shipping][:street_address_1],
-                # params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
-                # params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
+                OrderConfirmationMailer.guest_customer_order_confirmation(params[:payment_shipping][:recipient_first_name],
+                params[:payment_shipping][:recipient_last_name], params[:payment_shipping][:recipient_email], @cart_items, params[:payment_shipping][:street_address_1],
+                params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
+                params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
         
                 #  # #Hit the order confirmation and send over to the vendor(s)... Sends them a confirmation email about the order type. Can also view it in the stripe dashboard
                 #Test the guest checkout 
