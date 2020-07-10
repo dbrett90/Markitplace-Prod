@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'sessions/new'
   root 'static_pages#home'
   get '/test', to: 'one_off_products#test_item'
+  get '/test-index', to: 'one_off_products#test_index'
   delete '/test', to: 'carts#post_destroy'
   get '/test-index', to:'carts#post_index'
   get '/test-checkout', to: 'carts#post_checkout'
