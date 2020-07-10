@@ -17,6 +17,11 @@ class PartnersController < ApplicationController
         # flash[:warning] = @one_offs.length
     end
 
+    def warning
+        flash[:warning] = "These items are currently out of stock"
+    end
+    helper_method :warning
+
 
     private
     #ILIKE is crucial for case-insensitive search
@@ -28,8 +33,4 @@ class PartnersController < ApplicationController
         PlanType.where("partner_name ILIKE ?", item)
     end
 
-    def warning
-        flash[:warning] = "These items are currently out of stock"
-    end
-    helper_method :warning
 end
