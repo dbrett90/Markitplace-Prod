@@ -60,4 +60,9 @@ class PartnerLogosController < ApplicationController
         redirect_to(root_url) unless current_user.admin?
     end
 
+    def warning
+        flash[:warning] = "Kits from this partner are no longer available"
+    end
+    helper_method :warning
+
 end
