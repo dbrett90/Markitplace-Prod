@@ -46,6 +46,13 @@ class PartnerLogosController < ApplicationController
         redirect_to partner_logos_path
     end
 
+    def playbook 
+    end
+
+    def download_playbook            
+        send_file "/app/assets/images/one_pager.pdf", type: "application/pdf", x_sendfile: true
+    end
+
     private
 
     def set_logo

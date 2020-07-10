@@ -17,12 +17,6 @@ class PartnersController < ApplicationController
         # flash[:warning] = @one_offs.length
     end
 
-    def playbook 
-    end
-
-    def download_playbook            
-        send_file "/app/assets/images/one_pager.pdf", type: "application/pdf", x_sendfile: true
-    end
 
 
 
