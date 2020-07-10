@@ -17,10 +17,6 @@ class PartnersController < ApplicationController
         # flash[:warning] = @one_offs.length
     end
 
-    def warning
-        flash[:warning] = "These items are currently out of stock"
-    end
-    helper_method :warning
 
 
     private
