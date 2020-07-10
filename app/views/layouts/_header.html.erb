@@ -40,9 +40,15 @@
                 <li class= "nav-item dropdown" data-turbolinks="false">
                     <a href="#" class="nav-link nav-text-mobile dropdown-toggle" id="navbarDropdown" style="color:black" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  data-turbolinks="false">About Us</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <%= link_to "Services", services_path, class: "dropdown-item nav-link nav-text-mobile" %>
                         <%= link_to "Our Team",  our_team_path, class: "dropdown-item nav-link nav-text-mobile" %>
                         <%= link_to "Contact", contact_path, class: "dropdown-item nav-link nav-text-mobile" %>
+                    </div>
+                </li>  
+                <li class= "nav-item dropdown" data-turbolinks="false">
+                    <a href="#" class="nav-link nav-text-mobile dropdown-toggle" id="navbarDropdown" style="color:black" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  data-turbolinks="false">Partners</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <%= link_to "Partners", partners_path, class: "dropdown-item nav-link nav-text-mobile" %>
+                        <%= link_to "Services", services_path, class: "dropdown-item nav-link nav-text-mobile" %>
                     </div>
                 </li>     
             </ul>
