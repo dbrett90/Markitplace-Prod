@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_10_021452) do
+ActiveRecord::Schema.define(version: 2020_07_10_212045) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -117,6 +117,12 @@ ActiveRecord::Schema.define(version: 2020_07_10_021452) do
     t.integer "servings"
     t.integer "fats"
     t.string "prep_time"
+  end
+
+  create_table "playbook_users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.integer "phone_number"
   end
 
   create_table "product_subscription_libraries", force: :cascade do |t|

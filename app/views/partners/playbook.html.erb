@@ -1,0 +1,35 @@
+<% provide(:title, "Mealkit Playbook") %>
+<div class = "container">
+    <div class = "row">
+        <div class = "col-12">
+            <h1>The Mealkit Playbook</h1>
+        </div>
+        <div class = "col-6">
+            <h5>How to increase revenue and brand awareness with mealkits</h5>
+            <p>Restaurants, Wholesalers and Farms are rapidly turning to mealkits
+            and scheduled food delivery as part of their recovery strategy from the COVID-19 Pandemic.
+            This playbook will show you how you can start your own meal kit and scheduled 
+            food delivery service to add an additional revenue stream, boost your brand, and
+            increase your customer base.</p><br>
+        </div>
+        <div class = "col-6">
+            <div class="form-block">
+                <%= form_for(:playbook, url: download_playbook_path) do |f| %>
+                <%= f.label :name, class: 'field-label emphasis contact-form-item-mobile' do %>
+                    <span class = 'field-label emphasis'> Name </span><br>
+                <% end %><br>
+                <%= f.text_field :name, class: 'form-control form-control-mobile', placeholder: "Name" %><br>
+                <%= f.label :email, class: 'field-label emphasis contact-form-item-mobile' do %>
+                    <span class = 'field-label emphasis'> Email </span><br>
+                <% end %><br>
+                <%= f.email_field :email, class: 'form-control form-control-mobile', placeholder: "Email" %><br>
+                <%= f.label :phone_number, class: 'field-label emphasis contact-form-item-mobile' do %>
+                    <span class = 'field-label emphasis'> Phone Number </span><br>
+                <% end %><br>
+                <%= f.number_field :phone_number, class: 'form-control text-area-mobile', placeholder: "Phone Number"  %><br>
+                <%= f.submit "GET THE PLAYBOOK", class: "btn btn-success jumbo-button mt-2 btn-mobile" %><br>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
