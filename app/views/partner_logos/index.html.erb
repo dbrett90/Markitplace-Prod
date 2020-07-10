@@ -8,11 +8,14 @@
                         <%= image_tag logo.thumbnail.variant(resize: "250x250"), class: "img-fluid align-items-center" %>
                     </div>
                     <div class = "col-12 col-md-8 my-auto mx-auto mb-2">
-                        <h3> <%= logo.name %>
-                        <p class = "logo-text subtitle-description-mobile"> <%= logo.description %><br>
-                        <br>
-                        <% dedicated_button = logo.name + " Kits" %>
-                        <%= link_to dedicated_button, logo.dedicated_link, class: "btn btn-outline-success jumbo-button btn-mobile" %>
+                        <div class = "col-12 mb-2">
+                            <h3> <%= logo.name %>
+                            <p class = "logo-text subtitle-description-mobile"> <%= logo.description %>
+                        </div>
+                        <div class = "col-12 text-center">
+                            <% dedicated_button = logo.name + " Kits" %>
+                            <%= link_to dedicated_button, logo.dedicated_link, class: "btn btn-outline-success jumbo-button btn-mobile" %>
+                        </div>
                     </div>
                     <div class = "col-12">
                         <% if logged_in? %>
