@@ -16,6 +16,7 @@ class OneOffProductsController < ApplicationController
 
     def test_index
         @one_off_products = OneOffProduct.order(:out_of_stock)
+        @partners = PartnerLogo.all
     end
     #Regular methods again
     def new
