@@ -50,7 +50,7 @@ class PartnerLogosController < ApplicationController
     end
 
     def download_playbook            
-        send_file "/app/assets/images/one_pager.pdf", type: "application/pdf", x_sendfile: true
+        send_file "~/markitplace-prod/app/assets/images/one_pager.pdf", type: "application/pdf", x_sendfile: true
     end
 
     private
