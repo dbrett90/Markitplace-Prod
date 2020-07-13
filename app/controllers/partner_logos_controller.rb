@@ -57,7 +57,7 @@ class PartnerLogosController < ApplicationController
         @playbook_user.phone_number = params[:playbook][:phone_number]
         @playbook_user.save  
         #Download File & redirect. Flash notice that download complete./home/daniel/markitplace-prod/app/assets/images/Markitplace_Meal_Kit_Playbook.pdf
-        send_file "#{Rails.root}/app/assets/images/Markitplace_Meal_Kit_Playbook.pdf", type: "application/pdf", x_sendfile: true
+        send_file "#{Rails.root}/app/assets/images/markitplace_meal_kit_playbook.pdf", type: "application/pdf", x_sendfile: true
         redirect_to mealkit_playbook_path
         flash[:success] = "Please check your downloads folder for the playbook."
         flash[:warning] = "test"
