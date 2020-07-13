@@ -1,0 +1,3 @@
+class PlaybookUser < ApplicationRecord
+end
+  
