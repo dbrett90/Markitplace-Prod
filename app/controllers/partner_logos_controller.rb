@@ -57,6 +57,8 @@ class PartnerLogosController < ApplicationController
         @playbook_user.phone_number = params[:playbook][:phone_number]
         @playbook_user.save         
         send_file "#{Rails.root}/app/assets/images/one_pager.pdf", type: "application/pdf", x_sendfile: true
+        redirect_to mealkit_playbook_path
+        flash[:success] = "Please check your downloads folder for the playbook."
     end
 
     private
