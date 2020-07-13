@@ -1,6 +1,6 @@
 class PartnerLogosController < ApplicationController
     before_action :set_logo, only: [:show, :edit, :update, :destroy]
-    before_action :admin_user, except: [:index, :playbook]
+    before_action :admin_user, except: [:index, :playbook, :download_playbook]
 
     def index
         @partner_logos = PartnerLogo.all 
