@@ -1,6 +1,6 @@
 class PartnerLogosController < ApplicationController
     before_action :set_logo, only: [:show, :edit, :update, :destroy]
-    before_action :admin_user, except: [:index]
+    before_action :admin_user, except: [:index, :playbook, :download_playbook]
 
     def index
         @partner_logos = PartnerLogo.all 
@@ -56,7 +56,7 @@ class PartnerLogosController < ApplicationController
         @playbook_user.email = params[:playbook][:email]
         @playbook_user.phone_number = params[:playbook][:phone_number]
         @playbook_user.save  
-        #Download File & redirect. Flash notice that download complete. 
+        #Download File & redirect. Flash notice that download complete. app/assets/images/Markitplace_Meal_Kit_Playbook.pdf
         send_file "#{Rails.root}/app/assets/images/Markitplace_Meal_Kit_Playbook.pdf", type: "application/pdf", x_sendfile: true
         redirect_to mealkit_playbook_path
         flash[:success] = "Please check your downloads folder for the playbook."
