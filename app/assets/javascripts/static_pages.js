@@ -26,7 +26,7 @@
 $(document).on("turbolinks:load", function() {
   $("#downloader").click(function(){
     // alert('test');
-    setTimeout(function(){ window.location.href = "https://www.markitplace.io/mealkit-playbook" }, 2500);
+    setTimeout(function(){ window.location.href = "https://www.markitplace.io/mealkit-playbook" }, 2000);
   });
 });
 
