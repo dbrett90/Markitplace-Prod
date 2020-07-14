@@ -23,6 +23,7 @@
 //     }
 //   });
 
+//Trigger the download of the playbook from this page. 
 $(document).on("turbolinks:load", function() {
   $("#downloader").click(function(){
     // alert('test');
