@@ -23,9 +23,11 @@
 //     }
 //   });
 
-if ($('.download-button').length > 0 ){
-      alert("TEST");
-}
+$(document).on("turbolinks:load", function() {
+  if ($('.download-button').length > 0 ){
+        alert("TEST");
+  }
+});
 
 $("#downloader").click(function(){
   // alert('test');
