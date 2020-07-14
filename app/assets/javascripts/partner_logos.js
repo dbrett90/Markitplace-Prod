@@ -1,4 +1,4 @@
-$('.download-button').click(function(){
+$(".download-button").click(function(){
     alert('test');
-    setTimeout(function(){ window.location.href = "https://www.markitplace.io/" }, 3000);
+    // setTimeout(function(){ window.location.href = "https://www.markitplace.io/" }, 3000);
 });
