@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_10_212045) do
+ActiveRecord::Schema.define(version: 2020_07_14_144036) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -122,7 +122,7 @@ ActiveRecord::Schema.define(version: 2020_07_10_212045) do
   create_table "playbook_users", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.integer "phone_number"
+    t.text "phone_number"
   end
 
   create_table "product_subscription_libraries", force: :cascade do |t|
