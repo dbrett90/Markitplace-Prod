@@ -61,10 +61,10 @@ class PartnerLogosController < ApplicationController
         #/home/daniel/markitplace-prod/public/markitplace_meal_kit_playbook.pdf
         #data = open("https://markitplace-sitemaps.s3.us-east-2.amazonaws.com/Markitplace_Meal_Kit_Playbook.pdf")
         #send_data data.read, filename: "Markitplace_Meal_Kit_Playbook.pdf", type: "application/pdf", disposition: 'inline', stream: 'true', buffer_size: '4096'
-        send_file "#{Rails.root}/public/markitplace_meal_kit_playbook.pdf", type: "application/pdf", x_sendfile: true
-        # send_file data, type: "application/pdf", x_sendfile: true
         redirect_to mealkit_playbook_path
         flash[:success] = "Please check your downloads folder for the playbook."
+        send_file "#{Rails.root}/public/markitplace_meal_kit_playbook.pdf", type: "application/pdf", x_sendfile: true
+        # send_file data, type: "application/pdf", x_sendfile: true
     end
 
     private
