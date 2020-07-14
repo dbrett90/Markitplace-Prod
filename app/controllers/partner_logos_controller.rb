@@ -59,7 +59,7 @@ class PartnerLogosController < ApplicationController
         #Download File & redirect. Flash notice that download complete./home/daniel/markitplace-prod/app/assets/images/markitplace_meal_kit_playbook.pdf
         #Why isn't download here working... upload to S3? 
         data = open("https://markitplace-product-images.s3.us-east-2.amazonaws.com/Markitplace_Meal_Kit_Playbook.pdf")
-        send_data data.read, filename: "Markitplace_Meal_Kit_Playbook.pdf", type: "application/pdf", disposition: 'inline', stream: 'true', buffer_size: '4096
+        send_data data.read, filename: "Markitplace_Meal_Kit_Playbook.pdf", type: "application/pdf", disposition: 'inline', stream: 'true', buffer_size: '4096'
         # send_data "#{Rails.root}/app/assets/images/markitplace_meal_kit_playbook.pdf", type: "application/pdf", x_sendfile: true
         redirect_to mealkit_playbook_path
         flash[:success] = "Please check your downloads folder for the playbook."
