@@ -5,7 +5,8 @@
     <button class="navbar-toggler navbar-toggler-right nav-collpase-mobile float-xs-right ml-auto" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <ul class = "navbar-nav mr-auto">
                 <li class="nav-item active n-homepage nav-text-mobile"><%= link_to "Home",   root_path, class: "nav-color nav-link nav-text-mobile", id: "test-color" %><span class="sr-only">(current)</span></li>
                 <% if logged_in? %>
@@ -98,12 +99,12 @@
                     <% end %>
                     </li>
                 </ul>
-                <ul class="navbar-nav text-align-left d-lg-none pull-right" >
-                    <li class="nav-item text-align-left active n-homepage btn-left btn btn-lg btn-mobile-left"><%= link_to guest_cart_path do %>
-                        <i class="fas fa-shopping-cart btn-left" style="color:black;"></i>
-                    <% end %>
-                    </li>
-                </ul>
             <% end %>
-    </div>
+        </div>
+        <ul class="navbar-nav text-align-left d-lg-none pull-right" >
+            <li class="nav-item text-align-left active n-homepage btn-left btn btn-lg btn-mobile-left"><%= link_to guest_cart_path do %>
+                <i class="fas fa-shopping-cart btn-left" style="color:black;"></i>
+            <% end %>
+            </li>
+        </ul>
 </nav>
