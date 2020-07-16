@@ -46,7 +46,28 @@
                   </div>
                 </li>
               </ul>
-            </div>  
+            </div>
+          <% elsif @one_off_product.servings != nil %>
+            <div class = "recipe-intro d-flex pt-3">
+              <ul class= "stats list-inline mx-auto justify-content-center">
+                <li class="list-inline-item">
+                  <div class="stats-item subtitle-mobile">
+                    <%= @one_off_product.prep_time %>
+                  </div>
+                  <div class="stats-subitem subtitle-mobile">
+                    Prep Time
+                  </div>
+                </li>
+                <li class="list-inline-item">
+                  <div class="stats-item subtitle-mobile">
+                    Serves <%= @one_off_product.servings %>
+                  </div>
+                  <div class="stats-subitem subtitle-mobile">
+                    Meal Kit Size
+                  </div>
+                </li>
+              </ul>
+            </div>
           <% else %>
             <div class = "recipe-intro d-flex pt-3">
               <ul class= "stats list-inline mx-auto justify-content-center">
