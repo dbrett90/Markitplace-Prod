@@ -27,6 +27,10 @@
                                 <h4 class="card-title text-center title-card-mobile"> <%= one_off_product.name %></h4>
                                 <p class="card-subtitle mb-2 text-center subtitle-description-mobile mt-auto" style="color:black"> <%= one_off_product.description %></p>
                                 <h5 class="text-center title-mobile mt-auto" style= "color:green">$<%= number_with_precision(one_off_product.price, precision: 2) %></h5>
+                                <% if one_off_product.servings != nil %>
+                                    <% price_per_serving = (one_off_product.price / one_off_product.servings).to_f %>
+                                    <h5 class="text-center title-mobile mt-auto" style= "color:green">Price per Meal: $<%= number_with_precision(price_per_serving, precision: 2) %></h5>
+                                <% end %>
                                 <% if logged_in? %>
                                     <% if current_user.admin? %>
                                         <%= link_to "Edit Product", edit_one_off_product_path(one_off_product), class: " mt-auto btn btn-warning btn-mobile" %>
