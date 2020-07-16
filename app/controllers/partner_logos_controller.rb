@@ -54,7 +54,6 @@ class PartnerLogosController < ApplicationController
         @playbook_user = PlaybookUser.new()
         @playbook_user.name = params[:playbook][:name]
         @playbook_user.email = params[:playbook][:email]
-        @playbook_user.phone_number = params[:playbook][:phone_number]
         @playbook_user.save  
         #Download File & redirect. Flash notice that download complete./home/daniel/markitplace-prod/app/assets/images/markitplace_meal_kit_playbook.pdf
         #Why isn't download here working... upload to S3? 
