@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_14_144036) do
+ActiveRecord::Schema.define(version: 2020_07_17_183208) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 2020_07_14_144036) do
     t.text "included_cities"
     t.text "available_cities"
     t.integer "sort_priority"
+    t.string "add_on"
   end
 
   create_table "partner_logos", force: :cascade do |t|
