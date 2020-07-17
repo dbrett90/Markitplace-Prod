@@ -70,7 +70,7 @@ class CartsController < ApplicationController
         one_off = find_one_off(item)
         flash[:success] = guest_cart
         if one_off.name = "Colossol Manhattan Package "
-            one_off.add_on = params[:sauce][:sauce_choice])
+            one_off.add_on = params[:sauce][:sauce_choice]
             one_off.save
         end
         # @cart guest_cart
