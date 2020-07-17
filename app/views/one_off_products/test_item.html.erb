@@ -77,8 +77,8 @@
             <% end %>
           <% else %>
             <% if @one_off_product.name == "Colossol Manhattan Package " %>
-              <p>Sauce Choice</p>
-              <%= select_tag "sauce_choice", options_for_select([ "Chimichurri", "Pebre" ], "Chimichurri") %>
+              <p class="description-text subtitle-description-mobile">Sauce Choice</p>
+              <%= select_tag "sauce_choice", options_for_select([ "Chimichurri", "Pebre" ], "Chimichurri"), {:class => 'description-text subtitle-description-mobile'} %>
             <% end %>
             <%= link_to 'START COOKING', guest_add_to_cart_path(one_off_product: @one_off_product.name), class:"btn btn-outline-success jumbo-button btn-mobile" %>
           <% end %>
