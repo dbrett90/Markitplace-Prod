@@ -85,7 +85,7 @@ class CartsController < ApplicationController
         item = (params[:one_off_product]).downcase
         one_off = find_one_off(item)
         #update the sauce - this will need to be changed
-        flash[:success] = params[:sauce]
+        flash[:warning] = params[:sauce]
         # if one_off.name = "Colossol Manhattan Package "
         #     one_off.add_on = params[:sauce][:sauce_choice]
         #     one_off.save
