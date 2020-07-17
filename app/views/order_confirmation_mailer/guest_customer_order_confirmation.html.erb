@@ -7,7 +7,11 @@
 
 <ul>
     <% @cart_items.each do |product| %>
-        <li><strong><%= product.name %></strong></li>
+        <% if product.name = "Colossol Manhattan Package " %>
+            <li><strong><%= product.name %></strong> with <%= product.add_on %> sauce</li>
+        <% else %>
+            <li><strong><%= product.name %></strong></li>
+        <% end %>
     <% end %>
 </ul>
 <br>

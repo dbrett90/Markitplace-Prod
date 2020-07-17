@@ -6,9 +6,13 @@
 <p>Customer Phone Number: <%= @recipient_phone_number %></p><br>
 <p>Product(s) Ordered: </p>
 <ul>
-<% @cart_items.each do |product| %>
-    <li><strong><%= product.name %></strong></li>
-<% end %>
+    <% @cart_items.each do |product| %>
+        <% if product.name = "Colossol Manhattan Package " %>
+            <li><strong><%= product.name %></strong> with <%= product.add_on %> sauce</li>
+        <% else %>
+            <li><strong><%= product.name %></strong></li>
+        <% end %>
+    <% end %>
 </ul>
 
 <p>The customer has requested that their meal kit be sent to the following address: </p> <br>
