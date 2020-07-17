@@ -86,10 +86,10 @@ class CartsController < ApplicationController
         one_off = find_one_off(item)
         #update the sauce - this will need to be changed
         flash[:warning] = params[:sauce]
-        # if one_off.name = "Colossol Manhattan Package "
-        #     one_off.add_on = params[:sauce][:sauce_choice]
-        #     one_off.save
-        # end
+        if one_off.name = "Colossol Manhattan Package "
+            one_off.add_on = params[:sauce][:sauce_choice]
+            one_off.save
+        end
         # @cart guest_cart
         if one_off.out_of_stock == nil || one_off.out_of_stock != "yes"
             guest_cart.one_off_products << one_off
