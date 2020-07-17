@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get '/add-to-cart', to: 'carts#add_to_cart'
   post '/add-to-cart', to: 'carts#post_add_to_cart'
   get '/guest-add-to-cart', to: 'carts#guest_add_to_cart'
+  post '/guest-add-to-cart', to: 'carts#post_guest_add_to_cart'
   get '/guest-cart', to: 'carts#guest_cart_index'
   delete '/guest-cart', to: 'carts#guest_destroy'
   get '/guest-checkout', to: 'carts#guest_checkout'

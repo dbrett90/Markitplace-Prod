@@ -69,6 +69,23 @@ class CartsController < ApplicationController
         item = (params[:one_off_product]).downcase
         one_off = find_one_off(item)
         flash[:success] = guest_cart
+        # @cart guest_cart
+        if one_off.out_of_stock == nil || one_off.out_of_stock != "yes"
+            guest_cart.one_off_products << one_off
+            guest_cart.save
+            flash[:success] = "Item has been added to your shopping cart!"
+            redirect_to one_off_products_path
+        else
+            flash[:warning] = "Unfortunately this item is out of stock. Please try another!"
+            redirect_to one_off_products_path
+        end
+    end
+
+    def post_guest_add_to_cart
+        item = (params[:one_off_product]).downcase
+        one_off = find_one_off(item)
+        flash[:success] = guest_cart
+        #update the sauce - this will need to be changed
         if one_off.name = "Colossol Manhattan Package "
             one_off.add_on = params[:sauce][:sauce_choice]
             one_off.save
