@@ -63,10 +63,15 @@ class CartsController < ApplicationController
     end
 
     #Method specifically for guests adding to cart
+
+    #Modify specifically for tge sauce. Not good long term
     def guest_add_to_cart
         item = (params[:one_off_product]).downcase
         one_off = find_one_off(item)
         flash[:success] = guest_cart
+        if one_off.name = "Colossol Manhattan Package "
+            one_off.update_attribute(:add_on, params[:one_off_product])
+        end
         # @cart guest_cart
         if one_off.out_of_stock == nil || one_off.out_of_stock != "yes"
             guest_cart.one_off_products << one_off
