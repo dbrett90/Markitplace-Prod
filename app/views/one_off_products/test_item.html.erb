@@ -78,10 +78,8 @@
           <% else %>
             <div class = "pb-2">
               <% if @one_off_product.name == "Colossol Manhattan Package " %>
-                <%= f.label :sauce_choice, class: 'field-label emphasis contact-form-item-mobile' do %>
-                  <span class = 'field-label emphasis'> Sauce </span>
-                <% end %>
-                <%= select_tag "sauce_choice", options_for_select([ "Chimichurri", "Pebre" ], "Chimichurri"), {:class => 'description-text subtitle-description-mobile'} %>
+                <strong><p class="description-text subtitle-description-mobile"> Sauce %></p></strong>
+                <%= select_tag "sauce_choice", options_for_select([ "Chimichurri", "Pebre" ], "Chimichurri"), {:class => 'description-text subtitle-description-mobile pt-0 mt-0'} %>
               <% end %>
             </div>
             <%= link_to 'START COOKING', guest_add_to_cart_path(one_off_product: @one_off_product.name), class:"btn btn-outline-success jumbo-button btn-mobile" %>
