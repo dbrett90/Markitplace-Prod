@@ -7,7 +7,7 @@
 <p>Product(s) Ordered: </p>
 <ul>
     <% @cart_items.each do |product| %>
-        <% if product.name = "Colossol Manhattan Package " %>
+        <% if product.name == "1/2 Dozen Humita Empanadas + Choice of Sauce " || product.name == "1/2 Dozen Beef Empanadas + Choice of Sauce " %>
             <li><strong><%= product.name %></strong> with <%= product.add_on %> sauce</li>
         <% else %>
             <li><strong><%= product.name %></strong></li>
