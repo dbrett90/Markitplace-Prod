@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_20_143759) do
+ActiveRecord::Schema.define(version: 2020_07_20_144655) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 2020_07_20_143759) do
     t.string "dedicated_link"
     t.string "hide?"
     t.integer "sort_priority"
+    t.string "headquarters"
   end
 
   create_table "partners_tables", force: :cascade do |t|
