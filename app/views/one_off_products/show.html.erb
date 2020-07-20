@@ -100,6 +100,15 @@
                   <%= hidden_field_tag(:one_off_product, @one_off_product.name) %>
                   <%= f.submit "ADD TO CART", class: "btn btn-outline-success jumbo-button mt-2 btn-mobile" %><br>
                 <% end %>
+              <% elsif @one_off_product.id == 82 || @one_off_product.id == 84 %>
+                <%= form_for(:sauce, url: guest_add_to_cart_path) do |f| %>
+                  <%= f.label :sauce, class: 'field-label emphasis contact-form-item-mobile' do %>
+                    <span class = 'field-label emphasis'> Sauce:  </span>
+                  <% end %>
+                  <%= f.select :sauce_choice, options_for_select([ "2 Chimichurri", "2 Pebre", "1 Chimichurri & 1 Pebre" ], "1 Chimichurri & 1 Pebre"), class: 'description-text subtitle-description-mobile pt-0 mt-0' %>
+                  <%= hidden_field_tag(:one_off_product, @one_off_product.name) %>
+                  <%= f.submit "ADD TO CART", class: "btn btn-outline-success jumbo-button mt-2 btn-mobile" %><br>
+                <% end %>
               <% else %>
                 <%= link_to 'START COOKING', guest_add_to_cart_path(one_off_product: @one_off_product.name), class:"btn btn-outline-success jumbo-button btn-mobile" %>
               <% end %>
