@@ -15,7 +15,7 @@
         <div class="container" id="plan-offerings">
             <div class="row ml-3">
                 <%  @one_off_products.each do |one_off_product| %>
-                    <% if one_off_product.hide? != "yes" %>
+                    <% if one_off_product.hide != "yes" %>
                         <div class="col-12 col-lg-4 pb-3 d-flex align-items-stretch card-padding-mobile">
                             <div class="card see-cooking card-width">
                                 <%= link_to one_off_product_path(one_off_product) do %>
