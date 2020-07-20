@@ -73,7 +73,7 @@ class PartnerLogosController < ApplicationController
     end
 
     def partner_logo_params
-        params.require(:partner_logo).permit(:name, :description, :dedicated_link, :created_at, :updated_at, :thumbnail)
+        params.require(:partner_logo).permit(:name, :description, :dedicated_link, :headquarters, :created_at, :updated_at, :thumbnail)
     end
 
     def admin_user
