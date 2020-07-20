@@ -3,7 +3,7 @@ class PartnerLogosController < ApplicationController
     before_action :admin_user, except: [:index, :playbook, :download_playbook]
 
     def index
-        @partner_logos = PartnerLogo.all 
+        @partner_logos = PartnerLogo.order(:sort_priority)
     end
 
     #Do we want a show here? Not sure about this really. Index may be enough
