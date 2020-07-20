@@ -91,7 +91,7 @@
             <%= link_to 'ADD TO CART', add_to_cart_path(one_off_product: @one_off_product.name), class: "btn btn-outline-success jumbo-button btn-mobile" %>
           <% else %>
             <div class = "pb-2">
-              <% if @one_off_product.name == "1/2 Dozen Humita Empanadas + Choice of Sauce " || @one_off_product.name == "1/2 Dozen Beef Empanadas + Choice of Sauce "   %>
+              <% if @one_off_product.id == 80 || @one_off_product.id == 81   %>
                 <%= form_for(:sauce, url: guest_add_to_cart_path) do |f| %>
                   <%= f.label :sauce, class: 'field-label emphasis contact-form-item-mobile' do %>
                     <span class = 'field-label emphasis'> Sauce:  </span>
