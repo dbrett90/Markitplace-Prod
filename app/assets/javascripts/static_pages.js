@@ -31,6 +31,17 @@ $(document).on("turbolinks:load", function() {
   });
 });
 
+$(document).ready(function() {
+  $(".async-button").click(function() {
+    // disable button
+    $(this).prop("disabled", true);
+    // add spinner to button
+    $(this).html(
+      `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...`
+    );
+  });
+});
+
 // $("#downloader").click(function(){
 //   // alert('test');
 //   setTimeout(function(){ window.location.href = "https://www.markitplace.io/" }, 5000);
