@@ -7,7 +7,7 @@
 <p>Product(s) Ordered: </p>
 <ul>
     <% @cart_items.each do |product| %>
-        <% if product.id == 80 || product.id == 81 || product.id == 82 || product.id == 84 %>
+        <% if product.id == 80 || product.id == 81 || product.id == 82 || product.id == 84 || product.id == 19 %>
             <li><strong><%= product.name %></strong> with <%= product.add_on %> sauce</li>
         <% else %>
             <li><strong><%= product.name %></strong></li>
