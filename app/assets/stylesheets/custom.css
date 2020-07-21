@@ -783,6 +783,8 @@ iframe.terms-of-service
     height: 50px !important;
     display: inline-block;
     font-size: 40px;
+    padding-top: 5px;
+    padding-bottom: 5x;
   }
   
 }

@@ -83,9 +83,9 @@
             </div>
           <% end %>
           <% if @one_off_product.extended_description != nil %>
-            <p class="description-text subtitle-description-mobile"> <%= @one_off_product.extended_description %></p>
+            <p class="description-text subtitle-mobile"> <%= @one_off_product.extended_description %></p>
           <% else %>
-            <p class="description-text subtitle-description-mobile"> <%= @one_off_product.description %></p>
+            <p class="description-text subtitle-mobile"> <%= @one_off_product.description %></p>
           <% end %>
           <% if logged_in? %>
             <%= link_to 'ADD TO CART', add_to_cart_path(one_off_product: @one_off_product.name), class: "btn btn-outline-success jumbo-button btn-mobile" %>
