@@ -8,20 +8,14 @@
 <ul>
     <% @cart_items.each do |product| %>
         <% if product.id == 80 || product.id == 81 || product.id == 82 || product.id == 84 || product.id == 19 %>
-            <% delivery_schedule = product.delivery_schedule %>
             <li><strong><%= product.name %></strong> with <%= product.add_on %> sauce.</li>
         <% else %>
-            <% delivery_schedule = nil %>
             <li><strong><%= product.name %></strong></li>
         <% end %>
     <% end %>
 </ul>
 <br>
 
-<% if delivery_schedule != nil %>
-    <p>Delivery Schedule is as follows: <%= delivery_schedule %></p>
-<% end %>
-<br>
 
 <p>Your Order will be delivered to the following address:</p>
 <p><%= @recipient_first_name %> <%= @recipient_last_name %></p>
