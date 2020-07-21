@@ -781,6 +781,8 @@ iframe.terms-of-service
 
   #sauce_sauce_choice{
     height: 50px !important;
+    display: inline-block;
+    font-size: 40px;
   }
   
 }
