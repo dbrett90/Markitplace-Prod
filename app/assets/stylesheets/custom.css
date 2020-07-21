@@ -779,8 +779,9 @@ iframe.terms-of-service
     height: 80vh;
   }
 
-  .select-mobile{
-    height: 100px !important;
+  #sauce_sauce_choice{
+    height: 50px !important;
   }
   
 }
+
