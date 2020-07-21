@@ -31,14 +31,13 @@ $(document).on("turbolinks:load", function() {
   });
 });
 
-$(document).ready(function() {
-  $("asyncBtn").click(function() {
-    // disable button
+$(document).on("turbolinks:load", function() {
+  $('.async-disable').on('click', function() {
     $(this).prop("disabled", true);
-    // add spinner to button
-    $(this).html(
-      `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...`
-    );
+      // add spinner to button
+      $(this).html(
+        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...`
+      );
   });
 });
 

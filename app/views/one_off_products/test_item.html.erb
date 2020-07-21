@@ -5,7 +5,7 @@
       <div class = "row pb-5">
         <div class = "col-12 text-center pb-2">
           <h1 class "pb-1 title-mobile"><%= @one_off_product.name %> </h1>
-          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...
+          <button class="btn btn-outline-success btn-mobile async-disable">Submit</button>
         </div>
         <div class= "col-7 text-center recipe-header-button pb-2">
           <%= image_tag(@one_off_product.thumbnail, class:"img-fluid", alt: "Product Image") %>
