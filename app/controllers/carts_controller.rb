@@ -85,7 +85,7 @@ class CartsController < ApplicationController
         item = (params[:one_off_product]).downcase
         one_off = find_one_off(item)
         #update the sauce - this will need to be changed
-        flash[:warning] = params[:sauce]
+        # flash[:warning] = params[:sauce]
         if one_off.id == 80 || one_off.id == 81 || one_off.id == 82 || one_off.id == 84
             one_off.add_on = params[:sauce][:sauce_choice]
             one_off.save
