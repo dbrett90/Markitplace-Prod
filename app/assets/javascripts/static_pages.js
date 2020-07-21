@@ -31,15 +31,15 @@ $(document).on("turbolinks:load", function() {
   });
 });
 
-$(document).on("turbolinks:load", function() {
-  $('.async-disable').on('click', function() {
-    $(this).prop("disabled", true);
-      // add spinner to button
-      $(this).html(
-        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Processing...`
-      );
-  });
-});
+// $(document).on("turbolinks:load", function() {
+//   $('.async-disable').on('click', function() {
+//     $(this).prop("disabled", true);
+//       // add spinner to button
+//       $(this).html(
+//         `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Processing...`
+//       );
+//   });
+// });
 
 // $("#downloader").click(function(){
 //   // alert('test');
