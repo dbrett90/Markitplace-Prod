@@ -32,7 +32,7 @@ $(document).on("turbolinks:load", function() {
 });
 
 $(document).ready(function() {
-  $(".async-button").click(function() {
+  $("#asyncBtn").click(function() {
     // disable button
     $(this).prop("disabled", true);
     // add spinner to button
