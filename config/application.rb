@@ -5,6 +5,8 @@ require 'rails/all'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+#Set it for action mailer?
+config.action_mailer.asset_host = "https://www.markitplace.io"
 
 module Markitplace
   class Application < Rails::Application
