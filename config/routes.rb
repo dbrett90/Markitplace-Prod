@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/test-index', to:'carts#post_index'
   get '/test-checkout', to: 'carts#post_checkout'
   post '/test-checkout', to: 'carts#post_complete_checkout'
+  get '/send-test-email', to: 'carts#test_email'
   get '/beta-mailing-list', to: 'static_pages#beta_test_list'
   get '/home-signup-successful', to: 'stripe_connect_user#new'
   get '/our-team', to: 'static_pages#our_team'

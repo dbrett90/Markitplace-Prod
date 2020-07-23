@@ -763,6 +763,12 @@ class CartsController < ApplicationController
     def create
     end
 
+    def test_email
+        OrderConfirmationMailer.test_order_confirmation().deliver_now
+        redirect_to root_path
+        flash[:success] = "Email sent?"
+    end
+
     private
 
     def charge_app_fee?(fee_amount)
