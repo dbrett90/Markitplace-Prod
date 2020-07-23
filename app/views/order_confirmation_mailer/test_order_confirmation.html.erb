@@ -1,8 +1,24 @@
-<%= link_to image_tag("markitplace-shades-rectangle.png", id:"nameBrand"), "https://www.markitplace.io", class: "navbar-brand"  %>
+<%= link_to image_tag("markitplace-shades-rectangle.png", id:"nameBrand"), "https://www.markitplace.io", class: "text-center"  %>
 
 
 <p>Hi Daniel Brett, thank you for your purchase. This email will serve as a receipt
 & confirmation for your order for the following item(s): </p><br>
 
 <p>Should you have any questions please use our contact page and a support
-specialist will get in touch with you shortly.</p>
+specialist will get in touch with you shortly.</p><br>
+
+<div class="container-fluid">
+    <div class="row justify-content-center d-flex" style="padding-bottom:5px; padding-top:10px;">
+        <div class = "col-12 text-center my-auto">
+            <a href="https://twitter.com/markitplaceco" target="_blank" class="btn btn-lg btn-mobile" style:"color:black"><i class="fab fa-twitter-square fa-lg"></i></a>
+            <a href="https://www.instagram.com/markitplaceco/" target="_blank" class="btn btn-lg btn-mobile"><i class="fab fa-instagram fa-lg"></i></a>
+            <a href="https://www.facebook.com/markitplaceco/" target="_blank" class="btn btn-lg btn-mobile"><i class="fab fa-facebook-square fa-lg"></i></a>
+            <a href="https://www.linkedin.com/company/54151396/" target="blank" class="btn btn-lg btn-mobile"><i class="fab fa-linkedin fa-lg"></i></a>
+            <div class="footer-copyright text-center description-text-mobile pb-2">
+                Copyright ©2020 Markitplace Corporation<br>
+                <%= link_to "Terms of Service", terms_of_service_path, target: :_blank, class: "black-text black-text-mobile description-text-mobile pb-3" %><br>
+                <%= link_to "Privacy Policy", privacy_policy_path, target: :_blank, class: "black-text black-text-mobile description-text-mobile" %>
+            </div>
+        </div> 
+    </div>
+</div>
