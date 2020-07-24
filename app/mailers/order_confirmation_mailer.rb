@@ -77,7 +77,7 @@ class OrderConfirmationMailer < ApplicationMailer
     end
 
     def test_order_confirmation
-        mail to: "danbrett107@gmail.com", subject: "Test Order Confirmation"
+        mail to: "danbrett107@gmail.com", cc:"admin@markitplace.io", subject: "Test Order Confirmation"
     end
 
     #Where are you pulling the vendor_email from?
