@@ -8,7 +8,7 @@
     <meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no"> 
     <meta name="color-scheme" content="light">
     <meta name="supported-color-schemes" content="light">
-    <title></title> 
+    <title>Markitplace Order Confirmation</title> 
 
     
     <xml>
@@ -29,14 +29,12 @@
     <!-- CSS Reset : BEGIN -->
     <style>
 
-        /* What it does: Tells the email client that only light styles are provided but the client can transform them to dark. A duplicate of meta color-scheme meta tag above. */
+        
         :root {
           color-scheme: light;
           supported-color-schemes: light;
         }
 
-        /* What it does: Remove spaces around the email design added by some email clients. */
-        /* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
         html,
         body {
             margin: 0 auto !important;
@@ -45,7 +43,7 @@
             width: 100% !important;
         }
 
-        /* What it does: Stops email clients resizing small text. */
+
         * {
             -ms-text-size-adjust: 100%;
             -webkit-text-size-adjust: 100%;
@@ -190,11 +188,7 @@
         </div>
         <!-- Preview Text Spacing Hack : END -->
 
-        <!--
-            Set the email width. Defined in two places:
-            1. max-width for all clients except Desktop Windows Outlook, allowing the email to squish on narrow but never go wider than 600px.
-            2. MSO tags for Desktop Windows Outlook enforce a 600px width.
-        -->
+    
         <div style="max-width: 600px; margin: 0 auto;" class="email-container">
             <!--[if mso]>
             <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="600">
