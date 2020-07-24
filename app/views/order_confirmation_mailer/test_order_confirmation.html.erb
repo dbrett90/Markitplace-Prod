@@ -1,30 +1,395 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="x-apple-disable-message-reformatting">  
+    <meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no"> 
+    <meta name="color-scheme" content="light">
+    <meta name="supported-color-schemes" content="light">
+    <title></title> 
+
+    
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+    </xml>
+   
+        <style>
+            * {
+                font-family: sans-serif !important;
+            }
+        </style>
+
+    <!-- Web Font / @font-face : END -->
+
+    <!-- CSS Reset : BEGIN -->
+    <style>
+
+        /* What it does: Tells the email client that only light styles are provided but the client can transform them to dark. A duplicate of meta color-scheme meta tag above. */
+        :root {
+          color-scheme: light;
+          supported-color-schemes: light;
+        }
+
+        /* What it does: Remove spaces around the email design added by some email clients. */
+        /* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
+        html,
+        body {
+            margin: 0 auto !important;
+            padding: 0 !important;
+            height: 100% !important;
+            width: 100% !important;
+        }
+
+        /* What it does: Stops email clients resizing small text. */
+        * {
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* What it does: Centers email on Android 4.4 */
+        div[style*="margin: 16px 0"] {
+            margin: 0 !important;
+        }
+
+        /* What it does: forces Samsung Android mail clients to use the entire viewport */
+        #MessageViewBody, #MessageWebViewDiv{
+            width: 100% !important;
+        }
+
+        /* What it does: Stops Outlook from adding extra spacing to tables. */
+        table,
+        td {
+            mso-table-lspace: 0pt !important;
+            mso-table-rspace: 0pt !important;
+        }
+
+        /* What it does: Fixes webkit padding issue. */
+        table {
+            border-spacing: 0 !important;
+            border-collapse: collapse !important;
+            table-layout: fixed !important;
+            margin: 0 auto !important;
+        }
+
+        /* What it does: Uses a better rendering method when resizing images in IE. */
+        img {
+            -ms-interpolation-mode:bicubic;
+        }
+
+        /* What it does: Prevents Windows 10 Mail from underlining links despite inline CSS. Styles for underlined links should be inline. */
+        a {
+            text-decoration: none;
+        }
+
+        /* What it does: A work-around for email clients meddling in triggered links. */
+        a[x-apple-data-detectors],  /* iOS */
+        .unstyle-auto-detected-links a,
+        .aBn {
+            border-bottom: 0 !important;
+            cursor: default !important;
+            color: inherit !important;
+            text-decoration: none !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+        }
+
+        /* What it does: Prevents Gmail from displaying a download button on large, non-linked images. */
+        .a6S {
+            display: none !important;
+            opacity: 0.01 !important;
+        }
+
+        /* What it does: Prevents Gmail from changing the text color in conversation threads. */
+        .im {
+            color: inherit !important;
+        }
+
+        /* If the above doesn't work, add a .g-img class to any image in question. */
+        img.g-img + div {
+            display: none !important;
+        }
+
+        /* What it does: Removes right gutter in Gmail iOS app: https://github.com/TedGoas/Cerberus/issues/89  */
+        /* Create one of these media queries for each additional viewport size you'd like to fix */
+
+        /* iPhone 4, 4S, 5, 5S, 5C, and 5SE */
+        @media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
+            u ~ div .email-container {
+                min-width: 320px !important;
+            }
+        }
+        /* iPhone 6, 6S, 7, 8, and X */
+        @media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
+            u ~ div .email-container {
+                min-width: 375px !important;
+            }
+        }
+        /* iPhone 6+, 7+, and 8+ */
+        @media only screen and (min-device-width: 414px) {
+            u ~ div .email-container {
+                min-width: 414px !important;
+            }
+        }
+
+    </style>
+    <!-- CSS Reset : END -->
+
+    <!-- Progressive Enhancements : BEGIN -->
+    <style>
+
+	    /* What it does: Hover styles for buttons */
+	    .button-td,
+	    .button-a {
+	        transition: all 100ms ease-in;
+	    }
+	    .button-td-primary:hover,
+	    .button-a-primary:hover {
+	        background: #006400 !important;
+	        border-color: #006400 !important;
+	    }
+
+	    /* Media Queries */
+	    @media screen and (max-width: 600px) {
+
+	        /* What it does: Adjust typography on small screens to improve readability */
+	        .email-container p {
+	            font-size: 17px !important;
+	        }
+
+	    }
+
+    </style>
+    <!-- Progressive Enhancements : END -->
+
+</head>
+<body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #222222;">
+	<center role="article" aria-roledescription="email" lang="en" style="width: 100%; background-color: #222222;">
+    <!--[if mso | IE]>
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #222222;">
+    <tr>
+    <td>
+    <![endif]-->
+
+        <!-- Visually Hidden Preheader Text : BEGIN -->
+        <div style="max-height:0; overflow:hidden; mso-hide:all;" aria-hidden="true">
+            (Optional) This text will appear in the inbox preview, but not the email body. It can be used to supplement the email subject line or even summarize the email's contents. Extended text preheaders (~490 characters) seems like a better UX for anyone using a screenreader or voice-command apps like Siri to dictate the contents of an email. If this text is not included, email clients will automatically populate it using the text (including image alt text) at the start of the email's body.
+        </div>
+        <!-- Visually Hidden Preheader Text : END -->
+
+        <!-- Create white space after the desired preview text so email clients don’t pull other distracting text into the inbox preview. Extend as necessary. -->
+        <!-- Preview Text Spacing Hack : BEGIN -->
+        <div style="display: none; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
+	        &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
+        </div>
+        <!-- Preview Text Spacing Hack : END -->
+
+        <!--
+            Set the email width. Defined in two places:
+            1. max-width for all clients except Desktop Windows Outlook, allowing the email to squish on narrow but never go wider than 600px.
+            2. MSO tags for Desktop Windows Outlook enforce a 600px width.
+        -->
+        <div style="max-width: 600px; margin: 0 auto;" class="email-container">
+            <!--[if mso]>
+            <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="600">
+            <tr>
+            <td>
+            <![endif]-->
+
+            <!-- Email Body : BEGIN -->
 
 
 
+	        <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
+		        <!-- Email Header : BEGIN -->
+	            <tr>
+	                <td style="padding: 20px 0; text-align: center">
+	                </td>
+	            </tr>
+		        <!-- Email Header : END -->
 
-<%= link_to image_tag("markitplace-shades-rectangle.png", id:"nameBrand"), "https://www.markitplace.io", class: "text-center"  %>
+                <!-- Hero Image, Flush : BEGIN -->
+                <tr>
+                    <td style="background-color: #ffffff;">
+                        <%= link_to image_tag("markitplace-shades-rectangle.png"), "https://www.markitplace.io", class: "g-img text-center", style: "text-align: center; width: 100%; max-width: 600px; height: auto; margin: auto; margin-left: auto; display: block;"  %>
+                    </td>
+                </tr>
+                <!-- Hero Image, Flush : END -->
 
+                <!-- 1 Column Text + Button : BEGIN -->
+                <tr>
+                    <td style="background-color: #ffffff;">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td style="padding: 20px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
+                                    <h1 style="margin: 0 0 10px 0; font-family: sans-serif; font-size: 25px; line-height: 30px; color: #333333; font-weight: normal;">Order Confirmation</h1>
+                                    <p style="margin: 0;">Hi Daniel Brett, thank you for your purchase. This email will serve as a receipt
+                                    & confirmation for your order for the following item(s):</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0 20px;">
+                                    <!-- Button : BEGIN -->
+                                    <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: auto;">
+                                        <tr>
+                                            <td class="button-td button-td-primary" style="border-radius: 4px; background: #222222;">
+											     <a class="button-a button-a-primary" href="https://www.markitplace.io/contact" style="background: green; font-family: sans-serif; font-size: 15px; line-height: 15px; text-decoration: none; padding: 13px 17px; color: #ffffff; display: block; border-radius: 4px;">Contact Button</a>
+											</td>
+                                        </tr>
+                                    </table>
+                                    <!-- Button : END -->
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 20px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
+                                    <h2 style="margin: 0 0 10px 0; font-family: sans-serif; font-size: 18px; line-height: 22px; color: #333333; font-weight: bold;">Other Local Offerings</h2>
+                                    <ul style="padding: 0; margin: 0 0 10px 0; list-style-type: disc;">
+										<li style="margin:0 0 10px 30px;" class="list-item-first">One of our newest partners is <a href="https://www.markitplace.io/partners/buenas">Buenas Brand</a>, a producer of South American-inspired home-cooking goods. </li>
+										<li style="margin:0 0 10px 30px;">We&apos;re rapidly expanding in Boston and plan on bringing in new offerings every week. Keep an eye out for new ones in your area!</li>
+										<li style="margin: 0 0 0 30px;" class="list-item-last">If you have a restaurant that you&apos;d like to see offer a meal kit, let us know!</li>
+									</ul>
+                                    <p style="margin: 0;">Check out some of our newest additions below!</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- 1 Column Text + Button : END -->
 
-<p>Hi Daniel Brett, thank you for your purchase. This email will serve as a receipt
-& confirmation for your order for the following item(s): </p><br>
+                <!-- 2 Even Columns : BEGIN -->
+                <tr>
+                    <td style="padding: 0 10px 40px 10px; background-color: #ffffff;">
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tr>
+                                <td valign="top" width="50%">
+                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                        <tr>
+                                            <td style="text-align: center; padding: 0 10px;">
+                                                <%= link_to image_tag("plate7b.jpg", size: "200x200"), "https://www.markitplace.io/one_off_products/80", class: "g-img text-center", style: "text-align: center; width: 100%; max-width: 600px; height: auto; margin: auto; margin-left: auto; display: block;"  %>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: center; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555; padding: 10px 10px 0;">
+                                               <p style="margin: 0;">Beef Empanadas from Buenas</p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td valign="top" width="50%">
+                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                        <tr>
+                                            <td style="text-align: center; padding: 0 10px;">
+                                                <iframe src="https://drive.google.com/file/d/1Ue-zk3jDj3bGI7-G5p9Q7Cr4DG-Mg5c3/preview" width="200" height="200"></iframe>
+                                                <a href= "https://www.markitplace.io/one_off_products/80"><img src="https://drive.google.com/uc?id=1C_M6twkMKJUf6oBMoKdcFowFbo_nJzic"></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: center; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555; padding: 10px 10px 0;">
+                                                <p style="margin: 0;">Humitas Empanadas from Buenas</p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- 2 Even Columns : END -->
 
-<p>Should you have any questions please use our contact page and a support
-specialist will get in touch with you shortly.</p><br>
+                <!-- Clear Spacer : BEGIN -->
+                <tr>
+                    <td aria-hidden="true" height="40" style="font-size: 0px; line-height: 0px;">
+                        &nbsp;
+                    </td>
+                </tr>
+                <!-- Clear Spacer : END -->
 
-<div class="container-fluid">
-    <div class="row justify-content-center d-flex" style="padding-bottom:5px; padding-top:10px;">
-        <div class = "col-12 text-center my-auto">
-            <%= link_to image_tag("twitter.png"), "https://twitter.com/markitplaceco", target: :_blank, style: "color:red; height:10px; width:10px" , class: "text-center"  %>
-            <a href="https://twitter.com/markitplaceco" target="_blank" class="btn btn-lg btn-mobile" style:"color:black"><i class="fab fa-twitter-square fa-lg"></i></a>
-            <a href="https://www.instagram.com/markitplaceco/" target="_blank" class="btn btn-lg btn-mobile"><i class="fab fa-instagram fa-lg"></i></a>
-            <a href="https://www.facebook.com/markitplaceco/" target="_blank" class="btn btn-lg btn-mobile"><i class="fab fa-facebook-square fa-lg"></i></a>
-            <a href="https://www.linkedin.com/company/54151396/" target="blank" class="btn btn-lg btn-mobile"><i class="fab fa-linkedin fa-lg"></i></a>
-            <div class="footer-copyright text-center description-text-mobile pb-2">
-                Copyright ©2020 Markitplace Corporation<br>
-                <%= link_to "Terms of Service", terms_of_service_url, target: :_blank, class: "black-text black-text-mobile description-text-mobile pb-3" %><br>
-                <%= link_to "Privacy Policy", privacy_policy_url, target: :_blank, class: "black-text black-text-mobile description-text-mobile" %>
-            </div>
-        </div> 
-    </div>
-</div>
+                <!-- 1 Column Text : BEGIN -->
+                <tr>
+                    <td style="background-color: #ffffff;">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td style="padding: 20px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
+                                    <p style="margin: 0;">As always, we appreciate your business. When you order from Markitplace you not only support us, but our partners within your local community. With 
+                                    the impact of COVID-19 your support is more crucial now than ever. So from the entire Markitplace Team, thank you!</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- 1 Column Text : END -->
+
+            </table>
+            <!-- Email Body : END -->
+
+            <!-- Email Footer : BEGIN -->
+	        <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
+                <tr>
+                    <td style="padding: 20px; font-family: sans-serif; font-size: 12px; line-height: 15px; text-align: center; color: #ffffff;">
+                        <webversion style="color: #ffffff; text-decoration: underline; font-weight: bold;"></webversion>
+                        <br><br>
+						Markitplace<br><span class="unstyle-auto-detected-links">101 Monmouth Street, Brookline MA 02446<br>2076329431</span>
+                        <br><br>
+                        <unsubscribe style="color: #ffffff; text-decoration: underline;"></unsubscribe>
+                    </td>
+                </tr>
+            </table>
+            <!-- Email Footer : END -->
+
+            <!--[if mso]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </div>
+
+        <!-- Full Bleed Background Section : BEGIN -->
+        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: white;">
+            <tr>
+                <td>
+                    <div align="center" style="max-width: 600px; margin: auto;" class="email-container">
+                        <!--[if mso]>
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" align="center">
+                        <tr>
+                        <td>
+                        <![endif]-->
+                        <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td style="padding: 20px; text-align: center; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #ffffff;">
+                                <%= link_to image_tag("twitter.png", size: "30x30"), "https://twitter.com/markitplaceco", target: :_blank, style: "color:red; height:5px; width:10px" , class: "img-fluid text-center"  %>
+                                <%= link_to image_tag("instagram-symbol.png", size: "30x30"), "https://www.instagram.com/markitplaceco/", target: :_blank, class: "img-fluid text-center"  %>
+                                <%= link_to image_tag("facebook-logo.png", size: "30x30"), "https://www.facebook.com/markitplaceco/", target: :_blank, class: "img-fluid text-center"  %>
+                                <%= link_to image_tag("linkedin-sign.png", size: "30x30"), "https://www.linkedin.com/company/54151396/", target: :_blank, class: "img-fluid text-center"  %>
+                                <br>
+                                <p style="color:black;">Copyright ©2020 Markitplace Corporation</p>
+                                <%= link_to "Terms of Service", terms_of_service_url, target: :_blank, class: "black-text black-text-mobile description-text-mobile pb-3" %><br>
+                                <%= link_to "Privacy Policy", privacy_policy_url, target: :_blank, class: "black-text black-text-mobile description-text-mobile" %>
+                                </td>
+                            </tr>
+                        </table>
+                        <!--[if mso]>
+                        </td>
+                        </tr>
+                        </table>
+                        <![endif]-->
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <!-- Full Bleed Background Section : END -->
+
+    <!--[if mso | IE]>
+    </td>
+    </tr>
+    </table>
+    <![endif]-->
+    </center>
+</body>
+</html>
 
