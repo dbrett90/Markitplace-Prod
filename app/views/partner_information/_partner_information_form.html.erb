@@ -1,0 +1,18 @@
+<%= form_for(@partner_information) do |f| %>
+    <p class="subtext-gray pb-1" style="font-size:14px">Only admins should be able to
+    access this page. </p>
+
+    <%= f.text_field :name, class: 'form-control', placeholder: "Partner Name", required: true %><br>
+
+    <%= f.text_field :tag_line, class: 'form-control', placeholder: "Tag Line", required: true %><br>
+
+    <%= f.text_field :description,  class: 'form-control', placeholder: "Partner Descripton", required: true %><br>
+
+    <%= f.label :thumbnail do %>
+        <span class = 'field-label emphasis'> Partner Logo Image </span><br>
+    <% end %><br>
+    <%= f.file_field :thumbnail, multiple: false, required: true %> <br>
+    <br>
+
+    <%= f.submit "Submit", class: "btn btn-success btn-block form-actions" %><br>
+<% end %>

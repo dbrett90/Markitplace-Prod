@@ -1,0 +1,30 @@
+<% provide(:title, "Partner Information") %>
+<div class="parners-homepage">
+    <div class="partners-homepage-2019">
+        <div class="container-fluid" id="partner-offerings">
+            <%  @partner_information.each do |partner| %>
+                <div class="col-12 col-lg-4 pb-3 d-flex align-items-stretch card-padding-mobile">
+                    <div class="card see-cooking card-width">
+                        <%= link_to partner_information_path(partner) do %>
+                            <%= image_tag partner.thumbnail.variant(resize: "450x450"), class:"card-img-top hover-gray", alt: "Meal Kit Plan Image" %>
+                            <div class="textOverlay align-middle text-center subtitle-description-mobile">
+                                <div class="showTextIndex align-middle text-center subtitle-mobile">See what&#39;s cooking</div>
+                            </div>
+                        <% end %>
+                        <div class="d-flex flex-column card-body text-center">
+                            <h4 class="card-title text-center title-card-mobile mt-auto"> <%= partner.name %></h4>
+                            <p class="card-subtitle mb-2 text-center subtitle-description-mobile mt-auto" style="color:black"> <%= partner.tag_line %></p>
+                            <p class="card-subtitle mb-2 text-center subtitle-description-mobile mt-auto" style="color:black"> <%= partner.description %></p>
+                            <% if logged_in? %>
+                                <% if current_user.admin? %>
+                                    <%= link_to "Edit Product", edit_partner_information_path(partner), class: " mt-auto btn btn-warning btn-mobile" %>
+                                    <%= link_to 'Delete Product', partner_information_path(partner), data: {confirm: "mt-auto Are you sure you want to delete this product?"}, method: :delete, class: "btn btn-danger btn-mobile" %>
+                                <% end %>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
