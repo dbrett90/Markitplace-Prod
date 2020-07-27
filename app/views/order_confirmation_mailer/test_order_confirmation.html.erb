@@ -223,120 +223,34 @@
                             <tr>
                                 <td style="padding: 20px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
                                     <h1 style="margin: 0 0 10px 0; font-family: sans-serif; font-size: 25px; line-height: 30px; color: #333333; font-weight: normal;">Order Confirmation</h1>
-                                    <p style="margin: 0;">Hi, <%= @recipient_first_name %> <%= @recipient_last_name %>, thank you for your purchase. This email will serve as a receipt
-                                    & confirmation for your order for the following item(s): </p><br>
+                                    <p> Hi, a customer has completed a purchase order. The customer & product information is as follows:</p><br>
+                                    <p>Customer Name: <%= @recipient_first_name %> <%= @recipient_last_name %> </p>
+                                    <p>Customer Email: <%= @recipient_email %> </p>
+                                    <p>Customer Phone Number: <%= @recipient_phone_number %></p><br>
+                                    <p>Product(s) Ordered: </p>
                                     <ul>
                                         <% @cart_items.each do |product| %>
                                             <% if product.id == 80 || product.id == 81 || product.id == 82 || product.id == 84 || product.id == 19 %>
-                                                <li><strong><%= product.name %></strong> with <%= product.add_on %> sauce.</li>
+                                                <li><strong><%= product.name %></strong> with <%= product.add_on %> sauce</li>
                                             <% else %>
                                                 <li><strong><%= product.name %></strong></li>
                                             <% end %>
                                         <% end %>
                                     </ul>
-                                    <br>
-                                    <p>Your Order will be delivered to the following address:</p>
-                                    <p><%= @recipient_first_name %> <%= @recipient_last_name %></p>
+
+                                    <p>The customer has requested that their meal kit be sent to the following address: </p> <br>
+                                    <p><%= @recipient_first_name %> <%= @recipient_last_name%> </p>
                                     <p><%= @street_address_1 %> </p>
                                     <p><%= @street_address_2 %> </p>
                                     <p><%= @city %> </p>
                                     <p><%= @state %> </p>
                                     <p><%= @zipcode %> </p>
 
-                                    <p>Should you have any questions please use our contact page and a support
-                                    specialist will get in touch with you shortly.</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 0 20px;">
-                                    <!-- Button : BEGIN -->
-                                    <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: auto;">
-                                        <tr>
-                                            <td class="button-td button-td-primary" style="border-radius: 4px; background: #222222;">
-											     <a class="button-a button-a-primary" href="https://www.markitplace.io/contact" style="background: green; font-family: sans-serif; font-size: 15px; line-height: 15px; text-decoration: none; padding: 13px 17px; color: #ffffff; display: block; border-radius: 4px;">Contact Button</a>
-											</td>
-                                        </tr>
-                                    </table>
-                                    <!-- Button : END -->
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 20px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
-                                    <h2 style="margin: 0 0 10px 0; font-family: sans-serif; font-size: 18px; line-height: 22px; color: #333333; font-weight: bold;">Other Local Offerings</h2>
-                                    <ul style="padding: 0; margin: 0 0 10px 0; list-style-type: disc;">
-										<li style="margin:0 0 10px 30px;" class="list-item-first">One of our newest partners is <a href="https://www.markitplace.io/partners/buenas">Buenas Brand</a>, a producer of South American-inspired home-cooking goods. </li>
-										<li style="margin:0 0 10px 30px;">We&apos;re rapidly expanding in Boston and plan on bringing in new offerings every week. Keep an eye out for new ones in your area!</li>
-										<li style="margin: 0 0 0 30px;" class="list-item-last">If you have a restaurant that you&apos;d like to see offer a meal kit, let us know!</li>
-									</ul>
-                                    <p style="margin: 0;">Check out some of our newest additions below!</p>
                                 </td>
                             </tr>
                         </table>
                     </td>
                 </tr>
-                <!-- 1 Column Text + Button : END -->
-
-                <!-- 2 Even Columns : BEGIN -->
-                <tr>
-                    <td style="padding: 0 10px 40px 10px; background-color: #ffffff;">
-                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
-                            <tr>
-                                <td valign="top" width="50%">
-                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
-                                        <tr>
-                                            <td style="text-align: center; padding: 0 10px;">
-                                                <%= link_to image_tag("beef-fitted.png", size: "200x200"), "https://www.markitplace.io/one_off_products/80", class: "g-img text-center", style: "text-align: center; width: 100%; max-width: 600px; height: auto; margin: auto; margin-left: auto; display: block;"  %>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style="text-align: center; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555; padding: 10px 10px 0;">
-                                               <p style="margin: 0;">Beef Empanadas from Buenas</p>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                                <td valign="top" width="50%">
-                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
-                                        <tr>
-                                            <td style="text-align: center; padding: 0 10px;">
-                                            <%= link_to image_tag("spinach-fitted.png", size: "200x200"), "https://www.markitplace.io/one_off_products/80", class: "g-img text-center", style: "text-align: center; width: 100%; max-width: 600px; height: auto; margin: auto; margin-left: auto; display: block;"  %>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style="text-align: center; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555; padding: 10px 10px 0;">
-                                                <p style="margin: 0;">Humitas Empanadas from Buenas</p>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-                <!-- 2 Even Columns : END -->
-
-                <!-- Clear Spacer : BEGIN -->
-                <tr>
-                    <td aria-hidden="true" height="40" style="font-size: 0px; line-height: 0px;">
-                        &nbsp;
-                    </td>
-                </tr>
-                <!-- Clear Spacer : END -->
-
-                <!-- 1 Column Text : BEGIN -->
-                <tr>
-                    <td style="background-color: #ffffff;">
-                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
-                            <tr>
-                                <td style="padding: 20px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
-                                    <p style="margin: 0;">As always, we appreciate your business. When you order from Markitplace you not only support us, but our partners within your local community. With 
-                                    the impact of COVID-19 your support is more crucial now than ever. So from the entire Markitplace Team, thank you!</p>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-                <!-- 1 Column Text : END -->
 
             </table>
             <!-- Email Body : END -->
