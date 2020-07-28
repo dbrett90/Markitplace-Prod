@@ -76,7 +76,7 @@ Rails.application.routes.draw do
   resources :plan_subscription_library, only: [:index]
   resources :carts
   resources :partners, param: :name
-  resources :partner_information, param: :name
+  resources :partner_background, param: :name
 
   ######BASIC SETUP ROUTES#######
   resources :subscriptions
