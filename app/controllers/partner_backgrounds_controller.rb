@@ -44,7 +44,7 @@ class PartnerBackgroundsController < ApplicationController
     private
 
     def set_partner_info
-        @parnter_background = PartnerBackground.find(params[:id])
+        @partner_background = PartnerBackground.find(params[:id])
     end
 
     def partner_background_params
