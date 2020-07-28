@@ -1,5 +1,5 @@
 <% provide(:title, @partner_background.name) %>
-<div class = "container partner-background-overview  mt-4 justify-content-center">
+<div class = "container partner-background-overview partner-background-overview-mobile  mt-4 justify-content-center">
   <section class= "container">
     <div class = "recipe-header pt-2">
       <div class = "row pb-5">
@@ -10,7 +10,7 @@
         <div class= "col-12 text-center recipe-header-button">
           <%= image_tag(@partner_background.thumbnail, class:"img-fluid", alt: "Product Image") %>
         </div>
-        <div class = "col-12 text-center my-auto">
+        <div class = "col-12 text-center my-auto pt-2">
             <p class="description-text subtitle-description-mobile"> <%= @partner_background.description %></p>     
         </div>
       </div>
