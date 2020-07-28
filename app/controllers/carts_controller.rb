@@ -672,11 +672,9 @@ class CartsController < ApplicationController
 
          # flash[:success] = @cart_items
         @cart_items.each do |item|
-
             #Do zip code validation
             city_list = parse_list(item)
             if delivery_city_ok?(city_list, params[:payment_shipping][:city])
-
                 fee_amount = dynamic_app_fee(item)
                 changed_price = item.price * 100
                 unless fee_amount == 0

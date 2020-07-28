@@ -89,6 +89,9 @@
           <% end %>
           <% if logged_in? %>
             <%= link_to 'ADD TO CART', add_to_cart_path(one_off_product: @one_off_product.name), class: "btn btn-outline-success jumbo-button btn-mobile" %>
+            <% if @one_off_product.partner_background_link != nil %>
+              <%= link_to 'PARTNER INFO', @one_off_product.partner_background_link, class: "btn btn-outline-success jumbo-button mt-2 btn-mobile" %>
+            <% end %>
           <% else %>
             <div class = "pb-2">
               <% if @one_off_product.id == 80 || @one_off_product.id == 81   %>
