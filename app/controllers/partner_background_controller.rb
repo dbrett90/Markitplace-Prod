@@ -4,7 +4,7 @@ class PartnerBackgroundController < ApplicationController
 
     #Need all these REST methods? Doubtful
     def index
-        @partner_background = PartnerBackground.all
+        @partner_backgrounds = PartnerBackground.all
     end
 
     def new
