@@ -799,7 +799,7 @@ iframe.terms-of-service
   }
 
   .partner-background-overview{
-    width: 90%;
+    width: 90% !important;
   }
 
   
