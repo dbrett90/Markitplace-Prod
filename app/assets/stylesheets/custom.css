@@ -556,7 +556,7 @@ TOP WAS 33% */
   -moz-box-shadow: 0 0 8px #ccc;
   -webkit-box-shadow: 0 0 8px #ccc;
   box-shadow: 0 0 8px #ccc;
-  width: 75%;
+  width: 66%;
 }
 
 .stats-item{
@@ -792,6 +792,10 @@ iframe.terms-of-service
     font-size: 40px;
     padding-top: 5px;
     padding-bottom: 5x;
+  }
+
+  .partner-background-overview{
+    width: 75%;
   }
   
 }
