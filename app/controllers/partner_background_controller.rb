@@ -1,4 +1,4 @@
-class PartnerBackgroundController < ApplicationController
+class PartnerBackgroundsController < ApplicationController
     before_action :set_partner_info, only: [:show, :edit, :update, :destroy]
     before_action :admin_user, except: [:show]
 
