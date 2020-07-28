@@ -8,11 +8,11 @@ class PartnerBackgroundsController < ApplicationController
     end
 
     def new
-        @partner_background = Partnerbackground.new
+        @partner_background = PartnerBackground.new
     end
 
     def create
-        @partner_background = Partnerbackground.new(partner_background_params)
+        @partner_background = PartnerBackground.new(partner_background_params)
         if @partner_background.save
             redirect_to root_path
         else
@@ -21,11 +21,11 @@ class PartnerBackgroundsController < ApplicationController
     end
 
     def edit
-        @partner_background = Partnerbackground.find(params[:id])
+        @partner_background = PartnerBackground.find(params[:id])
     end
 
     def update
-        @partner_background = PartnerInformaton.find(params[:id])
+        @partner_background = PartnerBackground.find(params[:id])
         if @partner_background.update_attributes(partner_background_params)
             flash[:success] = "The partner Info page has been updated"
             redirect_to root_path
@@ -44,7 +44,7 @@ class PartnerBackgroundsController < ApplicationController
     private
 
     def set_partner_info
-        @parnter_background = Partnerbackground.find(params[:id])
+        @parnter_background = PartnerBackground.find(params[:id])
     end
 
     def partner_background_params
