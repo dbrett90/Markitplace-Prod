@@ -552,6 +552,13 @@ TOP WAS 33% */
   width: 66%;
 }
 
+.partner-background-overview{
+  -moz-box-shadow: 0 0 8px #ccc;
+  -webkit-box-shadow: 0 0 8px #ccc;
+  box-shadow: 0 0 8px #ccc;
+  width: 75%;
+}
+
 .stats-item{
   font-size: 25px;
   color: #449900;
