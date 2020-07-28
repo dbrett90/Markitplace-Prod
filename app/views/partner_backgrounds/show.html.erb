@@ -1,4 +1,19 @@
 <% provide(:title, @partner_background.name) %>
-<p>This is a test</p>
-<p> @partner_background.name </p>
-<p> @partner_background.description </p>
+<div class = "container recipe-overview  mt-4 justify-content-center">
+  <section class= "container">
+    <div class = "recipe-header pt-2">
+      <div class = "row pb-5">
+        <div class = "col-12 text-center pb-2">
+          <h1 class= "pb-1 title-mobile"><%= @partner_background.name %> </h1>
+          <i><h4 class= "text center">@partner_background.tag_line</h4><i>
+        </div>
+        <div class= "col-12 text-center recipe-header-button">
+          <%= image_tag(@partner_background.thumbnail, class:"img-fluid", alt: "Product Image") %>
+        </div>
+        <div class = "col-12 col-lg-5 text-center my-auto">
+            <p class="description-text subtitle-mobile"> <%= @partner_background.description %></p>     
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
