@@ -747,13 +747,13 @@ class CartsController < ApplicationController
         end 
 
         #Send out the recipes via embedded PDF
-        checkout_items = guest_cart.one_off_products
-        checkout_items.each do |item|
-            if item.recipe_instructions_link != nil
-                OrderConfirmationMailer.recipe_instructions(params[:payment_shipping][:recipient_first_name],
-                params[:payment_shipping][:recipient_last_name], params[:payment_shipping][:recipient_email], item).deliver_now
-            end
-        end
+        # checkout_items = guest_cart.one_off_products
+        # checkout_items.each do |item|
+        #     if item.recipe_instructions_link != nil
+        #         OrderConfirmationMailer.recipe_instructions(params[:payment_shipping][:recipient_first_name],
+        #         params[:payment_shipping][:recipient_last_name], params[:payment_shipping][:recipient_email], item).deliver_now
+        #     end
+        # end
 
         #Remove all products from Cart
         guest_cart.one_off_products.delete_all 
