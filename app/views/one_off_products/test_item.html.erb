@@ -7,7 +7,7 @@
           <h1 class "pb-1 title-mobile"><%= @one_off_product.name %> </h1>
           <button class="btn btn-outline-success btn-mobile async-disable">Submit</button>
           <%= link_to "Send Test Email", send_test_email_path, class:"btn btn-outline-success jumbo-button btn-mobile" %>
-          <iframe src="https://drive.google.com/file/d/1uyrzP8oE2ZlyA43ug4JXr9R6GNNmhdHx/preview" width="640" height="480"></iframe>
+          <iframe src= <%= @one_off_product.recipe_instructions_link %> width="640" height="480"></iframe>
         </div>
         <div class= "col-7 text-center recipe-header-button pb-2">
           <%= image_tag(@one_off_product.thumbnail, class:"img-fluid", alt: "Product Image") %>
