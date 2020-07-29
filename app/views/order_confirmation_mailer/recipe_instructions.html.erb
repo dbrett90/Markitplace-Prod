@@ -8,7 +8,7 @@
     <meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no"> 
     <meta name="color-scheme" content="light">
     <meta name="supported-color-schemes" content="light">
-    <title>Markitplace Order Confirmation</title> 
+    <title>Markitplace Recipe Instructions</title> 
 
     
     <xml>
@@ -222,9 +222,9 @@
                         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                             <tr>
                                 <td style="padding: 20px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
-                                    <h1 style="margin: 0 0 10px 0; font-family: sans-serif; font-size: 25px; line-height: 30px; color: #333333; font-weight: normal;">Markitplace Order Instructions</h1>
-                                    <p>Hi, <%= @recipient_first_name %> <%= @recipient_last_name %>, This email contains recipe instructions for your recent purchase from Markitplace. Should you have any questions please reach out to our support team from our contact page.
-                                    <iframe src= <%= @one_off_product.recipe_instructions_link %> width="640" height="480"></iframe>
+                                    <h1 style="margin: 0 0 10px 0; font-family: sans-serif; font-size: 25px; line-height: 30px; color: #333333; font-weight: normal;">Markitplace Recipe Instructions</h1>
+                                    <p>Hi, <%= @recipient_first_name %> <%= @recipient_last_name %>, This email contains recipe instructions for your recent purchase from Markitplace. Should you have any questions please reach out to our support team from our contact page. <br>
+                                    <iframe src= <%= @one_off_product.recipe_instructions_link %> width="550" height="480"></iframe>
                                 </td>
                             </tr>
                         </table>

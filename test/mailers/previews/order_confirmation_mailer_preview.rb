@@ -4,5 +4,9 @@ class OrderConfirmationMailerPreview < ActionMailer::Preview
     def test_order_confirmation
         OrderConfirmationMailer.test_order_confirmation
     end
+
+    def recipe_instructions()
+        OrderConfirmationMailer.recipe_instructions('Daniel', 'Brett', 'dbrett14@gmail.com', OneOffProduct.find(80))
+    end
   
   end
