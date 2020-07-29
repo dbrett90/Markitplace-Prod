@@ -670,7 +670,7 @@ class CartsController < ApplicationController
         guest_user.save
         
 
-         # flash[:success] = @cart_items
+        #flash[:success] = @cart_items
         @cart_items.each do |item|
             #Do zip code validation
             city_list = parse_list(item)
@@ -721,37 +721,45 @@ class CartsController < ApplicationController
                             stripe_account: item.stripe_id, 
                     })
                 end
-
-                #REVISIT HERE - ORDER CONFIRMATION
-        
-                #Send out the confirmation emails - need to modify for guests
-                #Trigger Flash & The action mailers for confirmation
-                OrderConfirmationMailer.guest_customer_order_confirmation(params[:payment_shipping][:recipient_first_name],
-                params[:payment_shipping][:recipient_last_name], params[:payment_shipping][:recipient_email], @cart_items, params[:payment_shipping][:street_address_1],
-                params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
-                params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
-        
-                #  # #Hit the order confirmation and send over to the vendor(s)... Sends them a confirmation email about the order type. Can also view it in the stripe dashboard
-                #Test the guest checkout 
-                stripe_connect_users = StripeConnectUser.all
-                sc_user_email_hash = guest_find_sc_user_email(stripe_connect_users, guest_cart.one_off_products)
-                sc_user_email_hash.each do |vendor_email, product_array|
-                    OrderConfirmationMailer.guest_vendor_order_confirmation(params[:payment_shipping][:recipient_first_name], params[:payment_shipping][:recipient_last_name], params[:payment_shipping][:recipient_email], params[:payment_shipping][:recipient_phone_number], vendor_email, guest_cart.one_off_products, params[:payment_shipping][:street_address_1],
-                    params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
-                    params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
-                end 
-        
-                guest_cart.one_off_products.delete_all 
-                #Confirm that the orders were made and notify customers on webpage
-                flash[:success] = "Thank you for your Purchase! You will receive an email with a confirmation notice shortly."
-                #NEED TO WIPE THE GUEST CART CLEAN HERE... @CART = nil?
-                redirect_to root_path
             else
                 redirect_to guest_cart_path 
                 flash[:warning] = "There is an item in your cart that does not deliver to the provided address. Please remove it"
                 return
             end
         end
+            #REVISIT HERE - ORDER CONFIRMATION
+        
+        #Send out the confirmation emails - need to modify for guests
+        #Trigger Flash & The action mailers for confirmation
+        OrderConfirmationMailer.guest_customer_order_confirmation(params[:payment_shipping][:recipient_first_name],
+        params[:payment_shipping][:recipient_last_name], params[:payment_shipping][:recipient_email], @cart_items, params[:payment_shipping][:street_address_1],
+        params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
+        params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
+
+        #  # #Hit the order confirmation and send over to the vendor(s)... Sends them a confirmation email about the order type. Can also view it in the stripe dashboard
+        #Test the guest checkout 
+        stripe_connect_users = StripeConnectUser.all
+        sc_user_email_hash = guest_find_sc_user_email(stripe_connect_users, guest_cart.one_off_products)
+        sc_user_email_hash.each do |vendor_email, product_array|
+            OrderConfirmationMailer.guest_vendor_order_confirmation(params[:payment_shipping][:recipient_first_name], params[:payment_shipping][:recipient_last_name], params[:payment_shipping][:recipient_email], params[:payment_shipping][:recipient_phone_number], vendor_email, guest_cart.one_off_products, params[:payment_shipping][:street_address_1],
+            params[:payment_shipping][:street_address_2], params[:payment_shipping][:city],
+            params[:payment_shipping][:state], params[:payment_shipping][:zipcode]).deliver_now
+        end 
+
+        #Send out the recipes via embedded PDF
+        guest_cart.one_off_products.each do |item|
+            if item.recipe_instructions_link != nil
+                OrderConfirmationMailer.recipe_instructions(params[:payment_shipping][:recipient_first_name],
+                params[:payment_shipping][:recipient_last_name], params[:payment_shipping][:recipient_email], item).deliver_now
+            end
+        end
+
+        #Remove all products from Cart
+        guest_cart.one_off_products.delete_all 
+        #Confirm that the orders were made and notify customers on webpage
+        flash[:success] = "Thank you for your Purchase! You will receive an email with a confirmation notice shortly."
+        #NEED TO WIPE THE GUEST CART CLEAN HERE... @CART = nil?
+        redirect_to root_path
     end
 
 

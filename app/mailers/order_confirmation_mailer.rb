@@ -121,4 +121,12 @@ class OrderConfirmationMailer < ApplicationMailer
         @zipcode = zipcode
         mail to: vendor_email, bcc: "admin@markitplace.io", subject: "Customer has bought a product on Markitplace"
     end
+
+    def recipe_instructions(recipient_first_name, recipient_last_name, recipient_email, one_off_product)
+        @recipient_first_name = recipient_first_name 
+        @recipient_last_name = recipient_last_name
+        @recipient_email = recipient_email
+        @one_off_product = one_off_product
+        mail to: @recipient_email, bcc: "admin@markitplace.io", subject: "Markitplace Recipe Instructions"
+    end
 end
