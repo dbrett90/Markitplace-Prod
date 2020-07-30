@@ -773,6 +773,9 @@ class CartsController < ApplicationController
     def test_email
         # OrderConfirmationMailer.test_order_confirmation().deliver_now
         # redirect_to root_path
+        #Prerequisite libraries
+        require 'sendgrid-ruby'
+        include SendGrid
         # flash[:success] = "Email sent?"
         from = Email.new(email: 'test@example.com')
         to = Email.new(email: 'test@example.com')
