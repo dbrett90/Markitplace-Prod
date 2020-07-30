@@ -6,7 +6,6 @@ class OrderConfirmationMailerPreview < ActionMailer::Preview
     end
 
     def recipe_instructions()
-        OrderConfirmationMailer.recipe_instructions('Daniel', 'Brett', 'dbrett14@gmail.com', OneOffProduct.find(80))
+        OrderConfirmationMailer.recipe_instructions('Daniel', 'Brett', 'dbrett14@gmail.com', "https://drive.google.com/file/d/1uyrzP8oE2ZlyA43ug4JXr9R6GNNmhdHx/preview")
     end
-  
   end
