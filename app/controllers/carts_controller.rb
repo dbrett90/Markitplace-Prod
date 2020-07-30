@@ -777,8 +777,8 @@ class CartsController < ApplicationController
         require 'sendgrid-ruby'
         include SendGrid
         # flash[:success] = "Email sent?"
-        from = Email.new(email: 'test@example.com')
-        to = Email.new(email: 'test@example.com')
+        from = Email.new(email: 'no-reply@markitplace.io')
+        to = Email.new(email: 'danbrett107@gmail.com')
         subject = 'Sending with SendGrid is Fun'
         content = Content.new(type: 'text/plain', value: 'and easy to do anywhere, even with Ruby')
         mail = Mail.new(from, subject, to, content)
