@@ -113,7 +113,7 @@
                   <%= f.submit "ADD TO CART", class: "btn btn-outline-success jumbo-button mt-2 btn-mobile" %><br>
                 <% end %>
               <% else %>
-                <%= link_to 'START COOKING', guest_add_to_cart_path(one_off_product: @one_off_product.name), class:"btn btn-outline-success jumbo-button btn-mobile mt-2" %><br>
+                <%= link_to 'ADD TO CART', guest_add_to_cart_path(one_off_product: @one_off_product.name), class:"btn btn-outline-success jumbo-button btn-mobile mt-2" %><br>
               <% end %>
               <% if @one_off_product.partner_background_link != nil %>
                 <%= link_to 'PARTNER INFO', @one_off_product.partner_background_link, class: "btn btn-outline-success jumbo-button mt-2 btn-mobile" %>
