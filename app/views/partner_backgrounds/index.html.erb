@@ -8,6 +8,9 @@
             <%  @partner_backgrounds.each do |partner| %>
                 <div class="col-12 col-lg-4 pb-3 d-flex align-items-stretch card-padding-mobile">
                     <div class="card see-cooking card-width">
+                        <div class="ribbon-wrapper">
+                            <div class="ribbon green"> <%= partner.name %> </div>
+                        </div>
                         <%= link_to partner_background_path(partner) do %>
                             <%= image_tag partner.thumbnail.variant(resize: "450x450"), class:"card-img-top hover-gray", alt: "Meal Kit Plan Image" %>
                             <div class="textOverlay align-middle text-center subtitle-description-mobile">
