@@ -774,8 +774,8 @@ class CartsController < ApplicationController
         # OrderConfirmationMailer.test_order_confirmation().deliver_now
         # redirect_to root_path
         #Prerequisite libraries
-        require 'sendgrid-ruby'
-        include SendGrid
+        # require 'sendgrid-ruby'
+        # include SendGrid
         # flash[:success] = "Email sent?"
         from = Email.new(email: 'no-reply@markitplace.io')
         to = Email.new(email: 'danbrett107@gmail.com')

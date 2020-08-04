@@ -129,4 +129,21 @@ class OrderConfirmationMailer < ApplicationMailer
         @one_off_product = one_off_product
         mail to: @recipient_email, bcc: "admin@markitplace.io", subject: "Markitplace Recipe Instructions"
     end
+
+    def test_email(recipient_first_name, recipient_last_name, recipient_email, recipient_phone_number, delivery_day, partner_name, vendor_email, cart_items, total_price, street_address_1, street_address_2, city, state, zipcode)
+        @recipient_first_name = recipient_first_name 
+        @recipient_last_name = recipient_last_name
+        @recipient_email = recipient_email
+        @recipient_phone_number = recipient_phone_number
+        @delivery_day = delivery_day
+        @partner_name = partner_name
+        @cart_items = cart_items
+        @total_price = total_price
+        @street_address_1 = street_address_1
+        @street_address_2 = street_address_2
+        @city = city
+        @state = state
+        @zipcode = zipcode
+        mail to: vendor_email, bcc: "admin@markitplace.io", subject: "Customer has purchased a product from you on Markitplace"
+    end
 end
