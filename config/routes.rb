@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   get '/terms-of-service', to: 'static_pages#terms_of_service'
   get '/privacy-policy', to: 'static_pages#privacy_policy'
   get '/stripe-partners', to: 'static_pages#stripe_partner_info'
+  get '/start-your-mealkit-program', to: 'static_pages#start_your_mealkit_program'
   get '/signup-info', to: 'users#business_or_customer'
   post '/signup-info', to: 'users#business_or_customer_create'
   get  '/signup',  to: 'users#new'
