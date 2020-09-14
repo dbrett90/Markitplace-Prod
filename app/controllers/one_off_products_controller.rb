@@ -114,7 +114,7 @@ class OneOffProductsController < ApplicationController
     end
 
     def one_off_product_params
-        params.require(:one_off_product).permit(:name, :description, :extended_description, :available_cities, :delivery_schedule, :product_id, :price, :partner_name, :partner_background_link, :user_id, :calories, :fats, :servings, :prep_time, :created_at, :updated_at, :stripe_id, :is_trial, :out_of_stock, :thumbnail)
+        params.require(:one_off_product).permit(:name, :description, :extended_description, :available_cities, :delivery_schedule, :product_id, :price, :partner_name, :partner_background_link, :user_id, :calories, :fats, :servings, :prep_time, :created_at, :updated_at, :stripe_id, :is_trial, :out_of_stock, :flavor_options, :thumbnail)
     end
 
     #This is not DRY. Pulling from users controller
