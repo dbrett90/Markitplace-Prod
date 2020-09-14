@@ -100,8 +100,8 @@
               <% end %><br>
               <div style = "checkbox">
                 <% flavor_list.each do |flavor| %>
-                  <%= f.check_box :flavor_option, {multiple: true, max: 2, class: "checkbox"}, flavor, false %>
-                  <%= f.label flavor, class: "field-label checkbox-inline" %><br>
+                  <%= f.check_box :flavor_option, {multiple: true, max: 2, class: "checkbox-mobile"}, flavor, false %>
+                  <%= f.label flavor, class: "subtitle-mobile" %><br>
                 <% end %>
               </div>
             <% end %>
