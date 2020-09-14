@@ -79,7 +79,7 @@ class CartsController < ApplicationController
             #Then create the stripe call
             line_items_array = Array.new() 
             @cart_items.each do |line_item|
-                if line_item.flavor_opton == nil
+                if line_item.flavor_option == nil
                     line_item.flavor_option = ""
                 end
                 meal_kit = find_one_off_by_id(line_item.product_id)
