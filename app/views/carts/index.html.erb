@@ -5,9 +5,10 @@
             <div class="row ml-3">
                 <div class = "col-12 pb-3 text-center">
                     <h1 class = "title-larger-mobile">Your Cart </h1><br>
-                    <%= link_to "Checkout", checkout_path, class: "btn btn-outline-success jumbo-button btn-mobile" %>
+                    <button id="checkout-button" class= "btn btn-mobile btn-outline-success jumbo-button" data-secret="<%= @session.id %>"> Checkout </button>
                 </div>
-                <%  @cart_items.each do |one_off_product| %>
+                <%  @cart_items.each do |line_item| %>
+                    <% one_off_product = find_one_off_by_id(line_item.product_id) %>
                     <div class="d-flex col-12 col-lg-4 pb-3 align-items-stretch card-padding-mobile">
                         <div class="card see-cooking card-width">
                             <%= link_to one_off_product_path(one_off_product) do %>
@@ -18,27 +19,10 @@
                             <% end %>
                             <div class="card-body text-center d-flex flex-column">
                                 <h5 class="card-title text-center title-card-mobile"> <%= one_off_product.name %></h5>
+                                <h6 class="text-center title-mobile"><%= line_item.flavor_option %></h6>
                                 <h6 class="text-center title-mobile">$<%= number_with_precision(one_off_product.price, precision: 2) %></h6>
-                                <h6 class="card-subtitle mb-2 text-muted text-center subtitle-description-mobile pb-2"> <%= one_off_product.description %></h6>
-                                <%= link_to "Remove from Cart", cart_path(one_off_product: one_off_product.name), data: {confirm: "Are you sure you want to remove this from our cart?"}, method: :delete, class: "btn btn-danger btn-mobile mt-auto" %> 
-                            </div>
-                        </div>
-                    </div>
-                <% end %>
-                <% @cart_items_subscriptions.each do |subscription| %>
-                    <div class="d-flex col-12 col-lg-4 pb-3 align-items-stretch card-padding-mobile">
-                        <div class="card see-cooking card-width">
-                            <%= link_to plan_type_path(subscription) do %>
-                                <%= image_tag subscription.thumbnail.variant(resize: "450x450"), class:"card-img-top hover-gray", alt: "Meal Kit Plan Image" %>
-                                <div class="textOverlay align-middle text-center subtitle-description-mobile">
-                                    <div class="showTextIndex align-middle text-center subtitle-description-mobile">See what&#39;s cooking</div>
-                                </div>
-                            <% end %>
-                            <div class="card-body text-center d-flex flex-column">
-                                <h5 class="card-title text-center title-card-mobile"> <%= subscription.name %></h5>
-                                <h6 class="text-center title-mobile">$<%= subscription.price %></h6>
-                                <h6 class="card-subtitle mb-2 text-muted text-center subtitle-description-mobile pb-2"> <%= subscription.description %></h6>
-                                <%= link_to "Remove from Cart", cart_path(plan_type: subscription.name), data: {confirm: "Are you sure you want to remove this from our cart?"}, method: :delete, class: "btn btn-danger btn-mobile mt-auto" %> 
+                                <h6 class="text-center title-mobile">Quantity: <%= line_item.quantity %></h6>
+                                <%= link_to "Remove from Cart", cart_path(one_off_product: line_item.id), data: {confirm: "Are you sure you want to remove this from our cart?"}, method: :delete, class: "btn btn-danger btn-mobile mt-auto" %> 
                             </div>
                         </div>
                     </div>

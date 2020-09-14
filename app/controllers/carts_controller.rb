@@ -50,16 +50,96 @@ class CartsController < ApplicationController
     end
 
     def index
-        if cart_not_created?
-            redirect_to root_path
-            flash[:warning] = "Your Cart is currently empty!"
-        elsif cart_empty?
-            redirect_to root_path
-            flash[:warning] = "Your Cart is currently empty!"
+        Stripe.api_key = Rails.application.credentials.production[:stripe_api_key]
+        token = params[:stripeToken]
+        if logged_in?
+            if cart_not_created?
+                redirect_to root_path
+                flash[:warning] = "Your Cart is currently empty!"
+            elsif cart_empty?
+                redirect_to root_path
+                flash[:warning] = "Your Cart is currently empty!"
+            else
+                @cart_items = current_user.cart.line_items
+            end 
         else
-            @cart_items = current_user.cart.one_off_products
-            @cart_items_subscriptions = current_user.cart.plan_types
-        end 
+            if guest_cart.line_items == nil
+                redirect_to root_path
+                flash[:warning] = "Cart is empty!"
+                return
+            elsif guest_cart.line_items.length < 1
+                redirect_to root_path
+                flash[:warning] = "Cart is empty!"
+            else
+                @cart_items = guest_cart.line_items
+            end
+        end
+        #Check to see if anyting in cart and then create session
+        if @cart_items != nil
+            #Then create the stripe call
+            line_items_array = Array.new() 
+            @cart_items.each do |line_item|
+                meal_kit = find_one_off_by_id(line_item.product_id)
+                item_hash = {
+                    price_data: {
+                    currency: 'usd',
+                    product_data: {
+                        name: meal_kit.name + "-"+ line_item.flavor_option,
+                    },
+                    #Should this be to_i? Revisit
+                    unit_amount: (meal_kit.price.to_i)*100,
+                    },
+                    quantity: line_item.quantity,
+                }
+                line_items_array << item_hash
+            end
+            #Initiate Stripe Session Call
+            session_id = request.session_options[:id]
+            #THIS IS NOT DRY CODE. NEED TO IMPROVE
+            if logged_in?
+                session = Stripe::Checkout::Session.create(
+                    #Customer email is only paramter changed
+                    customer_email: current_user.email,
+                    payment_method_types: ['card'],
+                    shipping_address_collection: {
+                        allowed_countries: ['US'],
+                    },
+                    line_items: line_items_array,
+                    mode: 'payment',
+                    success_url: "https://www.markitplace.io/successful-checkout?session_id=#{session_id}",
+                    cancel_url: 'https://www.markitplace.io/unsuccessful-checkout',
+                )
+            else
+                session = Stripe::Checkout::Session.create(
+                    payment_method_types: ['card'],
+                    shipping_address_collection: {
+                        allowed_countries: ['US'],
+                    },
+                    line_items: line_items_array,
+                    mode: 'payment',
+                    success_url: "https://www.markitplace.io/successful-checkout?session_id=#{session_id}",
+                    cancel_url: 'https://www.markitplace.io/unsuccessful-checkout',
+                )
+            end
+            @session = session
+        end
+    end
+
+    def successful_checkout
+        if user_signed_in?
+            current_user.cart.line_items.delete_all
+        else
+            guest_cart.line_items.delete_all
+            # flash[:warning] = guest_cart.line_items
+        end
+        #OrderConfirmationMailer.single_kit_order.deliver_now
+        flash[:success] = "Your order has been received! You will receive an email confirmation shortly."
+        redirect_to root_path
+    end
+
+    def unsuccessful_checkout
+        flash[:danger] = "Your checkout session didn't complete. Please try again"
+        redirect_to cart_path
     end
 
     #Method specifically for guests adding to cart
@@ -102,44 +182,39 @@ class CartsController < ApplicationController
         end
     end
 
+    #Run on the local server first --> Need to test
     def add_to_cart
-        item = (params[:one_off_product]).downcase
-        one_off = find_one_off(item)
-        # flash[:danger] = params[:quantity]
-        if one_off.out_of_stock == nil
-            if cart_not_created?
-                # empty_cart = Cart.create(products: [])
-                testCart = Cart.new()
-                current_user.cart = testCart
-                current_user.cart.one_off_products << one_off
-                # flash[:warning]= "Went through the right way"
-            else
-                current_user.cart.one_off_products << one_off
-                # flash[:warning] = "Adding Item!"
-            end
-            current_user.cart.save
-            flash[:success] = "Item has been added to your shopping cart!"
-            # flash[:danger] = params
-            redirect_to one_off_products_path
-        elsif one_off.out_of_stock.downcase == "yes"
-            flash[:warning] = "Unfortunately this item is out of stock. Please try another!"
-            redirect_to one_off_products_path
-        else
-            if cart_not_created?
-                # empty_cart = Cart.create(products: [])
-                testCart = Cart.new()
-                current_user.cart = testCart
-                current_user.cart.one_off_products << one_off
-                # flash[:warning]= "Went through the right way"
-            else
-                current_user.cart.one_off_products << one_off
-                # flash[:warning] = "Adding Item!"
-            end
-            current_user.cart.save
-            flash[:success] = "Item has been added to your shopping cart!"
-            # flash[:danger] = params
-            redirect_to one_off_products_path
+        item = params[:one_off_product]
+        flash[:warning] = params[:item_options][:flavor_option]
+        #Specify quantity when adding to cart --> Need to add to form
+        quantity = (params[:item_options][:quantity]).to_i
+        if quantity == 0
+            quantity = 1
         end
+        #Probably should change this to ID
+        one_off = find_one_off_by_id(item)
+        # flash[:danger] = params[:quantity]
+        line_item = LineItem.new()
+        line_item.product_id = item
+        if one_off.flavor_options != nil
+            line_item.flavor_option = params[:item_options][:flavor_option]
+        end
+        line_item.quantity = quantity
+        line_item.product_type = "One Off Product"
+        if logged_in?
+            if cart_not_created?
+                testCart = Cart.new()
+                current_user.cart = testCart
+            end
+            current_user.cart.line_items << line_item
+            current_user.cart.save
+        #If user is a guest
+        else
+            guest_cart.line_items << line_item
+            guest_cart.save
+        end
+        flash[:success] = "Item has been added to your shopping cart!"
+        redirect_to one_off_products_path
     end
 
     def post_add_to_cart
@@ -420,14 +495,12 @@ class CartsController < ApplicationController
 
 
     def destroy
-        if params[:one_off_product] == nil
-            item = params[:plan_type]
-            plan_type = find_plan_type_by_name(item)
-            current_user.cart.plan_types.delete(plan_type)
+        item = params[:one_off_product]
+        one_off_by_name = LineItem.find(item)
+        if logged_in?
+            current_user.cart.line_items.delete(one_off_by_name)
         else
-            item = params[:one_off_product]
-            one_off_by_name = find_one_off_by_name(item)
-            current_user.cart.one_off_products.delete(one_off_by_name)
+            guest_cart.line_items.delete(one_off_by_name)
         end
         #It's pulling all the items in the cart here.
         flash[:success] = "Item has been removed from your cart"
@@ -827,6 +900,7 @@ class CartsController < ApplicationController
         else
             num_items = 0
         end
+        #based on previous values
         if num_items < 1 
             return true
         else

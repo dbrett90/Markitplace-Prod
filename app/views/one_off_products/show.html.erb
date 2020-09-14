@@ -10,7 +10,7 @@
           <%= image_tag(@one_off_product.thumbnail, class:"img-fluid", alt: "Product Image") %>
         </div>
         <div class = "col-12 col-lg-5 text-center my-auto">
-          <% if @one_off_product.calories != nil && one_off_product.fats != nil %>
+          <% if @one_off_product.calories != nil && @one_off_product.fats != nil %>
             <div class = "recipe-intro d-flex pt-3">
               <ul class= "stats list-inline mx-auto justify-content-center">
                 <li class = "list-inline-item">
@@ -87,38 +87,20 @@
           <% else %>
             <p class="description-text subtitle-mobile"> <%= @one_off_product.description %></p>
           <% end %>
-          <% if logged_in? %>
-            <%= link_to 'ADD TO CART', add_to_cart_path(one_off_product: @one_off_product.name), class: "btn btn-outline-success jumbo-button btn-mobile" %>
-            <% if @one_off_product.partner_background_link != nil %>
-              <%= link_to 'PARTNER INFO', @one_off_product.partner_background_link, class: "btn btn-outline-success jumbo-button mt-2 btn-mobile" %>
+          <%= form_for(:item_options, url: add_to_cart_path) do |f| %>
+            <% if @one_off_product.flavor_options != nil %>
+              <% flavor_list = generate_flavor_options_list(@one_off_product.flavor_options) %>
+              <%= f.label :flavor_options, class: 'field-label emphasis contact-form-item-mobile' do %>
+                <span class = 'field-label emphasis'> Size:  </span>
+              <% end %>
+              <%= f.select :flavor_option, options_for_select(flavor_list), {}, class:'form form-control form-control-width mx-auto subtitle-description-mobile pt-0 mt-0 select-mobile' %><br>
             <% end %>
-          <% else %>
-            <div class = "pb-2">
-              <% if @one_off_product.id == 80 || @one_off_product.id == 81   %>
-                <%= form_for(:sauce, url: guest_add_to_cart_path) do |f| %>
-                  <%= f.label :sauce, class: 'field-label emphasis contact-form-item-mobile' do %>
-                    <span class = 'field-label emphasis'> Sauce:  </span>
-                  <% end %>
-                  <%= f.select :sauce_choice, options_for_select([ "Chimichurri", "Pebre" ], "Chimichurri"), class: 'description-text subtitle-description-mobile pt-0 mt-0 select-mobile' %>
-                  <%= hidden_field_tag(:one_off_product, @one_off_product.name) %>
-                  <%= f.submit "ADD TO CART", class: "btn btn-outline-success jumbo-button mt-2 btn-mobile" %><br>
-                <% end %>
-              <% elsif @one_off_product.id == 82 || @one_off_product.id == 84 %>
-                <%= form_for(:sauce, url: guest_add_to_cart_path) do |f| %>
-                  <%= f.label :sauce, class: 'field-label emphasis contact-form-item-mobile' do %>
-                    <span class = 'field-label emphasis'> Sauce:  </span>
-                  <% end %>
-                  <%= f.select :sauce_choice, options_for_select([ "2 Chimichurri", "2 Pebre", "1 Chimichurri & 1 Pebre" ], "1 Chimichurri & 1 Pebre"), class: 'description-text subtitle-description-mobile pt-0 mt-0 select-mobile' %>
-                  <%= hidden_field_tag(:one_off_product, @one_off_product.name) %>
-                  <%= f.submit "ADD TO CART", class: "btn btn-outline-success jumbo-button mt-2 btn-mobile" %><br>
-                <% end %>
-              <% else %>
-                <%= link_to 'ADD TO CART', guest_add_to_cart_path(one_off_product: @one_off_product.name), class:"btn btn-outline-success jumbo-button btn-mobile mt-2" %><br>
-              <% end %>
-              <% if @one_off_product.partner_background_link != nil %>
-                <%= link_to 'PARTNER INFO', @one_off_product.partner_background_link, class: "btn btn-outline-success jumbo-button mt-2 btn-mobile" %>
-              <% end %>
-            </div>
+            <%= f.label :quantity, class: 'field-label emphasis contact-form-item-mobile subtitle-mobile' do %>
+              <strong><span class = 'field-label emphasis'> Quantity: </span></strong>
+            <% end %>
+            <%= f.number_field :quantity, class: 'form-control form-control-width mx-auto form-control-mobile', placeholder: "1", style: "width: 25%" %>
+            <%= hidden_field_tag(:one_off_product, @one_off_product.id) %>
+            <%= f.submit "ADD TO CART", class: "btn btn-outline-success jumbo-button mt-2 btn-mobile" %><br>
           <% end %>
         </div>
       </div>

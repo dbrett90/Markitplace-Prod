@@ -17,37 +17,36 @@ module ApplicationHelper
     logged_in? && current_user.admin?
   end
 
+  def admin_user
+    redirect_to(root_path) unless current_user.admin?
+end
+
   #Implement 9+ as according to Sof
   #Modified for new users so that cart shows 0 when they first log on
   def get_cart_length
     if current_user.cart == nil
       return 0
     else
-      one_offs = current_user.cart.one_off_products.length
-      subscriptions = current_user.cart.plan_types.length
-      if one_offs == nil
-        one_offs = 0
+      cocktail_kits_length = current_user.cart.line_items.length
+      if cocktail_kits_length == nil
+        cocktail_kits_length = 0
       end
-      if subscriptions == nil
-        subscriptions = 0
-      end
-      sum = one_offs + subscriptions
-      if sum > 9
+      if cocktail_kits_length > 9
         sum = "9+"
-        return sum
+        return cocktail_kits_length
       end
-      sum.to_s
+      cocktail_kits_length.to_s
     end
   end  
 
   def get_guest_cart_length
-    if guest_cart.one_off_products == nil
+    if guest_cart.line_items == nil
       val = 0
     else
-      if guest_cart.one_off_products.length > 9
+      if guest_cart.line_items.length > 9
         val = "9+"
       else
-        val = guest_cart.one_off_products.length
+        val = guest_cart.line_items.length
       end
     end
     val.to_s

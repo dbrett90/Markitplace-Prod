@@ -51,8 +51,9 @@ $(document).on("turbolinks:load", function() {
     AOS.init({
         once: true,
         duration: 800,
-        });
+      });
 });
+
 
 // $(function() {
 //     AOS.init({

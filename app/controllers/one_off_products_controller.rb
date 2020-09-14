@@ -121,4 +121,9 @@ class OneOffProductsController < ApplicationController
     def admin_user
         redirect_to(root_path) unless current_user.admin?
     end
+
+    def generate_flavor_options_list(flavor_options)
+        flavor_options.split(",")
+    end
+    helper_method :generate_flavor_options_list
 end
