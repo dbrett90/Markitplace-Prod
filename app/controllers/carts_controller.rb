@@ -55,9 +55,11 @@ class CartsController < ApplicationController
         if logged_in?
             if cart_not_created?
                 redirect_to root_path
+                # flash[:danger] = "cart not created"
                 flash[:warning] = "Your Cart is currently empty!"
             elsif cart_empty?
                 redirect_to root_path
+                # flash[:danger] = "Nothing in cart"
                 flash[:warning] = "Your Cart is currently empty!"
             else
                 @cart_items = current_user.cart.line_items
@@ -887,9 +889,9 @@ class CartsController < ApplicationController
     end
 
     def cart_empty?
-        product_length = current_user.cart.one_off_products.length 
-        subscription_length = current_user.cart.plan_types.length
-        if product_length < 1 && subscription_length < 1
+        # product_length = current_user.cart.one_off_products.length 
+        # subscription_length = current_user.cart.plan_types.length
+        if current_user.cart.line_items.length < 1
             return true
         else
             return false
