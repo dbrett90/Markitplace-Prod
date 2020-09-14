@@ -91,9 +91,19 @@
             <% if @one_off_product.flavor_options != nil %>
               <% flavor_list = generate_flavor_options_list(@one_off_product.flavor_options) %>
               <%= f.label :flavor_options, class: 'field-label emphasis contact-form-item-mobile' do %>
-                <span class = 'field-label emphasis'> Size:  </span>
-              <% end %>
-              <%= f.select :flavor_option, options_for_select(flavor_list), {}, class:'form form-control form-control-width mx-auto subtitle-description-mobile pt-0 mt-0 select-mobile' %><br>
+                <% if @one_off_product.partner_name == "Jaju Pierogi" %>
+                  <% size = "(Choose 1 or 2 Flavors)" %>
+                <% else %>
+                  <% size = "" %>
+                <% end %>
+                <span class = 'field-label emphasis'> Size: <%= size %>  </span>
+              <% end %><br>
+              <div style = "checkbox">
+                <% flavor_list.each do |flavor| %>
+                  <%= f.check_box :flavor_option, {multiple: true, max: 2, class: "checkbox"}, flavor, false %>
+                  <%= f.label flavor, class: "field-label checkbox-inline" %><br>
+                <% end %>
+              </div>
             <% end %>
             <%= f.label :quantity, class: 'field-label emphasis contact-form-item-mobile subtitle-mobile' do %>
               <strong><span class = 'field-label emphasis'> Quantity: </span></strong>

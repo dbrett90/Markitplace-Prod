@@ -190,7 +190,6 @@ class CartsController < ApplicationController
     #Run on the local server first --> Need to test
     def add_to_cart
         item = params[:one_off_product]
-        # flash[:warning] = params[:item_options][:flavor_option]
         #Specify quantity when adding to cart --> Need to add to form
         quantity = (params[:item_options][:quantity]).to_i
         if quantity == 0
@@ -202,7 +201,15 @@ class CartsController < ApplicationController
         line_item = LineItem.new()
         line_item.product_id = item
         if one_off.flavor_options != nil
-            line_item.flavor_option = params[:item_options][:flavor_option]
+            flavor_array = params[:item_options][:flavor_option]
+            flavor_string = ""
+            flavor_array.each do |flavor|
+                flavor_string += flavor
+                flavor_string+= ", "
+            end
+            flavor_string = flavor_string[0..-3]
+            line_item.flavor_option = flavor_string
+            flash[:warning] = flavor_string
         end
         line_item.quantity = quantity
         line_item.product_type = "One Off Product"
