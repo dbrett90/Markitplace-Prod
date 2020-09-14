@@ -79,6 +79,9 @@ class CartsController < ApplicationController
             #Then create the stripe call
             line_items_array = Array.new() 
             @cart_items.each do |line_item|
+                if line_item.flavor_opton == nil
+                    line_item.flavor_option = ""
+                end
                 meal_kit = find_one_off_by_id(line_item.product_id)
                 item_hash = {
                     price_data: {
@@ -185,7 +188,7 @@ class CartsController < ApplicationController
     #Run on the local server first --> Need to test
     def add_to_cart
         item = params[:one_off_product]
-        flash[:warning] = params[:item_options][:flavor_option]
+        # flash[:warning] = params[:item_options][:flavor_option]
         #Specify quantity when adding to cart --> Need to add to form
         quantity = (params[:item_options][:quantity]).to_i
         if quantity == 0
