@@ -98,9 +98,9 @@
                 <% end %>
                 <span class = 'field-label emphasis'> Size: <%= size %>  </span>
               <% end %><br>
-              <div style = "checkbox">
+              <div style = "form-row">
                 <% flavor_list.each do |flavor| %>
-                  <%= f.check_box :flavor_option, {multiple: true, max: 2, class: "checkbox-mobile"}, flavor, false %>
+                  <%= f.check_box :flavor_option, {multiple: true, class: "checkbox-mobile"}, flavor, false %>
                   <%= f.label flavor, class: "subtitle-description-mobile" %><br>
                 <% end %>
               </div>
