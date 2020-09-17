@@ -56,8 +56,8 @@ class PlanTypesController < ApplicationController
         # #To be referenced afterwards
         # session[:stripe_id] = @session.id
         #Temporary way to retrieve the stripe_id of a subscription
-        current_user.subscription_session_id[@plan_type.id] = stripe_session.id
-        current_user.save
+        # current_user.subscription_session_id[@plan_type.id] = stripe_session.id
+        # current_user.save
         #session[:cocktail_subscription_id] = @plan_type.id
     else
         #session[:signup_redirect_url] = request.original_url
