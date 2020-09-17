@@ -21,7 +21,7 @@ class User < ApplicationRecord
     has_many :product_subscription_library_additions, through: :product_subscription_libraries, source: :product
 
     
-
+    serialize :subscription_session_id, Hash
     #One_off_products section
     # has_many :one_off_products, dependent: :destroy
 

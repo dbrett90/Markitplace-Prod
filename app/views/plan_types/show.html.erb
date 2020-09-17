@@ -2,90 +2,36 @@
 <div class = "container recipe-overview  mt-4 justify-content-center">
   <section class= "container">
     <div class = "recipe-header pt-2">
-      <div class = "row">
-        <div class= "col-12 text-center recipe-header-button pb-2">
-          <h1 class "pb-1 title-mobile"><%= @plan_type.name %> </h1>
+      <div class = "row pb-5">
+        <div class = "col-12 text-center pb-2">
+          <h1 class =  "pb-1 title-mobile" style = "color: #073243"><%= @plan_type.name %> </h1>
+        </div>
+        <div class= "col-12 col-lg-6 text-center recipe-header-button">
           <%= image_tag(@plan_type.thumbnail, class:"img-fluid", alt: "Product Image") %>
         </div>
-      </div>
-      <% if @plan_type.calories != nil && one_off_product.fats != nil %>
-        <div class = "recipe-intro d-flex pt-3">
-          <ul class= "stats list-inline mx-auto justify-content-center">
-            <li class = "list-inline-item">
-              <div class="stats-item subtitle-mobile">
-                <%= @plan_type.calories %>
-              </div>
-              <div class="stats-subitem subtitle-mobile">
-                Calories 
-              </div>
-            </li>
-            <li class="list-inline-item">
-              <div class="stats-item subtitle-mobile">
-                <%= @plan_type.fats %>
-              </div>
-              <div class="stats-subitem subtitle-mobile">
-                Grams of Fat
-              </div>
-            </li>
-            <li class="list-inline-item">
-              <div class="stats-item subtitle-mobile">
-                <%= @plan_type.servings %>
-              </div>
-              <div class="stats-subitem subtitle-mobile">
-                Servings
-              </div>
-            </li>
-            <li class="list-inline-item">
-              <div class="stats-item subtitle-mobile">
-                <%= @plan_type.prep_time %>
-              </div>
-              <div class="stats-subitem subtitle-mobile">
-                Prep Time
-              </div>
-            </li>
-          </ul>
-        </div>  
-      <% else %>
-        <div class = "recipe-intro d-flex pt-3">
-          <ul class= "stats list-inline mx-auto justify-content-center">
-            <li class = "list-inline-item">
-              <div class="stats-item subtitle-mobile">
-                <%= @plan_type.servings %>
-              </div>
-              <div class="stats-subitem subtitle-mobile">
-                Servings
-              </div>
-            </li>
-            <li class="list-inline-item">
-              <div class="stats-item subtitle-mobile">
-                <%= @plan_type.prep_time %>
-              </div>
-              <div class="stats-subitem subtitle-mobile">
-                Prep Time
-              </div>
-            </li>
-          </ul>
-        </div>
-      <% end %>
-      <div class= "row align-items-center text-center">
-        <div class = "col-12 col-lg-8">
-            <% if @plan_type.extended_description != nil %>
-              <p class="description-text subtitle-description-mobile"> <%= @plan_type.extended_description %></p>
-            <% else %>
-              <p class="description-text subtitle-description-mobile"> <%= @plan_type.description %></p>
-            <% end %>
-        </div>
-        <div class = "col-12 col-lg-4 pb-3 text-center align-items-center text-center">
-          <% if logged_in? %>
-            <%= link_to 'ADD TO CART', add_subscription_to_cart_path(plan_type: @plan_type.name), class: "btn btn-outline-success jumbo-button btn-mobile" %>
-          <% else %>
-            <%= link_to 'ADD TO CART', new_user_path, class:"btn btn-outline-success jumbo-button btn-mobile" %>
-          <% end %>
-          <div class="col-12 d-lg-none">
-            <span></span>
-            <br>
-            <span<span/> 
-          </div>
+        <div class = "col-12 col-lg-6 text-center my-auto">
+            <div class = "recipe-intro d-flex pt-3">
+              <ul class= "stats list-inline mx-auto justify-content-center">
+                <li class="list-inline-item">
+                  <div class="stats-item subtitle-mobile">
+                    $<%= number_with_precision(@plan_type.price, precision: 2) %>
+                  </div>
+                  <div class="stats-subitem subtitle-mobile">
+                    Price
+                  </div>
+                </li>
+                <li class="list-inline-item">
+                  <div class="stats-item subtitle-mobile">
+                    Serves <%= @plan_type.servings %>
+                  </div>
+                  <div class="stats-subitem subtitle-mobile">
+                    Cocktail Kit Size
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <p class="description-text subtitle-mobile"> <%= @plan_type.description %></p>
+            <button id="checkout-button" class= "btn btn-outline-success jumbo-button mt-2 btn-mobile" data-secret="<%= @session.id %>"> Subscribe </button>
         </div>
       </div>
     </div>

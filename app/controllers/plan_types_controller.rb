@@ -1,7 +1,7 @@
 class PlanTypesController < ApplicationController
     #Updated to allow users to access a library
  before_action :set_plan_type, only: [:edit, :show, :update, :destroy, :library]
- before_action :admin_user, except: [:index, :show]
+ before_action :admin_user, only: [:new, :edit, :create, :update, :destroy]
 #  before_action :authenticate_user!, except: [:index, :show]
 #This is what the Devise action basically does.
 #before_action :logged_in_user, except: [:index, :show]
@@ -23,120 +23,108 @@ class PlanTypesController < ApplicationController
  def new
     #What is te current_user equivalent? See if this works
     # @plan_types = PlanType.all
-    @plan_type = current_user.plan_types.build
-    # flash[:notice] = "Number of Plans: ", @plan_types.count
+    @plan_type = PlanType.new 
+    @plan_types = PlanType.all
  end
 
  def show
-
-  #Note that the code below is for the old way of showing products.
-  # @products = @plan_type.products
-  # @extended_list = parse_extended_field(@plan_type)
-  # @products = Product.all
-  # flash[:danger] = @products.count
+    Stripe.api_key = Rails.application.credentials.production[:stripe_api_key]
+    token = params[:stripeToken]
+    @plan_type = PlanType.find(params[:id])
+    sub_name = @plan_type.name
+    if logged_in?
+        #Generate a session for the user
+        #determine if promo_code applied & create session
+        #Create session either with promo or without
+        session_id = request.session_options[:id]
+        stripe_session = Stripe::Checkout::Session.create(
+            customer_email: current_user.email,
+            payment_method_types: ['card'],
+            shipping_address_collection: {
+                        allowed_countries: ['US'],
+            },
+            line_items: [{
+                price: @plan_type.stripe_id,
+                quantity: 1,
+            }],
+            allow_promotion_codes: true,
+            mode: 'subscription',
+            success_url: "http://www.markitplace.io/successful-subscription-purchase?session_id=#{session_id}",
+            cancel_url: 'http://www.markitplace.io/unsuccessful-subscription-purchase',
+        )
+        # @session = stripe_session
+        # #To be referenced afterwards
+        # session[:stripe_id] = @session.id
+        #Temporary way to retrieve the stripe_id of a subscription
+        current_user.subscription_session_id[@plan_type.id] = stripe_session.id
+        current_user.save
+        #session[:cocktail_subscription_id] = @plan_type.id
+    else
+        #session[:signup_redirect_url] = request.original_url
+        session_id = request.session_options[:id]
+        stripe_session = Stripe::Checkout::Session.create(
+            payment_method_types: ['card'],
+            shipping_address_collection: {
+                        allowed_countries: ['US'],
+            },
+            line_items: [{
+                price: @plan_type.stripe_id,
+                quantity: 1,
+            }],
+            allow_promotion_codes: true,
+            mode: 'subscription',
+            success_url: "http://www.markitplace.io/successful-subscription-purchase?session_id=#{session_id}",
+            cancel_url: 'http://www.markitplace.io/unsuccessful-subscription-purchase',
+        )
+        # @session = stripe_session
+        # #To be referenced afterwards
+        # session[:stripe_id] = @session.id
+    end
+    @session = stripe_session
+    session[:stripe_id] = @session.id
+    session[:cocktail_subscription_id] = @plan_type.id
  end
 
 
  # GET /plans/1/edit
- def edit
- end
+def edit
+  @plan_type = PlanType.find(params[:id]) 
+end
 
  # POST /plans
  # POST /plans.json
 #Essentially trying to replicate devise here.
 #Let's confirm that this actually pulls the current user. 
- def create
-    #Going to create the plan on behalf of the client - need key
-    Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
-
-    @plan_type = current_user.plan_types.build(plan_type_params)
-
-    #Code below is for the old way of showing a subscription model.
-    # @products = Product.all 
-    # @products.each do |product|
-    #   if product.plan_type_name.downcase == @plan_type.name.downcase 
-    #     product.plan_type = @plan_type 
-    #     @plan_type.products << product
-    #   end
-    # end
-    stripe_plan = Stripe::Plan.create({
-        #Might need to include a pricing input value here so it's dynamic and not hard-coded.
-        #Also need to figure out what the billing period for this would be.
-        amount_decimal: (@plan_type.price * 100),
-        currency: 'usd',
-        interval: 'month',
-        nickname: @plan_type.name.downcase,
-        product: {name: "Markitplace Mealplan"}
-      },
-      {stripe_account: @plan_type.stripe_id})
-    # flash[:danger] = stripe_plan
-    # flash[:warning] = stripe_plan.id
-    @plan_type.update_attribute(:plan_type_id, stripe_plan.id)
-
-   respond_to do |format|
-     if @plan_type.save
-       flash[:success] = params
-       format.html { redirect_to plan_types_path, success: 'PLAN TYPE was successfully created.' }
-       format.json { render :index, status: :created, location: @plan_type }
-       flash[:warning] = "Make sure you update the credentials file with plan ID"
-      # @plan_type.plan_type_id = stripe_plan.id
-      # @plan_type.save
-     else
-       flash[:danger] = "SOME TYPE OF ISSUE WITH CREATION"
-       flash[:notice] = @plan_type.errors.full_messages
-       format.html { render :new }
-       format.json { render json: @plan_type.errors, status: :unprocessable_entity }
-     end
-   end
- end
+def create
+  @plan_type = PlanType.new(plan_type_params)
+  if @plan_type.save
+      flash[:success] = "Plan Type Offering has been successfully added!"
+      redirect_to plan_types_path
+  else
+      render 'new'
+  end
+end
 
  # PATCH/PUT /books/1
  # PATCH/PUT /books/1.json
  #Not abiding by DRY here.... essetially call the Create part? 
  def update
-  Stripe.api_key = Rails.application.credentials.development[:stripe_api_key]
-  @products = Product.all 
-  #Old code for showing
-  # @products.each do |product|
-  #   if product.plan_type_name.downcase == @plan_type.name.downcase 
-  #     product.plan_type = @plan_type 
-  #     @plan_type.products << product
-  #   end
-  # end
-    respond_to do |format|
-      if @plan_type.update(plan_type_params)
-        flash[:success] = params
-        format.html { redirect_to plan_types_path, notice: 'PLAN was successfully updated.' }
-        format.json { render :show, status: :ok, location: @plan_type }
-      else
-        format.html { render :edit }
-        format.json { render json: @plan_type.errors, status: :unprocessable_entity }
-      end
-    end
-    stripe_plan = Stripe::Plan.create({
-    #Might need to include a pricing input value here so it's dynamic and not hard-coded.
-    #Also need to figure out what the billing period for this would be.
-    amount_decimal: (@plan_type.price * 100),
-    currency: 'usd',
-    interval: 'month',
-    nickname: @plan_type.name.downcase,
-    product: {name: "Markitplace Mealplan"}
-    },
-    {stripe_account: @plan_type.stripe_id})
-    # flash[:danger] = stripe_plan
-    # flash[:warning] = stripe_plan.id
-    @plan_type.update_attribute(:plan_type_id, stripe_plan.id)
+  @plan_type = PlanType.find(params[:id])
+  if @plan_type.update_attributes(plan_type_params)
+      flash[:success] = "Plan Type hass been updated"
+      redirect_to @plan_type
+  else
+      render 'edit'
   end
+end
 
  # DELETE /books/1
  # DELETE /books/1.json
- def destroy
-   @plan_type.destroy
-   respond_to do |format|
-     format.html { redirect_to plan_types_path, success: 'PLAN was successfully destroyed.' }
-     format.json { head :no_content }
-   end
- end
+def destroy
+  PlanType.find(params[:id]).destroy
+  flash[:success] = "Plan Type Deleted"
+  redirect_to plan_types_path
+end
 
  #Add and remove plans from Library for the current user
  def library
@@ -154,6 +142,20 @@ class PlanTypesController < ApplicationController
         redirect_to plan_type_path(@plan_type), notice: "Looks like something went wrong! Use the contact form if this continues to cause issues."
     end
  end
+
+ def successful_subscription_purchase
+  plan_type_subscription = find_plan_type_subscription_by_id(session[:plan_type_id])
+  current_user.plan_types << plan_type_subscription
+  current_user.save
+  # OrderConfirmationMailer.subscription_order.deliver_now
+  flash[:success] = "Your subscription is now active! You will receive a confirmation email shortly."
+  redirect_to root_path
+end
+
+def unsuccessful_subscription_purchase
+  flash[:danger] = "Your checkout session didn't complete. Please try again."
+  redirect_to plan_types_path
+end
 
  private
    # Use callbacks to share common setup or constraints between actions.

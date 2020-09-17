@@ -53,6 +53,8 @@ Rails.application.routes.draw do
   post '/mealkit-playbook', to: 'partner_logos#download_playbook'
   resources :users
   resources :stripe_connect_users
+  get '/successful-subscription-purchase', to: 'plan_types#successful_subscription_purchase'
+  get '/unsuccessful-subscription-purchase', to: 'plan_types#unsuccessful_subscription_purchase'
   #Below routes specifically for product library
   # resources :products, only: [:index]
   #little bit of logic to determine where you should go

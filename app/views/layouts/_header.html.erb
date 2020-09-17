@@ -60,7 +60,6 @@
                         <a href="#" class="nav-link nav-text-mobile dropdown-toggle" id="navbarDropdown" style="color:black" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-turbolinks="false">Account</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <% if user_subscribed? %>
-                            <%= link_to "Subscriptions", plan_subscription_library_index_path, class: "dropdown-item nav-link nav-text-mobile" %>
                                 <% if current_user.admin? %>
                                     <%= link_to "Account", user_path(current_user), class: "dropdown-item nav-link nav-text-mobile" %>
                                 <% end %>

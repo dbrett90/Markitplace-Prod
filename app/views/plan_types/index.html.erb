@@ -17,12 +17,12 @@
                 <%  @plan_types.each do |plan_type| %>
                     <div class="col-12 col-lg-4 pb-3 d-flex align-items-stretch card-padding-mobile">
                         <div class="card see-cooking card-width">
-                            <%= link_to plan_type_path(plan_type) do %>
-                                <%= image_tag plan_type.thumbnail.variant(resize: "450x450"), class:"card-img-top hover-gray", alt: "Meal Kit Plan Image" %>
-                                <div class="textOverlay align-middle text-center subtitle-description-mobile">
-                                    <div class="showTextIndex align-middle text-center subtitle-description-mobile">See what&#39;s cooking</div>
-                                </div>
-                            <% end %>
+                        <%= link_to plan_type_path(plan_type) do %>
+                            <%= image_tag plan_type.thumbnail.variant(resize: "450x450"), class:"card-img-top hover-gray", alt: "Meal Kit Plan Image" %>
+                            <div class="textOverlay align-middle text-center subtitle-description-mobile">
+                                <div class="showTextIndex align-middle text-center subtitle-description-mobile">See what&#39;s cooking</div>
+                            </div>
+                        <% end %>
                             <div class="card-body text-center d-flex flex-column">
                                 <h5 class="card-title text-center title-card-mobile"> <%= plan_type.name %></h5>
                                 <h6 class="text-center title-mobile">$<%= number_with_precision(plan_type.price, precision: 2) %> per month</h6>
