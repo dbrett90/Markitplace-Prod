@@ -200,7 +200,7 @@ class CartsController < ApplicationController
         # flash[:danger] = params[:quantity]
         line_item = LineItem.new()
         line_item.product_id = item
-        if one_off.flavor_options != nil
+        if one_off.flavor_options != nil || one_off.flavor_options != ""
             flavor_array = params[:item_options][:flavor_option]
             flavor_string = ""
             flavor_array.each do |flavor|
