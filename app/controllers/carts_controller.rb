@@ -209,7 +209,7 @@ class CartsController < ApplicationController
             end
             flavor_string = flavor_string[0..-3]
             line_item.flavor_option = flavor_string
-            flash[:warning] = flavor_string
+            # flash[:warning] = flavor_string
         end
         line_item.quantity = quantity
         line_item.product_type = "One Off Product"
