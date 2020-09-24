@@ -28,29 +28,20 @@
                                 <%= link_to "Stripe - Partners", stripe_partners_path, class: "dropdown-item nav-link nav-text-mobile" %>
                             </div>
                         </li> 
-                    <% else %>
-                        <li class= "nav-item nav-text-mobile active n-homepage">
-                            <%= link_to "Kits", one_off_products_path, class: "nav-link nav-text-mobile" %>
-                        </li>
                     <% end %>
-                <% else %>
-                <li class= "nav-item nav-text-mobile active n-homepage">
-                        <%= link_to "Kits", one_off_products_path, class: "nav-link nav-text-mobile" %>
-                </li>
                 <% end %>
+                <li class= "nav-item dropdown" data-turbolinks="false">
+                    <a href="#" class="nav-link nav-text-mobile dropdown-toggle" id="navbarDropdown" style="color:black" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  data-turbolinks="false">Chefs</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <%= link_to "Chefs", partners_path, class: "dropdown-item nav-link nav-text-mobile" %>
+                        <%= link_to "Services", services_path, class: "dropdown-item nav-link nav-text-mobile" %>
+                    </div>
+                </li>  
                 <li class= "nav-item dropdown" data-turbolinks="false">
                     <a href="#" class="nav-link nav-text-mobile dropdown-toggle" id="navbarDropdown" style="color:black" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  data-turbolinks="false">About Us</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <%= link_to "Our Team",  our_team_path, class: "dropdown-item nav-link nav-text-mobile" %>
                         <%= link_to "Contact", contact_path, class: "dropdown-item nav-link nav-text-mobile" %>
-                    </div>
-                </li>  
-                <li class= "nav-item dropdown" data-turbolinks="false">
-                    <a href="#" class="nav-link nav-text-mobile dropdown-toggle" id="navbarDropdown" style="color:black" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  data-turbolinks="false">Partners</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <%= link_to "Partners", partners_path, class: "dropdown-item nav-link nav-text-mobile" %>
-                        <%= link_to "Services", services_path, class: "dropdown-item nav-link nav-text-mobile" %>
-                        <%= link_to "Kit Playbook", mealkit_playbook_path, class: "dropdown-item nav-link nav-text-mobile" %>
                     </div>
                 </li>     
             </ul>

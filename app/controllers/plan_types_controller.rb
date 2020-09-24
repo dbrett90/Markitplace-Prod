@@ -2,7 +2,7 @@ class PlanTypesController < ApplicationController
     #Updated to allow users to access a library
  before_action :set_plan_type, only: [:edit, :show, :update, :destroy, :library]
  before_action :admin_user, only: [:new, :edit, :create, :update, :destroy]
-#  before_action :authenticate_user!, except: [:index, :show]
+# before_action :authenticate_user!, except: [:index, :show]
 #This is what the Devise action basically does.
 #before_action :logged_in_user, except: [:index, :show]
 
@@ -11,10 +11,6 @@ class PlanTypesController < ApplicationController
  # GET /plans
  def index
    @plan_types = PlanType.all
-  #  @products = Product.all
-   #Test that products is an array that you can access
-  #  flash[:notice] = "Number of Plans: ", @plan_types.count
-  #  flash[:danger] = "Number of Products", @products.count
  end
 
  # GET /plans/1
