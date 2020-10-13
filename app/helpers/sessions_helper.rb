@@ -40,7 +40,13 @@ module SessionsHelper
     def guest_cart
       if session[:cart] != nil
         # flash[:danger] = "Older cart found"
-        @cart = Cart.find(session[:cart])
+        begin
+          @cart = Cart.find(session[:cart])
+        rescue ActiveRecord::RecordNotFound => e
+          @cart = Cart.create
+          session[:cart] = @cart.id
+          @cart
+        end
         # flash[:danger] = "Older cart found"
       else
         @cart = Cart.create
