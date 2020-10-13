@@ -47,7 +47,7 @@
                 </li>
               </ul>
             </div>
-          <% elsif @one_off_product.servings != nil %>
+          <% elsif @one_off_product.servings != nil && @one_off_product.prep_time != nil %>
             <div class = "recipe-intro d-flex pt-3">
               <ul class= "stats list-inline mx-auto justify-content-center">
                 <li class="list-inline-item">
@@ -73,10 +73,10 @@
               <ul class= "stats list-inline mx-auto justify-content-center">
                 <li class="list-inline-item">
                   <div class="stats-item subtitle-mobile test">
-                    <%= @one_off_product.prep_time %>
+                    <%= Serves <%= @one_off_product.servings %>
                   </div>
                   <div class="stats-subitem subtitle-mobile">
-                    Prep Time
+                   Meal Kit Size
                   </div>
                 </li>
               </ul>
@@ -96,7 +96,7 @@
                 <% else %>
                   <% size = "" %>
                 <% end %>
-                <span class = 'field-label emphasis'> Size: <%= size %>  </span>
+                <span class = 'field-label emphasis'> Flavor: <%= size %>  </span>
               <% end %><br>
               <div style = "form-row">
                 <% flavor_list.each do |flavor| %>
